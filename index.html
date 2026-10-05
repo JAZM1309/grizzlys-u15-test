@@ -519,6 +519,72 @@ html.hw{--navy:#0c0a09;--navy2:#1c140d;--ice:#fff1e2;--a:#2f9bff;--b:#ff8a00;--s
 @keyframes hwBtnWiggle{0%,90%,100%{transform:none}92%{transform:translateX(-3px) rotate(-.6deg)}94%{transform:translateX(3px) rotate(.6deg)}96%{transform:translateX(-2px)}98%{transform:translateX(2px)}}
 @media (prefers-reduced-motion:reduce){.hw .hockeyGameBtn,.hw .hockeyGameBtn strong,.hw .hockeyGameIcon,.hw .hwBtnEyes,.hw .hwBtnGhost{animation:none!important}}
 @media (prefers-reduced-motion:reduce){.hw .hwBat{animation:none!important}}
+
+/* === 1.8.1 Minispiel: Eishalle, Anzeigetafel, Serie === */
+.hqFx{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:6}
+.hockeyGameBox{position:relative}
+.hqBoard{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin:0 0 10px;padding:9px 12px;border-radius:14px;background:linear-gradient(180deg,#0b1c2b,#060f18);color:#fff;box-shadow:inset 0 0 0 2px #22425c,0 4px 12px rgba(4,22,40,.3)}
+.hqTeam{display:flex;flex-direction:column;align-items:center;line-height:1}
+.hqTeam i{font-style:normal;font-size:10px;font-weight:900;letter-spacing:.12em;color:#8fb6d4}
+.hqTeam b{font-size:32px;font-weight:950;font-family:ui-monospace,Menlo,Consolas,monospace;color:#ffb347;text-shadow:0 0 10px rgba(255,150,40,.7);margin-top:3px}
+.hqMid{display:flex;flex-direction:column;align-items:center;gap:5px}
+.hqMid small{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#8fb6d4;font-weight:800;text-align:center}
+.hqLamp{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#6b2a2a,#2a0d0d);border:2px solid #3b1b1b;transition:.2s}
+.hqLamp.on{background:radial-gradient(circle at 35% 30%,#ffb0a0,#ff2a1a 55%,#a30800);box-shadow:0 0 18px 6px rgba(255,40,20,.8);animation:hqLamp .35s ease-in-out 5}
+.hqLevels{display:flex;gap:6px;margin-bottom:10px}
+.hqLevels button{flex:1;border:1.5px solid #b7cada;background:#fff;color:var(--navy);border-radius:999px;padding:6px 4px;font-size:12px;font-weight:900;cursor:pointer}
+.hqLevels button.on{background:var(--navy,#0b2c4a);color:#fff;border-color:var(--navy,#0b2c4a)}
+html:not(.hw) .hockeyRink{padding:0;border:0;border-radius:26px;background:linear-gradient(180deg,#e9f6ff 0,#f8fdff 45%,#dff0fb 100%);box-shadow:0 0 0 5px #fff,0 0 0 8px #1c6fb8,0 8px 20px rgba(8,31,55,.25);overflow:hidden;position:relative}
+html:not(.hw) .hockeyRink:before{content:"";position:absolute;left:50%;top:50%;width:62%;aspect-ratio:1;transform:translate(-50%,-50%);border:3px solid rgba(28,111,184,.35);border-radius:50%;inset:auto;pointer-events:none;border-color:rgba(28,111,184,.35)}
+html:not(.hw) .hockeyRink:after{content:"";position:absolute;left:0;right:0;top:50%;height:3px;background:rgba(214,40,40,.28);pointer-events:none}
+.hqBanner{display:flex;justify-content:space-around;position:relative;z-index:2;padding:4px 0;font-size:9px;font-weight:950;letter-spacing:.2em;color:#fff;background:linear-gradient(90deg,#0b2c4a,#1c6fb8,#0b2c4a)}
+.hqBannerB{background:linear-gradient(90deg,#ff8a00,#c96a00,#ff8a00)}
+.hockeyBoard{padding:10px;gap:6px;position:relative;z-index:2}
+html:not(.hw) .hockeyCell{position:relative;background:rgba(255,255,255,.55);border:1.5px solid rgba(28,111,184,.35);box-shadow:inset 0 0 12px rgba(160,205,235,.35);backdrop-filter:blur(1px)}
+html:not(.hw) .hockeyCell:not(:disabled):hover{background:rgba(255,255,255,.9)}
+.hockeyCell .pk{display:block;pointer-events:none}
+.hockeyCell .puck{width:62%;height:40%;border-radius:50%;background:radial-gradient(ellipse at 38% 30%,#68747f 0,#222a32 45%,#05080b 100%);box-shadow:0 6px 0 #0a0d10,0 10px 7px rgba(0,0,0,.32),inset 0 -2px 4px rgba(255,255,255,.1)}
+.hockeyCell .stick{width:70%;height:70%;filter:drop-shadow(0 4px 3px rgba(0,0,0,.28))}
+html:not(.hw) .hockeyCell.new .puck{animation:hqSlide .5s cubic-bezier(.2,.9,.3,1.25)}
+html:not(.hw) .hockeyCell.new .stick{animation:hqSlide .5s cubic-bezier(.2,.9,.3,1.25)}
+html:not(.hw) .hockeyCell.new:after{content:"";position:absolute;left:50%;top:60%;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:-18px 4px 0 #dff1fc,18px 3px 0 #fff,-10px -10px 0 #dff1fc,12px -12px 0 #fff,0 14px 0 #dff1fc;opacity:0;animation:hqSpray .55s ease-out .08s}
+html:not(.hw) .hockeyCell.win{background:rgba(255,90,70,.2);border-color:#e23b2e;box-shadow:0 0 0 2px #e23b2e,0 0 18px rgba(226,59,46,.65);animation:hqWin .6s ease-in-out 3}
+.hockeyCell.blk{background-image:repeating-linear-gradient(45deg,rgba(214,40,40,.18) 0 6px,transparent 6px 12px)!important}
+.hockeyCell .blkN{font-size:12px;font-weight:950;color:#b3261e;background:#fff;border:1.5px solid #e23b2e;border-radius:999px;padding:2px 7px}
+.hw .hockeyCell.blk{background-image:repeating-linear-gradient(45deg,rgba(255,122,0,.22) 0 6px,transparent 6px 12px)!important;background-color:#1c0d05!important}
+.hw .hockeyCell .blkN{background:#1c0d05;color:#ff9a3c;border-color:#ff7a00}
+.hqTools{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.hqPen{border:1.5px solid #e23b2e;background:#fff;color:#b3261e;border-radius:999px;padding:7px 13px;font-size:12px;font-weight:950;cursor:pointer}
+.hqPen.armed{background:#e23b2e;color:#fff;animation:hqLamp .8s infinite}
+.hqPen:disabled{opacity:.4;cursor:default;animation:none}
+.hw .hqPen{background:#1c0d05;color:#ff9a3c;border-color:#ff7a00}.hw .hqPen.armed{background:#ff7a00;color:#1c0d05}
+.hqTrophies{display:flex;gap:6px}
+.hqTr{width:30px;height:30px;display:grid;place-items:center;border-radius:50%;font-size:16px;background:rgba(0,0,0,.08);filter:grayscale(1);opacity:.45}
+.hqTr.on{filter:none;opacity:1;background:linear-gradient(135deg,#fff3c4,#ffc94d);box-shadow:0 0 10px rgba(255,190,60,.7)}
+.hqGoal{position:absolute;left:0;right:0;top:34%;text-align:center;font-size:44px;font-weight:950;font-style:italic;color:#fff;-webkit-text-stroke:2px #e23b2e;text-shadow:0 4px 0 #8a1b14,0 0 24px rgba(255,60,40,.8);animation:hqGoal 1.5s ease-out forwards;letter-spacing:.04em}
+.hw .hqGoal{-webkit-text-stroke:2px #5a2300;color:#ff9a3c;text-shadow:0 4px 0 #3a1500,0 0 24px rgba(255,122,0,.9)}
+.hqConf{position:absolute;top:-12px;width:9px;height:14px;border-radius:2px;animation:hqFall 2.2s ease-in forwards}
+.hqConf.e{width:auto;height:auto;font-size:20px;background:none!important}
+.hockeyGameBox.hqShake{animation:hqShk .5s linear}
+@keyframes hqSlide{0%{transform:translate(70%,130%) rotate(-240deg) scale(.5);opacity:0}70%{opacity:1}100%{transform:none;opacity:1}}
+@keyframes hqSpray{0%{opacity:.95;transform:scale(.3)}100%{opacity:0;transform:scale(2.4)}}
+@keyframes hqWin{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@keyframes hqLamp{0%,100%{filter:brightness(1)}50%{filter:brightness(1.8)}}
+@keyframes hqGoal{0%{transform:scale(.3) rotate(-6deg);opacity:0}18%{transform:scale(1.15) rotate(-3deg);opacity:1}30%{transform:scale(1) rotate(-3deg)}80%{opacity:1}100%{transform:scale(1) rotate(-3deg) translateY(-20px);opacity:0}}
+@keyframes hqFall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(460px) rotate(540deg);opacity:.9}}
+@keyframes hqShk{0%,100%{transform:none}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+/* Halloween: Hallenlicht aus */
+.hw .hqBoard{background:linear-gradient(180deg,#1a0c04,#090402);box-shadow:inset 0 0 0 2px #7a3a0a,0 0 18px rgba(255,100,0,.25)}
+.hw .hqTeam i,.hw .hqMid small{color:#c9a98a}
+.hw .hqLevels button{background:#1c0d05;color:#ffd2a1;border-color:#7a3a0a}.hw .hqLevels button.on{background:#ff7a00;color:#1c0d05;border-color:#ff7a00}
+.hw .hqLamp{background:#1d0b04;border-color:#5a2d0a}
+.hw .hqLamp.on{background:radial-gradient(circle,#fff0a8 0,#ff9a1a 40%,#8a2e00 100%);box-shadow:0 0 22px 8px rgba(255,130,0,.9)}
+.hw .hqLamp:before,.hw .hqLamp:after{content:"";position:absolute}
+.hw .hockeyRink{position:relative;padding:0;overflow:hidden;border-radius:22px;box-shadow:0 0 0 4px #3a1a06,0 0 0 6px #ff7a00,0 0 30px rgba(255,100,0,.35)}
+.hw .hockeyRink:before,.hw .hockeyRink:after{display:none}
+.hw .hqBanner{background:linear-gradient(90deg,#1c0d05,#5a2300,#1c0d05);color:#ff9a3c}.hw .hqBannerB{background:linear-gradient(90deg,#1c0d05,#7a3a0a,#1c0d05)}
+.hw .hockeyRink:after{display:block;content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,transparent 30%,rgba(0,0,0,.55) 95%);pointer-events:none;z-index:3}
+@media (prefers-reduced-motion:reduce){.hockeyCell *,.hockeyCell,.hqGoal,.hqConf,.hqLamp,.hqPen{animation:none!important}.hockeyCell:after{display:none!important}}
 .testRibbon{position:sticky;top:0;z-index:70;background:#e8760a;color:#fff;text-align:center;font:800 12px/1 system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:7px 8px}
 </style>
 <script>
@@ -623,7 +689,7 @@ Tippe auf einen Gegner, um alle Spiele gegen ihn zu sehen.
 
 <div id="thanksModal" class="thanksModal" hidden aria-hidden="true"><div class="thanksBox" role="dialog" aria-modal="true" aria-labelledby="thanksTitle"><div class="hwDeco hwThanksBats" aria-hidden="true"><span class="hwBat hwBat1"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></span><span class="hwBat hwBat2"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></span><span class="hwBat hwBat3"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></span></div><img id="thanksImg" class="thanksImg" src="grizzlys-bug-icon.png" alt=""><div id="thanksTitle" class="thanksTitle"></div><div id="thanksText" class="thanksText"></div><button id="thanksClose" class="thanksBtn" type="button">Schließen</button></div></div>
 <div id="bugReportModal" class="bugReportModal" hidden aria-hidden="true"><div class="bugReportBox" role="dialog" aria-modal="true" aria-labelledby="bugReportTitle"><div class="matchModalHead"><div id="bugReportTitle" class="matchModalTitle">🐞 Fehler melden</div><button id="bugReportClose" class="matchModalClose" type="button" aria-label="Fehlermeldung schließen">×</button></div><div id="bugReportIntro" class="small">Beschreibe kurz, was nicht funktioniert. Die Meldung wird zusammen mit App-Version und technischen Basisdaten an die Verwaltung übermittelt.</div><div class="bugReportGrid"><label>Art der Meldung<select id="bugReportType"><option value="Fehler">🐞 Fehler</option><option value="Wunsch / Anregung">💡 Wunsch / Anregung</option><option value="Lob">👍 Lob</option></select></label><label>Name <span style="color:#c62828">*</span><input id="bugReportName" type="text" maxlength="80" autocomplete="name" placeholder="Vor- und Nachname" required></label><label>Bereich<select id="bugReportArea"><option>Spielplan</option><option>Kalender</option><option>Ergebnisse</option><option>Push</option><option>Gegner</option><option>Downloads / PDF</option><option>App / Darstellung</option><option>Neue Funktion</option><option>Sonstiges</option></select></label><label><span id="bugReportDescLabel">Fehlerbeschreibung</span><textarea id="bugReportDescription" maxlength="2000" placeholder="Was funktioniert nicht? Was hast du gemacht?"></textarea></label><label>E-Mail für Rückfragen (optional)<input id="bugReportContact" type="email" maxlength="160" placeholder="name@beispiel.de"></label></div><div class="bugReportMeta">App-Version 1.8.0 · Geräte-/Browserdaten werden nur zur Analyse mitgesendet.</div><div class="bugReportActions"><button id="bugReportCancel" class="action" type="button">Abbrechen</button><button id="bugReportSend" class="action" type="button">📨 Meldung senden</button></div></div></div>
-  <div id="hockeyGameModal" class="hockeyGameModal" hidden aria-hidden="true"><div class="hockeyGameBox" role="dialog" aria-modal="true" aria-labelledby="hockeyGameTitle"><div class="hwDeco hwFogA" aria-hidden="true"></div><div class="hwDeco hwFogB" aria-hidden="true"></div><div class="hwDeco hwGameEyes" aria-hidden="true"><i></i><i></i></div><div class="hwDeco hwGameSpider" aria-hidden="true"><b></b><span>🕷️</span></div><div class="hwDeco hwGameBat" aria-hidden="true"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></div><div class="hwFlash" aria-hidden="true"></div><div class="hockeyGameHead"><div id="hockeyGameTitle" class="hockeyGameTitle">🏒 Hockey Tic-Tac-Toe</div><button id="hockeyGameClose" class="hockeyGameClose" type="button" aria-label="Minispiel schließen">×</button></div><div class="hockeyGameBody"><div id="hockeyIntro" class="hockeyGameIntro">Erziele zuerst drei in einer Reihe. Du bist 🏒.</div><div class="hockeyScore"><span><i id="hqYou">🏒 Du:</i> <b id="hockeyPlayerScore">0</b></span><span><i id="hqFoe">🥅 Gegner:</i> <b id="hockeyCpuScore">0</b></span></div><div class="hockeyRink"><div id="hockeyBoard" class="hockeyBoard"></div></div><div id="hockeyStatus" class="hockeyStatus">Dein Zug – schieße auf ein freies Feld!</div><div class="hockeyActions"><button id="hockeyNewGame" class="action" type="button">🔄 Neues Spiel</button><button id="hockeyGameClose2" class="action" type="button">Schließen</button></div><div class="hockeyHint">Das Spiel läuft nur auf deinem Gerät und speichert keine Ergebnisse.</div></div></div></div>
+  <div id="hockeyGameModal" class="hockeyGameModal" hidden aria-hidden="true"><div class="hockeyGameBox" role="dialog" aria-modal="true" aria-labelledby="hockeyGameTitle"><div class="hwDeco hwFogA" aria-hidden="true"></div><div class="hwDeco hwFogB" aria-hidden="true"></div><div class="hwDeco hwGameEyes" aria-hidden="true"><i></i><i></i></div><div class="hwDeco hwGameSpider" aria-hidden="true"><b></b><span>🕷️</span></div><div class="hwDeco hwGameBat" aria-hidden="true"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></div><div class="hwFlash" aria-hidden="true"></div><div id="hqFx" class="hqFx" aria-hidden="true"></div><div class="hockeyGameHead"><div id="hockeyGameTitle" class="hockeyGameTitle">🏒 Hockey Tic-Tac-Toe</div><button id="hockeyGameClose" class="hockeyGameClose" type="button" aria-label="Minispiel schließen">×</button></div><div class="hockeyGameBody"><div id="hockeyIntro" class="hockeyGameIntro">Best of 5 – wer zuerst 3 Runden gewinnt. Du bist der Puck.</div><div class="hqBoard" aria-live="polite"><div class="hqTeam"><i id="hqYou">GRIZZLYS</i><b id="hqScoreP">0</b></div><div class="hqMid"><div id="hqLamp" class="hqLamp" aria-hidden="true"></div><small id="hqSeriesInfo">Runde 1 · Best of 5</small></div><div class="hqTeam"><i id="hqFoe">GEGNER</i><b id="hqScoreC">0</b></div></div><div class="hqLevels" id="hqLevels" role="group" aria-label="Schwierigkeit"><button type="button" data-lv="easy">Anfänger</button><button type="button" data-lv="pro" class="on">Profi</button><button type="button" data-lv="keeper">Torwart</button></div><div class="hockeyRink"><div class="hqBanner" aria-hidden="true"><span>ESV GRIZZLYS</span><span>BERGKAMEN</span><span>U15</span></div><div id="hockeyBoard" class="hockeyBoard"></div><div class="hqBanner hqBannerB" aria-hidden="true"><span>BERGKAMEN</span><span>ESV GRIZZLYS</span><span>U15</span></div></div><div id="hockeyStatus" class="hockeyStatus">Dein Zug – schieße auf ein freies Feld!</div><div class="hqTools"><button id="hqPenBtn" class="hqPen" type="button">⏱ Strafzeit ×3</button><div id="hqTrophies" class="hqTrophies" aria-label="Pokale"></div></div><div class="hockeyActions"><button id="hockeyNewGame" class="action" type="button">🔄 Neue Serie</button><button id="hockeyGameClose2" class="action" type="button">Schließen</button></div><div class="hockeyHint">Das Spiel läuft nur auf deinem Gerät. Nur deine Pokale werden hier gespeichert.</div></div></div></div></div>
 <div id="calFilterModal" class="matchModal" hidden aria-hidden="true">
   <div class="matchModalBox" role="dialog" aria-modal="true" aria-labelledby="calFilterTitle">
     <div class="matchModalHead">
@@ -1884,34 +1950,96 @@ document.getElementById("infoTopBtn").onclick=()=>showView("info");
 const hockeyModal=document.getElementById("hockeyGameModal");
 const hockeyBoard=document.getElementById("hockeyBoard");
 const hockeyStatus=document.getElementById("hockeyStatus");
-const hockeyPlayerScore=document.getElementById("hockeyPlayerScore");
-const hockeyCpuScore=document.getElementById("hockeyCpuScore");
-let hockeyCells=[], hockeyTurn="player", hockeyOver=false, hockeyPlayerWins=0, hockeyCpuWins=0;
+let hockeyCells=[], hockeyTurn="player", hockeyOver=false;
+let hqLevel="pro", hqSer={p:0,c:0,round:1}, hqPen=3, hqBlocks=Array(9).fill(0), hqArm=false, hqStreak=0, hqSerOver=false;
+const HQ_LV={easy:.3,pro:.8,keeper:1};
 const hockeyWins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+const HQ_STICK='<svg class="pk stick" viewBox="0 0 40 40" aria-hidden="true"><path d="M9 4 L24 30 Q27 35 36 34" fill="none" stroke="#7a4a12" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M26 31 Q29 35 36 34" fill="none" stroke="#e8e8e8" stroke-width="3" stroke-linecap="round"/><path d="M9 4 L24 30" fill="none" stroke="#c96a00" stroke-width="2.2" stroke-linecap="round" opacity=".55"/></svg>';
+function hqIsHw(){return document.documentElement.classList.contains("hw")}
+function hqW(b){for(const[a,c,d]of hockeyWins){if(b[a]&&b[a]===b[c]&&b[a]===b[d])return b[a]}return null}
 function hockeyWinner(board){window.__hqWin=null;for(const line of hockeyWins){const[a,b,c]=line;if(board[a]&&board[a]===board[b]&&board[a]===board[c]){window.__hqWin=line;return board[a];}}return board.every(Boolean)?"draw":null;}
-function hockeyRender(){hockeyBoard.innerHTML="";hockeyCells=[];const board=window.__hockeyBoard||Array(9).fill("");board.forEach((v,i)=>{const b=document.createElement("button");b.type="button";b.className="hockeyCell"+(v==="player"?" player":v==="cpu"?" cpu":"");const _hw=document.documentElement.classList.contains("hw");b.textContent=v==="player"?(_hw?"🎃":"🏒"):v==="cpu"?(_hw?"👻":"🥅"):"";if(i===window.__hqLast&&v)b.classList.add("new");if(hockeyOver&&(window.__hqWin||[]).includes(i))b.classList.add("win");b.setAttribute("aria-label",v?`Feld ${i+1} belegt`:`Feld ${i+1} frei`);b.disabled=!!v||hockeyOver||hockeyTurn!=="player";b.onclick=()=>hockeyPlayerMove(i);hockeyBoard.appendChild(b);hockeyCells.push(b);});hockeyPlayerScore.textContent=hockeyPlayerWins;hockeyCpuScore.textContent=hockeyCpuWins;}
-
+function hqTrophies(){try{return JSON.parse(localStorage.getItem("hqTrophies")||"[]")}catch(e){return[]}}
+function hqUnlock(id){const t=hqTrophies();if(t.includes(id))return false;t.push(id);try{localStorage.setItem("hqTrophies",JSON.stringify(t))}catch(e){}return true}
+function hqRenderTrophies(){const t=hqTrophies(),box=document.getElementById("hqTrophies");if(!box)return;box.innerHTML=[["hat","🎩","Hattrick: 3 Runden in Folge gewonnen"],["series","🏆","Serie gewonnen"],["keeper","🧤","Torwart-Modus bezwungen"]].map(([id,ic,tt])=>`<span class="hqTr${t.includes(id)?" on":""}" title="${tt}">${ic}</span>`).join("")}
+function hockeyRender(){
+  hockeyBoard.innerHTML="";hockeyCells=[];const board=window.__hockeyBoard||Array(9).fill("");const hw=hqIsHw();
+  board.forEach((v,i)=>{const b=document.createElement("button");b.type="button";b.className="hockeyCell"+(v==="player"?" player":v==="cpu"?" cpu":"")+(!v&&hqBlocks[i]>0?" blk":"");
+    b.innerHTML=v==="player"?(hw?'<span class="pk">🎃</span>':'<span class="pk puck"></span>'):v==="cpu"?(hw?'<span class="pk">👻</span>':HQ_STICK):(hqBlocks[i]>0?'<span class="blkN">⏱ '+hqBlocks[i]+'</span>':"");
+    if(i===window.__hqLast&&v)b.classList.add("new");if(hockeyOver&&(window.__hqWin||[]).includes(i))b.classList.add("win");
+    b.setAttribute("aria-label",v?`Feld ${i+1} belegt`:hqBlocks[i]>0?`Feld ${i+1} gesperrt für den Gegner`:`Feld ${i+1} frei`);
+    b.disabled=!!v||hockeyOver||hockeyTurn!=="player";b.onclick=()=>hockeyPlayerMove(i);hockeyBoard.appendChild(b);hockeyCells.push(b);});
+  const $=id=>document.getElementById(id);
+  $("hqScoreP").textContent=hqSer.p;$("hqScoreC").textContent=hqSer.c;
+  $("hqSeriesInfo").textContent=hqSerOver?HQ("serieEnd"):HQ("round").replace("{n}",hqSer.round);
+  const pb=$("hqPenBtn");pb.textContent=HQ("pen").replace("{n}",hqPen);pb.disabled=hqPen<=0||hockeyOver||hockeyTurn!=="player";pb.classList.toggle("armed",hqArm);
+  $("hockeyNewGame").textContent=(hockeyOver&&!hqSerOver)?HQ("next"):HQ("again");
+  document.querySelectorAll("#hqLevels button").forEach(x=>x.classList.toggle("on",x.dataset.lv===hqLevel));
+  hqRenderTrophies();
+}
 const HQ_TXT={
-  normal:{title:"🏒 Hockey Tic-Tac-Toe",intro:"Erziele zuerst drei in einer Reihe. Du bist 🏒.",you:"🏒 Du:",foe:"🥅 Gegner:",turn:"Dein Zug – schieße auf ein freies Feld!",wait:"🥅 Gegner ist am Zug …",win:"🏆 Tor! Du hast gewonnen!",lose:"🥅 Gegentor! Der Gegner gewinnt.",draw:"🤝 Unentschieden – kein Sieger.",again:"🔄 Neues Spiel",me:"🏒",foeFig:"🥅"},
-  hw:{title:"👻 Gruselspiel",intro:"Drei in einer Reihe, bevor dich der Geist erwischt. Du bist 🎃.",you:"🎃 Du:",foe:"👻 Geist:",turn:"Dein Zug – wage dich auf ein freies Feld …",wait:"👻 Der Geist schleicht heran …",win:"🎃 Du hast den Geist vertrieben!",lose:"💀 Der Geist hat dich erwischt …",draw:"🕸️ Unentschieden – im Nebel bleibt alles still.",again:"🔄 Nochmal wagen",me:"🎃",foeFig:"👻"}
+  normal:{title:"🏒 Hockey Tic-Tac-Toe",intro:"Best of 5 – wer zuerst 3 Runden gewinnt. Du bist der Puck.",you:"GRIZZLYS",foe:"GEGNER",turn:"Dein Zug – schieße auf ein freies Feld!",wait:"🥅 Gegner ist am Zug …",win:"🏆 Tor! Runde gewonnen!",lose:"🥅 Gegentor! Runde an den Gegner.",draw:"🤝 Unentschieden – Runde wird wiederholt.",again:"🔄 Neue Serie",next:"▶ Nächste",goal:"TOOOR!",serieWin:"🏆 Serie gewonnen!",serieLose:"🥅 Serie verloren – Revanche?",serieEnd:"Serie beendet",round:"Runde {n} · Best of 5",pen:"⏱ Strafzeit ×{n}",penArm:"⏱ Tippe ein freies Feld: Der Gegner darf dort 2 Züge nicht schießen.",penSet:"⏱ Strafzeit! Feld für den Gegner gesperrt.",hat:"🎩 Hattrick! Pokal freigeschaltet.",trSeries:"🏆 Pokal „Serie gewonnen“ freigeschaltet!",trKeeper:"🧤 Torwart-Modus bezwungen – Pokal freigeschaltet!"},
+  hw:{title:"👻 Gruselspiel",intro:"Wer zuerst 3 Runden gewinnt. Du bist 🎃.",you:"KÜRBIS",foe:"GEIST",turn:"Dein Zug – wage dich auf ein freies Feld …",wait:"👻 Der Geist schleicht heran …",win:"🎃 Du hast den Geist vertrieben!",lose:"💀 Der Geist hat dich erwischt …",draw:"🕸️ Unentschieden – die Runde wird wiederholt.",again:"🔄 Neue Serie wagen",next:"▶ Nächste",goal:"BUUH!",serieWin:"🎃 Spuk besiegt!",serieLose:"💀 Der Geist siegt … nochmal?",serieEnd:"Serie beendet",round:"Runde {n} · Best of 5",pen:"🕸️ Netz ×{n}",penArm:"🕸️ Tippe ein freies Feld: Der Geist kann es 2 Züge nicht betreten.",penSet:"🕸️ Gefangen! Feld für den Geist gesperrt.",hat:"🎩 Hattrick! Pokal freigeschaltet.",trSeries:"🏆 Pokal „Spuk besiegt“ freigeschaltet!",trKeeper:"🧤 Torwart-Modus bezwungen – Pokal freigeschaltet!"}
 };
-function HQ(k){return HQ_TXT[document.documentElement.classList.contains("hw")?"hw":"normal"][k]}
+function HQ(k){return HQ_TXT[hqIsHw()?"hw":"normal"][k]}
 function hockeyApplyTheme(){
   const set=(id,k)=>{const e=document.getElementById(id);if(e)e.textContent=HQ(k)};
-  set("hockeyGameTitle","title");set("hockeyIntro","intro");set("hqYou","you");set("hqFoe","foe");set("hockeyNewGame","again");
+  set("hockeyGameTitle","title");set("hockeyIntro","intro");set("hqYou","you");set("hqFoe","foe");
 }
-function hockeyFinish(result){hockeyOver=true;if(result==="player"){hockeyPlayerWins++;hockeyStatus.textContent=HQ("win");}else if(result==="cpu"){hockeyCpuWins++;hockeyStatus.textContent=HQ("lose");hockeyScare();}else hockeyStatus.textContent=HQ("draw");hockeyRender();}
-function hockeyNewRound(){window.__hqLast=-1;window.__hqWin=null;hockeyApplyTheme();window.__hockeyBoard=Array(9).fill("");hockeyTurn="player";hockeyOver=false;hockeyStatus.textContent=HQ("turn");hockeyRender();}
-function hockeyScare(){if(!document.documentElement.classList.contains("hw"))return;const b=document.querySelector(".hockeyGameBox");if(!b)return;b.classList.remove("scare");void b.offsetWidth;b.classList.add("scare");setTimeout(()=>b.classList.remove("scare"),900)}
-function hockeyWinningMove(board,who){for(const line of hockeyWins){const vals=line.map(i=>board[i]);if(vals.filter(v=>v===who).length===2&&vals.includes(""))return line[vals.indexOf("")];}return -1;}
-function hockeyCpuMove(){if(hockeyOver)return;const board=window.__hockeyBoard;let move=hockeyWinningMove(board,"cpu");if(move<0)move=hockeyWinningMove(board,"player");if(move<0&&board[4]==="")move=4;if(move<0){const free=board.map((v,i)=>v?null:i).filter(i=>i!==null);move=free[Math.floor(Math.random()*free.length)];}if(move!==undefined&&move>=0){board[move]="cpu";window.__hqLast=move}const result=hockeyWinner(board);hockeyTurn="player";if(result)hockeyFinish(result);else{hockeyStatus.textContent=HQ("turn");hockeyRender();}}
-function hockeyPlayerMove(i){if(hockeyOver||hockeyTurn!=="player"||window.__hockeyBoard[i])return;window.__hockeyBoard[i]="player";window.__hqLast=i;const result=hockeyWinner(window.__hockeyBoard);if(result){hockeyFinish(result);return;}hockeyTurn="cpu";hockeyStatus.textContent=HQ("wait");hockeyRender();setTimeout(hockeyCpuMove,320);}
-function openHockeyGame(){hockeyModal.hidden=false;hockeyModal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";hockeyNewRound();document.getElementById("hockeyGameClose")?.focus();}
+function hqFx(kind){
+  const fx=document.getElementById("hqFx");if(!fx)return;
+  if(kind==="goal"){const g=document.createElement("div");g.className="hqGoal";g.textContent=HQ("goal");fx.appendChild(g);setTimeout(()=>g.remove(),1600);}
+  if(kind==="goal"||kind==="series"){const n=kind==="series"?60:34,hw=hqIsHw(),cols=hw?["#ff7a00","#ffb347","#fff0a8","#c24a00"]:["#e23b2e","#1c6fb8","#ffc94d","#ffffff","#ff8a00"],em=["🦇","🎃","✨"];
+    for(let i=0;i<n;i++){const c=document.createElement("span");c.className="hqConf";c.style.left=(Math.random()*100)+"%";c.style.animationDelay=(Math.random()*.7)+"s";c.style.animationDuration=(1.6+Math.random()*1.2)+"s";
+      if(hw&&i%4===0){c.classList.add("e");c.textContent=em[i%3]}else c.style.background=cols[i%cols.length];fx.appendChild(c);setTimeout(()=>c.remove(),3400);}}
+  if(kind==="lose"){const b=document.querySelector(".hockeyGameBox");if(b){b.classList.remove("hqShake");void b.offsetWidth;b.classList.add("hqShake");setTimeout(()=>b.classList.remove("hqShake"),600)}}
+  try{if(navigator.vibrate)navigator.vibrate(kind==="goal"||kind==="series"?[60,40,120]:kind==="lose"?[200]:12)}catch(e){}
+}
+function hqLamp(){const l=document.getElementById("hqLamp");if(!l)return;l.classList.add("on");setTimeout(()=>l.classList.remove("on"),1900)}
+function hockeyFinish(result){
+  hockeyOver=true;let st="",fx=null;
+  if(result==="player"){hqSer.p++;hqStreak++;st=HQ("win");fx="goal";hqLamp();}
+  else if(result==="cpu"){hqSer.c++;hqStreak=0;st=HQ("lose");fx="lose";hockeyScare();}
+  else st=HQ("draw");
+  if(result==="player"||result==="cpu"){if(hqSer.p>=3||hqSer.c>=3){hqSerOver=true;
+    if(hqSer.p>=3){st=HQ("serieWin");fx="series";if(hqUnlock("series"))st+=" "+HQ("trSeries");if(hqLevel==="keeper"&&hqUnlock("keeper"))st+=" "+HQ("trKeeper");}else st=HQ("serieLose");}}
+  if(result==="player"&&hqStreak>=3&&hqUnlock("hat"))st+=" "+HQ("hat");
+  hockeyStatus.textContent=st;hqArm=false;hockeyRender();if(fx)hqFx(fx);
+}
+function hqNewSeries(){hqSer={p:0,c:0,round:1};hqStreak=0;hqSerOver=false;hockeyOver=false;window.__hqRoundDone=false;hockeyNewRound();}
+function hockeyNewRound(){if(hockeyOver&&!hqSerOver&&window.__hqRoundDone){hqSer.round++}window.__hqRoundDone=false;window.__hqLast=-1;window.__hqWin=null;hqPen=3;hqBlocks=Array(9).fill(0);hqArm=false;hockeyApplyTheme();window.__hockeyBoard=Array(9).fill("");hockeyTurn="player";hockeyOver=false;hockeyStatus.textContent=HQ("turn");hockeyRender();}
+function hockeyScare(){if(!hqIsHw())return;const b=document.querySelector(".hockeyGameBox");if(!b)return;b.classList.remove("scare");void b.offsetWidth;b.classList.add("scare");setTimeout(()=>b.classList.remove("scare"),900)}
+function hockeyWinningMove(board,who,ok){for(const line of hockeyWins){const vals=line.map(i=>board[i]);if(vals.filter(v=>v===who).length===2&&vals.includes("")){const m=line[vals.indexOf("")];if(!ok||ok(m))return m}}return -1;}
+function hqMinimax(b,turn){const w=hqW(b);if(w)return w==="cpu"?1:-1;if(b.every(Boolean))return 0;let best=turn==="cpu"?-2:2;for(let i=0;i<9;i++){if(b[i])continue;b[i]=turn;const v=hqMinimax(b,turn==="cpu"?"player":"cpu");b[i]="";if(turn==="cpu"?v>best:v<best)best=v;}return best}
+function hockeyCpuMove(){
+  if(hockeyOver)return;const board=window.__hockeyBoard;
+  const allowed=board.map((v,i)=>(!v&&hqBlocks[i]===0)?i:-1).filter(i=>i>=0),ok=m=>allowed.includes(m);let move=-1;
+  if(allowed.length){
+    if(Math.random()<HQ_LV[hqLevel]){
+      if(hqLevel==="keeper"){let best=-2,pick=[];for(const i of allowed){board[i]="cpu";const v=hqMinimax(board,"player");board[i]="";if(v>best){best=v;pick=[i]}else if(v===best)pick.push(i)}move=pick[Math.floor(Math.random()*pick.length)]}
+      else{move=hockeyWinningMove(board,"cpu",ok);if(move<0)move=hockeyWinningMove(board,"player",ok);if(move<0&&ok(4))move=4;}
+    }
+    if(move<0)move=allowed[Math.floor(Math.random()*allowed.length)];
+    board[move]="cpu";window.__hqLast=move;
+  }
+  hqBlocks=hqBlocks.map(n=>n>0?n-1:0);
+  const result=hockeyWinner(board);hockeyTurn="player";
+  if(result){window.__hqRoundDone=true;hockeyFinish(result);}else{hockeyStatus.textContent=HQ("turn");hockeyRender();}
+}
+function hockeyPlayerMove(i){
+  if(hockeyOver||hockeyTurn!=="player"||window.__hockeyBoard[i])return;
+  if(hqArm){if(hqBlocks[i]>0)return;hqBlocks[i]=2;hqPen--;hqArm=false;hockeyStatus.textContent=HQ("penSet");hockeyRender();hqFx("pen");return;}
+  hqBlocks[i]=0;window.__hockeyBoard[i]="player";window.__hqLast=i;hqFx("tap");
+  const result=hockeyWinner(window.__hockeyBoard);if(result){window.__hqRoundDone=true;hockeyFinish(result);return;}
+  hockeyTurn="cpu";hockeyStatus.textContent=HQ("wait");hockeyRender();setTimeout(hockeyCpuMove,420);
+}
+document.getElementById("hqPenBtn")?.addEventListener("click",()=>{if(hockeyOver||hockeyTurn!=="player"||hqPen<=0)return;hqArm=!hqArm;hockeyStatus.textContent=hqArm?HQ("penArm"):HQ("turn");hockeyRender();});
+document.getElementById("hqLevels")?.addEventListener("click",e=>{const b=e.target.closest("button[data-lv]");if(!b||b.dataset.lv===hqLevel)return;hqLevel=b.dataset.lv;hqNewSeries();});
+function openHockeyGame(){hqSer={p:0,c:0,round:1};hqStreak=0;hqSerOver=false;hockeyModal.hidden=false;hockeyModal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";hockeyNewRound();document.getElementById("hockeyGameClose")?.focus();}
 function closeHockeyGame(){hockeyModal.hidden=true;hockeyModal.setAttribute("aria-hidden","true");document.body.style.overflow="";}
 document.getElementById("openHockeyGame")?.addEventListener("click",()=>{trackAnalyticsEvent("hockey_game_started");openHockeyGame();});
 document.getElementById("hockeyGameClose")?.addEventListener("click",closeHockeyGame);
 document.getElementById("hockeyGameClose2")?.addEventListener("click",closeHockeyGame);
-document.getElementById("hockeyNewGame")?.addEventListener("click",hockeyNewRound);
+document.getElementById("hockeyNewGame")?.addEventListener("click",()=>{if(hockeyOver&&!hqSerOver)hockeyNewRound();else hqNewSeries();});
 hockeyModal?.addEventListener("click",e=>{if(e.target===hockeyModal)closeHockeyGame();});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&hockeyModal&&!hockeyModal.hidden)closeHockeyGame();});
 
