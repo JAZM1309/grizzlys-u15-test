@@ -439,6 +439,42 @@ html.hw{--navy:#0c0a09;--navy2:#1c140d;--ice:#fff1e2;--a:#2f9bff;--b:#ff8a00;--s
 @keyframes hwShake{0%,100%{transform:none}15%{transform:translate(-5px,2px)}30%{transform:translate(5px,-2px)}45%{transform:translate(-4px,-2px)}60%{transform:translate(4px,2px)}80%{transform:translate(-2px,1px)}}
 @keyframes hwFlashA{0%{opacity:1}100%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.hw .hockeyGameBox *,.hw .hockeyGameBox{animation:none!important}.hw .hwGameBat,.hw .hwGameSpider{display:none}}
+/* Kopfbereich 1.8.0: Eis-Atmosphäre, Live-Status, Mini-Leiste */
+.hero img{filter:drop-shadow(0 0 12px rgba(80,170,255,.5))}
+.heroIce{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.heroIce::before{content:"";position:absolute;left:-40%;bottom:-30px;width:180%;height:90px;background:radial-gradient(ellipse at 30% 60%,rgba(200,230,255,.22),transparent 60%),radial-gradient(ellipse at 75% 50%,rgba(170,215,255,.18),transparent 55%);filter:blur(8px);animation:iceFog 14s ease-in-out infinite alternate}
+.heroIce::after{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.95) 0 1px,transparent 1.600px),radial-gradient(circle,rgba(190,225,255,.9) 0 1px,transparent 1.600px),radial-gradient(circle,rgba(255,255,255,.85) 0 1.200px,transparent 1.800px);background-size:97px 61px,133px 83px,71px 109px;background-position:12px 8px,50px 30px,29px 55px;opacity:.5;animation:iceTwinkle 5s ease-in-out infinite alternate}
+.heroEdge{position:absolute;left:0;right:0;bottom:0;height:3px;z-index:3;background:linear-gradient(90deg,var(--a),#dff1ff 50%,var(--b));overflow:hidden}
+.heroEdge::after{content:"";position:absolute;top:0;bottom:0;width:60px;left:-60px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.95),transparent);animation:edgeShine 6s ease-in-out infinite}
+@keyframes iceFog{from{transform:translateX(-6%)}to{transform:translateX(6%)}}
+@keyframes iceTwinkle{from{opacity:.25}to{opacity:.65}}
+@keyframes edgeShine{0%{left:-60px}60%,100%{left:105%}}
+.heroChips{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:6px;margin-top:9px;padding-right:46px}
+.heroChips .season{margin:0;display:inline-flex;align-items:center;gap:6px}
+.puckIc{width:15px;height:15px;fill:rgba(255,255,255,.18);stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.heroChip{display:inline-flex;align-items:center;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.14);font-size:12px;font-weight:800;color:#fff}
+.heroChip[hidden]{display:none}
+.heroChip.gameday{background:#ff8a00;color:#1a0f05;letter-spacing:.04em;animation:gameDayPulse 1.8s ease-in-out infinite}
+.heroChip.res.w{background:rgba(31,157,85,.9)}.heroChip.res.l{background:rgba(214,69,59,.9)}.heroChip.res.d{background:rgba(224,161,0,.95);color:#1a0f05}
+@keyframes gameDayPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,138,0,.6)}50%{box-shadow:0 0 0 7px rgba(255,138,0,0)}}
+.miniBar{position:fixed;left:0;right:0;top:0;height:46px;z-index:45;background:linear-gradient(145deg,#041426,#0a2d52);box-shadow:0 4px 16px rgba(0,0,0,.28);transform:translateY(-110%);transition:transform .22s ease;cursor:pointer;border-bottom:2px solid transparent;border-image:linear-gradient(90deg,var(--a),#dff1ff 50%,var(--b)) 1}
+.miniBar.on{transform:none}
+.miniBarIn{max-width:760px;margin:0 auto;height:100%;padding:0 14px;display:flex;align-items:center;gap:10px;color:#fff}
+.miniBarIn img{width:32px;height:32px;object-fit:contain;border-radius:8px}
+.miniBarIn b{font-size:15px;font-weight:900}
+.miniStatus{margin-left:auto;font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.14)}
+.miniStatus:empty{display:none}
+.miniStatus.gameday{background:#ff8a00;color:#1a0f05;animation:gameDayPulse 1.8s ease-in-out infinite}
+.tabs{position:sticky;top:var(--barH,0px);z-index:30;margin:0 -14px 12px;padding:8px 14px 6px;background:rgba(238,246,255,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:top .22s ease}
+.scheduleSticky,.stickyFilters{top:calc(var(--barH,0px) + var(--tabsH,52px))!important}
+.hw .heroEdge{background:linear-gradient(90deg,#ff7a00,#ffd9a8 50%,#ff7a00)}
+.hw .heroIce::after{background-image:radial-gradient(circle,rgba(255,200,140,.95) 0 1px,transparent 1.600px),radial-gradient(circle,rgba(255,150,60,.9) 0 1px,transparent 1.600px),radial-gradient(circle,rgba(255,230,200,.85) 0 1.200px,transparent 1.800px)}
+.hw .heroIce::before{background:radial-gradient(ellipse at 30% 60%,rgba(255,150,60,.2),transparent 60%),radial-gradient(ellipse at 75% 50%,rgba(255,110,0,.16),transparent 55%)}
+.hw .heroChip{background:rgba(255,122,0,.2);color:#ffd2a1}
+.hw .heroChip.gameday{background:#ff7a00;color:#1a0f05}
+.hw .miniBar{background:linear-gradient(145deg,#080605,#1c1006);border-image:linear-gradient(90deg,#ff7a00,#ffd9a8 50%,#ff7a00) 1}
+.hw .tabs{background:rgba(14,11,9,.94)}
+@media (prefers-reduced-motion:reduce){.heroIce::before,.heroIce::after,.heroEdge::after,.heroChip.gameday,.miniStatus.gameday{animation:none!important}.miniBar{transition:none}}
 /* Halloween-Spiel am 31.10. – extra gruselig */
 .hw .hwGameCard{position:relative;overflow:hidden;isolation:isolate;color:#ffe3c4;background:radial-gradient(ellipse at 85% 0,#3b1b07 0,#160c05 48%,#0a0705 100%)!important;box-shadow:0 0 0 1.5px #ff7a00,0 0 30px rgba(255,100,0,.45),inset 0 0 50px rgba(0,0,0,.7)!important;animation:hwCardPulse 3.2s ease-in-out infinite}
 .hw .hwGameCard::before{content:"";position:absolute;right:0;top:0;width:84px;height:84px;z-index:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M100 0L100.0 96.0M100 0L64.0 89.0M100 0L33.3 69.1M100 0L12.3 39.0M100 0L4.0 0.0M100.0 22.0Q96.4 18.6 91.8 20.4Q89.7 15.9 84.7 15.8Q84.5 10.9 79.9 8.9Q81.5 3.9 78.0 0.0M100.0 42.0Q93.1 35.5 84.3 38.9Q80.3 30.3 70.8 30.2Q70.4 20.7 61.6 17.1Q64.7 7.5 58.0 0.0M100.0 62.0Q89.8 52.3 76.8 57.5Q71.0 44.7 56.9 44.6Q56.3 30.6 43.4 25.2Q47.8 11.1 38.0 0.0M100.0 84.0Q86.2 70.9 68.5 77.9Q60.7 60.6 41.6 60.4Q40.8 41.4 23.3 34.2Q29.3 15.0 16.0 0.0' fill='none' stroke='%23ffe2be' stroke-width='1' stroke-linecap='round' opacity='.4'/%3E%3C/svg%3E") no-repeat right top/contain;pointer-events:none}
@@ -500,7 +536,8 @@ html.hw{--navy:#0c0a09;--navy2:#1c140d;--ice:#fff1e2;--a:#2f9bff;--b:#ff8a00;--s
 <body><div class="testRibbon" role="note">Testversion · nichts wird gespeichert</div>
 <div id="updateBanner" class="updateBanner" role="status" aria-live="polite" hidden><span class="updateBannerIcon" aria-hidden="true">&#8635;</span><div class="updateBannerText"><b>Neue Version verfügbar</b><span>Kurz aktualisieren, dann bist du auf dem neuesten Stand.</span></div><button id="updateBannerReload" class="updateBannerBtn" type="button">Aktualisieren</button><button id="updateBannerClose" class="updateBannerClose" type="button" aria-label="Schließen">&times;</button></div>
 <div class="app">
-<header class="hero"><div class="heroRink" aria-hidden="true"></div><div class="hwDeco hwWeb" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M100 0L100.0 96.0M100 0L64.0 89.0M100 0L33.3 69.1M100 0L12.3 39.0M100 0L4.0 0.0M100.0 22.0Q96.4 18.6 91.8 20.4Q89.7 15.9 84.7 15.8Q84.5 10.9 79.9 8.9Q81.5 3.9 78.0 0.0M100.0 42.0Q93.1 35.5 84.3 38.9Q80.3 30.3 70.8 30.2Q70.4 20.7 61.6 17.1Q64.7 7.5 58.0 0.0M100.0 62.0Q89.8 52.3 76.8 57.5Q71.0 44.7 56.9 44.6Q56.3 30.6 43.4 25.2Q47.8 11.1 38.0 0.0M100.0 84.0Q86.2 70.9 68.5 77.9Q60.7 60.6 41.6 60.4Q40.8 41.4 23.3 34.2Q29.3 15.0 16.0 0.0" fill="none" stroke="currentColor" stroke-width=".9" stroke-linecap="round"/></svg></div><div class="hwDeco hwBat hwBat1"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></div><div class="hwDeco hwBat hwBat2"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></div><div class="hwDeco hwBat hwBat3"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></div><div class="heroTop"><img src="logo.png" alt="ESV Grizzlys Logo"><div><div class="kicker">ESV Grizzlys Bergkamen</div><h1>U15 Spielplan<span class="hwDeco hwPumpkin"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 8c0-3 1-5 3-6" fill="none" stroke="#3b8a2f" stroke-width="2.4" stroke-linecap="round"/><ellipse cx="9.5" cy="19" rx="7" ry="9.5" fill="#e8660a"/><ellipse cx="22.5" cy="19" rx="7" ry="9.5" fill="#e8660a"/><ellipse cx="16" cy="19" rx="6.2" ry="10.5" fill="#ff8a1f"/><path d="M9 17l3 2.2l-3.4 .4zM23 17l-3 2.2l3.4 .4zM11 24q5 3.4 10 0l-1.6 -1.6l-1.6 1.2l-1.8 -1.4l-1.8 1.4l-1.6 -1.2z" fill="#1a0f05"/></svg></span></h1></div></div><div class="season">Saison 2026/27</div><button id="infoTopBtn" class="infoTop" type="button" aria-label="Info">ⓘ</button></header>
+<header class="hero"><div class="heroRink" aria-hidden="true"></div><div class="heroIce" aria-hidden="true"></div><div class="hwDeco hwWeb" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M100 0L100.0 96.0M100 0L64.0 89.0M100 0L33.3 69.1M100 0L12.3 39.0M100 0L4.0 0.0M100.0 22.0Q96.4 18.6 91.8 20.4Q89.7 15.9 84.7 15.8Q84.5 10.9 79.9 8.9Q81.5 3.9 78.0 0.0M100.0 42.0Q93.1 35.5 84.3 38.9Q80.3 30.3 70.8 30.2Q70.4 20.7 61.6 17.1Q64.7 7.5 58.0 0.0M100.0 62.0Q89.8 52.3 76.8 57.5Q71.0 44.7 56.9 44.6Q56.3 30.6 43.4 25.2Q47.8 11.1 38.0 0.0M100.0 84.0Q86.2 70.9 68.5 77.9Q60.7 60.6 41.6 60.4Q40.8 41.4 23.3 34.2Q29.3 15.0 16.0 0.0" fill="none" stroke="currentColor" stroke-width=".9" stroke-linecap="round"/></svg></div><div class="hwDeco hwBat hwBat1"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></div><div class="hwDeco hwBat hwBat2"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></div><div class="hwDeco hwBat hwBat3"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></div><div class="heroTop"><img src="logo.png" alt="ESV Grizzlys Logo"><div><div class="kicker">ESV Grizzlys Bergkamen</div><h1>U15 Spielplan<span class="hwDeco hwPumpkin"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 8c0-3 1-5 3-6" fill="none" stroke="#3b8a2f" stroke-width="2.4" stroke-linecap="round"/><ellipse cx="9.5" cy="19" rx="7" ry="9.5" fill="#e8660a"/><ellipse cx="22.5" cy="19" rx="7" ry="9.5" fill="#e8660a"/><ellipse cx="16" cy="19" rx="6.2" ry="10.5" fill="#ff8a1f"/><path d="M9 17l3 2.2l-3.4 .4zM23 17l-3 2.2l3.4 .4zM11 24q5 3.4 10 0l-1.6 -1.6l-1.6 1.2l-1.8 -1.4l-1.8 1.4l-1.6 -1.2z" fill="#1a0f05"/></svg></span></h1></div></div><div class="heroChips"><div class="season"><svg class="puckIc" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="9" rx="8" ry="3.4"/><path d="M4 9v5.4c0 1.900 3.600 3.400 8 3.400s8-1.500 8-3.400V9"/></svg>Saison 2026/27</div><div id="heroStatus" class="heroChip" hidden></div></div><button id="infoTopBtn" class="infoTop" type="button" aria-label="Info">ⓘ</button><div class="heroEdge" aria-hidden="true"></div></header>
+<div id="miniBar" class="miniBar" aria-hidden="true"><div class="miniBarIn"><img src="logo.png" alt=""><b>U15 Spielplan</b><span id="miniStatus" class="miniStatus"></span></div></div>
 <main>
 <nav class="tabs"><button class="tab active" data-view="home">Start</button><button class="tab" data-view="schedule">Spielplan</button><button class="tab" data-view="opponents">Gegner</button><button class="tab" data-view="downloads">Downloads</button></nav>
 <section id="homeView">
@@ -1556,6 +1593,7 @@ function applyHalloween(rerender){
   const on=window.hwActive();
   document.documentElement.classList.toggle("hw",on);
   const logo=document.querySelector(".heroTop img"); if(logo){logo.src=on?"halloween-logo.png":"logo.png"}
+  const mlogo=document.querySelector("#miniBar img"); if(mlogo){mlogo.src=on?"halloween-logo.png":"logo.png"}
   const tc=document.querySelector('meta[name="theme-color"]'); if(tc)tc.setAttribute("content",on?"#0c0a09":(window.GRIZZLYS_TEST?"#e8760a":"#071b33"));
   const card=document.getElementById("hwSwitchCard"); if(card)card.hidden=!window.hwAvailable();
   const t=document.getElementById("hwToggle"); if(t)t.checked=on;
@@ -1565,6 +1603,48 @@ function applyHalloween(rerender){
 }
 document.getElementById("hwToggle")?.addEventListener("change",e=>{try{localStorage.setItem("grizzlysHalloween",e.target.checked?"on":"off");if(e.target.checked)localStorage.removeItem(hwGreetClosedKey())}catch(err){}applyHalloween(true)});
 document.getElementById("hwGreetingClose")?.addEventListener("click",()=>{try{localStorage.setItem(hwGreetClosedKey(),"1")}catch(e){}hwUpdateGreeting()});
+
+/* Kopfbereich: Live-Status, Gameday, Mini-Leiste */
+function hwSameDay(a,b){return a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate()}
+function heroUpdate(){
+  const el=document.getElementById("heroStatus"), mini=document.getElementById("miniStatus");
+  if(!el)return;
+  const now=new Date(), hm=g=>g.time.replace(/^0/,"");
+  const today=games.filter(g=>hwSameDay(dt(g),now)).sort((a,b)=>dt(a)-dt(b));
+  const live=today.filter(g=>dt(g).getTime()+2.5*3600000>now.getTime());
+  let txt="",short="",cls="";
+  if(live.length){
+    cls="gameday";
+    txt="GAMEDAY · "+(live.length===1?hm(live[0])+" Uhr":live.map(g=>"U15 "+g.team+" "+hm(g)).join(" · "));
+    short="Gameday";
+  }else{
+    const next=games.filter(g=>dt(g)>now).sort((a,b)=>dt(a)-dt(b))[0];
+    if(next){
+      const d0=new Date(now.getFullYear(),now.getMonth(),now.getDate()), d1=new Date(dt(next).getFullYear(),dt(next).getMonth(),dt(next).getDate());
+      const days=Math.round((d1-d0)/86400000);
+      if(days<=1){txt="Morgen "+hm(next)+" Uhr · U15 "+next.team;short="Morgen "+hm(next)}
+      else{txt="Nächstes Spiel in "+days+" Tagen · U15 "+next.team;short="in "+days+" Tagen"}
+    }else{txt="Saison beendet";short="Saison beendet"}
+  }
+  el.hidden=!txt; el.className="heroChip"+(cls?" "+cls:""); el.textContent=txt;
+  if(mini){mini.textContent=short;mini.className="miniStatus"+(cls?" "+cls:"")}
+}
+(function(){
+  const bar=document.getElementById("miniBar"),hero=document.querySelector(".hero"),tabs=document.querySelector(".tabs"),root=document.documentElement;
+  if(!bar||!hero)return;
+  let on=false,ticking=false;
+  function measure(){root.style.setProperty("--tabsH",(tabs?tabs.offsetHeight:0)+"px")}
+  function check(){
+    ticking=false;
+    const show=window.scrollY>hero.offsetHeight-52;
+    if(show!==on){on=show;bar.classList.toggle("on",on);bar.setAttribute("aria-hidden",on?"false":"true");root.style.setProperty("--barH",on?"46px":"0px")}
+  }
+  window.addEventListener("scroll",()=>{if(!ticking){ticking=true;requestAnimationFrame(check)}},{passive:true});
+  window.addEventListener("resize",()=>{measure();check()});
+  bar.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+  measure();check();
+  setInterval(heroUpdate,60000);
+})();
 function resInfo(g){
   const r=window.resultFor&&window.resultFor(g);
   if(!r||r.homeScore===undefined||r.awayScore===undefined||r.homeScore===""||r.awayScore==="")return null;
@@ -1572,6 +1652,7 @@ function resInfo(g){
   return {hs,as,gs,os,o:gs>os?"w":gs<os?"l":"d"};
 }
 function renderLast(){
+  heroUpdate();
   const box=document.getElementById("lastGameCard"); if(!box)return;
   const now=new Date();
   const past=games.filter(g=>dt(g)<now).sort((a,b)=>dt(b)-dt(a));
