@@ -466,6 +466,22 @@ html.hw{--navy:#0c0a09;--navy2:#1c140d;--ice:#fff1e2;--a:#2f9bff;--b:#ff8a00;--s
 @keyframes hwBadgeBlink{0%,100%{opacity:1}50%{opacity:.78}}
 @keyframes hwGhostDrift{0%,100%{transform:translate(0,0)}50%{transform:translate(-26px,-12px)}}
 @media (prefers-reduced-motion:reduce){.hw .hwGameCard,.hw .hwGameCard .hwBadge,.hw .hwEyes,.hw .hwGhost{animation:none!important}}
+/* Halloween: Button zum Gruselspiel */
+.hw .hockeyGameCard{background:transparent!important;box-shadow:none!important;border:0!important;padding:0!important}
+.hw .hockeyGameBtn{background:radial-gradient(ellipse at 80% 0,#3d1b06 0,#150b05 55%,#080504 100%)!important;border:1.5px solid #ff7a00;color:#ffe3c4;box-shadow:0 0 26px rgba(255,100,0,.4),inset 0 0 40px rgba(0,0,0,.75);animation:hwCardPulse 3.2s ease-in-out infinite,hwBtnWiggle 7s infinite;padding:18px 16px}
+.hw .hockeyGameBtn::before{display:none}
+.hw .hockeyGameBtn>*:not(.hwDeco){position:relative;z-index:2}
+.hw .hockeyGameBtn strong{color:#ff9a3c;text-shadow:0 0 12px rgba(255,122,0,.75);font-size:18px;letter-spacing:.02em;animation:hwFlicker 5s infinite}
+.hw .hockeyGameBtn small{color:#d9b894}
+.hw .hockeyGameIcon{background:rgba(255,122,0,.16);border:1px solid rgba(255,122,0,.5);filter:drop-shadow(0 0 10px rgba(255,138,31,.85));animation:hwGlow 2.4s ease-in-out infinite}
+.hw .hockeyGameArrow{color:#ff9a3c}
+.hw .hwBtnWeb{position:absolute;right:0;top:0;width:70px;height:70px;z-index:1;color:rgba(255,226,190,.4);pointer-events:none}
+.hw .hwBtnWeb svg{width:100%;height:100%;display:block}
+.hw .hwBtnEyes{position:absolute;right:46px;bottom:12px;display:flex;gap:6px;z-index:1;animation:hwBlink 8s infinite;pointer-events:none}
+.hw .hwBtnEyes i{display:block;width:8px;height:4px;border-radius:50%;background:#ff3b1f;box-shadow:0 0 8px 2px rgba(255,59,31,.9)}
+.hw .hwBtnGhost{position:absolute;left:46%;top:6px;font-size:24px;opacity:.15;z-index:1;filter:blur(.5px);animation:hwGhostDrift 8s ease-in-out infinite;pointer-events:none}
+@keyframes hwBtnWiggle{0%,90%,100%{transform:none}92%{transform:translateX(-3px) rotate(-.6deg)}94%{transform:translateX(3px) rotate(.6deg)}96%{transform:translateX(-2px)}98%{transform:translateX(2px)}}
+@media (prefers-reduced-motion:reduce){.hw .hockeyGameBtn,.hw .hockeyGameBtn strong,.hw .hockeyGameIcon,.hw .hwBtnEyes,.hw .hwBtnGhost{animation:none!important}}
 @media (prefers-reduced-motion:reduce){.hw .hwBat{animation:none!important}}
 .testRibbon{position:sticky;top:0;z-index:70;background:#e8760a;color:#fff;text-align:center;font:800 12px/1 system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:7px 8px}
 </style>
@@ -496,7 +512,7 @@ html.hw{--navy:#0c0a09;--navy2:#1c140d;--ice:#fff1e2;--a:#2f9bff;--b:#ff8a00;--s
 <button class="teamCard teamA" data-team="A"><div class="tcTop"><div class="teamLetter">A</div><div class="teamTitle">U15 A</div></div></button>
 <button class="teamCard teamB" data-team="B"><div class="tcTop"><div class="teamLetter">B</div><div class="teamTitle">U15 B</div></div></button>
 </div>
-<div class="infoCard"><b>38 Spiele</b> · chronologisch sortiert · <span style="color:var(--a);font-weight:900">U15 A blau</span> · <span style="color:var(--b);font-weight:900">U15 B orange</span></div><div class="infoCard hockeyGameCard"><button id="openHockeyGame" class="hockeyGameBtn" type="button"><span class="hockeyGameIcon">🏒</span><span class="hockeyGameCopy"><strong>Hockey Mini-Spiel</strong><small>3 in einer Reihe – schaffst du das?</small></span><span class="hockeyGameArrow">›</span></button></div>
+<div class="infoCard"><b>38 Spiele</b> · chronologisch sortiert · <span style="color:var(--a);font-weight:900">U15 A blau</span> · <span style="color:var(--b);font-weight:900">U15 B orange</span></div><div class="infoCard hockeyGameCard"><button id="openHockeyGame" class="hockeyGameBtn" type="button"><span class="hwDeco hwBtnWeb" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M100 0L100.0 96.0M100 0L64.0 89.0M100 0L33.3 69.1M100 0L12.3 39.0M100 0L4.0 0.0M100.0 22.0Q96.4 18.6 91.8 20.4Q89.7 15.9 84.7 15.8Q84.5 10.9 79.9 8.9Q81.5 3.9 78.0 0.0M100.0 42.0Q93.1 35.5 84.3 38.9Q80.3 30.3 70.8 30.2Q70.4 20.7 61.6 17.1Q64.7 7.5 58.0 0.0M100.0 62.0Q89.8 52.3 76.8 57.5Q71.0 44.7 56.9 44.6Q56.3 30.6 43.4 25.2Q47.8 11.1 38.0 0.0M100.0 84.0Q86.2 70.9 68.5 77.9Q60.7 60.6 41.6 60.4Q40.8 41.4 23.3 34.2Q29.3 15.0 16.0 0.0" fill="none" stroke="currentColor" stroke-width=".9" stroke-linecap="round"/></svg></span><span class="hwDeco hwBtnEyes" aria-hidden="true"><i></i><i></i></span><span class="hwDeco hwBtnGhost" aria-hidden="true">👻</span><span class="hockeyGameIcon" id="hockeyBtnIcon">🏒</span><span class="hockeyGameCopy"><strong id="hockeyBtnTitle">Hockey Mini-Spiel</strong><small id="hockeyBtnSub">3 in einer Reihe – schaffst du das?</small></span><span class="hockeyGameArrow">›</span></button></div>
 </section>
   <section id="opponentsView" hidden>
 <div class="scheduleHead">
@@ -1544,6 +1560,7 @@ function applyHalloween(rerender){
   const card=document.getElementById("hwSwitchCard"); if(card)card.hidden=!window.hwAvailable();
   const t=document.getElementById("hwToggle"); if(t)t.checked=on;
   hwUpdateGreeting();
+  {const on2=on,t1=document.getElementById("hockeyBtnTitle"),t2=document.getElementById("hockeyBtnSub"),t3=document.getElementById("hockeyBtnIcon");if(t1){t1.textContent=on2?"Gruselspiel":"Hockey Mini-Spiel";t2.textContent=on2?"Kürbis gegen Geist – wagst du dich?":"3 in einer Reihe – schaffst du das?";t3.textContent=on2?"🎃":"🏒"}}
   if(rerender){try{renderNext();const a=document.querySelector(".scheduleFilters .filter.active");renderList(a?a.dataset.filter:"all");renderOpponents()}catch(e){}}
 }
 document.getElementById("hwToggle")?.addEventListener("change",e=>{try{localStorage.setItem("grizzlysHalloween",e.target.checked?"on":"off");if(e.target.checked)localStorage.removeItem(hwGreetClosedKey())}catch(err){}applyHalloween(true)});
