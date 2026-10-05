@@ -393,6 +393,79 @@ html.hw{--navy:#0c0a09;--navy2:#1c140d;--ice:#fff1e2;--a:#2f9bff;--b:#ff8a00;--s
 .hw .segmented,.hw .modeSwitch{background:#241a12}
 .hw #todayBtn{background:#ff7a00;color:#1a0f05}
 .hw .scheduleSticky .segmentedWrap{background:#2a1d12}
+/* Halloween: Gruselspiel */
+.hw .hockeyGameBox{position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% -10%,#3a1a06 0,#120a05 55%,#070504 100%);color:#ffd9b0;border:1px solid #ff7a00;box-shadow:0 0 44px rgba(255,100,0,.38),inset 0 0 70px rgba(0,0,0,.85)}
+.hw .hockeyGameBox>*{position:relative;z-index:2}
+.hw .hockeyGameBox>.hwDeco,.hw .hockeyGameBox>.hwFlash{position:absolute;z-index:1;pointer-events:none}
+.hw .hockeyGameHead{background:transparent;border-bottom:1px solid rgba(255,122,0,.3)}
+.hw .hockeyGameTitle{color:#ff9a3c;text-shadow:0 0 12px rgba(255,122,0,.7);animation:hwFlicker 4.5s infinite}
+.hw .hockeyGameClose{background:rgba(255,122,0,.18);color:#ffd2a1;border-color:rgba(255,122,0,.5)}
+.hw .hockeyGameIntro,.hw .hockeyHint{color:#c9a98a}
+.hw .hockeyScore{color:#ffd9b0}.hw .hockeyScore b{color:#ff9a3c}
+.hw .hockeyStatus{color:#ffb066;text-shadow:0 0 10px rgba(255,100,0,.5);min-height:2.4em}
+.hw .hockeyRink{background:radial-gradient(circle at 50% 40%,#20120a,#0c0705);border:1px solid #5a2d0a;box-shadow:inset 0 0 40px rgba(0,0,0,.9),0 0 26px rgba(255,100,0,.18)}
+.hw .hockeyBoard::before,.hw .hockeyBoard::after{display:none}
+.hw .hockeyCell{background:linear-gradient(145deg,#1c1510,#0f0b08);border:1px solid #5a2d0a;box-shadow:inset 0 0 16px rgba(255,100,0,.12);color:#fff}
+.hw .hockeyCell:not(:disabled):hover,.hw .hockeyCell:not(:disabled):active{box-shadow:inset 0 0 20px rgba(255,122,0,.45),0 0 14px rgba(255,122,0,.35)}
+.hw .hockeyCell.player{filter:drop-shadow(0 0 8px rgba(255,138,31,.85));animation:hwGlow 2.4s ease-in-out infinite}
+.hw .hockeyCell.cpu{filter:drop-shadow(0 0 9px rgba(190,255,225,.7));animation:hwFloat 3s ease-in-out infinite}
+.hw .hockeyCell.new{animation:hwPop .45s cubic-bezier(.2,1.6,.4,1)}
+.hw .hockeyCell.cpu.new{animation:hwBoo .5s ease-out}
+.hw .hockeyCell.win{background:linear-gradient(145deg,#4a1f04,#1a0b02);border-color:#ff7a00;box-shadow:0 0 22px #ff7a00,inset 0 0 20px rgba(255,122,0,.6);animation:hwWin .8s ease-in-out infinite alternate}
+.hw .hockeyActions .action{background:rgba(255,122,0,.16);color:#ffd2a1;border:1px solid rgba(255,122,0,.4)}
+.hw .hwFogA,.hw .hwFogB{inset:auto;left:-30%;width:160%;height:90px;background:radial-gradient(ellipse at center,rgba(255,170,90,.16),transparent 70%);filter:blur(10px)}
+.hw .hwFogA{bottom:30px;animation:hwFogMove 11s ease-in-out infinite alternate}
+.hw .hwFogB{bottom:-10px;height:110px;animation:hwFogMove 15s ease-in-out -5s infinite alternate-reverse}
+.hw .hwGameEyes{top:58px;right:18px;display:flex;gap:7px;animation:hwBlink 7s infinite}
+.hw .hwGameEyes i{display:block;width:9px;height:5px;border-radius:50%;background:#ff3b1f;box-shadow:0 0 8px 2px rgba(255,59,31,.9)}
+.hw .hwGameSpider{top:0;left:22px;width:20px;display:flex;flex-direction:column;align-items:center;animation:hwDrop 9s ease-in-out infinite}
+.hw .hwGameSpider b{display:block;width:1px;height:34px;background:rgba(255,226,190,.55)}
+.hw .hwGameSpider span{font-size:16px;line-height:1;margin-top:-2px}
+.hw .hwGameBat{top:78px;left:-40px;width:30px;color:#1a0d08;filter:drop-shadow(0 0 2px #ff9a3c);animation:hwBatAcross 12s linear infinite}
+.hw .hwGameBat svg{display:block;width:100%}
+.hw .hwFlash{inset:0;background:radial-gradient(circle,rgba(255,60,20,.55),rgba(0,0,0,.0) 70%);opacity:0}
+.hw .hockeyGameBox.scare{animation:hwShake .5s linear}
+.hw .hockeyGameBox.scare .hwFlash{animation:hwFlashA .6s ease-out}
+@keyframes hwFlicker{0%,100%{opacity:1}92%{opacity:1}93%{opacity:.35}94%{opacity:1}96%{opacity:.5}97%{opacity:1}}
+@keyframes hwGlow{0%,100%{filter:drop-shadow(0 0 6px rgba(255,138,31,.7))}50%{filter:drop-shadow(0 0 14px rgba(255,170,60,1))}}
+@keyframes hwFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes hwPop{0%{transform:scale(.2) rotate(-25deg);opacity:0}70%{transform:scale(1.25) rotate(6deg);opacity:1}100%{transform:none}}
+@keyframes hwBoo{0%{transform:scale(2.2) translateY(10px);opacity:0}60%{transform:scale(.9);opacity:1}100%{transform:none}}
+@keyframes hwWin{from{box-shadow:0 0 12px #ff7a00,inset 0 0 12px rgba(255,122,0,.4)}to{box-shadow:0 0 28px #ffa23c,inset 0 0 26px rgba(255,122,0,.8)}}
+@keyframes hwFogMove{from{transform:translateX(-8%)}to{transform:translateX(8%)}}
+@keyframes hwBlink{0%,44%,48%,100%{opacity:1}46%{opacity:0}60%,90%{opacity:.0}95%{opacity:1}}
+@keyframes hwDrop{0%,100%{transform:translateY(-34px)}45%,60%{transform:translateY(40px)}}
+@keyframes hwBatAcross{0%{transform:translate(0,0)}50%{transform:translate(260px,-22px)}100%{transform:translate(560px,0)}}
+@keyframes hwShake{0%,100%{transform:none}15%{transform:translate(-5px,2px)}30%{transform:translate(5px,-2px)}45%{transform:translate(-4px,-2px)}60%{transform:translate(4px,2px)}80%{transform:translate(-2px,1px)}}
+@keyframes hwFlashA{0%{opacity:1}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.hw .hockeyGameBox *,.hw .hockeyGameBox{animation:none!important}.hw .hwGameBat,.hw .hwGameSpider{display:none}}
+/* Halloween-Spiel am 31.10. – extra gruselig */
+.hw .hwGameCard{position:relative;overflow:hidden;isolation:isolate;color:#ffe3c4;background:radial-gradient(ellipse at 85% 0,#3b1b07 0,#160c05 48%,#0a0705 100%)!important;box-shadow:0 0 0 1.5px #ff7a00,0 0 30px rgba(255,100,0,.45),inset 0 0 50px rgba(0,0,0,.7)!important;animation:hwCardPulse 3.2s ease-in-out infinite}
+.hw .hwGameCard::before{content:"";position:absolute;right:0;top:0;width:84px;height:84px;z-index:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M100 0L100.0 96.0M100 0L64.0 89.0M100 0L33.3 69.1M100 0L12.3 39.0M100 0L4.0 0.0M100.0 22.0Q96.4 18.6 91.8 20.4Q89.7 15.9 84.7 15.8Q84.5 10.9 79.9 8.9Q81.5 3.9 78.0 0.0M100.0 42.0Q93.1 35.5 84.3 38.9Q80.3 30.3 70.8 30.2Q70.4 20.7 61.6 17.1Q64.7 7.5 58.0 0.0M100.0 62.0Q89.8 52.3 76.8 57.5Q71.0 44.7 56.9 44.6Q56.3 30.6 43.4 25.2Q47.8 11.1 38.0 0.0M100.0 84.0Q86.2 70.9 68.5 77.9Q60.7 60.6 41.6 60.4Q40.8 41.4 23.3 34.2Q29.3 15.0 16.0 0.0' fill='none' stroke='%23ffe2be' stroke-width='1' stroke-linecap='round' opacity='.4'/%3E%3C/svg%3E") no-repeat right top/contain;pointer-events:none}
+.hw .hwGameCard::after{content:"🎃";font-size:110px;right:6px;top:auto;bottom:-26px;opacity:.13;color:inherit;z-index:0;filter:blur(.5px)}
+.hw .hwGameCard>*:not(.hwSpook){position:relative;z-index:1}
+.hw .hwGameCard .gcDate,.hw .hwGameCard .nextDate,.hw .hwGameCard .nextLabel,.hw .hwGameCard .lastFoot,.hw .hwGameCard .gcVenue,.hw .hwGameCard .gcMeta{color:#d9b894}
+.hw .hwGameCard .gcTime,.hw .hwGameCard .nextTime{color:#ffa247;text-shadow:0 0 12px rgba(255,122,0,.75)}
+.hw .hwGameCard .teamSideName,.hw .hwGameCard .gcSide,.hw .hwGameCard .gcSide span{color:#ffe9d2}
+.hw .hwGameCard .vs{color:#ff8a1f;text-shadow:0 0 8px rgba(255,100,0,.7)}
+.hw .hwGameCard .gcMatch,.hw .hwGameCard #nextMatch{border-color:rgba(255,122,0,.3)}
+.hw .hwGameCard .homeaway{background:rgba(255,122,0,.18);color:#ffc48a}
+.hw .hwGameCard .teamBadge,.hw .hwGameCard .nextTeam{background:rgba(255,122,0,.2);color:#ffb066}
+.hw .hwGameCard .gcVenue b,.hw .hwGameCard .meta b,.hw .hwGameCard .meta{color:#ffe3c4}
+.hw .hwGameCard .aIcon{background:rgba(255,122,0,.2);color:#ffa247}
+.hw .hwGameCard .action,.hw .hwGameCard .cardActions .action{color:#ffe3c4}
+.hw .hwGameCard .resultBadge{background:rgba(255,122,0,.2);color:#ffd2a1}
+.hw .hwGameCard .hwBadge{background:#ff7a00;color:#1a0f05;animation:hwBadgeBlink 2.6s ease-in-out infinite;box-shadow:0 0 14px rgba(255,122,0,.7)}
+.hw .hwGameCard .gcSide img,.hw .hwGameCard #nextMatch img,.hw .hwGameCard .lastBody img{filter:drop-shadow(0 0 8px rgba(255,122,0,.65))}
+.hw .hwSpook{position:absolute;inset:0;pointer-events:none;z-index:0}
+.hw .hwEyes{position:absolute;right:18px;bottom:62px;display:flex;gap:8px;animation:hwBlink 8s infinite}
+.hw .hwEyes i{display:block;width:10px;height:5px;border-radius:50%;background:#ff3b1f;box-shadow:0 0 9px 2px rgba(255,59,31,.9)}
+.hw .hwGhost{position:absolute;left:46%;top:44px;font-size:30px;opacity:.16;filter:blur(.6px);animation:hwGhostDrift 9s ease-in-out infinite}
+.hw .hwGhost2{left:auto;right:30px;top:auto;bottom:90px;font-size:22px;opacity:.12;animation-duration:12s;animation-delay:-4s}
+@keyframes hwCardPulse{0%,100%{box-shadow:0 0 0 1.5px #ff7a00,0 0 22px rgba(255,100,0,.35),inset 0 0 50px rgba(0,0,0,.7)}50%{box-shadow:0 0 0 1.5px #ffa23c,0 0 38px rgba(255,110,0,.6),inset 0 0 50px rgba(0,0,0,.7)}}
+@keyframes hwBadgeBlink{0%,100%{opacity:1}50%{opacity:.78}}
+@keyframes hwGhostDrift{0%,100%{transform:translate(0,0)}50%{transform:translate(-26px,-12px)}}
+@media (prefers-reduced-motion:reduce){.hw .hwGameCard,.hw .hwGameCard .hwBadge,.hw .hwEyes,.hw .hwGhost{animation:none!important}}
 @media (prefers-reduced-motion:reduce){.hw .hwBat{animation:none!important}}
 .testRibbon{position:sticky;top:0;z-index:70;background:#e8760a;color:#fff;text-align:center;font:800 12px/1 system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:7px 8px}
 </style>
@@ -497,7 +570,7 @@ Tippe auf einen Gegner, um alle Spiele gegen ihn zu sehen.
 
 <div id="thanksModal" class="thanksModal" hidden aria-hidden="true"><div class="thanksBox" role="dialog" aria-modal="true" aria-labelledby="thanksTitle"><div class="hwDeco hwThanksBats" aria-hidden="true"><span class="hwBat hwBat1"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></span><span class="hwBat hwBat2"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></span><span class="hwBat hwBat3"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></span></div><img id="thanksImg" class="thanksImg" src="grizzlys-bug-icon.png" alt=""><div id="thanksTitle" class="thanksTitle"></div><div id="thanksText" class="thanksText"></div><button id="thanksClose" class="thanksBtn" type="button">Schließen</button></div></div>
 <div id="bugReportModal" class="bugReportModal" hidden aria-hidden="true"><div class="bugReportBox" role="dialog" aria-modal="true" aria-labelledby="bugReportTitle"><div class="matchModalHead"><div id="bugReportTitle" class="matchModalTitle">🐞 Fehler melden</div><button id="bugReportClose" class="matchModalClose" type="button" aria-label="Fehlermeldung schließen">×</button></div><div id="bugReportIntro" class="small">Beschreibe kurz, was nicht funktioniert. Die Meldung wird zusammen mit App-Version und technischen Basisdaten an die Verwaltung übermittelt.</div><div class="bugReportGrid"><label>Art der Meldung<select id="bugReportType"><option value="Fehler">🐞 Fehler</option><option value="Wunsch / Anregung">💡 Wunsch / Anregung</option><option value="Lob">👍 Lob</option></select></label><label>Name <span style="color:#c62828">*</span><input id="bugReportName" type="text" maxlength="80" autocomplete="name" placeholder="Vor- und Nachname" required></label><label>Bereich<select id="bugReportArea"><option>Spielplan</option><option>Kalender</option><option>Ergebnisse</option><option>Push</option><option>Gegner</option><option>Downloads / PDF</option><option>App / Darstellung</option><option>Neue Funktion</option><option>Sonstiges</option></select></label><label><span id="bugReportDescLabel">Fehlerbeschreibung</span><textarea id="bugReportDescription" maxlength="2000" placeholder="Was funktioniert nicht? Was hast du gemacht?"></textarea></label><label>E-Mail für Rückfragen (optional)<input id="bugReportContact" type="email" maxlength="160" placeholder="name@beispiel.de"></label></div><div class="bugReportMeta">App-Version 1.8.0 · Geräte-/Browserdaten werden nur zur Analyse mitgesendet.</div><div class="bugReportActions"><button id="bugReportCancel" class="action" type="button">Abbrechen</button><button id="bugReportSend" class="action" type="button">📨 Meldung senden</button></div></div></div>
-  <div id="hockeyGameModal" class="hockeyGameModal" hidden aria-hidden="true"><div class="hockeyGameBox" role="dialog" aria-modal="true" aria-labelledby="hockeyGameTitle"><div class="hockeyGameHead"><div id="hockeyGameTitle" class="hockeyGameTitle">🏒 Hockey Tic-Tac-Toe</div><button id="hockeyGameClose" class="hockeyGameClose" type="button" aria-label="Minispiel schließen">×</button></div><div class="hockeyGameBody"><div class="hockeyGameIntro">Erziele zuerst drei in einer Reihe. Du bist 🏒.</div><div class="hockeyScore"><span>🏒 Du: <b id="hockeyPlayerScore">0</b></span><span>🥅 Gegner: <b id="hockeyCpuScore">0</b></span></div><div class="hockeyRink"><div id="hockeyBoard" class="hockeyBoard"></div></div><div id="hockeyStatus" class="hockeyStatus">Dein Zug – schieße auf ein freies Feld!</div><div class="hockeyActions"><button id="hockeyNewGame" class="action" type="button">🔄 Neues Spiel</button><button id="hockeyGameClose2" class="action" type="button">Schließen</button></div><div class="hockeyHint">Das Spiel läuft nur auf deinem Gerät und speichert keine Ergebnisse.</div></div></div></div>
+  <div id="hockeyGameModal" class="hockeyGameModal" hidden aria-hidden="true"><div class="hockeyGameBox" role="dialog" aria-modal="true" aria-labelledby="hockeyGameTitle"><div class="hwDeco hwFogA" aria-hidden="true"></div><div class="hwDeco hwFogB" aria-hidden="true"></div><div class="hwDeco hwGameEyes" aria-hidden="true"><i></i><i></i></div><div class="hwDeco hwGameSpider" aria-hidden="true"><b></b><span>🕷️</span></div><div class="hwDeco hwGameBat" aria-hidden="true"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></div><div class="hwFlash" aria-hidden="true"></div><div class="hockeyGameHead"><div id="hockeyGameTitle" class="hockeyGameTitle">🏒 Hockey Tic-Tac-Toe</div><button id="hockeyGameClose" class="hockeyGameClose" type="button" aria-label="Minispiel schließen">×</button></div><div class="hockeyGameBody"><div id="hockeyIntro" class="hockeyGameIntro">Erziele zuerst drei in einer Reihe. Du bist 🏒.</div><div class="hockeyScore"><span><i id="hqYou">🏒 Du:</i> <b id="hockeyPlayerScore">0</b></span><span><i id="hqFoe">🥅 Gegner:</i> <b id="hockeyCpuScore">0</b></span></div><div class="hockeyRink"><div id="hockeyBoard" class="hockeyBoard"></div></div><div id="hockeyStatus" class="hockeyStatus">Dein Zug – schieße auf ein freies Feld!</div><div class="hockeyActions"><button id="hockeyNewGame" class="action" type="button">🔄 Neues Spiel</button><button id="hockeyGameClose2" class="action" type="button">Schließen</button></div><div class="hockeyHint">Das Spiel läuft nur auf deinem Gerät und speichert keine Ergebnisse.</div></div></div></div>
 <div id="calFilterModal" class="matchModal" hidden aria-hidden="true">
   <div class="matchModalBox" role="dialog" aria-modal="true" aria-labelledby="calFilterTitle">
     <div class="matchModalHead">
@@ -1442,6 +1515,7 @@ function renderNext(){
   const nextDistance=distanceHtml(g.stadium);
   document.getElementById("nextMeta").innerHTML=`<svg class="pinIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"/></svg><b>${g.stadium}</b> · ${isHome(g)?"Heimspiel":"Auswärtsspiel"}${nextDistance?" · "+nextDistance:""}`;
   document.getElementById("nextRoute").onclick=()=>route(g); document.getElementById("nextCalendar").onclick=()=>calendar(g); document.getElementById("nextReminder").onclick=()=>reminder(g); document.getElementById("nextShare").onclick=()=>shareGame(g);
+  hwDecorate(document.querySelector(".next"),g);
   renderLast(); renderTeamTiles();
 }
 
@@ -1449,6 +1523,13 @@ function renderNext(){
 const HW_PUMPKIN='<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 8c0-3 1-5 3-6" fill="none" stroke="#3b8a2f" stroke-width="2.4" stroke-linecap="round"/><ellipse cx="9.5" cy="19" rx="7" ry="9.5" fill="#e8660a"/><ellipse cx="22.5" cy="19" rx="7" ry="9.5" fill="#e8660a"/><ellipse cx="16" cy="19" rx="6.2" ry="10.5" fill="#ff8a1f"/><path d="M9 17l3 2.2l-3.4 .4zM23 17l-3 2.2l3.4 .4zM11 24q5 3.4 10 0l-1.6 -1.6l-1.6 1.2l-1.8 -1.4l-1.8 1.4l-1.6 -1.2z" fill="#1a0f05"/></svg>';
 function isHwGame(g){return /-10-31$/.test(g.date)}
 function hwBadge(g){return (document.documentElement.classList.contains("hw")&&isHwGame(g))?`<span class="hwBadge">${HW_PUMPKIN}Halloween-Spiel</span>`:""}
+function hwDecorate(el,g){
+  if(!el)return;
+  el.querySelectorAll(":scope > .hwSpook").forEach(n=>n.remove());
+  const on=document.documentElement.classList.contains("hw")&&isHwGame(g);
+  el.classList.toggle("hwGameCard",on);
+  if(on)el.insertAdjacentHTML("beforeend",'<span class="hwSpook" aria-hidden="true"><span class="hwEyes"><i></i><i></i></span><span class="hwGhost">👻</span><span class="hwGhost hwGhost2">👻</span></span>');
+}
 function hwGreetClosedKey(){return "hwGreetingClosed"+new Date().getFullYear()}
 function hwUpdateGreeting(){
   const el=document.getElementById("hwGreeting"); if(!el)return;
@@ -1485,6 +1566,7 @@ function renderLast(){
   box.innerHTML=`<div class="nextHead"><div class="nextLabel">Letztes Spiel${hwBadge(g)}</div><div class="nextTeam ${cls}">U15 ${g.team}</div></div>`+
    `<div class="lastBody">${sideHtml(g.home)}<div class="lastScore">${r?`<b>${r.hs}:${r.as}</b><span class="lastPill ${r.o}">${word[r.o]}</span>`:`<span class="lastPill none">Ergebnis folgt</span>`}</div>${sideHtml(g.away,true)}</div>`+
    `<div class="lastFoot">${fmtDate(g)} · ${g.stadium} · ${isHome(g)?"Heimspiel":"Auswärtsspiel"}</div>`;
+  hwDecorate(box,g);
   box.onclick=()=>openMatchDetails(g);
 }
 function renderTeamTiles(){
@@ -1653,6 +1735,7 @@ function renderList(filter="all"){
     card.innerHTML=`<div class="gcHead"><div class="gcLeft"><span class="teamBadge">U15 ${g.team}</span>${hwBadge(g)}</div><div class="gcWhen"><span class="gcDate">${fmtDate(g)}</span><b class="gcTime">${g.time}</b></div></div><div class="gcMatch"><div class="gcSide">${sideL}<span>${g.home}</span></div><div class="vs">VS</div><div class="gcSide">${sideR}<span>${g.away}</span></div></div><div class="gcMeta"><span class="homeaway">${home?ic("home")+"Heimspiel":ic("away")+"Auswärts"}</span></div><div class="gcVenue">${ic("pin")}<b>${g.stadium}</b> · ${address(g)}</div>${resultBadge(g)}<div class="cardActions">${actBtn("route","pin","Route")}${actBtn("cal","calplus","Termin")}${actBtn("rem","bell","Erinnerung")}${actBtn("share","share","Teilen")}</div>`;
     card.querySelector(".route").onclick=()=>route(g);card.querySelector(".cal").onclick=()=>calendar(g);card.querySelector(".rem").onclick=()=>reminder(g);card.querySelector(".share").onclick=()=>shareGame(g);
     if(g===ng){card.classList.add("nextGame");card.querySelector(".gcLeft").insertAdjacentHTML("beforeend",'<span class="nextBadge">Nächstes Spiel</span>')}
+    hwDecorate(card,g);
     list.appendChild(card);
   });
 }
@@ -1677,6 +1760,7 @@ function openMatchDetails(g){
   const awayLogo=home?logoHtml(g.away):teamLogoHtml(g.away,"opponentLogo");
   const sideL=homeLogo, sideR=awayLogo;
   content.innerHTML=`<article class="card mdCard ${g.team==="B"?"teamB":"teamA"}" data-team="${g.team}"><div class="gcHead"><div class="gcLeft"><span class="teamBadge">U15 ${g.team}</span>${hwBadge(g)}</div><div class="gcWhen"><span class="gcDate">${esc(fmtDate(g))}</span><b class="gcTime">${esc(g.time)}</b></div></div><div class="gcMatch"><div class="gcSide">${sideL}<span>${esc(g.home)}</span></div><div class="vs">VS</div><div class="gcSide">${sideR}<span>${esc(g.away)}</span></div></div><div class="gcMeta"><span class="homeaway">${home?ic("home")+"Heimspiel":ic("away")+"Auswärts"}</span></div><div class="gcVenue">${ic("pin")}<b>${esc(g.stadium)}</b> · ${esc(address(g))}</div>${resultFor(g)?resultBadge(g):""}<div class="matchModalActions">${actBtn("modalRoute","pin","Route")}${actBtn("modalCal","calplus","Termin")}${actBtn("modalRem","bell","Erinnerung")}${actBtn("modalShare","share","Teilen")}</div></article>`;
+  hwDecorate(content.querySelector(".mdCard"),g);
   content.querySelector(".modalRoute").onclick=()=>route(g);
   content.querySelector(".modalCal").onclick=()=>calendar(g);
   content.querySelector(".modalRem").onclick=()=>reminder(g);
@@ -1706,13 +1790,24 @@ const hockeyPlayerScore=document.getElementById("hockeyPlayerScore");
 const hockeyCpuScore=document.getElementById("hockeyCpuScore");
 let hockeyCells=[], hockeyTurn="player", hockeyOver=false, hockeyPlayerWins=0, hockeyCpuWins=0;
 const hockeyWins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-function hockeyWinner(board){for(const line of hockeyWins){const[a,b,c]=line;if(board[a]&&board[a]===board[b]&&board[a]===board[c])return board[a];}return board.every(Boolean)?"draw":null;}
-function hockeyRender(){hockeyBoard.innerHTML="";hockeyCells=[];const board=window.__hockeyBoard||Array(9).fill("");board.forEach((v,i)=>{const b=document.createElement("button");b.type="button";b.className="hockeyCell"+(v==="player"?" player":v==="cpu"?" cpu":"");const _hw=document.documentElement.classList.contains("hw");b.textContent=v==="player"?(_hw?"🎃":"🏒"):v==="cpu"?(_hw?"🦇":"🥅"):"";b.setAttribute("aria-label",v?`Feld ${i+1} belegt`:`Feld ${i+1} frei`);b.disabled=!!v||hockeyOver||hockeyTurn!=="player";b.onclick=()=>hockeyPlayerMove(i);hockeyBoard.appendChild(b);hockeyCells.push(b);});hockeyPlayerScore.textContent=hockeyPlayerWins;hockeyCpuScore.textContent=hockeyCpuWins;}
-function hockeyFinish(result){hockeyOver=true;if(result==="player"){hockeyPlayerWins++;hockeyStatus.textContent="🏆 Tor! Du hast gewonnen!";}else if(result==="cpu"){hockeyCpuWins++;hockeyStatus.textContent="🥅 Gegentor! Der Gegner gewinnt.";}else hockeyStatus.textContent="🤝 Unentschieden – kein Sieger.";hockeyRender();}
-function hockeyNewRound(){window.__hockeyBoard=Array(9).fill("");hockeyTurn="player";hockeyOver=false;hockeyStatus.textContent="Dein Zug – schieße auf ein freies Feld!";hockeyRender();}
+function hockeyWinner(board){window.__hqWin=null;for(const line of hockeyWins){const[a,b,c]=line;if(board[a]&&board[a]===board[b]&&board[a]===board[c]){window.__hqWin=line;return board[a];}}return board.every(Boolean)?"draw":null;}
+function hockeyRender(){hockeyBoard.innerHTML="";hockeyCells=[];const board=window.__hockeyBoard||Array(9).fill("");board.forEach((v,i)=>{const b=document.createElement("button");b.type="button";b.className="hockeyCell"+(v==="player"?" player":v==="cpu"?" cpu":"");const _hw=document.documentElement.classList.contains("hw");b.textContent=v==="player"?(_hw?"🎃":"🏒"):v==="cpu"?(_hw?"👻":"🥅"):"";if(i===window.__hqLast&&v)b.classList.add("new");if(hockeyOver&&(window.__hqWin||[]).includes(i))b.classList.add("win");b.setAttribute("aria-label",v?`Feld ${i+1} belegt`:`Feld ${i+1} frei`);b.disabled=!!v||hockeyOver||hockeyTurn!=="player";b.onclick=()=>hockeyPlayerMove(i);hockeyBoard.appendChild(b);hockeyCells.push(b);});hockeyPlayerScore.textContent=hockeyPlayerWins;hockeyCpuScore.textContent=hockeyCpuWins;}
+
+const HQ_TXT={
+  normal:{title:"🏒 Hockey Tic-Tac-Toe",intro:"Erziele zuerst drei in einer Reihe. Du bist 🏒.",you:"🏒 Du:",foe:"🥅 Gegner:",turn:"Dein Zug – schieße auf ein freies Feld!",wait:"🥅 Gegner ist am Zug …",win:"🏆 Tor! Du hast gewonnen!",lose:"🥅 Gegentor! Der Gegner gewinnt.",draw:"🤝 Unentschieden – kein Sieger.",again:"🔄 Neues Spiel",me:"🏒",foeFig:"🥅"},
+  hw:{title:"👻 Gruselspiel",intro:"Drei in einer Reihe, bevor dich der Geist erwischt. Du bist 🎃.",you:"🎃 Du:",foe:"👻 Geist:",turn:"Dein Zug – wage dich auf ein freies Feld …",wait:"👻 Der Geist schleicht heran …",win:"🎃 Du hast den Geist vertrieben!",lose:"💀 Der Geist hat dich erwischt …",draw:"🕸️ Unentschieden – im Nebel bleibt alles still.",again:"🔄 Nochmal wagen",me:"🎃",foeFig:"👻"}
+};
+function HQ(k){return HQ_TXT[document.documentElement.classList.contains("hw")?"hw":"normal"][k]}
+function hockeyApplyTheme(){
+  const set=(id,k)=>{const e=document.getElementById(id);if(e)e.textContent=HQ(k)};
+  set("hockeyGameTitle","title");set("hockeyIntro","intro");set("hqYou","you");set("hqFoe","foe");set("hockeyNewGame","again");
+}
+function hockeyFinish(result){hockeyOver=true;if(result==="player"){hockeyPlayerWins++;hockeyStatus.textContent=HQ("win");}else if(result==="cpu"){hockeyCpuWins++;hockeyStatus.textContent=HQ("lose");hockeyScare();}else hockeyStatus.textContent=HQ("draw");hockeyRender();}
+function hockeyNewRound(){window.__hqLast=-1;window.__hqWin=null;hockeyApplyTheme();window.__hockeyBoard=Array(9).fill("");hockeyTurn="player";hockeyOver=false;hockeyStatus.textContent=HQ("turn");hockeyRender();}
+function hockeyScare(){if(!document.documentElement.classList.contains("hw"))return;const b=document.querySelector(".hockeyGameBox");if(!b)return;b.classList.remove("scare");void b.offsetWidth;b.classList.add("scare");setTimeout(()=>b.classList.remove("scare"),900)}
 function hockeyWinningMove(board,who){for(const line of hockeyWins){const vals=line.map(i=>board[i]);if(vals.filter(v=>v===who).length===2&&vals.includes(""))return line[vals.indexOf("")];}return -1;}
-function hockeyCpuMove(){if(hockeyOver)return;const board=window.__hockeyBoard;let move=hockeyWinningMove(board,"cpu");if(move<0)move=hockeyWinningMove(board,"player");if(move<0&&board[4]==="")move=4;if(move<0){const free=board.map((v,i)=>v?null:i).filter(i=>i!==null);move=free[Math.floor(Math.random()*free.length)];}if(move!==undefined&&move>=0)board[move]="cpu";const result=hockeyWinner(board);hockeyTurn="player";if(result)hockeyFinish(result);else{hockeyStatus.textContent="Dein Zug – schieße auf ein freies Feld!";hockeyRender();}}
-function hockeyPlayerMove(i){if(hockeyOver||hockeyTurn!=="player"||window.__hockeyBoard[i])return;window.__hockeyBoard[i]="player";const result=hockeyWinner(window.__hockeyBoard);if(result){hockeyFinish(result);return;}hockeyTurn="cpu";hockeyStatus.textContent="🥅 Gegner ist am Zug …";hockeyRender();setTimeout(hockeyCpuMove,320);}
+function hockeyCpuMove(){if(hockeyOver)return;const board=window.__hockeyBoard;let move=hockeyWinningMove(board,"cpu");if(move<0)move=hockeyWinningMove(board,"player");if(move<0&&board[4]==="")move=4;if(move<0){const free=board.map((v,i)=>v?null:i).filter(i=>i!==null);move=free[Math.floor(Math.random()*free.length)];}if(move!==undefined&&move>=0){board[move]="cpu";window.__hqLast=move}const result=hockeyWinner(board);hockeyTurn="player";if(result)hockeyFinish(result);else{hockeyStatus.textContent=HQ("turn");hockeyRender();}}
+function hockeyPlayerMove(i){if(hockeyOver||hockeyTurn!=="player"||window.__hockeyBoard[i])return;window.__hockeyBoard[i]="player";window.__hqLast=i;const result=hockeyWinner(window.__hockeyBoard);if(result){hockeyFinish(result);return;}hockeyTurn="cpu";hockeyStatus.textContent=HQ("wait");hockeyRender();setTimeout(hockeyCpuMove,320);}
 function openHockeyGame(){hockeyModal.hidden=false;hockeyModal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";hockeyNewRound();document.getElementById("hockeyGameClose")?.focus();}
 function closeHockeyGame(){hockeyModal.hidden=true;hockeyModal.setAttribute("aria-hidden","true");document.body.style.overflow="";}
 document.getElementById("openHockeyGame")?.addEventListener("click",()=>{trackAnalyticsEvent("hockey_game_started");openHockeyGame();});
