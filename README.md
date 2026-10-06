@@ -1,4 +1,4 @@
-# ESV Grizzlys U15 App
+# ESV Grizzlys U15 App - TEST
 
 Installierbare Web-App (PWA) für die ESV Grizzlys U15 A und U15 B, Saison 2026/27.
 
