@@ -2201,7 +2201,7 @@ function renderNext(){
      [["nextRoute","Route"],["nextCalendar","Termin"],["nextReminder","Erinnerung"],["nextShare","Teilen"]].forEach(([id,l])=>{const b=document.getElementById(id);if(b){b.setAttribute("aria-label",l);b.title=l}});}}
   document.getElementById("nextRoute").onclick=()=>route(g); document.getElementById("nextCalendar").onclick=()=>calendar(g); document.getElementById("nextReminder").onclick=()=>reminder(g); document.getElementById("nextShare").onclick=()=>shareGame(g);
   hwDecorate(document.querySelector(".next"),g);
-  g3HomeCard("g3HomeNext",g,"Nächstes Spiel",true);
+  g3HomeCard("g3HomeNext",g,"Nächstes Spiel",false);
   renderLast(); renderTeamTiles();
 }
 
