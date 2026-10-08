@@ -926,6 +926,16 @@ html.dark .g3Btn{background:rgba(22,140,255,.14);color:#6db8ff}
 @media(max-width:370px){.g3Top{grid-template-columns:58px minmax(0,1fr)}.g3Main{padding:10px 10px 12px}.g3Btn{font-size:11px;gap:4px}.g3Pl b{font-size:18px}.g3Route{padding:9px 11px}}
 @media(max-width:340px){.g3Pair{flex-direction:column}.g3Btn .ic{display:none}}
 @media(prefers-reduced-motion:reduce){.g3Det,.g3Tog svg{transition:none}}
+/* Datumsbalken läuft beim Aufklappen durch */
+.card.gz3{--g3w:68px;--g3bar:color-mix(in srgb,var(--team) 16%,transparent)}
+.card.gz3 .g3Date{background:var(--g3bar)}
+.card.gz3 .g3Det{background:linear-gradient(to right,var(--g3bar) 0,var(--g3bar) var(--g3w),transparent var(--g3w))}
+.card.gz3 .g3Pad{padding:2px 9px 9px calc(var(--g3w) + 9px)}
+.card.gz3 .g3Btn{flex-direction:column;gap:3px;min-height:50px;font-size:11px;white-space:normal;line-height:1.15}
+.card.gz3 .g3Btn .ic{width:17px;height:17px}
+.hw .hwGameCard.gz3{--g3bar:rgba(255,122,0,.2)}
+@media(max-width:370px){.card.gz3{--g3w:58px}}
+@media(max-width:340px){.card.gz3 .g3Btn .ic{display:block}}
 /* Instagram-Bilder im Downloadbereich */
 .dlInsta{margin-top:14px}
 .dlInstaItem{--team:var(--a);box-shadow:0 8px 22px rgba(16,32,51,.09),inset 5px 0 0 var(--team)}
