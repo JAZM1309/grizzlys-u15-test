@@ -858,9 +858,15 @@ html.dark .card.gz2 .homeaway{background:rgba(255,255,255,.08);color:#c6d4e4}
 .g3Home{margin-bottom:12px}
 .g3Home[hidden]{display:none}
 .card.gz3.g3Fixed{cursor:default}
-.card.gz3.g3Home.res_w{border-left:5px solid #1f9d55}
-.card.gz3.g3Home.res_l{border-left:5px solid #d6453b}
-.card.gz3.g3Home.res_d{border-left:5px solid #e0a100}
+.card.gz3,html.dark .card.gz3{border-left:5px solid var(--team)}
+.g3Band{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 14px;background:var(--team);color:#fff;font-size:11.5px;font-weight:950;letter-spacing:.12em;text-transform:uppercase}
+.g3Band span{font-weight:800;letter-spacing:.02em;text-transform:none;opacity:.92}
+.card.teamB .g3Band{color:#3a1d00}
+.card .g3Band.w{background:#1f9d55;color:#fff}
+.card .g3Band.l{background:#d6453b;color:#fff}
+.card .g3Band.d{background:#e0a100;color:#2b1d00}
+.card .g3Band.none{background:#7d8b9c;color:#fff}
+.hw .hwGameCard .g3Band:not(.w):not(.l):not(.d){background:#ff7a00;color:#1a0f05}
 .g3TogTxt{display:inline-block;min-width:54px;text-align:right}
 .card.gz3{padding:0;cursor:pointer;box-shadow:0 8px 24px rgba(16,32,51,.09);-webkit-tap-highlight-color:transparent}
 .card.gz3.nextGame{box-shadow:0 0 0 2px var(--team),0 10px 26px rgba(16,32,51,.14)}
@@ -2514,7 +2520,11 @@ function g3HomeCard(id,g,label,defOpen){
   if(!g){el.hidden=true;return}
   const res=resInfo(g), past=!!res||dt(g).getTime()+2*3600000<Date.now(), wasOpen=el.classList.contains("open");
   el.hidden=false;el.className="card gz2 gz3 g3Home "+(g.team==="B"?"teamB":"teamA")+(id==="g3HomeLast"&&res?" res_"+res.o:"");el.dataset.team=g.team;
-  el.innerHTML=gameCardHtml(g,past,res,false,label);
+  el.innerHTML=gameCardHtml(g,past,res,false,"");
+  {const word={w:"Sieg",l:"Niederlage",d:"Unentschieden"};let sub="",k="";
+   if(id==="g3HomeLast"){k=res?res.o:"none";sub=res?word[res.o]:"Ergebnis folgt"}
+   else{const d0=new Date();d0.setHours(0,0,0,0);const d1=dt(g);d1.setHours(0,0,0,0);const n=Math.round((d1-d0)/86400000);sub=n===0?"Heute":n===1?"Morgen":n>1?"in "+n+" Tagen":""}
+   el.insertAdjacentHTML("afterbegin",`<div class="g3Band ${k}">${esc(label)}${sub?`<span>${esc(sub)}</span>`:""}</div>`);}
   g3Bind(el,g); g3SetOpen(el,id in g3HomeOpen?g3HomeOpen[id]:defOpen);
   hwDecorate(el,g);
 }
