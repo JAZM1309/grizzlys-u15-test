@@ -854,6 +854,11 @@ html.dark .card.gz2 .homeaway{background:rgba(255,255,255,.08);color:#c6d4e4}
 .gzOppGames{display:grid;gap:10px}
 .gzOppGames .card{margin:0}
 /* v66: Spielkarten zum Aufklappen */
+.next,#lastGameCard{display:none!important}
+.g3Home{margin-bottom:12px}
+.g3Home[hidden]{display:none}
+.card.gz3.g3Fixed{cursor:default}
+.g3TogTxt{display:inline-block;min-width:54px;text-align:right}
 .card.gz3{padding:0;cursor:pointer;box-shadow:0 8px 24px rgba(16,32,51,.09);-webkit-tap-highlight-color:transparent}
 .card.gz3.nextGame{box-shadow:0 0 0 2px var(--team),0 10px 26px rgba(16,32,51,.14)}
 .card.gz3:focus-visible{outline:2px solid var(--team);outline-offset:2px}
@@ -2181,6 +2186,7 @@ function renderNext(){
      [["nextRoute","Route"],["nextCalendar","Termin"],["nextReminder","Erinnerung"],["nextShare","Teilen"]].forEach(([id,l])=>{const b=document.getElementById(id);if(b){b.setAttribute("aria-label",l);b.title=l}});}}
   document.getElementById("nextRoute").onclick=()=>route(g); document.getElementById("nextCalendar").onclick=()=>calendar(g); document.getElementById("nextReminder").onclick=()=>reminder(g); document.getElementById("nextShare").onclick=()=>shareGame(g);
   hwDecorate(document.querySelector(".next"),g);
+  g3HomeCard("g3HomeNext",g,"Nächstes Spiel",true);
   renderLast(); renderTeamTiles();
 }
 
@@ -2309,6 +2315,7 @@ function renderLast(){
   const now=new Date();
   const past=games.filter(g=>dt(g)<now).sort((a,b)=>dt(b)-dt(a));
   let g=past.find(x=>resInfo(x))||past[0];
+  g3HomeCard("g3HomeLast",g||null,"Letztes Spiel",false);
   if(!g){box.hidden=true;return}
   const r=resInfo(g), cls=g.team==="A"?"teamA":"teamB";
   const word={w:"Sieg",l:"Niederlage",d:"Unentschieden"};
@@ -2471,19 +2478,19 @@ function g3TeamTile(team,name){
   const title="Tabelle: Platz "+r.r+" · "+r.gp+" "+(r.gp===1?"Spiel":"Spiele")+" · "+r.p+" Punkte · Tordifferenz "+gdTxt;
   return `<div class="g3Tile"><small>${esc(shortTeam(name))}</small>`+(r.gp?`<div class="g3Pl" title="${esc(title)}"><b>${esc(r.r)}.</b><span>${esc(r.gp)} Sp · ${esc(r.p)} Pkt · ${gdTxt}</span></div>`:`<div class="g3Pl"><span>noch kein Spiel</span></div>`)+standFormHtml(team,name)+`</div>`;
 }
-function gameCardHtml(g,past,res,detail=false){
+function gameCardHtml(g,past,res,detail=false,label=""){
   const home=isHome(g), word={w:"Sieg",l:"Niederlage",d:"Unentschieden"}, d=dt(g);
   const logo=(name,cls)=>/grizzlys/i.test(name)?teamLogoHtml(name,cls):logoHtml(name,cls);
   const wd=d.toLocaleDateString("de-DE",{weekday:"short"}).replace(".",""), mon=d.toLocaleDateString("de-DE",{month:"short"}).replace(".","");
   const date=`<div class="g3Date"><span>${esc(wd)}</span><b>${String(d.getDate()).padStart(2,"0")}.</b><span>${esc(mon)}</span><i>${esc(g.time)}</i></div>`;
-  const head=`<div class="g3Head"><div class="gcLeft"><span class="teamBadge">U15 ${esc(g.team)}</span><span class="homeaway">${home?ic("home")+"Heim":ic("away")+"Auswärts"}</span>${hwBadge(g)}</div>${detail?"":'<span class="g3Tog" aria-hidden="true"><span class="g3TogTxt">Details</span><svg viewBox="0 0 24 24"><path d="M6 9l6 6l6-6"/></svg></span>'}</div>`;
+  const head=`<div class="g3Head"><div class="gcLeft"><span class="teamBadge">U15 ${esc(g.team)}</span><span class="homeaway">${home?ic("home")+"Heim":ic("away")+"Auswärts"}</span>${label?`<span class="nextBadge">${esc(label)}</span>`:""}${hwBadge(g)}</div>${detail?"":'<span class="g3Tog" aria-hidden="true"><span class="g3TogTxt">Details</span><svg viewBox="0 0 24 24"><path d="M6 9l6 6l6-6"/></svg></span>'}</div>`;
   const mid=res?`<div class="gzMid"><b class="gzScore">${res.hs}:${res.as}</b><span class="lastPill ${res.o}">${word[res.o]}</span></div>`
                :`<div class="gzMid">${past?'<span class="lastPill none">Ergebnis folgt</span>':'<span class="vs">VS</span>'}</div>`;
   const match=`<div class="gcMatch"><div class="gcSide">${logo(g.home,"opponentLogo")}<span>${esc(shortTeam(g.home))}</span></div>${mid}<div class="gcSide">${logo(g.away,"opponentLogo")}<span>${esc(shortTeam(g.away))}</span></div></div>`;
   const per=res?standPeriodsData(g):null;
   const thirds=per?`<div class="g3Tile g3Thirds">`+per.p.map((v,i)=>`<div><small>${i+1}. Drittel</small><b>${esc(v)}</b></div>`).join("")+(per.so||per.ot?`<div><small>Ende</small><b>${per.so?"n.P.":"n.V."}</b></div>`:"")+`</div>`:"";
   const tiles=g3TeamTile(g.team,g.home)+g3TeamTile(g.team,g.away);
-  const venue=`<div class="g3Tile g3Venue"><div><b>${esc(g.stadium)}</b><span>${esc(address(g))}</span></div><button class="g3Route route" type="button">${ic("pin")}Route</button></div>`;
+  const venue=`<div class="g3Tile g3Venue"><div><b>${esc(g.stadium)}</b><span>${esc(address(g))}${(km=>km?" · "+km+" km":"")(distanceForStadium(g.stadium))}</span></div><button class="g3Route route" type="button">${ic("pin")}Route</button></div>`;
   const btn=(c,icon,label)=>`<button class="g3Btn ${c}" type="button">${ic(icon)}${label}</button>`;
   const acts=`<div class="g3Acts">`+(past?"":btn("cal","calplus","Termin")+btn("rem","bell","Erinnerung"))+btn("share","share",res?"Ergebnis teilen":"Teilen")+`</div>`;
   return `<div class="g3Top">${date}<div class="g3Main">${head}${match}</div></div><div class="g3Det"><div class="g3In"><div class="g3Pad">${thirds}${tiles?`<div class="g3Pair">${tiles}</div>`:""}${venue}${acts}</div></div></div>`;
@@ -2494,6 +2501,19 @@ function g3SetOpen(card,on){
   const tx=card.querySelector(".g3TogTxt"); if(tx)tx.textContent=on?"Weniger":"Details";
   if(card.getAttribute("role")==="button")card.setAttribute("aria-expanded",on?"true":"false");
 }
+/* Startseite: „Nächstes Spiel“ (dauerhaft offen) und „Letztes Spiel“ (aufklappbar) als normale Spielkarten.
+   Die bisherigen Kästen bleiben unsichtbar im Dokument, damit der restliche Code unverändert weiterläuft. */
+function g3HomeCard(id,g,label,fixed){
+  const old=document.querySelector(id==="g3HomeNext"?".next":"#lastGameCard"); if(!old)return;
+  let el=document.getElementById(id);
+  if(!el){el=document.createElement("article");el.id=id;old.parentNode.insertBefore(el,old)}
+  if(!g){el.hidden=true;return}
+  const res=resInfo(g), past=!!res||dt(g).getTime()+2*3600000<Date.now(), wasOpen=el.classList.contains("open");
+  el.hidden=false;el.className="card gz2 gz3 g3Home "+(g.team==="B"?"teamB":"teamA")+(fixed?" g3Fixed":"");el.dataset.team=g.team;
+  el.innerHTML=gameCardHtml(g,past,res,fixed,label);
+  g3Bind(el,g,fixed); if(!fixed)g3SetOpen(el,wasOpen);
+  hwDecorate(el,g);
+}
 /* fixed=true: Karte ist dauerhaft offen (Fenster „Spieldetails“) */
 function g3Bind(card,g,fixed=false){
   [["route",route],["cal",calendar],["rem",reminder],["share",shareGame]].forEach(([c,fn])=>{const b=card.querySelector("."+c);if(b)b.onclick=e=>{e.stopPropagation();fn(g)}});
@@ -2501,7 +2521,7 @@ function g3Bind(card,g,fixed=false){
   card.setAttribute("role","button");card.tabIndex=0;
   const tog=()=>{
     const on=!card.classList.contains("open");
-    card.parentNode.querySelectorAll(".card.gz3.open").forEach(c=>{if(c!==card)g3SetOpen(c,false)});
+    card.parentNode.querySelectorAll(".card.gz3.open:not(.g3Fixed)").forEach(c=>{if(c!==card)g3SetOpen(c,false)});
     g3SetOpen(card,on);
     if(card.closest("#gamesList"))g3OpenKey=on?g3Key(g):"";
     if(on)setTimeout(()=>{try{card.scrollIntoView({block:"nearest",behavior:"smooth"})}catch(e){}},300);
@@ -2539,7 +2559,9 @@ function icsFor(g,alarm=false){
 }
 function downloadIcs(g,alarm){const blob=new Blob([icsFor(g,alarm)],{type:"text/calendar"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=(alarm?"Erinnerung-":"U15-")+g.date+"-"+g.team+".ics";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 function calendar(g){downloadIcs(g,false)} function reminder(g){downloadIcs(g,true);setTimeout(()=>alert("Kalenderdatei vorbereitet – die Erinnerung ist 24 Stunden vorher hinterlegt."),250)}
-async function shareGame(g){const text="🏒 U15 "+g.team+"\n"+fmtDate(g)+" · "+g.time+" Uhr\n"+g.home+" gegen "+g.away+"\n📍 "+g.stadium+" – "+address(g);if(navigator.share){try{await navigator.share({title:"ESV Grizzlys U15",text})}catch(e){}}else alert(text)}
+async function shareGame(g){const r=resInfo(g), per=r?standPeriodsData(g):null;
+  const text=r?"🏒 U15 "+g.team+" – Endstand\n"+g.home+" "+r.hs+":"+r.as+" "+g.away+(per?"\nDrittel: "+per.p.join(" · ")+(per.so?" · n.P.":per.ot?" · n.V.":""):"")+"\n"+fmtDate(g)+" · "+g.stadium
+    :"🏒 U15 "+g.team+"\n"+fmtDate(g)+" · "+g.time+" Uhr\n"+g.home+" gegen "+g.away+"\n📍 "+g.stadium+" – "+address(g);if(navigator.share){try{await navigator.share({title:"ESV Grizzlys U15",text})}catch(e){}}else alert(text)}
 
 function openMatchDetails(g){
   const modal=document.getElementById("matchModal");
