@@ -926,6 +926,50 @@ html.dark .g3Btn{background:rgba(22,140,255,.14);color:#6db8ff}
 @media(max-width:370px){.g3Top{grid-template-columns:58px minmax(0,1fr)}.g3Main{padding:10px 10px 12px}.g3Btn{font-size:11px;gap:4px}.g3Pl b{font-size:18px}.g3Route{padding:9px 11px}}
 @media(max-width:340px){.g3Pair{flex-direction:column}.g3Btn .ic{display:none}}
 @media(prefers-reduced-motion:reduce){.g3Det,.g3Tog svg{transition:none}}
+/* News */
+.newsTop{right:98px}
+.newsTop svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.newsBadge{position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#e5322b;color:#fff;font-size:10.5px;font-weight:900;line-height:18px;text-align:center;box-shadow:0 0 0 2px rgba(3,18,35,.55)}
+.newsBadge[hidden]{display:none}
+.heroChips{padding-right:138px}
+.heroChip{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.newsBanner{display:flex;align-items:stretch;margin-bottom:12px;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 8px 22px rgba(16,32,51,.09),inset 5px 0 0 #e5322b}
+.newsBanner[hidden]{display:none}
+html.dark .newsBanner{background:#14233a}
+.newsBannerMain{flex:1;min-width:0;display:flex;align-items:center;gap:10px;padding:11px 8px 11px 16px;border:0;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.newsBannerIc{font-size:20px;flex:none}
+.newsBannerTx{min-width:0;font-size:13px;font-weight:800;line-height:1.3;overflow-wrap:anywhere}
+.newsBannerTx small{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#e5322b;font-weight:900}
+.newsBannerX{flex:none;width:42px;border:0;background:none;color:var(--muted);font-size:22px;cursor:pointer}
+.newsSec{margin-top:14px}
+.newsSecTitle{font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 2px 8px}
+.newsItem{display:block;width:100%;text-align:left;font:inherit;color:inherit;border:0;border-radius:14px;padding:11px 13px;margin-bottom:8px;background:rgba(16,32,51,.05);--team:var(--a);box-shadow:inset 4px 0 0 var(--team)}
+.newsItem[data-team=B]{--team:var(--b)}
+.newsItem.note:not([data-team]),.newsItem.app{box-shadow:inset 4px 0 0 #7d8b9c}
+html.dark .newsItem{background:rgba(255,255,255,.06)}
+.newsItem.change{cursor:pointer}
+.newsItem.unread{background:color-mix(in srgb,#e5322b 9%,transparent)}
+.newsItem.unread .newsItemHead::after{content:"Neu";margin-left:6px;padding:1px 7px;border-radius:999px;background:#e5322b;color:#fff;font-size:10px;font-weight:900}
+.newsItemHead{display:flex;align-items:center;gap:6px;margin-bottom:5px}
+.newsItemHead .teamBadge{margin:0;padding:2px 8px;border-radius:99px;font-size:10.5px}
+.newsItemHead .teamBadge.both{background:rgba(125,139,156,.18);color:var(--muted)}
+.newsDate{margin-left:auto;font-size:11px;color:var(--muted);font-weight:700}
+.newsItem b{display:block;font-size:14px;line-height:1.3}
+.newsItem p{margin:4px 0 0;font-size:12.5px;line-height:1.45;color:var(--muted);white-space:pre-line;overflow-wrap:anywhere}
+.newsNew{color:var(--text);font-weight:800}
+.newsItem ul{margin:2px 0 0;padding-left:18px;font-size:12.5px;line-height:1.45;color:var(--muted)}
+.newsItem li{margin:2px 0}
+.newsEmpty{padding:2px 2px 6px}
+.newsForm{display:grid;gap:7px}
+.newsForm input,.newsForm textarea,.newsForm select{width:100%;padding:10px;border:1px solid var(--border);border-radius:10px;font:inherit;background:#fff;color:inherit}
+html.dark .newsForm input,html.dark .newsForm textarea,html.dark .newsForm select{background:#0f1c2f;border-color:rgba(255,255,255,.14)}
+.newsFormRow{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.newsFormRow label{display:grid;gap:3px;font-size:11px;font-weight:900;color:var(--muted)}
+.newsPushChk{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800}
+.newsPushChk input{width:18px;height:18px}
+.newsAdminItem .adminGameHead{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.newsAdminItem .newsDel{flex:none;width:auto;padding:7px 12px}
+.hw .newsTop{background:rgba(255,122,0,.22);color:#ffd2a1}
 /* Datumsbalken läuft beim Aufklappen durch */
 .card.gz3{--g3w:68px;--g3bar:color-mix(in srgb,var(--team) 16%,transparent)}
 .card.gz3 .g3Date{background:var(--g3bar)}
@@ -1017,7 +1061,7 @@ html.dark .gzForm i.x{box-shadow:0 0 0 1.5px rgba(255,255,255,.5)}
 <div id="updateBanner" class="updateBanner" role="status" aria-live="polite" hidden><span class="updateBannerIcon" aria-hidden="true">&#8635;</span><div class="updateBannerText"><b>Neue Version verfügbar</b><span>Kurz aktualisieren, dann bist du auf dem neuesten Stand.</span></div><button id="updateBannerReload" class="updateBannerBtn" type="button">Aktualisieren</button><button id="updateBannerClose" class="updateBannerClose" type="button" aria-label="Schließen">&times;</button></div>
 <div class="app">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><g id="gearPath" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 8.5a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7z M19.4 13.5a7.7 7.7 0 0 0 0-3l2-1.6-2-3.4-2.4 1a7.6 7.6 0 0 0-2.6-1.5L14 2.5h-4l-.4 2.5a7.6 7.6 0 0 0-2.6 1.5l-2.4-1-2 3.4 2 1.6a7.7 7.7 0 0 0 0 3l-2 1.6 2 3.4 2.4-1a7.6 7.6 0 0 0 2.6 1.5l.4 2.5h4l.4-2.5a7.6 7.6 0 0 0 2.6-1.5l2.4 1 2-3.4z"/></g></defs></svg>
-<header class="hero"><div class="heroRink" aria-hidden="true"></div><div class="heroIce" aria-hidden="true"></div><div class="hwDeco hwWeb" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M100 0L100.0 96.0M100 0L64.0 89.0M100 0L33.3 69.1M100 0L12.3 39.0M100 0L4.0 0.0M100.0 22.0Q96.4 18.6 91.8 20.4Q89.7 15.9 84.7 15.8Q84.5 10.9 79.9 8.9Q81.5 3.9 78.0 0.0M100.0 42.0Q93.1 35.5 84.3 38.9Q80.3 30.3 70.8 30.2Q70.4 20.7 61.6 17.1Q64.7 7.5 58.0 0.0M100.0 62.0Q89.8 52.3 76.8 57.5Q71.0 44.7 56.9 44.6Q56.3 30.6 43.4 25.2Q47.8 11.1 38.0 0.0M100.0 84.0Q86.2 70.9 68.5 77.9Q60.7 60.6 41.6 60.4Q40.8 41.4 23.3 34.2Q29.3 15.0 16.0 0.0" fill="none" stroke="currentColor" stroke-width=".9" stroke-linecap="round"/></svg></div><div class="hwDeco hwBat hwBat1"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></div><div class="hwDeco hwBat hwBat2"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></div><div class="hwDeco hwBat hwBat3"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></div><div class="heroTop"><img src="logo.png" alt="ESV Grizzlys Logo"><div><div class="kicker">ESV Grizzlys Bergkamen</div><h1>U15 Spielplan<span class="hwDeco hwPumpkin"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 8c0-3 1-5 3-6" fill="none" stroke="#3b8a2f" stroke-width="2.4" stroke-linecap="round"/><ellipse cx="9.5" cy="19" rx="7" ry="9.5" fill="#e8660a"/><ellipse cx="22.5" cy="19" rx="7" ry="9.5" fill="#e8660a"/><ellipse cx="16" cy="19" rx="6.2" ry="10.5" fill="#ff8a1f"/><path d="M9 17l3 2.2l-3.4 .4zM23 17l-3 2.2l3.4 .4zM11 24q5 3.4 10 0l-1.6 -1.6l-1.6 1.2l-1.8 -1.4l-1.8 1.4l-1.6 -1.2z" fill="#1a0f05"/></svg></span></h1></div></div><div class="heroChips"><div class="season"><svg class="puckIc" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="9" rx="8" ry="3.4"/><path d="M4 9v5.4c0 1.900 3.600 3.400 8 3.400s8-1.500 8-3.400V9"/></svg>Saison 2026/27</div><div id="heroStatus" class="heroChip" hidden></div></div><button id="settingsTopBtn" class="infoTop settingsTop" type="button" aria-label="Einstellungen"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#gearPath"/></svg></button><button id="infoTopBtn" class="infoTop" type="button" aria-label="Info">ⓘ</button><div class="slg" role="text" aria-label="Ein Team, zwei starke Mannschaften"><span class="a">Ein Team</span><span class="b">Zwei starke</span><span class="c">Mannschaften</span><svg viewBox="0 0 118 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C20 3 50 9 80 5 S110 4 116 2 L114 6 C95 8 70 11 45 10 S12 11 2 10Z"/><path d="M10 9 L110 5" stroke-width="1.2" opacity=".7"/></svg></div><div class="heroEdge" aria-hidden="true"></div></header>
+<header class="hero"><div class="heroRink" aria-hidden="true"></div><div class="heroIce" aria-hidden="true"></div><div class="hwDeco hwWeb" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M100 0L100.0 96.0M100 0L64.0 89.0M100 0L33.3 69.1M100 0L12.3 39.0M100 0L4.0 0.0M100.0 22.0Q96.4 18.6 91.8 20.4Q89.7 15.9 84.7 15.8Q84.5 10.9 79.9 8.9Q81.5 3.9 78.0 0.0M100.0 42.0Q93.1 35.5 84.3 38.9Q80.3 30.3 70.8 30.2Q70.4 20.7 61.6 17.1Q64.7 7.5 58.0 0.0M100.0 62.0Q89.8 52.3 76.8 57.5Q71.0 44.7 56.9 44.6Q56.3 30.6 43.4 25.2Q47.8 11.1 38.0 0.0M100.0 84.0Q86.2 70.9 68.5 77.9Q60.7 60.6 41.6 60.4Q40.8 41.4 23.3 34.2Q29.3 15.0 16.0 0.0" fill="none" stroke="currentColor" stroke-width=".9" stroke-linecap="round"/></svg></div><div class="hwDeco hwBat hwBat1"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></div><div class="hwDeco hwBat hwBat2"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></div><div class="hwDeco hwBat hwBat3"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 7c-1.6 0-2.6 1.2-2.8 3.2C18 5.8 11.600 4 2 6c3 2 3.600 5 3.200 8.600 3-2.200 6-1.800 8.400 1.600 2-2.800 4-2.800 6-1.600L24 21l4.400-6c2-1.200 4-1.200 6 1.600 2.400-3.400 5.400-3.800 8.400-1.600-.4-3.600.2-6.600 3.200-8.600-9.600-2-16 -.2-19.200 4.200C26.600 8.200 25.600 7 24 7z" fill="currentColor"/></svg></div><div class="heroTop"><img src="logo.png" alt="ESV Grizzlys Logo"><div><div class="kicker">ESV Grizzlys Bergkamen</div><h1>U15 Spielplan<span class="hwDeco hwPumpkin"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 8c0-3 1-5 3-6" fill="none" stroke="#3b8a2f" stroke-width="2.4" stroke-linecap="round"/><ellipse cx="9.5" cy="19" rx="7" ry="9.5" fill="#e8660a"/><ellipse cx="22.5" cy="19" rx="7" ry="9.5" fill="#e8660a"/><ellipse cx="16" cy="19" rx="6.2" ry="10.5" fill="#ff8a1f"/><path d="M9 17l3 2.2l-3.4 .4zM23 17l-3 2.2l3.4 .4zM11 24q5 3.4 10 0l-1.6 -1.6l-1.6 1.2l-1.8 -1.4l-1.8 1.4l-1.6 -1.2z" fill="#1a0f05"/></svg></span></h1></div></div><div class="heroChips"><div class="season"><svg class="puckIc" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="9" rx="8" ry="3.4"/><path d="M4 9v5.4c0 1.900 3.600 3.400 8 3.400s8-1.500 8-3.400V9"/></svg>Saison 2026/27</div><div id="heroStatus" class="heroChip" hidden></div></div><button id="newsTopBtn" class="infoTop newsTop" type="button" aria-label="Neuigkeiten"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11"/><path d="M8 8h4M8 12h4M8 16h4"/></svg><span id="newsBadge" class="newsBadge" hidden>0</span></button><button id="settingsTopBtn" class="infoTop settingsTop" type="button" aria-label="Einstellungen"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#gearPath"/></svg></button><button id="infoTopBtn" class="infoTop" type="button" aria-label="Info">ⓘ</button><div class="slg" role="text" aria-label="Ein Team, zwei starke Mannschaften"><span class="a">Ein Team</span><span class="b">Zwei starke</span><span class="c">Mannschaften</span><svg viewBox="0 0 118 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C20 3 50 9 80 5 S110 4 116 2 L114 6 C95 8 70 11 45 10 S12 11 2 10Z"/><path d="M10 9 L110 5" stroke-width="1.2" opacity=".7"/></svg></div><div class="heroEdge" aria-hidden="true"></div></header>
 <div id="miniBar" class="miniBar" aria-hidden="true"><div class="miniBarIn"><img src="logo.png" alt=""><b>U15 Spielplan</b><span id="miniStatus" class="miniStatus"></span></div></div>
 <main>
 <nav class="tabs"><button class="tab active" data-view="home">Start</button><button class="tab" data-view="schedule">Spielplan</button><button class="tab" data-view="opponents">Gegner</button><button class="tab" data-view="downloads">Downloads</button></nav>
@@ -1084,7 +1128,7 @@ Tippe auf einen Gegner, um alle Spiele gegen ihn zu sehen.
       <button id="adminLogout" class="action" type="button">Abmelden</button>
       <div class="adminAccordion" data-admin-accordion="analytics"><button class="adminAccordionHeader" type="button"><span>📊 App-Statistik</span><span class="chevron">⌄</span></button><div class="adminAccordionBody"><div class="small" style="margin:0 0 8px">Eigene Grizzlys-Auswertung mit Zeitraum, Nutzern, Sitzungen, Events und App-Nutzung.</div><button id="openAnalyticsDashboard" class="action" type="button">📊 Statistik öffnen</button></div></div>
       <div class="adminAccordion" data-admin-accordion="results"><button class="adminAccordionHeader" type="button"><span>🏒 Ergebnisverwaltung</span><span class="chevron">⌄</span></button><div class="adminAccordionBody"><div class="small" style="margin:0 0 8px">Ergebnisse eintragen, ändern oder löschen.</div><div id="adminResults" class="adminResults"></div></div></div>
-      <div class="adminAccordion" data-admin-accordion="insta"><button class="adminAccordionHeader" type="button"><span>📸 Social-Media-Bilder</span><span class="chevron">⌄</span></button><div class="adminAccordionBody"><div class="small" style="margin:0 0 8px">Erzeugt ein Bild im Beitragsformat (4:5) zum Teilen oder Speichern. Es wird nichts automatisch gepostet.</div><div id="adminInsta" class="adminInsta"></div></div></div><div class="adminAccordion" data-admin-accordion="schedule"><button class="adminAccordionHeader" type="button"><span>📅 Spieländerungen</span><span class="chevron">⌄</span></button><div class="adminAccordionBody"><div class="small" style="margin:0 0 8px">Falsche oder verlegte Termine zentral ändern. Die Änderung wird für alle Nutzer übernommen.</div><button id="ehvCheckBtn" class="action ehvCheckBtn" type="button">🔎 Mit EHV-Spielplan abgleichen</button><div id="ehvCheckResult" class="ehvCheck" hidden></div><div id="adminSchedule" class="adminSchedule"></div></div></div>
+      <div class="adminAccordion" data-admin-accordion="insta"><button class="adminAccordionHeader" type="button"><span>📸 Social-Media-Bilder</span><span class="chevron">⌄</span></button><div class="adminAccordionBody"><div class="small" style="margin:0 0 8px">Erzeugt ein Bild im Beitragsformat (4:5) zum Teilen oder Speichern. Es wird nichts automatisch gepostet.</div><div id="adminInsta" class="adminInsta"></div></div></div><div class="adminAccordion" data-admin-accordion="news"><button class="adminAccordionHeader" type="button"><span>📰 Hinweise / News</span><span class="chevron">⌄</span></button><div class="adminAccordionBody"><div class="small" style="margin:0 0 8px">Freitext-Hinweis für alle Nutzer. Er erscheint im News-Bereich und auf der Startseite – wahlweise zusätzlich als Push.</div><div id="adminNews"></div></div></div><div class="adminAccordion" data-admin-accordion="schedule"><button class="adminAccordionHeader" type="button"><span>📅 Spieländerungen</span><span class="chevron">⌄</span></button><div class="adminAccordionBody"><div class="small" style="margin:0 0 8px">Falsche oder verlegte Termine zentral ändern. Die Änderung wird für alle Nutzer übernommen.</div><button id="ehvCheckBtn" class="action ehvCheckBtn" type="button">🔎 Mit EHV-Spielplan abgleichen</button><div id="ehvCheckResult" class="ehvCheck" hidden></div><div id="adminSchedule" class="adminSchedule"></div></div></div>
       <div class="adminAccordion" data-admin-accordion="bugs"><button class="adminAccordionHeader" type="button"><span>💬 Rückmeldungen <span id="adminBugCount" class="adminBugBadge" hidden>0</span></span><span class="chevron">⌄</span></button><div class="adminAccordionBody"><div class="small" style="margin:0 0 8px">Fehler, Wünsche, Anregungen und Lob prüfen, archivieren oder endgültig löschen.</div><div style="display:flex;gap:7px;align-items:center;margin-bottom:8px"><label for="adminBugFilter" class="small" style="font-weight:900">Anzeige:</label><select id="adminBugFilter" style="flex:1;padding:8px;border:1px solid var(--border);border-radius:9px;background:#fff"><option value="active">Aktive</option><option value="archived">Archiv</option><option value="all">Alle</option></select></div><div style="display:flex;gap:7px;align-items:center;margin-bottom:8px"><label for="adminBugType" class="small" style="font-weight:900">Art:</label><select id="adminBugType" style="flex:1;padding:8px;border:1px solid var(--border);border-radius:9px;background:#fff"><option value="all">Alle Arten</option><option value="Fehler">🐞 Fehler</option><option value="Wunsch / Anregung">💡 Wunsch / Anregung</option><option value="Lob">👍 Lob</option></select></div><div id="adminBugReports" class="adminResults"></div></div></div>
       <div id="analyticsDashboardModal" class="matchModal" hidden aria-hidden="true">
         <div class="matchModalBox" role="dialog" aria-modal="true" aria-labelledby="analyticsDashboardTitle" style="max-width:760px">
@@ -1269,6 +1313,7 @@ async function loadScheduleOverrides(){
     renderNext(); renderList(); renderOpponents();
     if(window.applyResults) window.applyResults();
     if(auth.currentUser?.uid===ADMIN_UID) adminScheduleEditor();
+    window.renderNews?.();
   }catch(err){ console.warn("Spielplanänderungen konnten nicht geladen werden",err); }
 }
 function adminScheduleEditor(){
@@ -1703,7 +1748,7 @@ function setupAnalyticsDashboard(){
 }
 function setAdminUi(user){
   const login=document.getElementById("adminLogin"), panel=document.getElementById("adminPanel"), status=document.getElementById("adminStatus");
-  if(user && user.uid===ADMIN_UID){ login.hidden=true; panel.hidden=false; status.textContent="Admin angemeldet"; setupAdminAccordions(); adminEditor(); adminScheduleEditor(); loadBugReports(); setupAnalyticsDashboard(); }
+  if(user && user.uid===ADMIN_UID){ login.hidden=true; panel.hidden=false; status.textContent="Admin angemeldet"; setupAdminAccordions(); adminEditor(); adminScheduleEditor(); loadBugReports(); setupAnalyticsDashboard(); adminNewsEditor(); }
   else { login.hidden=false; panel.hidden=true; status.textContent=user?"Angemeldet, aber keine Admin-Berechtigung":"Nicht angemeldet"; }
 }
 
@@ -1769,6 +1814,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   syncExistingPushRegistration().then(()=>registerAppInstallation());
   loadResults();
   loadScheduleOverrides();
+  loadNews();
   isSupported().then(ok=>{
   if(ok && FIREBASE_VAPID_KEY){
     messaging=getMessaging(app);
@@ -1780,6 +1826,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         try{if(auth.currentUser&&auth.currentUser.uid===ADMIN_UID)loadBugReports();}catch(e){}
         return;
       }
+      if(payload.data&&payload.data.type==="news"){try{loadNews()}catch(e){}}
       if(n.title) alert((n.title ? n.title+"\n" : "") + (n.body||""));
     });
   }
@@ -1787,6 +1834,49 @@ document.addEventListener("DOMContentLoaded",()=>{
   alert("FCM Fehler: " + (e?.code || e?.message || String(e)));
 });
 });
+
+/* ===== v66: News – Freitext-Hinweise (Firestore-Sammlung "news") ===== */
+window.getScheduleOverrides=()=>scheduleOverrides;
+window.adminNewsEditor=()=>adminNewsEditor();
+async function loadNews(){
+  try{
+    const snap=await getDocs(collection(db,"news"));
+    const arr=[]; snap.forEach(d=>{const x=d.data()||{};arr.push({id:d.id,title:String(x.title||""),text:String(x.text||""),team:String(x.team||""),until:String(x.until||""),push:x.push===true,created:x.createdAt?.toMillis?x.createdAt.toMillis():0})});
+    window.newsNotes=arr.sort((a,b)=>b.created-a.created);
+  }catch(err){ console.warn("Hinweise konnten nicht geladen werden",err); window.newsNotes=window.newsNotes||[]; }
+  window.renderNews?.();
+  if(auth.currentUser?.uid===ADMIN_UID) adminNewsEditor();
+}
+function adminNewsEditor(){
+  const box=document.getElementById("adminNews"); if(!box) return;
+  const e=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const d=new Date(Date.now()+14*86400000), p=n=>String(n).padStart(2,"0"), def=d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate());
+  const list=(window.newsNotes||[]);
+  box.innerHTML=`<div class="newsForm">
+    <input id="newsTitle" maxlength="80" placeholder="Überschrift (z. B. Treffpunkt geändert)">
+    <textarea id="newsText" maxlength="600" rows="4" placeholder="Text des Hinweises"></textarea>
+    <div class="newsFormRow"><label>Mannschaft<select id="newsTeam"><option value="">Beide</option><option value="A">U15 A</option><option value="B">U15 B</option></select></label><label>Sichtbar bis<input id="newsUntil" type="date" value="${def}"></label></div>
+    <label class="newsPushChk"><input id="newsPush" type="checkbox"> Zusätzlich als Push senden</label>
+    <button id="newsSave" class="action" type="button">📰 Hinweis veröffentlichen</button>
+  </div>
+  <div class="small" style="margin:12px 0 6px;font-weight:900">Veröffentlichte Hinweise</div>
+  ${list.length?list.map(n=>`<div class="adminGame newsAdminItem"><div class="adminGameHead"><div><b>${e(n.title||"(ohne Überschrift)")}</b><div class="small">${n.team?"U15 "+e(n.team):"Beide Mannschaften"} · bis ${n.until?e(n.until.split("-").reverse().join(".")):"unbegrenzt"}${n.push?" · mit Push":""}</div></div><button class="action newsDel" data-id="${e(n.id)}" type="button">Löschen</button></div><div class="small" style="white-space:pre-line;margin-top:6px">${e(n.text)}</div></div>`).join(""):'<div class="small">Noch keine Hinweise.</div>'}`;
+  box.querySelector("#newsSave").onclick=async()=>{
+    const title=box.querySelector("#newsTitle").value.trim(), text=box.querySelector("#newsText").value.trim();
+    const team=box.querySelector("#newsTeam").value, until=box.querySelector("#newsUntil").value, push=box.querySelector("#newsPush").checked;
+    if(title.length<3){alert("Bitte eine Überschrift mit mindestens 3 Zeichen eingeben.");return}
+    if(push&&!confirm("Den Hinweis jetzt auch als Push an alle angemeldeten Geräte senden?"))return;
+    try{
+      await addDoc(collection(db,"news"),{title:title.slice(0,80),text:text.slice(0,600),team,until,push,createdAt:serverTimestamp()});
+      alert(push?"Hinweis veröffentlicht. Der Push wird gleich verschickt.":"Hinweis veröffentlicht.");
+      await loadNews();
+    }catch(err){console.error(err);alert("Speichern fehlgeschlagen: "+(err.message||err))}
+  };
+  box.querySelectorAll(".newsDel").forEach(b=>b.onclick=async()=>{
+    if(!confirm("Diesen Hinweis löschen?"))return;
+    try{await deleteDoc(doc(db,"news",b.dataset.id));await loadNews()}catch(err){alert("Löschen fehlgeschlagen: "+(err.message||err))}
+  });
+}
 </script>
 <script>
 /* Fallback, falls das Firebase-Modul nicht lädt (Vorschau, offline): Spielplan bleibt nutzbar, nur ohne Ergebnisse */
@@ -2977,5 +3067,102 @@ function renderInstaDownloads(){
 }
 {const prev=window.applyResults;window.applyResults=function(){prev&&prev.apply(this,arguments);try{renderInstaDownloads()}catch(e){console.warn(e)}};}
 renderInstaDownloads(); setInterval(()=>{try{renderInstaDownloads()}catch(e){}},10*60000);
+
+/* ===== v66: News-Bereich – Hinweise, Spieländerungen, Neues in der App ===== */
+/* Nur Neuerungen, die für Nutzer sichtbar oder spürbar sind. Neueste Version oben. */
+const APP_NEWS=[
+  {v:"1.9.0.66",d:"Oktober 2026",items:[
+    "Spielkarten zum Aufklappen: Ein Tipp zeigt Tabellenplatz, Form, Halle und alle Aktionen.",
+    "Startseite: Nächstes und letztes Spiel mit Farbband – Sieg, Niederlage oder Unentschieden auf einen Blick.",
+    "„Ergebnis teilen“ teilt jetzt den Endstand mit Dritteln.",
+    "Downloads: Bilder für Social Media – Spieltagsbild ab 5 Tage vor dem Spiel, Ergebnisbild bis 5 Tage danach.",
+    "Neu: dieser News-Bereich mit Hinweisen, Spieländerungen und Neuigkeiten zur App."]},
+  {v:"1.9.0.65",d:"Oktober 2026",items:[
+    "Tabellenplatz, Spiele, Punkte und Tordifferenz bei jeder Paarung.",
+    "Form der letzten fünf Spiele und Drittelergebnisse.",
+    "Ergebnisse werden automatisch vom EHV NRW übernommen.",
+    "Schulferien NRW im Kalender."]}
+];
+const NEWS_SEEN_KEY="grizzlysNewsSeen";
+function newsSeen(){try{const x=JSON.parse(localStorage.getItem(NEWS_SEEN_KEY)||"null");return Array.isArray(x)?x:null}catch(e){return null}}
+function newsSave(arr){try{localStorage.setItem(NEWS_SEEN_KEY,JSON.stringify(arr.slice(-300)))}catch(e){}}
+let newsSeenMem=newsSeen();
+if(!newsSeenMem){newsSeenMem=APP_NEWS.slice(1).map(x=>"v:"+x.v);newsSave(newsSeenMem)}
+function newsToday(){const d=new Date();d.setHours(0,0,0,0);return d}
+function newsActiveNotes(){
+  const t=newsToday();
+  return (window.newsNotes||[]).filter(n=>!n.until||new Date(n.until+"T23:59:59")>=t);
+}
+function newsChanges(){
+  const ov=(window.getScheduleOverrides&&window.getScheduleOverrides())||{}, t=newsToday().getTime()-86400000, out=[];
+  games.forEach(g=>{
+    const o=ov[g._baseId]; if(!o||!g._base)return;
+    if(dt(g).getTime()<t)return;
+    const b=g._base, diff=[];
+    if(b.date!==g.date||b.time!==g.time)diff.push("vorher "+new Date(b.date+"T"+b.time).toLocaleDateString("de-DE",{weekday:"short",day:"2-digit",month:"2-digit"})+" · "+b.time+" Uhr");
+    if(b.stadium!==g.stadium)diff.push("Ort vorher "+b.stadium);
+    if(b.home!==g.home||b.away!==g.away)diff.push("Paarung geändert");
+    if(!diff.length)return;
+    out.push({id:"c:"+g._baseId+":"+g.date+g.time+g.stadium,g,diff});
+  });
+  return out.sort((a,b)=>dt(a.g)-dt(b.g));
+}
+function newsItemsAll(){
+  return [...newsActiveNotes().map(n=>({id:"n:"+n.id,kind:"note",n})),...newsChanges().map(c=>({...c,kind:"change"})),...APP_NEWS.map(x=>({id:"v:"+x.v,kind:"app",x}))];
+}
+function newsUnread(){const s=new Set(newsSeenMem);return newsItemsAll().filter(i=>!s.has(i.id))}
+function newsMarkSeen(ids){ids.forEach(id=>{if(!newsSeenMem.includes(id))newsSeenMem.push(id)});newsSave(newsSeenMem)}
+function newsFmtCreated(ms){return ms?new Date(ms).toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit",year:"numeric"}):""}
+function newsNoteHtml(n,unread){
+  return `<div class="newsItem note${unread?" unread":""}"${n.team?` data-team="${esc(n.team)}"`:""}><div class="newsItemHead">${n.team?`<span class="teamBadge">U15 ${esc(n.team)}</span>`:'<span class="teamBadge both">A + B</span>'}<span class="newsDate">${esc(newsFmtCreated(n.created))}</span></div><b>${esc(n.title)}</b>${n.text?`<p>${esc(n.text)}</p>`:""}</div>`;
+}
+function newsChangeHtml(c,unread){
+  const g=c.g, day=dt(g).toLocaleDateString("de-DE",{weekday:"short",day:"2-digit",month:"2-digit"});
+  return `<button class="newsItem change${unread?" unread":""}" data-team="${esc(g.team)}" data-cid="${esc(c.id)}" type="button"><div class="newsItemHead"><span class="teamBadge">U15 ${esc(g.team)}</span><span class="newsDate">Spieländerung</span></div><b>${esc(shortTeam(g.home))} – ${esc(shortTeam(g.away))}</b><p><span class="newsNew">Neu: ${esc(day)} · ${esc(g.time)} Uhr · ${esc(g.stadium)}</span><br>${c.diff.map(esc).join(" · ")}</p></button>`;
+}
+function renderNews(){
+  const items=newsUnread(), n=items.length, badge=document.getElementById("newsBadge");
+  if(badge){badge.hidden=!n;badge.textContent=n>9?"9+":String(n)}
+  const btn=document.getElementById("newsTopBtn"); if(btn)btn.setAttribute("aria-label",n?"Neuigkeiten, "+n+" ungelesen":"Neuigkeiten");
+  /* Startseite: neuester ungelesener Hinweis oder Spieländerung */
+  const top=items.find(i=>i.kind==="note")||items.find(i=>i.kind==="change");
+  let ban=document.getElementById("newsBanner"); const anchor=document.getElementById("g3HomeNext")||document.querySelector(".next");
+  if(!ban&&anchor){ban=document.createElement("div");ban.id="newsBanner";ban.className="newsBanner";anchor.parentNode.insertBefore(ban,anchor)}
+  if(ban){
+    if(!top){ban.hidden=true}
+    else{
+      ban.hidden=false;
+      const txt=top.kind==="note"?top.n.title:"Spieländerung U15 "+top.g.team+": "+shortTeam(top.g.home)+" – "+shortTeam(top.g.away)+", jetzt "+dt(top.g).toLocaleDateString("de-DE",{weekday:"short",day:"2-digit",month:"2-digit"})+" "+top.g.time+" Uhr";
+      ban.innerHTML=`<button class="newsBannerMain" type="button"><span class="newsBannerIc">${top.kind==="note"?"📰":"📅"}</span><span class="newsBannerTx"><small>${top.kind==="note"?"Hinweis":"Spieländerung"}</small>${esc(txt)}</span></button><button class="newsBannerX" type="button" aria-label="Hinweis ausblenden">×</button>`;
+      ban.querySelector(".newsBannerMain").onclick=()=>openNews();
+      ban.querySelector(".newsBannerX").onclick=()=>{newsMarkSeen([top.id]);renderNews()};
+    }
+  }
+  const m=document.getElementById("newsModal"); if(m&&!m.hidden)newsFill();
+}
+function newsFill(){
+  const body=document.getElementById("newsBody"); if(!body)return;
+  const s=new Set(newsSeenMem), notes=newsActiveNotes(), ch=newsChanges();
+  body.innerHTML=
+    `<div class="newsSec"><div class="newsSecTitle">📰 Hinweise</div>${notes.length?notes.map(n=>newsNoteHtml(n,!s.has("n:"+n.id))).join(""):'<div class="small newsEmpty">Aktuell keine Hinweise.</div>'}</div>`+
+    `<div class="newsSec"><div class="newsSecTitle">📅 Spieländerungen</div>${ch.length?ch.map(c=>newsChangeHtml(c,!s.has(c.id))).join(""):'<div class="small newsEmpty">Keine geänderten Termine.</div>'}</div>`+
+    `<div class="newsSec"><div class="newsSecTitle">✨ Neu in der App</div>${APP_NEWS.slice(0,3).map(x=>`<div class="newsItem app${s.has("v:"+x.v)?"":" unread"}"><div class="newsItemHead"><b>Version ${esc(x.v)}</b><span class="newsDate">${esc(x.d)}</span></div><ul>${x.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul></div>`).join("")}</div>`;
+  body.querySelectorAll(".newsItem.change").forEach(b=>{const c=ch.find(x=>x.id===b.dataset.cid);b.onclick=()=>{closeNews();openMatchDetails(c.g)}});
+}
+function openNews(){
+  let m=document.getElementById("newsModal");
+  if(!m){m=document.createElement("div");m.id="newsModal";m.className="matchModal newsModal";m.hidden=true;
+    m.innerHTML='<div class="matchModalBox" role="dialog" aria-modal="true" aria-labelledby="newsTitle"><div class="matchModalHead"><div id="newsTitle" class="matchModalTitle">Neuigkeiten</div><button id="newsClose" class="matchModalClose" type="button" aria-label="Schließen">×</button></div><div id="newsBody"></div></div>';
+    document.body.appendChild(m);m.querySelector("#newsClose").onclick=closeNews;m.addEventListener("click",e=>{if(e.target===m)closeNews()});
+    document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!m.hidden)closeNews()});}
+  newsFill();m.hidden=false;m.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";
+  newsMarkSeen(newsItemsAll().map(i=>i.id));
+  setTimeout(()=>{const b=document.getElementById("newsBadge");if(b)b.hidden=true;const ban=document.getElementById("newsBanner");if(ban)ban.hidden=true},0);
+}
+function closeNews(){const m=document.getElementById("newsModal");if(m){m.hidden=true;m.setAttribute("aria-hidden","true");m.querySelectorAll(".unread").forEach(x=>x.classList.remove("unread"))}document.body.style.overflow="";renderNews()}
+window.renderNews=renderNews;window.openNews=openNews;
+document.getElementById("newsTopBtn").onclick=openNews;
+{const prev=window.applyResults;window.applyResults=function(){prev&&prev.apply(this,arguments);try{renderNews()}catch(e){console.warn(e)}};}
+renderNews();
 </script>
 </body></html>
