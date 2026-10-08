@@ -886,10 +886,13 @@ html.dark .g3Date b,html.dark .g3Date i{color:#fff}
 .card.gz3.open .g3Tog svg{transform:rotate(180deg)}
 html.dark .g3Tog{color:#5fb0ff}
 .card.gz3 .gcMatch{border:0;padding:9px 0 0}
-.g3Det{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s ease}
+.g3Det{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:0fr;transition:grid-template-rows .28s ease}
 .card.gz3.open .g3Det{grid-template-rows:1fr}
-.g3In{overflow:hidden;min-height:0}
-.g3Pad{display:grid;gap:7px;padding:0 9px 9px}
+.g3In{overflow:hidden;min-height:0;min-width:0}
+.card.gz3{min-width:0;max-width:100%}
+.g3Main,.g3Tile,.g3Venue>div{min-width:0}
+.g3Tile .gzForm{flex-wrap:wrap}
+.g3Pad{display:grid;grid-template-columns:minmax(0,1fr);gap:7px;padding:0 9px 9px;min-width:0}
 .g3Pair{display:flex;gap:7px}
 .g3Pair .g3Tile{flex:1 1 0;min-width:0}
 .g3Tile{background:rgba(16,32,51,.05);border-radius:13px;padding:9px 11px}
@@ -899,17 +902,17 @@ html.dark .g3Tile{background:rgba(255,255,255,.06)}
 .g3Pl span{white-space:nowrap}
 .g3Pl b{font-size:21px;font-weight:950;line-height:1.15;color:var(--text)}
 .g3Tile .gzForm{display:flex;justify-content:flex-start;margin-top:7px}
-.g3Thirds{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;text-align:center}
+.g3Thirds{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);text-align:center}
 .g3Thirds b{display:block;margin-top:2px;font-size:17px;font-weight:950;color:var(--text);font-variant-numeric:tabular-nums}
 .g3Venue{display:flex;align-items:center;gap:10px}
 .g3Venue>div{flex:1;min-width:0;font-size:12px;line-height:1.35;color:var(--muted)}
 .g3Venue>div b{display:block;font-size:13px;color:var(--text)}
-.g3Venue>div span{display:block}
+.g3Venue>div span{display:block;overflow-wrap:anywhere}
 .g3Route{flex:none;display:inline-flex;align-items:center;gap:6px;border:0;border-radius:999px;padding:9px 14px;background:#0b6fd6;color:#fff;font:inherit;font-size:12.5px;font-weight:850;cursor:pointer}
 html.dark .g3Route{background:#168cff}
 .g3Route .ic{width:15px;height:15px}
-.g3Acts{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:7px}
-.g3Btn{display:flex;align-items:center;justify-content:center;gap:6px;min-height:38px;padding:0 6px;border:0;border-radius:12px;background:var(--ice);color:#0b6fd6;font:inherit;font-size:12px;font-weight:850;cursor:pointer;white-space:nowrap}
+.g3Acts{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:7px}
+.g3Btn{display:flex;align-items:center;justify-content:center;gap:6px;min-width:0;min-height:38px;padding:0 6px;border:0;border-radius:12px;background:var(--ice);color:#0b6fd6;font:inherit;font-size:12px;font-weight:850;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 html.dark .g3Btn{background:rgba(22,140,255,.14);color:#6db8ff}
 .g3Btn .ic{width:15px;height:15px;flex:none}
 .hw .hwGameCard .g3Date{background:rgba(255,122,0,.2);color:#ffb066}
@@ -920,7 +923,8 @@ html.dark .g3Btn{background:rgba(22,140,255,.14);color:#6db8ff}
 .hw .hwGameCard .g3Tog,.hw .hwGameCard .g3Btn{color:#ffa247}
 .hw .hwGameCard .g3Btn{background:rgba(255,122,0,.2)}
 .hw .hwGameCard .g3Route{background:#ff7a00;color:#1a0f05}
-@media(max-width:370px){.g3Top{grid-template-columns:58px minmax(0,1fr)}.g3Main{padding:10px 10px 12px}.g3Btn{font-size:11px;gap:4px}}
+@media(max-width:370px){.g3Top{grid-template-columns:58px minmax(0,1fr)}.g3Main{padding:10px 10px 12px}.g3Btn{font-size:11px;gap:4px}.g3Pl b{font-size:18px}.g3Route{padding:9px 11px}}
+@media(max-width:340px){.g3Pair{flex-direction:column}.g3Btn .ic{display:none}}
 @media(prefers-reduced-motion:reduce){.g3Det,.g3Tog svg{transition:none}}
 /* Instagram-Bilder im Downloadbereich */
 .dlInsta{margin-top:14px}
