@@ -858,6 +858,9 @@ html.dark .card.gz2 .homeaway{background:rgba(255,255,255,.08);color:#c6d4e4}
 .g3Home{margin-bottom:12px}
 .g3Home[hidden]{display:none}
 .card.gz3.g3Fixed{cursor:default}
+.card.gz3.g3Home.res_w{border-left:5px solid #1f9d55}
+.card.gz3.g3Home.res_l{border-left:5px solid #d6453b}
+.card.gz3.g3Home.res_d{border-left:5px solid #e0a100}
 .g3TogTxt{display:inline-block;min-width:54px;text-align:right}
 .card.gz3{padding:0;cursor:pointer;box-shadow:0 8px 24px rgba(16,32,51,.09);-webkit-tap-highlight-color:transparent}
 .card.gz3.nextGame{box-shadow:0 0 0 2px var(--team),0 10px 26px rgba(16,32,51,.14)}
@@ -2503,15 +2506,16 @@ function g3SetOpen(card,on){
 }
 /* Startseite: „Nächstes Spiel“ (dauerhaft offen) und „Letztes Spiel“ (aufklappbar) als normale Spielkarten.
    Die bisherigen Kästen bleiben unsichtbar im Dokument, damit der restliche Code unverändert weiterläuft. */
-function g3HomeCard(id,g,label,fixed){
+const g3HomeOpen={}; /* gemerkter Zustand der beiden Startkarten */
+function g3HomeCard(id,g,label,defOpen){
   const old=document.querySelector(id==="g3HomeNext"?".next":"#lastGameCard"); if(!old)return;
   let el=document.getElementById(id);
   if(!el){el=document.createElement("article");el.id=id;old.parentNode.insertBefore(el,old)}
   if(!g){el.hidden=true;return}
   const res=resInfo(g), past=!!res||dt(g).getTime()+2*3600000<Date.now(), wasOpen=el.classList.contains("open");
-  el.hidden=false;el.className="card gz2 gz3 g3Home "+(g.team==="B"?"teamB":"teamA")+(fixed?" g3Fixed":"");el.dataset.team=g.team;
-  el.innerHTML=gameCardHtml(g,past,res,fixed,label);
-  g3Bind(el,g,fixed); if(!fixed)g3SetOpen(el,wasOpen);
+  el.hidden=false;el.className="card gz2 gz3 g3Home "+(g.team==="B"?"teamB":"teamA")+(id==="g3HomeLast"&&res?" res_"+res.o:"");el.dataset.team=g.team;
+  el.innerHTML=gameCardHtml(g,past,res,false,label);
+  g3Bind(el,g); g3SetOpen(el,id in g3HomeOpen?g3HomeOpen[id]:defOpen);
   hwDecorate(el,g);
 }
 /* fixed=true: Karte ist dauerhaft offen (Fenster „Spieldetails“) */
@@ -2521,7 +2525,9 @@ function g3Bind(card,g,fixed=false){
   card.setAttribute("role","button");card.tabIndex=0;
   const tog=()=>{
     const on=!card.classList.contains("open");
-    card.parentNode.querySelectorAll(".card.gz3.open:not(.g3Fixed)").forEach(c=>{if(c!==card)g3SetOpen(c,false)});
+    const home=card.classList.contains("g3Home");
+    (home?document.querySelectorAll(".g3Home.open"):card.parentNode.querySelectorAll(".card.gz3.open:not(.g3Fixed)")).forEach(c=>{if(c!==card){g3SetOpen(c,false);if(home)g3HomeOpen[c.id]=false}});
+    if(home)g3HomeOpen[card.id]=on;
     g3SetOpen(card,on);
     if(card.closest("#gamesList"))g3OpenKey=on?g3Key(g):"";
     if(on)setTimeout(()=>{try{card.scrollIntoView({block:"nearest",behavior:"smooth"})}catch(e){}},300);
