@@ -945,9 +945,9 @@ html.dark .newsBanner{background:#14233a}
 .newsSecTitle{font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 2px 8px}
 .newsItem{display:block;width:100%;text-align:left;font:inherit;color:inherit;border:0;border-radius:14px;padding:11px 13px;margin-bottom:8px;background:rgba(16,32,51,.05);--team:var(--a);box-shadow:inset 4px 0 0 var(--team)}
 .newsItem[data-team=B]{--team:var(--b)}
-.newsItem.note:not([data-team]),.newsItem.app{box-shadow:inset 4px 0 0 #7d8b9c}
+.newsItem.newsNote:not([data-team]),.newsItem.newsApp{box-shadow:inset 4px 0 0 #7d8b9c}
 html.dark .newsItem{background:rgba(255,255,255,.06)}
-.newsItem.change{cursor:pointer}
+.newsItem.newsChange{cursor:pointer}
 .newsItem.unread{background:color-mix(in srgb,#e5322b 9%,transparent)}
 .newsItem.unread .newsItemHead::after{content:"Neu";margin-left:6px;padding:1px 7px;border-radius:999px;background:#e5322b;color:#fff;font-size:10px;font-weight:900}
 .newsItemHead{display:flex;align-items:center;gap:6px;margin-bottom:5px}
@@ -3114,11 +3114,11 @@ function newsUnread(){const s=new Set(newsSeenMem);return newsItemsAll().filter(
 function newsMarkSeen(ids){ids.forEach(id=>{if(!newsSeenMem.includes(id))newsSeenMem.push(id)});newsSave(newsSeenMem)}
 function newsFmtCreated(ms){return ms?new Date(ms).toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit",year:"numeric"}):""}
 function newsNoteHtml(n,unread){
-  return `<div class="newsItem note${unread?" unread":""}"${n.team?` data-team="${esc(n.team)}"`:""}><div class="newsItemHead">${n.team?`<span class="teamBadge">U15 ${esc(n.team)}</span>`:'<span class="teamBadge both">A + B</span>'}<span class="newsDate">${esc(newsFmtCreated(n.created))}</span></div><b>${esc(n.title)}</b>${n.text?`<p>${esc(n.text)}</p>`:""}</div>`;
+  return `<div class="newsItem newsNote${unread?" unread":""}"${n.team?` data-team="${esc(n.team)}"`:""}><div class="newsItemHead">${n.team?`<span class="teamBadge">U15 ${esc(n.team)}</span>`:'<span class="teamBadge both">A + B</span>'}<span class="newsDate">${esc(newsFmtCreated(n.created))}</span></div><b>${esc(n.title)}</b>${n.text?`<p>${esc(n.text)}</p>`:""}</div>`;
 }
 function newsChangeHtml(c,unread){
   const g=c.g, day=dt(g).toLocaleDateString("de-DE",{weekday:"short",day:"2-digit",month:"2-digit"});
-  return `<button class="newsItem change${unread?" unread":""}" data-team="${esc(g.team)}" data-cid="${esc(c.id)}" type="button"><div class="newsItemHead"><span class="teamBadge">U15 ${esc(g.team)}</span><span class="newsDate">Spieländerung</span></div><b>${esc(shortTeam(g.home))} – ${esc(shortTeam(g.away))}</b><p><span class="newsNew">Neu: ${esc(day)} · ${esc(g.time)} Uhr · ${esc(g.stadium)}</span><br>${c.diff.map(esc).join(" · ")}</p></button>`;
+  return `<button class="newsItem newsChange${unread?" unread":""}" data-team="${esc(g.team)}" data-cid="${esc(c.id)}" type="button"><div class="newsItemHead"><span class="teamBadge">U15 ${esc(g.team)}</span><span class="newsDate">Spieländerung</span></div><b>${esc(shortTeam(g.home))} – ${esc(shortTeam(g.away))}</b><p><span class="newsNew">Neu: ${esc(day)} · ${esc(g.time)} Uhr · ${esc(g.stadium)}</span><br>${c.diff.map(esc).join(" · ")}</p></button>`;
 }
 function renderNews(){
   const items=newsUnread(), n=items.length, badge=document.getElementById("newsBadge");
@@ -3146,8 +3146,8 @@ function newsFill(){
   body.innerHTML=
     `<div class="newsSec"><div class="newsSecTitle">📰 Hinweise</div>${notes.length?notes.map(n=>newsNoteHtml(n,!s.has("n:"+n.id))).join(""):'<div class="small newsEmpty">Aktuell keine Hinweise.</div>'}</div>`+
     `<div class="newsSec"><div class="newsSecTitle">📅 Spieländerungen</div>${ch.length?ch.map(c=>newsChangeHtml(c,!s.has(c.id))).join(""):'<div class="small newsEmpty">Keine geänderten Termine.</div>'}</div>`+
-    `<div class="newsSec"><div class="newsSecTitle">✨ Neu in der App</div>${APP_NEWS.slice(0,3).map(x=>`<div class="newsItem app${s.has("v:"+x.v)?"":" unread"}"><div class="newsItemHead"><b>Version ${esc(x.v)}</b><span class="newsDate">${esc(x.d)}</span></div><ul>${x.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul></div>`).join("")}</div>`;
-  body.querySelectorAll(".newsItem.change").forEach(b=>{const c=ch.find(x=>x.id===b.dataset.cid);b.onclick=()=>{closeNews();openMatchDetails(c.g)}});
+    `<div class="newsSec"><div class="newsSecTitle">✨ Neu in der App</div>${APP_NEWS.slice(0,3).map(x=>`<div class="newsItem newsApp${s.has("v:"+x.v)?"":" unread"}"><div class="newsItemHead"><b>Version ${esc(x.v)}</b><span class="newsDate">${esc(x.d)}</span></div><ul>${x.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul></div>`).join("")}</div>`;
+  body.querySelectorAll(".newsItem.newsChange").forEach(b=>{const c=ch.find(x=>x.id===b.dataset.cid);b.onclick=()=>{closeNews();openMatchDetails(c.g)}});
 }
 function openNews(){
   let m=document.getElementById("newsModal");
