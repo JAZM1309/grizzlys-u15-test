@@ -57,7 +57,7 @@ self.addEventListener("notificationclick", event => {
   );
 });
 
-const CACHE = "grizzlys-u15-test-v67";
+const CACHE = "grizzlys-u15-test-v69";
 
 const CORE = [
   "./",
@@ -68,7 +68,8 @@ const CORE = [
   "./icon-512.png",
   "./icon-maskable-512.png",
   "./grizzlys-bug-icon.png",
-  "./halloween-logo.png"
+  "./halloween-logo.png?v=2",
+  "./christmas-logo.png"
 ];
 
 self.addEventListener("install", event => {
