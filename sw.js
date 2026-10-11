@@ -57,7 +57,7 @@ self.addEventListener("notificationclick", event => {
   );
 });
 
-const CACHE = "grizzlys-u15-test-v95";
+const CACHE = "grizzlys-u15-test-v96";
 
 const CORE = [
   "./",
