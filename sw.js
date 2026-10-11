@@ -57,7 +57,7 @@ self.addEventListener("notificationclick", event => {
   );
 });
 
-const CACHE = "grizzlys-u15-test-v97";
+const CACHE = "grizzlys-u15-test-v98";
 
 const CORE = [
   "./",
@@ -82,12 +82,15 @@ self.addEventListener("install", event => {
 
 self.addEventListener("message", event => {
   if (event.data && event.data.type === "SKIP_WAITING") self.skipWaiting();
+  // Die Seite fragt, welche Version hier wartet (Update-Banner nur bei wirklich neuerer Version).
+  if (event.data && event.data.type === "GET_VERSION" && event.ports && event.ports[0]) event.ports[0].postMessage({ cache: CACHE });
 });
 
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys()
-      .then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))
+      // Nur eigene alte Caches löschen: Live- und Test-App teilen sich den Speicher und löschten sich sonst gegenseitig.
+      .then(keys => Promise.all(keys.filter(key => key !== CACHE && key.startsWith(CACHE.replace(/\d+$/, ""))).map(key => caches.delete(key))))
       .then(() => self.clients.claim())
   );
 });
