@@ -57,7 +57,7 @@ self.addEventListener("notificationclick", event => {
   );
 });
 
-const CACHE = "grizzlys-u15-test-v105";
+const CACHE = "grizzlys-u15-test-v107";
 
 const CORE = [
   "./",
@@ -97,8 +97,13 @@ self.addEventListener("activate", event => {
 
 self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
+  // Seite und Programmdateien immer beim Server nachfragen (nicht aus dem 10-Minuten-Zwischenspeicher
+  // des Browsers), damit ein Update sofort ankommt. Bilder dürfen weiter aus dem Zwischenspeicher kommen.
+  const req = event.request, url = new URL(req.url);
+  const fresh = url.origin === self.location.origin && (req.mode === "navigate" || /\.(html|js|json|webmanifest)$/.test(url.pathname) || url.pathname.endsWith("/"));
+  const load = fresh ? fetch(req.url, { cache: "no-cache", credentials: "same-origin" }) : fetch(req);
   event.respondWith(
-    fetch(event.request)
+    load
       .then(response => {
         if (response.ok) {
           const copy = response.clone();
