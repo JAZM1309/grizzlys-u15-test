@@ -2,6 +2,8 @@
 
 Installierbare Web-App (PWA) für die ESV Grizzlys U15 A und U15 B, Saison 2026/27.
 
+Entwickelt von **JAZM**.
+
 ## Version 1.8.0
 
 ### Neu in Version 1.8.0
