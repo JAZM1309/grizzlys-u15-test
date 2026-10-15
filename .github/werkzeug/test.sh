@@ -23,6 +23,18 @@ if [ -f "$Q/index.html" ]; then
 fi
 for weg in functions firebase.json firestore.rules .github .git .nojekyll; do rm -rf "${Q:?}/$weg"; done
 
+# Doku nur für Live (Ordner "nur-live" im Paket: README.md, README.txt, FUNCTIONS-ANLEITUNG.txt, PDFs)
+# wird im Test-Repo unter .github/live-doku abgelegt und beim nächsten „Live gehen“ mitgenommen.
+DOKU_N=0
+[ -n "$V" ] && rm -rf .github/live-doku
+if [ -d "$Q/nur-live" ]; then
+  mkdir -p .github/live-doku
+  for f in "$Q/nur-live"/*; do
+    case "$(basename "$f")" in *.md|*.txt|*.pdf) cp "$f" .github/live-doku/; DOKU_N=$((DOKU_N+1)) ;; esac
+  done
+  rm -rf "$Q/nur-live"
+fi
+
 ALT=$(version_von .)
 if [ -n "$V" ] && [ -n "$ALT" ] && [ "$V" != "$ALT" ] && [ "$(printf '%s\n%s\n' "$ALT" "$V" | sort -V | tail -1)" = "$ALT" ] && [ "$AELTER" != "ja" ]; then
   fehler "ÄLTER: Das Paket ($V) ist älter als die Test-App ($ALT). Nichts hochgeladen."
@@ -39,3 +51,4 @@ git commit -q -m "Test ${V:-Dateien} (Admin-Bereich)"
 git push -q origin HEAD:main || fehler "Hochladen ins Test-Repo fehlgeschlagen."
 pages_neu
 info "Test-App: ${ALT:-?} → ${V:-unverändert} ($GEAENDERT Dateien). In 1–2 Minuten in der Test-App."
+[ "$DOKU_N" -gt 0 ] && info "Doku für Live ($DOKU_N Dateien) liegt bereit und geht beim nächsten „Live gehen“ mit."
