@@ -56,8 +56,10 @@ nav.toc{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
 nav.toc a{background:var(--card);color:var(--text);text-decoration:none;border:1px solid var(--line);border-radius:99px;padding:6px 11px;font-size:13px;font-weight:700}
 footer{max-width:860px;margin:0 auto;padding:0 16px 30px;font-size:12px;color:var(--muted)}
 footer a{color:inherit}
-.back{display:inline-block;margin-top:12px;color:#fff;font-weight:700;font-size:13px;text-decoration:none;background:rgba(255,255,255,.14);padding:7px 12px;border-radius:99px}
-@media print{header{background:#071b33!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}section{box-shadow:none;border:1px solid #ccc;break-inside:avoid}nav.toc,.back{display:none}body{background:#fff}}
+.hbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.back{display:inline-block;color:#fff;font:700 13px/1.2 inherit;font-family:inherit;text-decoration:none;background:rgba(255,255,255,.14);padding:8px 13px;border-radius:99px;border:0;cursor:pointer}
+.back.print{background:#f2a900;color:#2a1c00}
+@media print{header{background:#071b33!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}section{box-shadow:none;border:1px solid #ccc;break-inside:avoid}nav.toc,.hbtns,.back{display:none}body{background:#fff}}
 </style>
 </head>
 <body>
@@ -65,7 +67,7 @@ footer a{color:inherit}
 <small>ESV Grizzlys Bergkamen · Kampfgericht</small>
 <h1>Anzeigetafel bedienen<br>Stramatel 452 – Eishockey</h1>
 <p>Hauptpult für Uhr, Tore und Auszeiten · zwei Strafzeitpulte (Heim und Gast) für die Strafen</p>
-<a class="back" href="./">‹ Zurück zur App</a>
+<div class="hbtns"><a class="back" href="./">‹ Zurück zur App</a><button class="back print" type="button" onclick="window.print()">🖨 Drucken / als PDF speichern</button></div>
 </div></header>
 <main>
 <nav class="toc"><a href="#start">Vor dem Spiel</a><a href="#pult">Hauptpult</a><a href="#spiel">Während des Spiels</a><a href="#korr">Korrigieren</a><a href="#strafe">Strafzeitpulte</a><a href="#ende">Spielende</a><a href="#hilfe">Hilfe</a></nav>
