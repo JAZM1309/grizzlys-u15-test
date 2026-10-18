@@ -1147,6 +1147,7 @@ html.gameday .heroChips .season.gdMulti{flex-direction:column;align-items:flex-s
 .admNewsChk span{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text)}
 .admNewsChk input{width:18px;height:18px;flex:none}
 .admNewsChk small{font-weight:700}
+.admRepForm .full small{font-weight:700}
 .admRepForm textarea{width:100%;min-width:0;padding:9px;border:1px solid var(--border);border-radius:10px;font:inherit;font-size:13px;line-height:1.45;background:#fff;color:var(--text);resize:vertical}
 html.dark .admRepForm textarea{background:#121f33;border-color:#263a55;color:#e7eef8}
 .mdReport{margin-top:12px;padding:14px 16px;border-radius:16px;background:#fff;box-shadow:0 8px 22px rgba(16,32,51,.09)}
@@ -1631,7 +1632,7 @@ html.dark .gzForm i.x{box-shadow:0 0 0 1.5px rgba(255,255,255,.5)}
 </script>
 <script>window.ICONS={"pin": "<path d=\"M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0\"/><path d=\"M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z\"/>", "calplus": "<path d=\"M12.5 21h-6.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v5\"/><path d=\"M16 3v4\"/><path d=\"M8 3v4\"/><path d=\"M4 11h16\"/><path d=\"M16 19h6\"/><path d=\"M19 16v6\"/>", "cal": "<path d=\"M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z\"/><path d=\"M16 3v4\"/><path d=\"M8 3v4\"/><path d=\"M4 11h16\"/>", "bell": "<path d=\"M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6\"/><path d=\"M9 17v1a3 3 0 0 0 6 0v-1\"/>", "share": "<path d=\"M6 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0\"/><path d=\"M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0\"/><path d=\"M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0\"/><path d=\"M8.7 10.7l6.6 -3.4\"/><path d=\"M8.7 13.3l6.6 3.4\"/>", "filter": "<path d=\"M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227z\"/>", "target": "<path d=\"M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0\"/><path d=\"M12 12m-5 0a5 5 0 1 0 10 0a5 5 0 1 0 -10 0\"/><path d=\"M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0\"/>", "list": "<path d=\"M9 6l11 0\"/><path d=\"M9 12l11 0\"/><path d=\"M9 18l11 0\"/><path d=\"M5 6l0 .01\"/><path d=\"M5 12l0 .01\"/><path d=\"M5 18l0 .01\"/>", "chart": "<path d=\"M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z\"/><path d=\"M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z\"/><path d=\"M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z\"/><path d=\"M4 20h14\"/>", "search": "<path d=\"M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0\"/><path d=\"M21 21l-6 -6\"/>", "download": "<path d=\"M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2\"/><path d=\"M7 11l5 5l5 -5\"/><path d=\"M12 4l0 12\"/>", "file": "<path d=\"M14 3v4a1 1 0 0 0 1 1h4\"/><path d=\"M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z\"/><path d=\"M9 9l1 0\"/><path d=\"M9 13l6 0\"/><path d=\"M9 17l6 0\"/>", "chev": "<path d=\"M9 6l6 6l-6 6\"/>", "home": "<path d=\"M5 12l-2 0l9 -9l9 9l-2 0\"/><path d=\"M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7\"/><path d=\"M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6\"/>", "away": "<path d=\"M7 17l10 -10\"/><path d=\"M8 7l9 0l0 9\"/>", "clock": "<path d=\"M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0\"/><path d=\"M12 7v5l3 3\"/>", "world": "<path d=\"M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0\"/><path d=\"M3.6 9h16.8\"/><path d=\"M3.6 15h16.8\"/><path d=\"M11.5 3a17 17 0 0 0 0 18\"/><path d=\"M12.5 3a17 17 0 0 1 0 18\"/>", "chat": "<path d=\"M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1\"/>", "lock": "<path d=\"M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z\"/><path d=\"M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0\"/><path d=\"M8 11v-4a4 4 0 1 1 8 0v4\"/>"};window.ic=function(n,c){return '<svg class="ic'+(c?' '+c:'')+'" viewBox="0 0 24 24" aria-hidden="true">'+(ICONS[n]||'')+'</svg>';};window.actBtn=function(cl,icon,label){return '<button class="action '+cl+'" type="button"><span class="aIcon">'+ic(icon)+'</span>'+label+'</button>';};</script>
 </head>
-<body><div class="testRibbon" role="note">Test 1.9.1.132 · nichts wird gespeichert</div>
+<body><div class="testRibbon" role="note">Test 1.9.1.134 · nichts wird gespeichert</div>
 <div id="updateBanner" class="updateBanner" role="status" aria-live="polite" hidden><span class="updateBannerIcon" aria-hidden="true">&#8635;</span><div class="updateBannerText"><b>Neue Version verfügbar</b><span>Kurz aktualisieren, dann bist du auf dem neuesten Stand.</span></div><button id="updateBannerReload" class="updateBannerBtn" type="button">Aktualisieren</button><button id="updateBannerClose" class="updateBannerClose" type="button" aria-label="Schließen">&times;</button></div>
 <div class="app">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><g id="gearPath" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 8.5a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7z M19.4 13.5a7.7 7.7 0 0 0 0-3l2-1.6-2-3.4-2.4 1a7.6 7.6 0 0 0-2.6-1.5L14 2.5h-4l-.4 2.5a7.6 7.6 0 0 0-2.6 1.5l-2.4-1-2 3.4 2 1.6a7.7 7.7 0 0 0 0 3l-2 1.6 2 3.4 2.4-1a7.6 7.6 0 0 0 2.6 1.5l.4 2.5h4l.4-2.5a7.6 7.6 0 0 0 2.6-1.5l2.4 1 2-3.4z"/></g></defs></svg>
@@ -1664,7 +1665,7 @@ Tippe auf einen Gegner, um alle Spiele gegen ihn zu sehen.
 <section id="scheduleView" hidden><div class="scheduleHead"><div id="scheduleTitle" class="scheduleTitle">Spielplan</div><div id="scheduleCount" class="small"></div></div><div id="scheduleSticky" class="scheduleSticky"><div class="scheduleModes"><button id="chronoBtn" class="modeBtn active" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l11 0"/><path d="M9 12l11 0"/><path d="M9 18l11 0"/><path d="M5 6l0 .01"/><path d="M5 12l0 .01"/><path d="M5 18l0 .01"/></svg>Chronologisch</button><button id="monthBtn" class="modeBtn" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"/><path d="M16 3v4"/><path d="M8 3v4"/><path d="M4 11h16"/></svg>Kalender</button></div><div class="scheduleFilters"><div class="filterRow"><button id="filterToggle" class="filterToggle" type="button" aria-expanded="false"><span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227z"/></svg>Filter</span><span id="filterSummary" class="filterSummary">Alle Spiele</span></button><button id="todayBtn" class="todayBtn" type="button" aria-label="Zum heutigen Tag springen"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M12 12m-5 0a5 5 0 1 0 10 0a5 5 0 1 0 -10 0"/><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/></svg>Heute</button></div><div id="filterPanel" class="filterPanel" aria-hidden="true"><button class="filterOption teamAOpt selected" type="button" data-filter="A">U15 A</button><button class="filterOption teamBOpt selected" type="button" data-filter="B">U15 B</button><button class="filterOption homeOpt selected" type="button" data-filter="home">Heim</button><button class="filterOption awayOpt selected" type="button" data-filter="away">Auswärts</button><button id="filterReset" class="filterReset" type="button">↺ Alle Filter zurücksetzen</button></div></div></div><div class="tableLinks"><a href="https://ehv-nrw.de/leagues/league/u15/lln/66/" target="_blank" rel="noopener noreferrer"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M4 20h14"/></svg>Tabelle U15 A</a><a href="https://ehv-nrw.de/leagues/league/u15/bzl/67/" target="_blank" rel="noopener noreferrer"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M4 20h14"/></svg>Tabelle U15 B</a></div><div id="gamesList" class="list"></div><div id="calendarView" class="calendarWrap" hidden></div></section>
 <section id="rulesView" hidden><div class="scheduleHead"><div class="scheduleTitle">Regeln</div><div id="rulesCount" class="small"></div></div><div class="small rlIntro">Die wichtigsten Eishockey-Regeln einfach erklärt – für Eltern, Fans und Spieler.</div><div class="searchWrap"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M21 21l-6 -6"/></svg><input id="rulesSearch" type="search" placeholder="Regel suchen, z. B. Abseits" aria-label="Regeln durchsuchen" autocomplete="off" style="width:100%;padding:12px 56px 12px 42px;border:0;box-shadow:0 4px 14px rgba(16,32,51,.08);border-radius:14px;background:#fff;font:inherit"><button id="rulesMenuBtn" class="rlMenuBtn" type="button" aria-label="Themen auswählen" aria-expanded="false" aria-controls="rulesMenu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div><div id="rulesMenu" class="infoCard rlMenu" hidden></div><div id="rulesActive" class="rlActive" hidden></div><div id="rulesList" class="rlList"></div><div class="small rlSrc">Vereinfachte Erklärungen nach dem IIHF-Regelbuch (deutsche Fassung des DEB, Saison 2026/27); Handzeichen nach Anhang I „Game Official Signals“, Zeichnungen vereinfacht; Nachwuchs nach den Durchführungsbestimmungen des EHV NRW, Anhang 4 – Nachwuchs (Stand 13.05.2026). Verbindlich sind das offizielle Regelbuch und die <a href="https://ehv-nrw.de/documents/list/durchfuehrungsbestimmungen/" target="_blank" rel="noopener">Durchführungsbestimmungen des EHV NRW</a>. <a href="https://www.deb-online.de/2026/09/16/das-aendert-sich-im-regelwerk-zur-saison-2026-2027/" target="_blank" rel="noopener">Regeländerungen 2026/27 beim DEB</a></div></section>
 <section id="downloadsView" hidden><div class="infoCard"><div class="dlTitle"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/><path d="M7 11l5 5l5 -5"/><path d="M12 4l0 12"/></svg>Kalender-Downloads</div><div class="small" style="margin-bottom:14px">Lade den Spielplan als Kalenderdatei für dein Handy herunter oder drucke ihn als PDF.</div><div class="downloadCards"><button id="downloadCal" class="downloadCard dlCal"><span class="dlIcon" style="background:var(--navy)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.5 21h-6.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v5"/><path d="M16 3v4"/><path d="M8 3v4"/><path d="M4 11h16"/><path d="M16 19h6"/><path d="M19 16v6"/></svg></span><b>Kalender herunterladen</b><small>Mannschaft, Heim/Auswärts und Zeitraum selbst auswählen</small><svg class="ic dlGo" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6l-6 6"/></svg></button><button id="downloadPdf" class="downloadCard"><span class="dlIcon" style="background:#fde8e6;color:#d6352b"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"/><path d="M9 9l1 0"/><path d="M9 13l6 0"/><path d="M9 17l6 0"/></svg></span><b>Spielplan als PDF</b><small>Alle Spiele · Ergebnisse, wenn vorhanden · zum Ausdrucken</small><svg class="ic dlGo" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6l-6 6"/></svg></button></div></div><div class="infoCard"><div class="dlTitle"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1z"/><path d="M7 20h10"/><path d="M9 16v4"/><path d="M15 16v4"/></svg>Für das Kampfgericht</div><div class="small" style="margin-bottom:14px">Kurzanleitungen für die Technik in der Eishalle.</div><div class="downloadCards"><a id="downloadScoreboard" class="downloadCard" href="anleitung-anzeigetafel.html" style="text-decoration:none;color:inherit"><span class="dlIcon" style="background:#fff3d6;color:#b26b00"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 13m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/><path d="M12 10v3l2 2"/><path d="M7 4l-2.75 2"/><path d="M17 4l2.75 2"/></svg></span><b>Anzeigetafel bedienen</b><small>Stramatel 452 · Hauptpult und Strafzeitpulte · Schritt für Schritt</small><svg class="ic dlGo" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6l-6 6"/></svg></a></div></div><div class="infoCard dlInsta"><div class="dlTitle"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M16.5 7.5v.01"/></svg>Bilder für Social Media</div><div class="small" style="margin-bottom:14px">Spieltagsbild ab 5 Tage vor dem Spiel, Ergebnisbild bis 5 Tage nach dem Spiel – zum Teilen oder Speichern.</div><div id="dlInstaList" class="downloadCards"></div></div></section>
-<section id="infoView" hidden><div class="inHero"><img src="logo.png" alt="" width="54" height="54"><div><b>ESV Grizzlys Bergkamen</b><span>U15 · Saison 2026/27</span></div><em class="inVer">1.9.1.132</em></div>
+<section id="infoView" hidden><div class="inHero"><img src="logo.png" alt="" width="54" height="54"><div><b>ESV Grizzlys Bergkamen</b><span>U15 · Saison 2026/27</span></div><em class="inVer">1.9.1.134</em></div>
 <div class="infoCard inCard"><div class="inHead"><b>Dein digitaler Spielplan</b></div><p class="inText">Alle Termine und Ergebnisse von <b>U15 A</b> und <b>U15 B</b> an einem Ort – immer aktuell, auch unterwegs.</p><button id="shareApp" class="action inShare" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M8.7 10.7l6.6 -3.4"/><path d="M8.7 13.3l6.6 3.4"/></svg>App teilen</button></div>
 <div class="infoCard inCard"><div class="inHead"><b>Grizzlys Teamseiten</b></div><span class="small">Kader, Tabellen und News auf den offiziellen Vereinsseiten.</span><div class="inTeams"><a class="inTeam teamA" href="http://www.grizzlys-bergkamen.de/teams/team.php?slug=grizzlys-u15a" target="_blank" rel="noopener noreferrer"><span class="inBadge">A</span><span class="inTeamTx"><b>Grizzlys U15 A</b><small>Teamseite öffnen</small></span><span class="inGo"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6"/><path d="M11 13l9 -9"/><path d="M15 4h5v5"/></svg></span></a><a class="inTeam teamB" href="http://www.grizzlys-bergkamen.de/teams/team.php?slug=grizzlys-u15b" target="_blank" rel="noopener noreferrer"><span class="inBadge">B</span><span class="inTeamTx"><b>Grizzlys U15 B</b><small>Teamseite öffnen</small></span><span class="inGo"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6"/><path d="M11 13l9 -9"/><path d="M15 4h5v5"/></svg></span></a></div></div>
 <p class="inNote">Die Logos stammen aus den jeweiligen Vereins- bzw. öffentlich verfügbaren Webauftritten. Ist ein Logo nicht erreichbar, zeigt die App ein neutrales Kürzel.</p><p class="inMade">App entwickelt von <b>JAZM</b><span id="inMadeVer"></span></p></section>
@@ -2192,7 +2193,7 @@ async function submitBugReport(){
       area,
       description,
       contact,
-      appVersion:"1.9.1.132",
+      appVersion:"1.9.1.134",
       platform:detectPlatform(),
       userAgent:navigator.userAgent||"",
       pushRegistered:getPushRegistrationStatus(),
@@ -2802,7 +2803,7 @@ async function loadReports(){
   try{
     const isAdm=auth.currentUser?.uid===ADMIN_UID;
     const snap=await getDocs(isAdm?collection(db,"reports"):query(collection(db,"reports"),where("published","==",true))), m={};
-    snap.forEach(d=>{const x=d.data()||{};m[d.id]={title:String(x.title||""),text:String(x.text||""),published:x.published===true,publishedAt:x.publishedAt?.toMillis?x.publishedAt.toMillis():0}});
+    snap.forEach(d=>{const x=d.data()||{};m[d.id]={title:String(x.title||""),text:String(x.text||""),keywords:String(x.keywords||""),published:x.published===true,publishedAt:x.publishedAt?.toMillis?x.publishedAt.toMillis():0}});
     Object.keys(window.gameReports||{}).forEach(k=>{if(window.gameReports[k]._local)m[k]=window.gameReports[k]});
     window.gameReports=m;
   }catch(err){ console.warn("Spielberichte konnten nicht geladen werden",err); }
@@ -2810,11 +2811,11 @@ async function loadReports(){
   window.renderNews?.(); if(adm.sheet)admRenderSheet();
 }
 async function admRepSave(g,title,text,published){
-  const k=resultKey(g), old=window.gameReports[k]||{};
+  const k=resultKey(g), old=window.gameReports[k]||{}, keywords=String(admRepKwGet(g)||"").slice(0,200);
   const pubAt=published?(old.published&&old.publishedAt?old.publishedAt:Date.now()):0;
-  const loc={title,text,published,publishedAt:pubAt};
+  const loc={title,text,published,publishedAt:pubAt,keywords};
   try{
-    await setDoc(doc(db,"reports",k),{gameId:k,team:g.team,date:g.date,title:title.slice(0,120),text:text.slice(0,2000),published,publishedAt:published?(old.published&&old.publishedAt?new Date(old.publishedAt):serverTimestamp()):null,updatedAt:serverTimestamp()});
+    await setDoc(doc(db,"reports",k),{gameId:k,team:g.team,date:g.date,title:title.slice(0,120),text:text.slice(0,2000),keywords,published,publishedAt:published?(old.published&&old.publishedAt?new Date(old.publishedAt):serverTimestamp()):null,updatedAt:serverTimestamp()});
     window.gameReports[k]=loc;
     return true;
   }catch(err){
@@ -2838,7 +2839,7 @@ async function admRepLoad(g,force=false){
   }catch(err){console.warn("gameReport",err);admRepState[k]={err:/not-found|NOT_FOUND/i.test(String(err.code||err.message))?"Function „gameReport“ ist noch nicht deployt.":"Spieldetails vom EHV gerade nicht abrufbar."}}
   if(adm.sheet&&admGame(adm.sheet)===g){
     const w=document.getElementById("admSheet"), tx=w&&w.querySelector("#admRepText"), ti=w&&w.querySelector("#admRepTitle"), h=w&&w.querySelector("#admRepEhv");
-    if(tx&&tx.dataset.auto==="1"){const d=window.repDraft(g,Number(tx.dataset.v)||0);if(d){ti.value=d.title;tx.value=d.text}}
+    if(tx&&tx.dataset.auto==="1"){const d=window.repDraft(g,Number(tx.dataset.v)||0,admRepKwGet(g));if(d){ti.value=d.title;tx.value=d.text}}
     if(h)h.innerHTML=admRepEhvHint(k);
   }
 }
@@ -2849,15 +2850,16 @@ function admRepEhvHint(k){
   if(st.err)return "ℹ️ "+esc(st.err)+" Der Entwurf nutzt nur Ergebnis, Drittel und Tabelle.";
   return "";
 }
+const admRepKw={}; /* Schlagworte je Spiel (bis zum Speichern im Speicher) */
+const admRepKwGet=g=>{const k=resultKey(g);return k in admRepKw?admRepKw[k]:((window.gameReports[k]||{}).keywords||"")};
 function admRepBox(g,has){
   if(!has)return `<div class="admBox"><h5>📝 Spielbericht</h5><div class="admHint">Sobald ein Ergebnis da ist, erstellt die App hier einen Entwurf.</div></div>`;
-  const r=window.gameReports[resultKey(g)], d=r&&r.text?r:(window.repDraft(g)||{title:"",text:""});
+  const r=window.gameReports[resultKey(g)], d=r&&r.text?r:(window.repDraft(g,0,admRepKwGet(g))||{title:"",text:""});
   const st=r&&r.published?'<span class="admSt ok">veröffentlicht</span>':r&&r.text?'<span class="admSt chg">Entwurf gespeichert</span>':'<span class="admSt">automatischer Entwurf</span>';
   const auto=!(r&&r.text);
-  return `<div class="admBox"><h5>📝 Spielbericht ${st}</h5><div class="admForm admRepForm"><label class="full">Überschrift<input id="admRepTitle" maxlength="120" value="${esc(d.title)}"></label><label class="full">Text<textarea id="admRepText" rows="9" maxlength="2000"${auto?' data-auto="1"':""}>${esc(d.text)}</textarea></label>
+  return `<div class="admBox"><h5>📝 Spielbericht ${st}</h5><div class="admForm admRepForm"><label class="full">Überschrift<input id="admRepTitle" maxlength="120" value="${esc(d.title)}"></label><label class="full">Schlagworte<input id="admRepKw" maxlength="200" placeholder="z. B. Teamgeist, Kampfgeist, starker Torhüter" value="${esc(admRepKwGet(g))}"><small class="admRepKwHint">Mit Komma trennen – die App macht daraus passende Sätze.</small></label><label class="full">Text<textarea id="admRepText" rows="9" maxlength="2000"${auto?' data-auto="1"':""}>${esc(d.text)}</textarea></label>
     <label class="full admNewsChk"><span><input id="admRepNames" type="checkbox"${admRepNames()?" checked":""}> Namen von Torschützen und Torhütern nennen</span><small>Nur mit Einverständnis der Eltern bzw. des Vereins. Strafen werden nie mit Namen genannt.</small></label></div>
     <div class="admHint" id="admRepEhv">${admRepEhvHint(resultKey(g))}</div>
-    <div class="admHint">Tipp: einen eigenen Satz ergänzen (z. B. starke Torhüterleistung).</div>
     <div class="admBtns" style="margin-top:8px">${r&&r.published?'<button type="button" class="admBtn pri" data-rep="pub">💾 Änderung veröffentlichen</button><button type="button" class="admBtn no" data-rep="off">Zurückziehen</button>':'<button type="button" class="admBtn pri" data-rep="pub">📰 Veröffentlichen</button><button type="button" class="admBtn" data-rep="save">Entwurf speichern</button>'}<button type="button" class="admBtn" data-rep="new">↻ Neu erzeugen</button><button type="button" class="admBtn" data-rep="copy">📋 Kopieren</button></div></div>`;
 }
 function admRepBind(box,g){
@@ -2867,9 +2869,15 @@ function admRepBind(box,g){
     if(tx0&&!tx0.dataset.auto&&!confirm("Text mit dem neuen Entwurf ersetzen? Eigene Änderungen gehen dabei verloren.")){admRepLoad(g,true);return}
     if(tx0)tx0.dataset.auto="1"; admRepLoad(g,true)};
   if(box.querySelector("#admRepText"))admRepLoad(g);
+  const kwIn=box.querySelector("#admRepKw"), kwHint=box.querySelector(".admRepKwHint"); let kwT=null;
+  if(kwIn)kwIn.addEventListener("input",()=>{admRepKw[resultKey(g)]=kwIn.value;clearTimeout(kwT);kwT=setTimeout(()=>{
+    const ti=box.querySelector("#admRepTitle"), tx=box.querySelector("#admRepText"); if(!tx)return;
+    if(tx.dataset.auto==="1"){const d=window.repDraft(g,Number(tx.dataset.v)||0,kwIn.value);if(d){ti.value=d.title;tx.value=d.text}kwHint.textContent="✓ In den Text eingebaut."}
+    else kwHint.textContent="Du hast den Text selbst geändert – „↻ Neu erzeugen“ baut die Schlagworte ein.";
+  },500)});
   box.querySelectorAll("[data-rep]").forEach(b=>b.onclick=async()=>{
     const a=b.dataset.rep, ti=box.querySelector("#admRepTitle"), tx=box.querySelector("#admRepText"); if(!ti||!tx)return;
-    if(a==="new"){if(tx.value.trim()&&!tx.dataset.auto&&!confirm("Text durch einen neuen automatischen Entwurf ersetzen?"))return;const v=(Number(tx.dataset.v)||0)+1;tx.dataset.v=v;const d=window.repDraft(g,v);if(d){ti.value=d.title;tx.value=d.text;tx.dataset.auto="1"}return}
+    if(a==="new"){if(tx.value.trim()&&!tx.dataset.auto&&!confirm("Text durch einen neuen automatischen Entwurf ersetzen?"))return;const v=(Number(tx.dataset.v)||0)+1;tx.dataset.v=v;const d=window.repDraft(g,v,admRepKwGet(g));if(d){ti.value=d.title;tx.value=d.text;tx.dataset.auto="1"}return}
     if(a==="copy"){const t=ti.value.trim()+"\n\n"+tx.value.trim();try{await navigator.clipboard.writeText(t);b.textContent="✓ Kopiert"}catch(e){prompt("Text kopieren:",t)}return}
     const title=ti.value.trim(), text=tx.value.trim();
     if(a!=="off"&&text.length<20){alert("Der Bericht ist noch zu kurz.");return}
@@ -4817,6 +4825,7 @@ renderInstaDownloads(); setInterval(()=>{try{renderInstaDownloads()}catch(e){}},
 /* ===== v66: News-Bereich – Hinweise, Spieländerungen, Neues in der App ===== */
 /* Nur Neuerungen, die für Nutzer sichtbar oder spürbar sind. Neueste Version oben. */
 const APP_NEWS=[
+  {v:"1.9.1.133",d:"Oktober 2026",items:["Neu: Spielberichte! Nach dem Spiel gibt es einen kurzen Bericht – in den News, auf der Startseite beim letzten Spiel und in den Spieldetails.","Gespielte Spiele zeigen statt Route und Adresse nur noch, wo gespielt wurde."]},
   {v:"1.9.1.120",d:"Oktober 2026",items:["Regeln: neue Nachwuchs-Regeln aus NRW (Anhang 4) – z. B. wer in der U15 spielt, Bodycheck ab U15, Zahnschutz-Pflicht, A- und B-Mannschaft, Torhüter-Einsatzzeiten. Die Themen stehen jetzt aufgeräumt im Menü ☰ neben der Suche."]},
   {v:"1.9.1.117",d:"Oktober 2026",items:["Regeln: neues Thema „Handzeichen“ – 30 Zeichen der Schiedsrichter und Linienrichter mit Bild und kurzer Erklärung, auch über die Suche zu finden (z. B. „Hüfte“ oder „Arme gekreuzt“)."]},
   {v:"1.9.1.115",d:"Oktober 2026",items:["Downloads: neue Kurzanleitung „Anzeigetafel bedienen“ für das Kampfgericht – Stramatel-Hauptpult und Strafzeitpulte mit Tastenbild, Schritt für Schritt."]},
@@ -4906,7 +4915,62 @@ const repList=a=>a.length<2?a.join(""):a.slice(0,-1).join(", ")+" und "+a[a.leng
 const repCap=x=>x?x[0].toUpperCase()+x.slice(1):x;
 window.repDetails=window.repDetails||{};
 /* 1.9.1.130: Spielbericht als Fließtext – Einstieg, Spielverlauf, Mannschaftsleistung, Ausblick */
-function repDraft(g,variant=0){
+/* 1.9.1.134: Schlagworte des Admins → passende Sätze (je nach Sieg / Niederlage / Unentschieden) */
+const REP_KW=[
+ {re:/teamgeist|zusammenhalt|geschlossen|mannschaftsleistung|einheit|füreinander|fuereinander|kollektiv/,
+  w:["Der Erfolg war vor allem eine Frage des Teamgeists: Die Mannschaft trat geschlossen auf, jeder kämpfte für jeden.","Die Geschlossenheit war der Schlüssel – hier stand eine echte Einheit auf dem Eis."],
+  l:["Trotz der Niederlage stimmte der Zusammenhalt: Die Mannschaft trat bis zum Schluss geschlossen auf.","Auch wenn es nicht gereicht hat – als Team hielt die Mannschaft zusammen."],
+  d:["Die Mannschaft trat geschlossen auf und hielt als Team zusammen."]},
+ {re:/kampf|einsatz|leidenschaft|wille|moral|biss|herz/,
+  w:["Mit großem Kampfgeist warf sich das Team in jeden Zweikampf.","Der unbedingte Wille war in jeder Szene zu spüren."],
+  l:["Kämpferisch gab es nichts vorzuwerfen: Bis zur letzten Sekunde wurde alles gegeben.","Am Einsatz lag es nicht – gekämpft wurde bis zum Schluss."],
+  d:["Kämpferisch zeigte die Mannschaft eine starke Leistung."]},
+ {re:/torh|torwart|goalie|keeper|rückhalt|rueckhalt|parade/,
+  w:["Großen Anteil am Erfolg hatte die starke Leistung im Tor.","Hinten war auf den Rückhalt im Tor Verlass."],
+  l:["Im Tor gab es eine starke Leistung, die Schlimmeres verhinderte."],
+  d:["Ein starker Rückhalt im Tor sicherte das Unentschieden."]},
+ {re:/defensiv|abwehr|verteidig/,
+  w:["Die Defensive stand sicher und ließ kaum etwas zu."],
+  l:["Die Defensive bemühte sich nach Kräften, hatte aber viel zu tun."],
+  d:["Die Defensive stand über weite Strecken sicher."]},
+ {re:/tempo|schnell|druck|offensiv|angriff/,
+  w:["Mit hohem Tempo setzten die Grizzlys den Gegner immer wieder unter Druck."],
+  l:["Mit hohem Tempo versuchte die Mannschaft, den Gegner unter Druck zu setzen."],
+  d:["Mit viel Tempo ging es immer wieder in Richtung gegnerisches Tor."]},
+ {re:/disziplin|fair/,
+  w:["Dazu blieb die Mannschaft diszipliniert und fair."],l:["Die Mannschaft blieb dabei stets diszipliniert und fair."],d:["Die Mannschaft blieb diszipliniert und fair."]},
+ {re:/chancen|effektiv|kaltschn|abschluss/,
+  w:["Vorne nutzten die Grizzlys ihre Chancen eiskalt."],l:["Woran es heute haperte, war die Chancenverwertung."],d:["Mit etwas mehr Glück im Abschluss wäre mehr drin gewesen."]},
+ {re:/fans|publikum|stimmung|zuschauer|unterstütz|unterstuetz|eltern/,
+  w:["Die lautstarke Unterstützung von den Rängen trug die Mannschaft durch das Spiel."],l:["Die Unterstützung von den Rängen war bis zum Schluss großartig."],d:["Von den Rängen gab es lautstarke Unterstützung."]},
+ {re:/strafe|strafzeit|unterzahl/,
+  w:["Trotz einiger Strafzeiten behielt die Mannschaft die Kontrolle."],l:["Zu viele Strafzeiten brachten die Grizzlys immer wieder in Unterzahl."],d:["Einige Strafzeiten machten das Spiel nicht leichter."]},
+ {re:/personal|dünn|duenn|kader|verletz|krank|ersatz|ausfälle|ausfaelle|kurz besetzt/,
+  w:["Personell war die Mannschaft dünn besetzt – umso höher ist die Leistung einzuordnen."],l:["Personell dünn besetzt, fehlte am Ende etwas die Kraft."],d:["Personell dünn besetzt, war das Unentschieden ein Erfolg."]},
+ {re:/spaß|spass|freude/,
+  w:["Vor allem hatten die Grizzlys sichtlich Spaß auf dem Eis."],l:["Den Spaß am Eishockey ließ sich die Mannschaft trotzdem nicht nehmen."],d:["Spaß auf dem Eis hatte die Mannschaft allemal."]},
+ {re:/entwickl|fortschritt|lernen|steigerung|verbessert/,
+  w:["Die Fortschritte der letzten Wochen waren deutlich zu sehen."],l:["Trotz des Ergebnisses waren die Fortschritte der letzten Wochen zu erkennen."],d:["Die Fortschritte der letzten Wochen waren zu sehen."]},
+ {re:/aufholjagd|comeback|aufgeben|aufgegeben/,
+  w:["Aufgeben war heute keine Option."],l:["Aufgegeben hat sich die Mannschaft nie."],d:["Aufgegeben hat sich die Mannschaft nie."]},
+];
+function repKeywordSentences(kwText,outcome,pick){
+  const kws=String(kwText||"").split(/[,;\n]+/).map(x=>x.trim()).filter(Boolean).slice(0,6);
+  const out=[], used=new Set(), free=[];
+  kws.forEach(k=>{
+    const n=k.toLowerCase(), hit=REP_KW.findIndex(e=>e.re.test(n));
+    if(hit>=0){if(!used.has(hit)){used.add(hit);out.push(pick(REP_KW[hit][outcome]))}}
+    else free.push(k.replace(/[.!]+$/,""));
+  });
+  /* freie Schlagworte ohne eigene Vorlage */
+  const withP=free.filter(k=>/^(mit|ohne|voller|trotz)\s/i.test(k)), nouns=free.filter(k=>!withP.includes(k));
+  withP.forEach(k=>out.push(`Die Mannschaft trat ${k.replace(/^./,c=>c.toLowerCase())} auf.`));
+  if(nouns.length){const L=repList(nouns);
+    out.push(outcome==="w"?pick([`Was das Team heute auszeichnete: ${L}.`,`Stichworte des Spiels aus Grizzlys-Sicht: ${L}.`]):outcome==="l"?`Positiv bleibt trotzdem: ${L}.`:`Was das Spiel prägte: ${L}.`)}
+  return out;
+}
+window.repKeywordSentences=repKeywordSentences;
+function repDraft(g,variant=0,kw=""){
   const r=window.resultFor(g); if(!r||r.homeScore===undefined||r.homeScore==="")return null;
   const home=isHome(g), us=Number(home?r.homeScore:r.awayScore), them=Number(home?r.awayScore:r.homeScore);
   const opp=shortTeam(home?g.away:g.home), T="U15 "+g.team, sc=us+":"+them, diff=us-them;
@@ -4982,6 +5046,10 @@ function repDraft(g,variant=0){
     else if(diff>=3&&them===1&&theirs[0])V.push(`Den Ehrentreffer für ${oppN} gab es in der ${repMin(theirs[0].t)}. Minute.`);
     P.push(V.join(" "));
   }
+
+  /* ---------- 2b. Schlagworte des Admins ---------- */
+  const KS=repKeywordSentences(kw,diff>0?"w":diff<0?"l":"d",pick);
+  if(KS.length)P.push(KS.join(" "));
 
   /* ---------- 3. Mannschaftsleistung ---------- */
   if(det){
