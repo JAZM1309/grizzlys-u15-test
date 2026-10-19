@@ -11,7 +11,9 @@ Schreibweise 1.ZWEITE.DRITTE.CACHE:
 - dritte Stelle: optische Änderungen, Fehlerbehebungen und kleine Verbesserungen
 - letzte Stelle: Cache-Nummer aus sw.js (steigt bei fast jedem Stand)
 Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle 1.9.1 und wurden am 19.10.2026 nachträglich nummeriert. Die GitHub-Markierungen (live-1.9.1.…, wichtig für Live zurücksetzen) behalten ihren alten Namen:
-- 1.20.0.141 = bisher – (19.10.2026, Neue Funktion)
+- 1.21.1.143 (19.10.2026, Optisch)
+- 1.21.0.142 (19.10.2026, Neue Funktion, nur Test)
+- 1.20.0.141 (19.10.2026, Neue Funktion, nur Test)
 - 1.19.2.140 = bisher 1.9.1.140 (18.10.2026, Optisch)
 - 1.19.1.138 = bisher 1.9.1.138 (18.10.2026, Kleine Verbesserung)
 - 1.19.0.137 = bisher 1.9.1.137 (18.10.2026, Neue Funktion)
@@ -37,6 +39,22 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle 1.9.1 und wurd
 - 1.10.1.86 = bisher 1.9.1.86 (10.10.2026, Fehlerbehebung und Verbesserung)
 - 1.10.0.83 = bisher 1.9.1.83 (10.10.2026, Neue Funktion)
 - 1.9.1.66 = bisher 1.9.1.66 (08.10.2026, Neue Funktion)
+
+Version 1.21.1
+
+Neu in Version 1.21.1 (Stand 1.21.1.143, 19.10.2026) – Optisch
+- Letzte Ergebnisse kompakt (Startseite): statt zweier großer „Letztes Spiel“-Karten eine Karte mit je einer Zeile pro Mannschaft (Datum, Teams mit Logos, Ergebnis, Sieg/Niederlage, Teamfarbe am Rand). Ein Tipp öffnet die Spieldetails; gibt es einen Spielbericht, steht darunter „📝 Spielbericht“. Funktion lrRender in index.html; die großen Karten g3HomeLast/g3HomeLast2 bleiben unsichtbar im Dokument. Eigene Stile für Dunkel und Halloween
+- Mindestschriftgröße: 56 Stellen im Stil mit 9–10,5 px auf 11 px (≤ 9,5 px) bzw. 12 px angehoben (u. a. Gegnerliste, Heim/Auswärts, Tabellen-Chips, Drittel, Admin-Bereich). Ausgenommen: News-Zähler am Symbol, Mini-Spiel und PDF-Druck
+- Neu in der App: Eintrag 1.21.1.143 (fasst 1.20.0, 1.21.0 und 1.21.1 zusammen, da keine davon einzeln live war)
+
+Version 1.21.0
+
+Neu in Version 1.21.0 (Stand 1.21.0.142, 19.10.2026) – Neue Funktion
+- Datenschutz & Impressum: neue Seite, erreichbar über Info (unten), Einstellungen › Datenschutz und die Zustimmungs-Abfrage. Die Angaben im Impressum (Name, Anschrift, E-Mail) sind gelb markierte Platzhalter und müssen vor dem Live-Gang ausgefüllt werden (legalModal in index.html)
+- Nutzungsstatistik nur mit Zustimmung: beim ersten Start fragt die App „Darf die App mitzählen?“ (Erlauben / Nein danke, gleich groß). Ohne Zustimmung landet nichts im dataLayer, es geht also nichts an Google Analytics; die sw.js liefert die Analytics-Datei dann gar nicht erst aus. Änderbar unter Einstellungen › Datenschutz („Nutzungsstatistik erlauben“), beim Widerruf werden die _ga-Cookies gelöscht. Gespeichert in localStorage (grizzlysConsent) und für die sw.js im Speicher grizzlys-consent. Die Ankerzeilen für tolive.py sind unverändert
+- Geräte-Zählung: appInstallations wird nur noch mit Zustimmung oder bei eingeschaltetem Push geschrieben – die Gerätezahl in der App-Statistik fällt dadurch niedriger aus
+- Regeln mit Themen-Chips: unter der Suche steht eine waagerecht wischbare Reihe mit allen Themen und Anzahl; ein Tipp filtert, „Alle“ zeigt wieder alles. Das alte Themen-Menü (☰) ist ausgeblendet
+- Push bei Spieländerung: im Spiel-Fenster (Admin › Termin ändern) gibt es das Häkchen „📲 Push an alle senden“. Es lässt sich nur setzen, wenn Datum, Uhrzeit oder Spielort wirklich geändert wurden, und ist standardmäßig aus; der Hinweis darunter zeigt den genauen Push-Text. Versand über den bestehenden News-Push (onNewsCreated, beachtet die Mannschaftsauswahl der Geräte) – keine neue Cloud Function, keine Regeländerung. Der Hinweis wird mit „Sichtbar bis gestern“ angelegt, erscheint also nicht doppelt in den News, steht aber im Admin-Bereich unter den abgelaufenen Hinweisen als Nachweis. EHV-Übernahmen verschicken keinen Push
 
 Version 1.20.0
 
@@ -431,7 +449,7 @@ Schulferien
 NRW-Ferien im Kalender grün hinterlegt; Termine als Liste nrwFerien in index.html (2026/27).
 
 Version
-Schreibweise 1.20.0.141: vorn die App-Version (Regeln siehe Versionsnummern oben), die letzte Zahl ist die Cache-Nummer zum Vergleich von Test und Live.
+Schreibweise 1.21.1.143: vorn die App-Version (Regeln siehe Versionsnummern oben), die letzte Zahl ist die Cache-Nummer zum Vergleich von Test und Live.
 
 Veröffentlichung
 Kostenlose PWA über GitHub Pages.

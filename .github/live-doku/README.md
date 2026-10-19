@@ -16,7 +16,9 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
-| 1.20.0.141 | – | 19.10.2026 | Neue Funktion |
+| 1.21.1.143 | – | 19.10.2026 | Optisch |
+| 1.21.0.142 | – (nur Test) | 19.10.2026 | Neue Funktion |
+| 1.20.0.141 | – (nur Test) | 19.10.2026 | Neue Funktion |
 | 1.19.2.140 | 1.9.1.140 | 18.10.2026 | Optisch |
 | 1.19.1.138 | 1.9.1.138 | 18.10.2026 | Kleine Verbesserung |
 | 1.19.0.137 | 1.9.1.137 | 18.10.2026 | Neue Funktion |
@@ -43,9 +45,27 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 | 1.10.0.83 | 1.9.1.83 | 10.10.2026 | Neue Funktion |
 | 1.9.1.66 | 1.9.1.66 | 08.10.2026 | Neue Funktion |
 
+## Version 1.21.1
+
+### Neu in Version 1.21.1 (Stand 1.21.1.143, 19.10.2026) – Optisch
+
+- **Letzte Ergebnisse kompakt (Startseite):** statt zweier großer „Letztes Spiel“-Karten eine Karte mit je einer Zeile pro Mannschaft (Datum, Teams mit Logos, Ergebnis, Sieg/Niederlage, Teamfarbe am Rand). Ein Tipp öffnet die Spieldetails; gibt es einen Spielbericht, steht darunter „📝 Spielbericht“. Funktion `lrRender` in `index.html`; die großen Karten `g3HomeLast`/`g3HomeLast2` bleiben unsichtbar im Dokument. Eigene Stile für Dunkel und Halloween
+- **Mindestschriftgröße:** 56 Stellen im Stil mit 9–10,5 px auf 11 px (≤ 9,5 px) bzw. 12 px angehoben (u. a. Gegnerliste, Heim/Auswärts, Tabellen-Chips, Drittel, Admin-Bereich). Ausgenommen: News-Zähler am Symbol, Mini-Spiel und PDF-Druck
+- **Neu in der App:** Eintrag 1.21.1.143 (fasst 1.20.0, 1.21.0 und 1.21.1 zusammen, da keine davon einzeln live war)
+
+## Version 1.21.0
+
+### Neu in Version 1.21.0 (Stand 1.21.0.142, 19.10.2026, nur in der Test-App) – Neue Funktion
+
+- **Datenschutz & Impressum:** neue Seite, erreichbar über Info (unten), Einstellungen › Datenschutz und die Zustimmungs-Abfrage. Die Angaben im Impressum (Name, Anschrift, E-Mail) sind gelb markierte Platzhalter und müssen vor dem Live-Gang ausgefüllt werden (`legalModal` in `index.html`)
+- **Nutzungsstatistik nur mit Zustimmung:** beim ersten Start fragt die App „Darf die App mitzählen?“ (Erlauben / Nein danke, gleich groß). Ohne Zustimmung landet nichts im `dataLayer`, es geht also nichts an Google Analytics; die `sw.js` liefert die Analytics-Datei dann gar nicht erst aus. Änderbar unter Einstellungen › Datenschutz („Nutzungsstatistik erlauben“), beim Widerruf werden die `_ga`-Cookies gelöscht. Gespeichert in `localStorage` (`grizzlysConsent`) und für die `sw.js` im Speicher `grizzlys-consent`. Die Ankerzeilen für `tolive.py` sind unverändert
+- **Geräte-Zählung:** `appInstallations` wird nur noch mit Zustimmung oder bei eingeschaltetem Push geschrieben – die Gerätezahl in der App-Statistik fällt dadurch niedriger aus
+- **Regeln mit Themen-Chips:** unter der Suche steht eine waagerecht wischbare Reihe mit allen Themen und Anzahl; ein Tipp filtert, „Alle“ zeigt wieder alles. Das alte Themen-Menü (☰) ist ausgeblendet
+- **Push bei Spieländerung:** im Spiel-Fenster (Admin › Termin ändern) gibt es das Häkchen „📲 Push an alle senden“. Es lässt sich nur setzen, wenn Datum, Uhrzeit oder Spielort wirklich geändert wurden, und ist standardmäßig aus; der Hinweis darunter zeigt den genauen Push-Text. Versand über den bestehenden News-Push (`onNewsCreated`, beachtet die Mannschaftsauswahl der Geräte) – keine neue Cloud Function, keine Regeländerung. Der Hinweis wird mit „Sichtbar bis gestern“ angelegt, erscheint also nicht doppelt in den News, steht aber im Admin-Bereich unter den abgelaufenen Hinweisen als Nachweis. EHV-Übernahmen verschicken keinen Push
+
 ## Version 1.20.0
 
-### Neu in Version 1.20.0 (Stand 1.20.0.141, 19.10.2026) – Neue Funktion
+### Neu in Version 1.20.0 (Stand 1.20.0.141, 19.10.2026, nur in der Test-App) – Neue Funktion
 
 - **Versandstatus bei Rückmeldungen:** im Admin-Bereich zeigt jede Rückmeldung, ob Push und E-Mail verschickt wurden (grün „gesendet“, grau „wird gesendet“ in den ersten 15 Minuten, rot „fehlt“)
 - **Rückmeldungen gehen nicht mehr verloren:** ohne Verbindung meldet das Formular den Fehler nach spätestens 15 Sekunden direkt im Formular (statt endlos zu warten); der Text bleibt auf dem Gerät gespeichert, auch wenn die App geschlossen wird, und lässt sich mit „Nochmal senden“ erneut abschicken
@@ -486,9 +506,9 @@ Wenn eine neue App-Version veröffentlicht wurde, lädt der Service Worker sie i
 - **Aktualisieren** aktiviert die neue Version und lädt die App neu
 - **×** blendet den Banner bis zum nächsten App-Start aus
 
-Technisch: `index.html` erkennt eine wartende Version über den Service-Worker-Status, `sw.js` aktiviert sie erst nach der Nachricht `SKIP_WAITING`. Bei jeder App-Änderung muss der Cache-Name in `sw.js` erhöht werden (aktuell `grizzlys-u15-v141`).
+Technisch: `index.html` erkennt eine wartende Version über den Service-Worker-Status, `sw.js` aktiviert sie erst nach der Nachricht `SKIP_WAITING`. Bei jeder App-Änderung muss der Cache-Name in `sw.js` erhöht werden (aktuell `grizzlys-u15-v143`).
 
-Die angezeigte Version hat die Form `1.20.0.141`: vorn die App-Version (Regeln siehe „Versionsnummern“ oben), die letzte Zahl ist die Cache-Nummer. Test- und Live-Stand mit derselben letzten Zahl sind inhaltlich gleich. Die Testversion (`grizzlys-u15-test`) zeigt die Nummer zusätzlich im orangen Balken und sperrt Speichern, Senden und Push-Anmeldung.
+Die angezeigte Version hat die Form `1.21.1.143`: vorn die App-Version (Regeln siehe „Versionsnummern“ oben), die letzte Zahl ist die Cache-Nummer. Test- und Live-Stand mit derselben letzten Zahl sind inhaltlich gleich. Die Testversion (`grizzlys-u15-test`) zeigt die Nummer zusätzlich im orangen Balken und sperrt Speichern, Senden und Push-Anmeldung.
 
 ## Firebase
 
