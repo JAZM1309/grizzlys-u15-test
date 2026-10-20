@@ -11,7 +11,9 @@ Schreibweise 1.ZWEITE.DRITTE.CACHE:
 - dritte Stelle: optische Änderungen, Fehlerbehebungen und kleine Verbesserungen
 - letzte Stelle: Cache-Nummer aus sw.js (steigt bei fast jedem Stand)
 Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle 1.9.1 und wurden am 19.10.2026 nachträglich nummeriert. Die GitHub-Markierungen (live-1.9.1.…, wichtig für Live zurücksetzen) behalten ihren alten Namen:
-- 1.23.0.151 (20.10.2026, Neue Funktion)
+- 1.23.2.153 (20.10.2026, Optisch)
+- 1.23.1.152 (20.10.2026, Optisch, nur Test)
+- 1.23.0.151 (20.10.2026, Neue Funktion, nur Test)
 - 1.22.5.150 (20.10.2026, Fehlerbehebung und Optisch, nur Test)
 - 1.22.4.149 (20.10.2026, Optisch, nur Test)
 - 1.22.3.148 (20.10.2026, Fehlerbehebung, nur Test)
@@ -47,10 +49,21 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle 1.9.1 und wurd
 - 1.10.0.83 = bisher 1.9.1.83 (10.10.2026, Neue Funktion)
 - 1.9.1.66 = bisher 1.9.1.66 (08.10.2026, Neue Funktion)
 
+Version 1.23.2
+
+Neu in Version 1.23.2 (Stand 1.23.2.153, 20.10.2026) – Optisch
+- Anleitung Anzeigetafel – Kapitel-Knopf statt Wischleiste: unter der Suche ein Knopf „☰ Kapitel“, der das aktuelle Kapitel anzeigt (z. B. „5. Strafzeitpulte“, oben „Übersicht – alle 7 Kapitel“). Ein Tipp klappt alle 7 Kapitel untereinander auf, das aktuelle ist markiert; ein Tipp auf ein Kapitel springt dorthin und klappt zu (ebenso Tipp daneben oder Esc). Suche und Knopf bleiben beim Scrollen oben stehen; beim Suchen ist der Knopf ausgeblendet
+
+Version 1.23.1
+
+Neu in Version 1.23.1 (Stand 1.23.1.152, 20.10.2026) – Optisch
+- Anleitung Anzeigetafel – Kapitelleiste (seit 1.23.2 durch den Kapitel-Knopf ersetzt): die Vorschlags-Knöpfe unter der Suche sind entfallen (Beispiele stehen im Suchfeld). Das Inhaltsverzeichnis ist jetzt eine schmale, waagerecht wischbare Kapitelleiste („1. Vor dem Spiel · 2. Hauptpult …“) direkt unter der Suche; beide bleiben beim Scrollen oben stehen, das aktuelle Kapitel ist orange unterstrichen. Beim Suchen ist die Leiste ausgeblendet
+- Gliederung unterscheidet sich von den Tasten: Kapitel- und Schrittnummern stehen als schlichte Zahl mit Punkt („1.“) ohne Kreis. Kreise und Pillen bedeuten in der Anleitung jetzt nur noch Tasten
+
 Version 1.23.0
 
 Neu in Version 1.23.0 (Stand 1.23.0.151, 20.10.2026) – Neue Funktion
-- Suche in der Anleitung Anzeigetafel: oben ein Suchfeld (bleibt beim Scrollen stehen) mit Vorschlägen (2+2, Strafe löschen, Auszeit, Tor, Uhr korrigieren). Beim Tippen bleiben nur passende Kacheln, Schritte, Tabellenzeilen und Hinweise stehen, gelb umrandet, mit Anzahl der Treffer; passt eine Überschrift, erscheint der ganze Abschnitt. „2+2“, „2 + 2“, „2×2“ und „2x2“ gelten als gleich, Umlaute und Groß-/Kleinschreibung sind egal. Drucken druckt immer die ganze Anleitung. Alles in anleitung-anzeigetafel.html (Skript am Ende), Stand-Zeile „… mit Grafik der Strafzeitpulte und Suche“
+- Suche in der Anleitung Anzeigetafel: oben ein Suchfeld (bleibt beim Scrollen stehen) (Vorschlags-Knöpfe seit 1.23.1 entfallen). Beim Tippen bleiben nur passende Kacheln, Schritte, Tabellenzeilen und Hinweise stehen, gelb umrandet, mit Anzahl der Treffer; passt eine Überschrift, erscheint der ganze Abschnitt. „2+2“, „2 + 2“, „2×2“ und „2x2“ gelten als gleich, Umlaute und Groß-/Kleinschreibung sind egal. Drucken druckt immer die ganze Anleitung. Alles in anleitung-anzeigetafel.html (Skript am Ende), Stand-Zeile „… mit Grafik der Strafzeitpulte und Suche“
 
 Version 1.22.5
 
@@ -502,7 +515,7 @@ Schulferien
 NRW-Ferien im Kalender grün hinterlegt; Termine als Liste nrwFerien in index.html (2026/27).
 
 Version
-Schreibweise 1.23.0.151: vorn die App-Version (Regeln siehe Versionsnummern oben), die letzte Zahl ist die Cache-Nummer zum Vergleich von Test und Live.
+Schreibweise 1.23.2.153: vorn die App-Version (Regeln siehe Versionsnummern oben), die letzte Zahl ist die Cache-Nummer zum Vergleich von Test und Live.
 
 Veröffentlichung
 Kostenlose PWA über GitHub Pages.

@@ -16,7 +16,9 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
-| 1.23.0.151 | – | 20.10.2026 | Neue Funktion |
+| 1.23.2.153 | – | 20.10.2026 | Optisch |
+| 1.23.1.152 | – (nur Test) | 20.10.2026 | Optisch |
+| 1.23.0.151 | – (nur Test) | 20.10.2026 | Neue Funktion |
 | 1.22.5.150 | – (nur Test) | 20.10.2026 | Fehlerbehebung und Optisch |
 | 1.22.4.149 | – (nur Test) | 20.10.2026 | Optisch |
 | 1.22.3.148 | – (nur Test) | 20.10.2026 | Fehlerbehebung |
@@ -52,11 +54,24 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 | 1.10.0.83 | 1.9.1.83 | 10.10.2026 | Neue Funktion |
 | 1.9.1.66 | 1.9.1.66 | 08.10.2026 | Neue Funktion |
 
+## Version 1.23.2
+
+### Neu in Version 1.23.2 (Stand 1.23.2.153, 20.10.2026) – Optisch
+
+- **Anleitung Anzeigetafel – Kapitel-Knopf statt Wischleiste:** unter der Suche ein Knopf „☰ Kapitel“, der das aktuelle Kapitel anzeigt (z. B. „5. Strafzeitpulte“, oben „Übersicht – alle 7 Kapitel“). Ein Tipp klappt alle 7 Kapitel untereinander auf, das aktuelle ist markiert; ein Tipp auf ein Kapitel springt dorthin und klappt zu (ebenso Tipp daneben oder Esc). Suche und Knopf bleiben beim Scrollen oben stehen; beim Suchen ist der Knopf ausgeblendet
+
+## Version 1.23.1
+
+### Neu in Version 1.23.1 (Stand 1.23.1.152, 20.10.2026, nur in der Test-App) – Optisch
+
+- **Anleitung Anzeigetafel – Kapitelleiste (seit 1.23.2 durch den Kapitel-Knopf ersetzt):** die Vorschlags-Knöpfe unter der Suche sind entfallen (Beispiele stehen im Suchfeld). Das Inhaltsverzeichnis ist jetzt eine schmale, waagerecht wischbare Kapitelleiste („1. Vor dem Spiel · 2. Hauptpult …“) direkt unter der Suche; beide bleiben beim Scrollen oben stehen, das aktuelle Kapitel ist orange unterstrichen. Beim Suchen ist die Leiste ausgeblendet
+- **Gliederung unterscheidet sich von den Tasten:** Kapitel- und Schrittnummern stehen als schlichte Zahl mit Punkt („1.“) ohne Kreis. Kreise und Pillen bedeuten in der Anleitung jetzt nur noch Tasten
+
 ## Version 1.23.0
 
-### Neu in Version 1.23.0 (Stand 1.23.0.151, 20.10.2026) – Neue Funktion
+### Neu in Version 1.23.0 (Stand 1.23.0.151, 20.10.2026, nur in der Test-App) – Neue Funktion
 
-- **Suche in der Anleitung Anzeigetafel:** oben ein Suchfeld (bleibt beim Scrollen stehen) mit Vorschlägen (2+2, Strafe löschen, Auszeit, Tor, Uhr korrigieren). Beim Tippen bleiben nur passende Kacheln, Schritte, Tabellenzeilen und Hinweise stehen, gelb umrandet, mit Anzahl der Treffer; passt eine Überschrift, erscheint der ganze Abschnitt. „2+2“, „2 + 2“, „2×2“ und „2x2“ gelten als gleich, Umlaute und Groß-/Kleinschreibung sind egal. Drucken druckt immer die ganze Anleitung. Alles in `anleitung-anzeigetafel.html` (Skript am Ende), Stand-Zeile „… mit Grafik der Strafzeitpulte und Suche“
+- **Suche in der Anleitung Anzeigetafel:** oben ein Suchfeld (bleibt beim Scrollen stehen) (Vorschlags-Knöpfe seit 1.23.1 entfallen). Beim Tippen bleiben nur passende Kacheln, Schritte, Tabellenzeilen und Hinweise stehen, gelb umrandet, mit Anzahl der Treffer; passt eine Überschrift, erscheint der ganze Abschnitt. „2+2“, „2 + 2“, „2×2“ und „2x2“ gelten als gleich, Umlaute und Groß-/Kleinschreibung sind egal. Drucken druckt immer die ganze Anleitung. Alles in `anleitung-anzeigetafel.html` (Skript am Ende), Stand-Zeile „… mit Grafik der Strafzeitpulte und Suche“
 
 ## Version 1.22.5
 
@@ -566,9 +581,9 @@ Wenn eine neue App-Version veröffentlicht wurde, lädt der Service Worker sie i
 - **Aktualisieren** aktiviert die neue Version und lädt die App neu
 - **×** blendet den Banner bis zum nächsten App-Start aus
 
-Technisch: `index.html` erkennt eine wartende Version über den Service-Worker-Status, `sw.js` aktiviert sie erst nach der Nachricht `SKIP_WAITING`. Bei jeder App-Änderung muss der Cache-Name in `sw.js` erhöht werden (aktuell `grizzlys-u15-v151`).
+Technisch: `index.html` erkennt eine wartende Version über den Service-Worker-Status, `sw.js` aktiviert sie erst nach der Nachricht `SKIP_WAITING`. Bei jeder App-Änderung muss der Cache-Name in `sw.js` erhöht werden (aktuell `grizzlys-u15-v153`).
 
-Die angezeigte Version hat die Form `1.23.0.151`: vorn die App-Version (Regeln siehe „Versionsnummern“ oben), die letzte Zahl ist die Cache-Nummer. Test- und Live-Stand mit derselben letzten Zahl sind inhaltlich gleich. Die Testversion (`grizzlys-u15-test`) zeigt die Nummer zusätzlich im orangen Balken und sperrt Speichern, Senden und Push-Anmeldung.
+Die angezeigte Version hat die Form `1.23.2.153`: vorn die App-Version (Regeln siehe „Versionsnummern“ oben), die letzte Zahl ist die Cache-Nummer. Test- und Live-Stand mit derselben letzten Zahl sind inhaltlich gleich. Die Testversion (`grizzlys-u15-test`) zeigt die Nummer zusätzlich im orangen Balken und sperrt Speichern, Senden und Push-Anmeldung.
 
 ## Firebase
 
