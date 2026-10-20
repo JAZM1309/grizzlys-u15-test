@@ -16,7 +16,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
-| 1.22.1.145 | – | 20.10.2026 | Fehlerbehebung |
+| 1.22.1.146 | – | 20.10.2026 | Fehlerbehebung |
 | 1.22.0.144 | – (nur Test) | 20.10.2026 | Neue Funktion |
 | 1.21.1.143 | – (nur Test) | 19.10.2026 | Optisch |
 | 1.21.0.142 | – (nur Test) | 19.10.2026 | Neue Funktion |
@@ -49,10 +49,10 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 ## Version 1.22.1
 
-### Neu in Version 1.22.1 (Stand 1.22.1.145, 20.10.2026) – Fehlerbehebung
+### Neu in Version 1.22.1 (Stand 1.22.1.146, 20.10.2026) – Fehlerbehebung
 
-- **Entfernungen korrigiert (`rinkDistanceKm`):** Grefrath 80 → 112 km (abgeleitet aus Grefrath–Beckum 147 km über Bergkamen), Dinslaken 60 → 72 km, Ratingen 62 → 93 km (Routenplaner, Stadtmitte zu Stadtmitte). Die alten Werte lagen unter der Luftlinie
-- **ESC Darmstadt auf der Karte an der eigenen Halle:** Eishalle Darmstadt, Alsfelder Straße 45, 64289 Darmstadt (261 km). Im Fenster steht „Heimspiel wird nicht hier ausgetragen – beide Spiele finden in Bergkamen statt“, ohne Route-Knopf. Steuerung über `OPP_HOME` in `index.html` (Gegner → Halle für die Karte). In der Gegner-Liste bleibt es bei Bergkamen / 0 km, weil dort die Spiele stattfinden
+- **Entfernungen neu berechnet (`rinkDistanceKm`):** alle Werte jetzt als Fahrstrecke Eishalle Bergkamen → Eishalle des Gegners (OSRM auf OpenStreetMap-Daten, schnellste Route, Stand 20.10.2026; gegengeprüft mit Routenplanern: Ratingen, Dinslaken, Darmstadt ±1–2 km). Vorher waren viele Werte zu niedrig, einzelne sogar unter der Luftlinie. Alt → neu: Gelsenkirchen 43→47, Neuss 91→103, Duisburg 68→82, Hamm 24→17, Herford 91→112, Grefrath 80→123, Dinslaken 60→73, Essen 53→65, Dortmund 24→30, Bielefeld 91→95, Solingen 67→79, Aachen 155→170, Ratingen 62→94, Wiehl 95→122, Möhnesee 43→52, Neuwied 185→188, neu Darmstadt 262. Grundlage sind die Hallen-Koordinaten aus `RINK_GEO` (auf etwa 1 km genau)
+- **ESC Darmstadt auf der Karte an der eigenen Halle:** Eishalle Darmstadt, Alsfelder Straße 45, 64289 Darmstadt (262 km). Im Fenster steht „Heimspiel wird nicht hier ausgetragen – beide Spiele finden in Bergkamen statt“, ohne Route-Knopf. Steuerung über `OPP_HOME` in `index.html` (Gegner → Halle für die Karte). In der Gegner-Liste bleibt es bei Bergkamen / 0 km, weil dort die Spiele stattfinden
 - **Unsere Halle** steht jetzt immer auf der Karte, auch wenn dort kein Gegner einsortiert ist
 
 ## Version 1.22.0
@@ -525,9 +525,9 @@ Wenn eine neue App-Version veröffentlicht wurde, lädt der Service Worker sie i
 - **Aktualisieren** aktiviert die neue Version und lädt die App neu
 - **×** blendet den Banner bis zum nächsten App-Start aus
 
-Technisch: `index.html` erkennt eine wartende Version über den Service-Worker-Status, `sw.js` aktiviert sie erst nach der Nachricht `SKIP_WAITING`. Bei jeder App-Änderung muss der Cache-Name in `sw.js` erhöht werden (aktuell `grizzlys-u15-v145`).
+Technisch: `index.html` erkennt eine wartende Version über den Service-Worker-Status, `sw.js` aktiviert sie erst nach der Nachricht `SKIP_WAITING`. Bei jeder App-Änderung muss der Cache-Name in `sw.js` erhöht werden (aktuell `grizzlys-u15-v146`).
 
-Die angezeigte Version hat die Form `1.22.1.145`: vorn die App-Version (Regeln siehe „Versionsnummern“ oben), die letzte Zahl ist die Cache-Nummer. Test- und Live-Stand mit derselben letzten Zahl sind inhaltlich gleich. Die Testversion (`grizzlys-u15-test`) zeigt die Nummer zusätzlich im orangen Balken und sperrt Speichern, Senden und Push-Anmeldung.
+Die angezeigte Version hat die Form `1.22.1.146`: vorn die App-Version (Regeln siehe „Versionsnummern“ oben), die letzte Zahl ist die Cache-Nummer. Test- und Live-Stand mit derselben letzten Zahl sind inhaltlich gleich. Die Testversion (`grizzlys-u15-test`) zeigt die Nummer zusätzlich im orangen Balken und sperrt Speichern, Senden und Push-Anmeldung.
 
 ## Firebase
 

@@ -11,7 +11,7 @@ Schreibweise 1.ZWEITE.DRITTE.CACHE:
 - dritte Stelle: optische Änderungen, Fehlerbehebungen und kleine Verbesserungen
 - letzte Stelle: Cache-Nummer aus sw.js (steigt bei fast jedem Stand)
 Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle 1.9.1 und wurden am 19.10.2026 nachträglich nummeriert. Die GitHub-Markierungen (live-1.9.1.…, wichtig für Live zurücksetzen) behalten ihren alten Namen:
-- 1.22.1.145 (20.10.2026, Fehlerbehebung)
+- 1.22.1.146 (20.10.2026, Fehlerbehebung)
 - 1.22.0.144 (20.10.2026, Neue Funktion, nur Test)
 - 1.21.1.143 (19.10.2026, Optisch, nur Test)
 - 1.21.0.142 (19.10.2026, Neue Funktion, nur Test)
@@ -44,9 +44,9 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle 1.9.1 und wurd
 
 Version 1.22.1
 
-Neu in Version 1.22.1 (Stand 1.22.1.145, 20.10.2026) – Fehlerbehebung
-- Entfernungen korrigiert (rinkDistanceKm): Grefrath 80 → 112 km (abgeleitet aus Grefrath–Beckum 147 km über Bergkamen), Dinslaken 60 → 72 km, Ratingen 62 → 93 km (Routenplaner, Stadtmitte zu Stadtmitte). Die alten Werte lagen unter der Luftlinie
-- ESC Darmstadt auf der Karte an der eigenen Halle: Eishalle Darmstadt, Alsfelder Straße 45, 64289 Darmstadt (261 km). Im Fenster steht „Heimspiel wird nicht hier ausgetragen – beide Spiele finden in Bergkamen statt“, ohne Route-Knopf. Steuerung über OPP_HOME in index.html (Gegner → Halle für die Karte). In der Gegner-Liste bleibt es bei Bergkamen / 0 km, weil dort die Spiele stattfinden
+Neu in Version 1.22.1 (Stand 1.22.1.146, 20.10.2026) – Fehlerbehebung
+- Entfernungen neu berechnet (rinkDistanceKm): alle Werte jetzt als Fahrstrecke Eishalle Bergkamen → Eishalle des Gegners (OSRM auf OpenStreetMap-Daten, schnellste Route, Stand 20.10.2026; gegengeprüft mit Routenplanern: Ratingen, Dinslaken, Darmstadt ±1–2 km). Vorher waren viele Werte zu niedrig, einzelne sogar unter der Luftlinie. Alt → neu: Gelsenkirchen 43→47, Neuss 91→103, Duisburg 68→82, Hamm 24→17, Herford 91→112, Grefrath 80→123, Dinslaken 60→73, Essen 53→65, Dortmund 24→30, Bielefeld 91→95, Solingen 67→79, Aachen 155→170, Ratingen 62→94, Wiehl 95→122, Möhnesee 43→52, Neuwied 185→188, neu Darmstadt 262. Grundlage sind die Hallen-Koordinaten aus RINK_GEO (auf etwa 1 km genau)
+- ESC Darmstadt auf der Karte an der eigenen Halle: Eishalle Darmstadt, Alsfelder Straße 45, 64289 Darmstadt (262 km). Im Fenster steht „Heimspiel wird nicht hier ausgetragen – beide Spiele finden in Bergkamen statt“, ohne Route-Knopf. Steuerung über OPP_HOME in index.html (Gegner → Halle für die Karte). In der Gegner-Liste bleibt es bei Bergkamen / 0 km, weil dort die Spiele stattfinden
 - Unsere Halle steht jetzt immer auf der Karte, auch wenn dort kein Gegner einsortiert ist
 
 Version 1.22.0
@@ -466,7 +466,7 @@ Schulferien
 NRW-Ferien im Kalender grün hinterlegt; Termine als Liste nrwFerien in index.html (2026/27).
 
 Version
-Schreibweise 1.22.1.145: vorn die App-Version (Regeln siehe Versionsnummern oben), die letzte Zahl ist die Cache-Nummer zum Vergleich von Test und Live.
+Schreibweise 1.22.1.146: vorn die App-Version (Regeln siehe Versionsnummern oben), die letzte Zahl ist die Cache-Nummer zum Vergleich von Test und Live.
 
 Veröffentlichung
 Kostenlose PWA über GitHub Pages.
