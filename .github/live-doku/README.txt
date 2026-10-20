@@ -11,7 +11,8 @@ Schreibweise 1.ZWEITE.DRITTE.CACHE:
 - dritte Stelle: optische Änderungen, Fehlerbehebungen und kleine Verbesserungen
 - letzte Stelle: Cache-Nummer aus sw.js (steigt bei fast jedem Stand)
 Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle 1.9.1 und wurden am 19.10.2026 nachträglich nummeriert. Die GitHub-Markierungen (live-1.9.1.…, wichtig für Live zurücksetzen) behalten ihren alten Namen:
-- 1.22.4.149 (20.10.2026, Optisch)
+- 1.22.5.150 (20.10.2026, Fehlerbehebung)
+- 1.22.4.149 (20.10.2026, Optisch, nur Test)
 - 1.22.3.148 (20.10.2026, Fehlerbehebung, nur Test)
 - 1.22.2.147 (20.10.2026, Kleine Änderung, nur Test)
 - 1.22.1.146 (20.10.2026, Fehlerbehebung, nur Test)
@@ -44,6 +45,15 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle 1.9.1 und wurd
 - 1.10.1.86 = bisher 1.9.1.86 (10.10.2026, Fehlerbehebung und Verbesserung)
 - 1.10.0.83 = bisher 1.9.1.83 (10.10.2026, Neue Funktion)
 - 1.9.1.66 = bisher 1.9.1.66 (08.10.2026, Neue Funktion)
+
+Version 1.22.5
+
+Neu in Version 1.22.5 (Stand 1.22.5.150, 20.10.2026) – Fehlerbehebung und Optisch
+- Anleitung Anzeigetafel druckte alte Fassung: Auf GitHub (Test und Live) liegt die neue Fassung mit der Grafik der Strafzeitpulte, und sie druckt auch korrekt. Manche Browser drucken aber aus ihrem eigenen Zwischenspeicher, an der App vorbei. Die App öffnet die Anleitung deshalb jetzt mit Versions-Anhang (anleitung-anzeigetafel.html?v=<Cache-Nummer>), sodass nach jedem Update garantiert die aktuelle Fassung geladen und gedruckt wird
+- Stand in der Anleitung: im Kopf (auch auf dem Ausdruck) steht „Stand: 20.10.2026 · mit Grafik der Strafzeitpulte“ – so sieht man sofort, welche Fassung gedruckt wurde. Bei Änderungen an der Anleitung das Datum dort anpassen
+- Paket: anleitung-anzeigetafel.html ist diesmal im Test-Paket enthalten
+- Regeln als Themen-Kacheln (ersetzt die Chips aus 1.21.0): ohne Suchbegriff zeigt der Reiter große Kacheln (Symbol, Thema, Anzahl Regeln) zweispaltig, dazu „Alle Regeln“ (alphabetisch). Ein Tipp öffnet das Thema im Fenster rulesModal (Schließen mit ×, Tipp daneben oder Esc). Mit Suchbegriff verschwinden die Kacheln und die Trefferliste über alle Themen erscheint wie bisher. Funktionen rlTopicOpen / rlTopicClose, Symbole in RL_IC
+- Gegner-Karte ohne Liste darunter: die Gegnerliste hat display:grid und ignorierte deshalb hidden; jetzt gilt #opponentsView [hidden]{display:none} – entweder Liste oder Karte
 
 Version 1.22.4
 
@@ -486,7 +496,7 @@ Schulferien
 NRW-Ferien im Kalender grün hinterlegt; Termine als Liste nrwFerien in index.html (2026/27).
 
 Version
-Schreibweise 1.22.4.149: vorn die App-Version (Regeln siehe Versionsnummern oben), die letzte Zahl ist die Cache-Nummer zum Vergleich von Test und Live.
+Schreibweise 1.22.5.150: vorn die App-Version (Regeln siehe Versionsnummern oben), die letzte Zahl ist die Cache-Nummer zum Vergleich von Test und Live.
 
 Veröffentlichung
 Kostenlose PWA über GitHub Pages.

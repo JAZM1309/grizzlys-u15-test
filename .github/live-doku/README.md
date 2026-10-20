@@ -16,7 +16,8 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
-| 1.22.4.149 | – | 20.10.2026 | Optisch |
+| 1.22.5.150 | – | 20.10.2026 | Fehlerbehebung und Optisch |
+| 1.22.4.149 | – (nur Test) | 20.10.2026 | Optisch |
 | 1.22.3.148 | – (nur Test) | 20.10.2026 | Fehlerbehebung |
 | 1.22.2.147 | – (nur Test) | 20.10.2026 | Kleine Änderung |
 | 1.22.1.146 | – (nur Test) | 20.10.2026 | Fehlerbehebung |
@@ -50,9 +51,19 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 | 1.10.0.83 | 1.9.1.83 | 10.10.2026 | Neue Funktion |
 | 1.9.1.66 | 1.9.1.66 | 08.10.2026 | Neue Funktion |
 
+## Version 1.22.5
+
+### Neu in Version 1.22.5 (Stand 1.22.5.150, 20.10.2026) – Fehlerbehebung und Optisch
+
+- **Anleitung Anzeigetafel druckte alte Fassung:** Auf GitHub (Test und Live) liegt die neue Fassung mit der Grafik der Strafzeitpulte, und sie druckt auch korrekt. Manche Browser drucken aber aus ihrem eigenen Zwischenspeicher, an der App vorbei. Die App öffnet die Anleitung deshalb jetzt mit Versions-Anhang (`anleitung-anzeigetafel.html?v=<Cache-Nummer>`), sodass nach jedem Update garantiert die aktuelle Fassung geladen und gedruckt wird
+- **Stand in der Anleitung:** im Kopf (auch auf dem Ausdruck) steht „Stand: 20.10.2026 · mit Grafik der Strafzeitpulte“ – so sieht man sofort, welche Fassung gedruckt wurde. Bei Änderungen an der Anleitung das Datum dort anpassen
+- **Paket:** `anleitung-anzeigetafel.html` ist diesmal im Test-Paket enthalten
+- **Regeln als Themen-Kacheln (ersetzt die Chips aus 1.21.0):** ohne Suchbegriff zeigt der Reiter große Kacheln (Symbol, Thema, Anzahl Regeln) zweispaltig, dazu „Alle Regeln“ (alphabetisch). Ein Tipp öffnet das Thema im Fenster `rulesModal` (Schließen mit ×, Tipp daneben oder Esc). Mit Suchbegriff verschwinden die Kacheln und die Trefferliste über alle Themen erscheint wie bisher. Funktionen `rlTopicOpen` / `rlTopicClose`, Symbole in `RL_IC`
+- **Gegner-Karte ohne Liste darunter:** die Gegnerliste hat `display:grid` und ignorierte deshalb `hidden`; jetzt gilt `#opponentsView [hidden]{display:none}` – entweder Liste oder Karte
+
 ## Version 1.22.4
 
-### Neu in Version 1.22.4 (Stand 1.22.4.149, 20.10.2026) – Optisch
+### Neu in Version 1.22.4 (Stand 1.22.4.149, 20.10.2026, nur in der Test-App) – Optisch
 
 - **Schalter „Nutzungsstatistik erlauben“ (Einstellungen › Datenschutz):** das eigentliche Kontrollkästchen war zusätzlich zum Schieber sichtbar, und der Schieber zeigte den Zustand nicht an. Jetzt wie die Push-Schalter nur der Schieber (grün = erlaubt)
 
@@ -548,9 +559,9 @@ Wenn eine neue App-Version veröffentlicht wurde, lädt der Service Worker sie i
 - **Aktualisieren** aktiviert die neue Version und lädt die App neu
 - **×** blendet den Banner bis zum nächsten App-Start aus
 
-Technisch: `index.html` erkennt eine wartende Version über den Service-Worker-Status, `sw.js` aktiviert sie erst nach der Nachricht `SKIP_WAITING`. Bei jeder App-Änderung muss der Cache-Name in `sw.js` erhöht werden (aktuell `grizzlys-u15-v149`).
+Technisch: `index.html` erkennt eine wartende Version über den Service-Worker-Status, `sw.js` aktiviert sie erst nach der Nachricht `SKIP_WAITING`. Bei jeder App-Änderung muss der Cache-Name in `sw.js` erhöht werden (aktuell `grizzlys-u15-v150`).
 
-Die angezeigte Version hat die Form `1.22.4.149`: vorn die App-Version (Regeln siehe „Versionsnummern“ oben), die letzte Zahl ist die Cache-Nummer. Test- und Live-Stand mit derselben letzten Zahl sind inhaltlich gleich. Die Testversion (`grizzlys-u15-test`) zeigt die Nummer zusätzlich im orangen Balken und sperrt Speichern, Senden und Push-Anmeldung.
+Die angezeigte Version hat die Form `1.22.5.150`: vorn die App-Version (Regeln siehe „Versionsnummern“ oben), die letzte Zahl ist die Cache-Nummer. Test- und Live-Stand mit derselben letzten Zahl sind inhaltlich gleich. Die Testversion (`grizzlys-u15-test`) zeigt die Nummer zusätzlich im orangen Balken und sperrt Speichern, Senden und Push-Anmeldung.
 
 ## Firebase
 
