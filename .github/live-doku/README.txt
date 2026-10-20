@@ -11,7 +11,8 @@ Schreibweise 1.ZWEITE.DRITTE.CACHE:
 - dritte Stelle: optische Änderungen, Fehlerbehebungen und kleine Verbesserungen
 - letzte Stelle: Cache-Nummer aus sw.js (steigt bei fast jedem Stand)
 Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle 1.9.1 und wurden am 19.10.2026 nachträglich nummeriert. Die GitHub-Markierungen (live-1.9.1.…, wichtig für Live zurücksetzen) behalten ihren alten Namen:
-- 1.22.1.146 (20.10.2026, Fehlerbehebung)
+- 1.22.2.147 (20.10.2026, Kleine Änderung)
+- 1.22.1.146 (20.10.2026, Fehlerbehebung, nur Test)
 - 1.22.0.144 (20.10.2026, Neue Funktion, nur Test)
 - 1.21.1.143 (19.10.2026, Optisch, nur Test)
 - 1.21.0.142 (19.10.2026, Neue Funktion, nur Test)
@@ -42,6 +43,12 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle 1.9.1 und wurd
 - 1.10.0.83 = bisher 1.9.1.83 (10.10.2026, Neue Funktion)
 - 1.9.1.66 = bisher 1.9.1.66 (08.10.2026, Neue Funktion)
 
+Version 1.22.2
+
+Neu in Version 1.22.2 (Stand 1.22.2.147, 20.10.2026) – Kleine Änderung
+- „Datenschutz & Kontakt“ statt „Datenschutz & Impressum“: keine Platzhalter mehr für Name und Anschrift. Abschnitt „Kontakt“: privates, nicht kommerzielles Angebot ohne Werbung, App entwickelt von JAZM, E-Mail grizzlys-app@gmx.de. Verantwortlich laut Datenschutzhinweis: der Entwickler (JAZM), erreichbar über dieselbe Adresse. Alle Verweise (Abfrage, Einstellungen, Info) umbenannt
+- Hinweis: Ein vollständiges Impressum nach § 18 MStV (Name und ladungsfähige Anschrift) ist das nicht. Sobald geklärt ist, ob der Verein die App als Anbieter übernimmt, kann im Fenster legalModal wieder ein Abschnitt „Impressum“ ergänzt werden
+
 Version 1.22.1
 
 Neu in Version 1.22.1 (Stand 1.22.1.146, 20.10.2026) – Fehlerbehebung
@@ -67,7 +74,7 @@ Neu in Version 1.21.1 (Stand 1.21.1.143, 19.10.2026) – Optisch
 Version 1.21.0
 
 Neu in Version 1.21.0 (Stand 1.21.0.142, 19.10.2026) – Neue Funktion
-- Datenschutz & Impressum: neue Seite, erreichbar über Info (unten), Einstellungen › Datenschutz und die Zustimmungs-Abfrage. Die Angaben im Impressum (Name, Anschrift, E-Mail) sind gelb markierte Platzhalter und müssen vor dem Live-Gang ausgefüllt werden (legalModal in index.html)
+- Datenschutz & Impressum: neue Seite, erreichbar über Info (unten), Einstellungen › Datenschutz und die Zustimmungs-Abfrage. seit 1.22.2 als „Datenschutz & Kontakt“ ohne Anschrift (siehe dort)
 - Nutzungsstatistik nur mit Zustimmung: beim ersten Start fragt die App „Darf die App mitzählen?“ (Erlauben / Nein danke, gleich groß). Ohne Zustimmung landet nichts im dataLayer, es geht also nichts an Google Analytics; die sw.js liefert die Analytics-Datei dann gar nicht erst aus. Änderbar unter Einstellungen › Datenschutz („Nutzungsstatistik erlauben“), beim Widerruf werden die _ga-Cookies gelöscht. Gespeichert in localStorage (grizzlysConsent) und für die sw.js im Speicher grizzlys-consent. Die Ankerzeilen für tolive.py sind unverändert
 - Geräte-Zählung: appInstallations wird nur noch mit Zustimmung oder bei eingeschaltetem Push geschrieben – die Gerätezahl in der App-Statistik fällt dadurch niedriger aus
 - Regeln mit Themen-Chips: unter der Suche steht eine waagerecht wischbare Reihe mit allen Themen und Anzahl; ein Tipp filtert, „Alle“ zeigt wieder alles. Das alte Themen-Menü (☰) ist ausgeblendet
@@ -466,7 +473,7 @@ Schulferien
 NRW-Ferien im Kalender grün hinterlegt; Termine als Liste nrwFerien in index.html (2026/27).
 
 Version
-Schreibweise 1.22.1.146: vorn die App-Version (Regeln siehe Versionsnummern oben), die letzte Zahl ist die Cache-Nummer zum Vergleich von Test und Live.
+Schreibweise 1.22.2.147: vorn die App-Version (Regeln siehe Versionsnummern oben), die letzte Zahl ist die Cache-Nummer zum Vergleich von Test und Live.
 
 Veröffentlichung
 Kostenlose PWA über GitHub Pages.

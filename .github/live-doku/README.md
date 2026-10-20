@@ -16,7 +16,8 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
-| 1.22.1.146 | – | 20.10.2026 | Fehlerbehebung |
+| 1.22.2.147 | – | 20.10.2026 | Kleine Änderung |
+| 1.22.1.146 | – (nur Test) | 20.10.2026 | Fehlerbehebung |
 | 1.22.0.144 | – (nur Test) | 20.10.2026 | Neue Funktion |
 | 1.21.1.143 | – (nur Test) | 19.10.2026 | Optisch |
 | 1.21.0.142 | – (nur Test) | 19.10.2026 | Neue Funktion |
@@ -47,9 +48,16 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 | 1.10.0.83 | 1.9.1.83 | 10.10.2026 | Neue Funktion |
 | 1.9.1.66 | 1.9.1.66 | 08.10.2026 | Neue Funktion |
 
+## Version 1.22.2
+
+### Neu in Version 1.22.2 (Stand 1.22.2.147, 20.10.2026) – Kleine Änderung
+
+- **„Datenschutz & Kontakt“ statt „Datenschutz & Impressum“:** keine Platzhalter mehr für Name und Anschrift. Abschnitt „Kontakt“: privates, nicht kommerzielles Angebot ohne Werbung, App entwickelt von JAZM, E-Mail grizzlys-app@gmx.de. Verantwortlich laut Datenschutzhinweis: der Entwickler (JAZM), erreichbar über dieselbe Adresse. Alle Verweise (Abfrage, Einstellungen, Info) umbenannt
+- **Hinweis:** Ein vollständiges Impressum nach § 18 MStV (Name und ladungsfähige Anschrift) ist das nicht. Sobald geklärt ist, ob der Verein die App als Anbieter übernimmt, kann im Fenster `legalModal` wieder ein Abschnitt „Impressum“ ergänzt werden
+
 ## Version 1.22.1
 
-### Neu in Version 1.22.1 (Stand 1.22.1.146, 20.10.2026) – Fehlerbehebung
+### Neu in Version 1.22.1 (Stand 1.22.1.146, 20.10.2026, nur in der Test-App) – Fehlerbehebung
 
 - **Entfernungen neu berechnet (`rinkDistanceKm`):** alle Werte jetzt als Fahrstrecke Eishalle Bergkamen → Eishalle des Gegners (OSRM auf OpenStreetMap-Daten, schnellste Route, Stand 20.10.2026; gegengeprüft mit Routenplanern: Ratingen, Dinslaken, Darmstadt ±1–2 km). Vorher waren viele Werte zu niedrig, einzelne sogar unter der Luftlinie. Alt → neu: Gelsenkirchen 43→47, Neuss 91→103, Duisburg 68→82, Hamm 24→17, Herford 91→112, Grefrath 80→123, Dinslaken 60→73, Essen 53→65, Dortmund 24→30, Bielefeld 91→95, Solingen 67→79, Aachen 155→170, Ratingen 62→94, Wiehl 95→122, Möhnesee 43→52, Neuwied 185→188, neu Darmstadt 262. Grundlage sind die Hallen-Koordinaten aus `RINK_GEO` (auf etwa 1 km genau)
 - **ESC Darmstadt auf der Karte an der eigenen Halle:** Eishalle Darmstadt, Alsfelder Straße 45, 64289 Darmstadt (262 km). Im Fenster steht „Heimspiel wird nicht hier ausgetragen – beide Spiele finden in Bergkamen statt“, ohne Route-Knopf. Steuerung über `OPP_HOME` in `index.html` (Gegner → Halle für die Karte). In der Gegner-Liste bleibt es bei Bergkamen / 0 km, weil dort die Spiele stattfinden
@@ -76,7 +84,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 ### Neu in Version 1.21.0 (Stand 1.21.0.142, 19.10.2026, nur in der Test-App) – Neue Funktion
 
-- **Datenschutz & Impressum:** neue Seite, erreichbar über Info (unten), Einstellungen › Datenschutz und die Zustimmungs-Abfrage. Die Angaben im Impressum (Name, Anschrift, E-Mail) sind gelb markierte Platzhalter und müssen vor dem Live-Gang ausgefüllt werden (`legalModal` in `index.html`)
+- **Datenschutz & Impressum:** neue Seite, erreichbar über Info (unten), Einstellungen › Datenschutz und die Zustimmungs-Abfrage. seit 1.22.2 als „Datenschutz & Kontakt“ ohne Anschrift (siehe dort)
 - **Nutzungsstatistik nur mit Zustimmung:** beim ersten Start fragt die App „Darf die App mitzählen?“ (Erlauben / Nein danke, gleich groß). Ohne Zustimmung landet nichts im `dataLayer`, es geht also nichts an Google Analytics; die `sw.js` liefert die Analytics-Datei dann gar nicht erst aus. Änderbar unter Einstellungen › Datenschutz („Nutzungsstatistik erlauben“), beim Widerruf werden die `_ga`-Cookies gelöscht. Gespeichert in `localStorage` (`grizzlysConsent`) und für die `sw.js` im Speicher `grizzlys-consent`. Die Ankerzeilen für `tolive.py` sind unverändert
 - **Geräte-Zählung:** `appInstallations` wird nur noch mit Zustimmung oder bei eingeschaltetem Push geschrieben – die Gerätezahl in der App-Statistik fällt dadurch niedriger aus
 - **Regeln mit Themen-Chips:** unter der Suche steht eine waagerecht wischbare Reihe mit allen Themen und Anzahl; ein Tipp filtert, „Alle“ zeigt wieder alles. Das alte Themen-Menü (☰) ist ausgeblendet
@@ -525,9 +533,9 @@ Wenn eine neue App-Version veröffentlicht wurde, lädt der Service Worker sie i
 - **Aktualisieren** aktiviert die neue Version und lädt die App neu
 - **×** blendet den Banner bis zum nächsten App-Start aus
 
-Technisch: `index.html` erkennt eine wartende Version über den Service-Worker-Status, `sw.js` aktiviert sie erst nach der Nachricht `SKIP_WAITING`. Bei jeder App-Änderung muss der Cache-Name in `sw.js` erhöht werden (aktuell `grizzlys-u15-v146`).
+Technisch: `index.html` erkennt eine wartende Version über den Service-Worker-Status, `sw.js` aktiviert sie erst nach der Nachricht `SKIP_WAITING`. Bei jeder App-Änderung muss der Cache-Name in `sw.js` erhöht werden (aktuell `grizzlys-u15-v147`).
 
-Die angezeigte Version hat die Form `1.22.1.146`: vorn die App-Version (Regeln siehe „Versionsnummern“ oben), die letzte Zahl ist die Cache-Nummer. Test- und Live-Stand mit derselben letzten Zahl sind inhaltlich gleich. Die Testversion (`grizzlys-u15-test`) zeigt die Nummer zusätzlich im orangen Balken und sperrt Speichern, Senden und Push-Anmeldung.
+Die angezeigte Version hat die Form `1.22.2.147`: vorn die App-Version (Regeln siehe „Versionsnummern“ oben), die letzte Zahl ist die Cache-Nummer. Test- und Live-Stand mit derselben letzten Zahl sind inhaltlich gleich. Die Testversion (`grizzlys-u15-test`) zeigt die Nummer zusätzlich im orangen Balken und sperrt Speichern, Senden und Push-Anmeldung.
 
 ## Firebase
 
