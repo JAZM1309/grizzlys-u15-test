@@ -16,7 +16,8 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
-| 1.22.2.147 | – | 20.10.2026 | Kleine Änderung |
+| 1.22.3.148 | – | 20.10.2026 | Fehlerbehebung |
+| 1.22.2.147 | – (nur Test) | 20.10.2026 | Kleine Änderung |
 | 1.22.1.146 | – (nur Test) | 20.10.2026 | Fehlerbehebung |
 | 1.22.0.144 | – (nur Test) | 20.10.2026 | Neue Funktion |
 | 1.21.1.143 | – (nur Test) | 19.10.2026 | Optisch |
@@ -48,9 +49,16 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 | 1.10.0.83 | 1.9.1.83 | 10.10.2026 | Neue Funktion |
 | 1.9.1.66 | 1.9.1.66 | 08.10.2026 | Neue Funktion |
 
+## Version 1.22.3
+
+### Neu in Version 1.22.3 (Stand 1.22.3.148, 20.10.2026) – Fehlerbehebung
+
+- **Gegner-Karte öffnete als Weltkarte:** Leaflet hatte beim Anlegen noch keinen Ausschnitt, die Logos konnten dann nicht gesetzt werden; und wurde die Karte bei verstecktem Reiter erzeugt (App merkt sich „Karte“), berechnete sie den Ausschnitt mit Größe 0. Jetzt startet die Karte mit einem NRW-Ausschnitt und wird erst eingepasst, wenn sie sichtbar ist (`omFit` + ResizeObserver) – auch bei jedem erneuten Öffnen des Reiters und nach dem Filtern
+- **Möglichst nah:** Einpassen mit 26 px Rand und Zoom in Viertelstufen (`zoomSnap 0.25`), sodass alle angezeigten Hallen gerade so draufpassen
+
 ## Version 1.22.2
 
-### Neu in Version 1.22.2 (Stand 1.22.2.147, 20.10.2026) – Kleine Änderung
+### Neu in Version 1.22.2 (Stand 1.22.2.147, 20.10.2026, nur in der Test-App) – Kleine Änderung
 
 - **„Datenschutz & Kontakt“ statt „Datenschutz & Impressum“:** keine Platzhalter mehr für Name und Anschrift. Abschnitt „Kontakt“: privates, nicht kommerzielles Angebot ohne Werbung, App entwickelt von JAZM, E-Mail grizzlys-app@gmx.de. Verantwortlich laut Datenschutzhinweis: der Entwickler (JAZM), erreichbar über dieselbe Adresse. Alle Verweise (Abfrage, Einstellungen, Info) umbenannt
 - **Hinweis:** Ein vollständiges Impressum nach § 18 MStV (Name und ladungsfähige Anschrift) ist das nicht. Sobald geklärt ist, ob der Verein die App als Anbieter übernimmt, kann im Fenster `legalModal` wieder ein Abschnitt „Impressum“ ergänzt werden
@@ -533,9 +541,9 @@ Wenn eine neue App-Version veröffentlicht wurde, lädt der Service Worker sie i
 - **Aktualisieren** aktiviert die neue Version und lädt die App neu
 - **×** blendet den Banner bis zum nächsten App-Start aus
 
-Technisch: `index.html` erkennt eine wartende Version über den Service-Worker-Status, `sw.js` aktiviert sie erst nach der Nachricht `SKIP_WAITING`. Bei jeder App-Änderung muss der Cache-Name in `sw.js` erhöht werden (aktuell `grizzlys-u15-v147`).
+Technisch: `index.html` erkennt eine wartende Version über den Service-Worker-Status, `sw.js` aktiviert sie erst nach der Nachricht `SKIP_WAITING`. Bei jeder App-Änderung muss der Cache-Name in `sw.js` erhöht werden (aktuell `grizzlys-u15-v148`).
 
-Die angezeigte Version hat die Form `1.22.2.147`: vorn die App-Version (Regeln siehe „Versionsnummern“ oben), die letzte Zahl ist die Cache-Nummer. Test- und Live-Stand mit derselben letzten Zahl sind inhaltlich gleich. Die Testversion (`grizzlys-u15-test`) zeigt die Nummer zusätzlich im orangen Balken und sperrt Speichern, Senden und Push-Anmeldung.
+Die angezeigte Version hat die Form `1.22.3.148`: vorn die App-Version (Regeln siehe „Versionsnummern“ oben), die letzte Zahl ist die Cache-Nummer. Test- und Live-Stand mit derselben letzten Zahl sind inhaltlich gleich. Die Testversion (`grizzlys-u15-test`) zeigt die Nummer zusätzlich im orangen Balken und sperrt Speichern, Senden und Push-Anmeldung.
 
 ## Firebase
 
