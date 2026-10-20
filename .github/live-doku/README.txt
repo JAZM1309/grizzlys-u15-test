@@ -11,7 +11,9 @@ Schreibweise 1.ZWEITE.DRITTE.CACHE:
 - dritte Stelle: optische Änderungen, Fehlerbehebungen und kleine Verbesserungen
 - letzte Stelle: Cache-Nummer aus sw.js (steigt bei fast jedem Stand)
 Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle 1.9.1 und wurden am 19.10.2026 nachträglich nummeriert. Die GitHub-Markierungen (live-1.9.1.…, wichtig für Live zurücksetzen) behalten ihren alten Namen:
-- 1.21.1.143 (19.10.2026, Optisch)
+- 1.22.1.145 (20.10.2026, Fehlerbehebung)
+- 1.22.0.144 (20.10.2026, Neue Funktion, nur Test)
+- 1.21.1.143 (19.10.2026, Optisch, nur Test)
 - 1.21.0.142 (19.10.2026, Neue Funktion, nur Test)
 - 1.20.0.141 (19.10.2026, Neue Funktion, nur Test)
 - 1.19.2.140 = bisher 1.9.1.140 (18.10.2026, Optisch)
@@ -40,12 +42,27 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle 1.9.1 und wurd
 - 1.10.0.83 = bisher 1.9.1.83 (10.10.2026, Neue Funktion)
 - 1.9.1.66 = bisher 1.9.1.66 (08.10.2026, Neue Funktion)
 
+Version 1.22.1
+
+Neu in Version 1.22.1 (Stand 1.22.1.145, 20.10.2026) – Fehlerbehebung
+- Entfernungen korrigiert (rinkDistanceKm): Grefrath 80 → 112 km (abgeleitet aus Grefrath–Beckum 147 km über Bergkamen), Dinslaken 60 → 72 km, Ratingen 62 → 93 km (Routenplaner, Stadtmitte zu Stadtmitte). Die alten Werte lagen unter der Luftlinie
+- ESC Darmstadt auf der Karte an der eigenen Halle: Eishalle Darmstadt, Alsfelder Straße 45, 64289 Darmstadt (261 km). Im Fenster steht „Heimspiel wird nicht hier ausgetragen – beide Spiele finden in Bergkamen statt“, ohne Route-Knopf. Steuerung über OPP_HOME in index.html (Gegner → Halle für die Karte). In der Gegner-Liste bleibt es bei Bergkamen / 0 km, weil dort die Spiele stattfinden
+- Unsere Halle steht jetzt immer auf der Karte, auch wenn dort kein Gegner einsortiert ist
+
+Version 1.22.0
+
+Neu in Version 1.22.0 (Stand 1.22.0.144, 20.10.2026) – Neue Funktion
+- Gegner-Karte: im Reiter „Gegner“ oben der Umschalter „☰ Liste / 🗺️ Karte“. Die Karte zeigt jeden Gegner mit Logo an der Halle seines Auswärtsspiels (wie Route und Entfernung in der Liste), Rand blau = U15 A, orange = U15 B, beide = zweifarbig; unsere Halle in Bergkamen mit gelbem Ring (ESC Darmstadt seit 1.22.1 an der eigenen Halle). Filter „Alle / U15 A / U15 B“. Ein Tipp auf ein Logo zeigt Halle, Adresse, Entfernung, die Mannschaften mit Knopf „Spiele“ (öffnet das Gegner-Fenster) und „Route“. Die zuletzt gewählte Ansicht merkt sich die App
+- Datenschutz bei der Karte: Leaflet (cdnjs) und Kartenbilder (OpenStreetMap) werden erst nach „Karte laden“ geholt; mit „Nicht mehr fragen“ merkt sich die App das (grizzlysMapOk). Abschnitt 7 der Datenschutzerklärung ergänzt. Ohne Internet bleibt die Karte leer, der Knopf zeigt „Erneut versuchen“
+- Koordinaten: RINK_GEO in index.html – ungefähre Lage der Hallen (Schlüssel wie in rinkAddresses). Kommt eine neue Halle dazu, muss sie dort mit Breiten- und Längengrad ergänzt werden, sonst fehlt der Gegner auf der Karte
+- Wischen: auf der Karte verschiebt ein Wisch die Karte und wechselt nicht den Reiter (data-noswipe)
+
 Version 1.21.1
 
 Neu in Version 1.21.1 (Stand 1.21.1.143, 19.10.2026) – Optisch
 - Letzte Ergebnisse kompakt (Startseite): statt zweier großer „Letztes Spiel“-Karten eine Karte mit je einer Zeile pro Mannschaft (Datum, Teams mit Logos, Ergebnis, Sieg/Niederlage, Teamfarbe am Rand). Ein Tipp öffnet die Spieldetails; gibt es einen Spielbericht, steht darunter „📝 Spielbericht“. Funktion lrRender in index.html; die großen Karten g3HomeLast/g3HomeLast2 bleiben unsichtbar im Dokument. Eigene Stile für Dunkel und Halloween
 - Mindestschriftgröße: 56 Stellen im Stil mit 9–10,5 px auf 11 px (≤ 9,5 px) bzw. 12 px angehoben (u. a. Gegnerliste, Heim/Auswärts, Tabellen-Chips, Drittel, Admin-Bereich). Ausgenommen: News-Zähler am Symbol, Mini-Spiel und PDF-Druck
-- Neu in der App: Eintrag 1.21.1.143 (fasst 1.20.0, 1.21.0 und 1.21.1 zusammen, da keine davon einzeln live war)
+- Neu in der App: ein gemeinsamer Eintrag für 1.20.0 bis 1.22.0 (keine davon war einzeln live)
 
 Version 1.21.0
 
@@ -449,7 +466,7 @@ Schulferien
 NRW-Ferien im Kalender grün hinterlegt; Termine als Liste nrwFerien in index.html (2026/27).
 
 Version
-Schreibweise 1.21.1.143: vorn die App-Version (Regeln siehe Versionsnummern oben), die letzte Zahl ist die Cache-Nummer zum Vergleich von Test und Live.
+Schreibweise 1.22.1.145: vorn die App-Version (Regeln siehe Versionsnummern oben), die letzte Zahl ist die Cache-Nummer zum Vergleich von Test und Live.
 
 Veröffentlichung
 Kostenlose PWA über GitHub Pages.
