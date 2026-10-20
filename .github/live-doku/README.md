@@ -16,7 +16,8 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
-| 1.22.5.150 | – | 20.10.2026 | Fehlerbehebung und Optisch |
+| 1.23.0.151 | – | 20.10.2026 | Neue Funktion |
+| 1.22.5.150 | – (nur Test) | 20.10.2026 | Fehlerbehebung und Optisch |
 | 1.22.4.149 | – (nur Test) | 20.10.2026 | Optisch |
 | 1.22.3.148 | – (nur Test) | 20.10.2026 | Fehlerbehebung |
 | 1.22.2.147 | – (nur Test) | 20.10.2026 | Kleine Änderung |
@@ -51,9 +52,15 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 | 1.10.0.83 | 1.9.1.83 | 10.10.2026 | Neue Funktion |
 | 1.9.1.66 | 1.9.1.66 | 08.10.2026 | Neue Funktion |
 
+## Version 1.23.0
+
+### Neu in Version 1.23.0 (Stand 1.23.0.151, 20.10.2026) – Neue Funktion
+
+- **Suche in der Anleitung Anzeigetafel:** oben ein Suchfeld (bleibt beim Scrollen stehen) mit Vorschlägen (2+2, Strafe löschen, Auszeit, Tor, Uhr korrigieren). Beim Tippen bleiben nur passende Kacheln, Schritte, Tabellenzeilen und Hinweise stehen, gelb umrandet, mit Anzahl der Treffer; passt eine Überschrift, erscheint der ganze Abschnitt. „2+2“, „2 + 2“, „2×2“ und „2x2“ gelten als gleich, Umlaute und Groß-/Kleinschreibung sind egal. Drucken druckt immer die ganze Anleitung. Alles in `anleitung-anzeigetafel.html` (Skript am Ende), Stand-Zeile „… mit Grafik der Strafzeitpulte und Suche“
+
 ## Version 1.22.5
 
-### Neu in Version 1.22.5 (Stand 1.22.5.150, 20.10.2026) – Fehlerbehebung und Optisch
+### Neu in Version 1.22.5 (Stand 1.22.5.150, 20.10.2026, nur in der Test-App) – Fehlerbehebung und Optisch
 
 - **Anleitung Anzeigetafel druckte alte Fassung:** Auf GitHub (Test und Live) liegt die neue Fassung mit der Grafik der Strafzeitpulte, und sie druckt auch korrekt. Manche Browser drucken aber aus ihrem eigenen Zwischenspeicher, an der App vorbei. Die App öffnet die Anleitung deshalb jetzt mit Versions-Anhang (`anleitung-anzeigetafel.html?v=<Cache-Nummer>`), sodass nach jedem Update garantiert die aktuelle Fassung geladen und gedruckt wird
 - **Stand in der Anleitung:** im Kopf (auch auf dem Ausdruck) steht „Stand: 20.10.2026 · mit Grafik der Strafzeitpulte“ – so sieht man sofort, welche Fassung gedruckt wurde. Bei Änderungen an der Anleitung das Datum dort anpassen
@@ -104,7 +111,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 - **Letzte Ergebnisse kompakt (Startseite):** statt zweier großer „Letztes Spiel“-Karten eine Karte mit je einer Zeile pro Mannschaft (Datum, Teams mit Logos, Ergebnis, Sieg/Niederlage, Teamfarbe am Rand). Ein Tipp öffnet die Spieldetails; gibt es einen Spielbericht, steht darunter „📝 Spielbericht“. Funktion `lrRender` in `index.html`; die großen Karten `g3HomeLast`/`g3HomeLast2` bleiben unsichtbar im Dokument. Eigene Stile für Dunkel und Halloween
 - **Mindestschriftgröße:** 56 Stellen im Stil mit 9–10,5 px auf 11 px (≤ 9,5 px) bzw. 12 px angehoben (u. a. Gegnerliste, Heim/Auswärts, Tabellen-Chips, Drittel, Admin-Bereich). Ausgenommen: News-Zähler am Symbol, Mini-Spiel und PDF-Druck
-- **Neu in der App:** ein gemeinsamer Eintrag für 1.20.0 bis 1.22.0 (keine davon war einzeln live)
+- **Neu in der App:** ein gemeinsamer Eintrag für 1.20.0 bis 1.23.0 (keine davon war einzeln live)
 
 ## Version 1.21.0
 
@@ -559,9 +566,9 @@ Wenn eine neue App-Version veröffentlicht wurde, lädt der Service Worker sie i
 - **Aktualisieren** aktiviert die neue Version und lädt die App neu
 - **×** blendet den Banner bis zum nächsten App-Start aus
 
-Technisch: `index.html` erkennt eine wartende Version über den Service-Worker-Status, `sw.js` aktiviert sie erst nach der Nachricht `SKIP_WAITING`. Bei jeder App-Änderung muss der Cache-Name in `sw.js` erhöht werden (aktuell `grizzlys-u15-v150`).
+Technisch: `index.html` erkennt eine wartende Version über den Service-Worker-Status, `sw.js` aktiviert sie erst nach der Nachricht `SKIP_WAITING`. Bei jeder App-Änderung muss der Cache-Name in `sw.js` erhöht werden (aktuell `grizzlys-u15-v151`).
 
-Die angezeigte Version hat die Form `1.22.5.150`: vorn die App-Version (Regeln siehe „Versionsnummern“ oben), die letzte Zahl ist die Cache-Nummer. Test- und Live-Stand mit derselben letzten Zahl sind inhaltlich gleich. Die Testversion (`grizzlys-u15-test`) zeigt die Nummer zusätzlich im orangen Balken und sperrt Speichern, Senden und Push-Anmeldung.
+Die angezeigte Version hat die Form `1.23.0.151`: vorn die App-Version (Regeln siehe „Versionsnummern“ oben), die letzte Zahl ist die Cache-Nummer. Test- und Live-Stand mit derselben letzten Zahl sind inhaltlich gleich. Die Testversion (`grizzlys-u15-test`) zeigt die Nummer zusätzlich im orangen Balken und sperrt Speichern, Senden und Push-Anmeldung.
 
 ## Firebase
 

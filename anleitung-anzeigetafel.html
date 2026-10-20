@@ -61,6 +61,26 @@ footer a{color:inherit}
 .back{display:inline-block;color:#fff;font:700 13px/1.2 inherit;font-family:inherit;text-decoration:none;background:rgba(255,255,255,.14);padding:8px 13px;border-radius:99px;border:0;cursor:pointer}
 .back.print{background:#f2a900;color:#2a1c00}
 header p.stand{margin-top:8px;font-size:12.5px;opacity:.75}
+
+/* Suche */
+.srch{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 8px;margin:-4px 0 6px}
+.srch .box{position:relative}
+.srch input{width:100%;font:inherit;font-size:16px;padding:12px 40px 12px 40px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--text);box-shadow:0 4px 14px rgba(8,31,55,.08)}
+.srch input:focus{outline:0;border-color:#1673d1;box-shadow:0 0 0 3px rgba(22,115,209,.18)}
+.srch .lupe{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:16px;opacity:.6;pointer-events:none}
+.srch .x{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:var(--chip);color:var(--text);width:28px;height:28px;border-radius:50%;font-size:16px;cursor:pointer}
+.srch .x[hidden]{display:none}
+.srch .tips[hidden]{display:none}
+.srch input::-webkit-search-cancel-button,.srch input::-webkit-search-decoration{-webkit-appearance:none;appearance:none;display:none}
+.srch .info{font-size:13px;color:var(--muted);margin:6px 4px 0;min-height:1em}
+.srch .tips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.srch .tips button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:99px;padding:5px 10px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer}
+.searching nav.toc{display:none}
+[data-sx]{display:none!important}
+.hit{outline:3px solid #f2a900;outline-offset:2px;border-radius:12px;background:rgba(242,169,0,.12)!important}
+tr.hit td{background:rgba(242,169,0,.14)}
+.noHit{background:var(--card);border-radius:18px;padding:16px;font-size:14px}
+@media print{.srch,.noHit{display:none!important}}
 @media print{header{background:#071b33!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}section{box-shadow:none;border:1px solid #ccc;break-inside:avoid}nav.toc,.hbtns,.back{display:none}body{background:#fff}}
 </style>
 </head>
@@ -69,10 +89,12 @@ header p.stand{margin-top:8px;font-size:12.5px;opacity:.75}
 <small>ESV Grizzlys Bergkamen · Kampfgericht</small>
 <h1>Anzeigetafel bedienen<br>Stramatel 452 – Eishockey</h1>
 <p>Hauptpult für Uhr, Tore und Auszeiten · zwei Strafzeitpulte (Heim und Gast) für die Strafen</p>
-<p class="stand">Stand: 20.10.2026 · mit Grafik der Strafzeitpulte</p>
+<p class="stand">Stand: 20.10.2026 · mit Grafik der Strafzeitpulte und Suche</p>
 <div class="hbtns"><a class="back" href="./">‹ Zurück zur App</a><button class="back print" type="button" onclick="window.print()">🖨 Drucken / als PDF speichern</button></div>
 </div></header>
 <main>
+<div class="srch" role="search"><div class="box"><span class="lupe" aria-hidden="true">🔍</span><input id="q" type="search" placeholder="Suchen, z. B. 2+2, Auszeit, löschen" aria-label="Anleitung durchsuchen" autocomplete="off" enterkeyhint="search"><button class="x" id="qx" type="button" aria-label="Suche löschen" hidden>×</button></div><div class="info" id="qi"></div><div class="tips" id="qt"><button type="button">2+2</button><button type="button">Strafe löschen</button><button type="button">Auszeit</button><button type="button">Tor</button><button type="button">Uhr korrigieren</button></div></div>
+<div class="noHit" id="nohit" hidden>Nichts gefunden. Versuch ein anderes Wort, z. B. „Strafe“, „Tor“, „Uhr“ oder eine Tastennummer.</div>
 <nav class="toc"><a href="#start">Vor dem Spiel</a><a href="#pult">Hauptpult</a><a href="#spiel">Während des Spiels</a><a href="#korr">Korrigieren</a><a href="#strafe">Strafzeitpulte</a><a href="#ende">Spielende</a><a href="#hilfe">Hilfe</a></nav>
 
 <section>
@@ -247,5 +269,57 @@ header p.stand{margin-top:8px;font-size:12.5px;opacity:.75}
 </section>
 </main>
 <footer>Kurzanleitung nach den Stramatel-Bedienungsanleitungen für das Hauptbedienpult 452G und die Strafzeitpulte 452G. Tastennummern stehen klein neben den Tasten. Bei Abweichungen gilt die Originalanleitung: <a href="https://pimage.sport-thieme.de/pdf/Bedienungsanleitung_Hauptbedienpult_Stramatel_Anzeigetafel_3971909_INT.pdf" target="_blank" rel="noopener">Hauptbedienpult (PDF)</a> · <a href="https://www.stramatel.com/wp-content/uploads/2023/03/UF452GPT_G-Pupitres-penalites-452G.pdf" target="_blank" rel="noopener">Strafzeitpulte (PDF, französisch)</a> · Erstellt von JAZM für den ESV Grizzlys Bergkamen.</footer>
+<script>
+/* Suche in der Anleitung: blendet nicht passende Abschnitte aus und markiert Treffer.
+   „2+2“, „2 + 2“, „2×2“ und „2x2“ gelten als gleich, Umlaute und Groß/klein sind egal. */
+(function(){
+  const q=document.getElementById("q"), qi=document.getElementById("qi"), qx=document.getElementById("qx"), qt=document.getElementById("qt"), nohit=document.getElementById("nohit");
+  const norm=t=>String(t).toLowerCase().replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss").replace(/[×✕]/g,"x").replace(/(\d)\s*x\s*(\d)/g,"$1+$2").replace(/\s*([+\/–-])\s*/g,"$1").replace(/\s+/g," ").trim();
+  const CONT=".grid,.steps,table,.slots";
+  const UNIT=".tile,li,tr,.slots>div";
+  const secs=[...document.querySelectorAll("main section")];
+  function clear(){document.querySelectorAll("[data-sx]").forEach(e=>e.removeAttribute("data-sx"));document.querySelectorAll(".hit").forEach(e=>e.classList.remove("hit"));}
+  function run(){
+    const raw=q.value, words=norm(raw).split(" ").filter(Boolean);
+    clear(); qx.hidden=!raw; qt.hidden=!!raw; document.body.classList.toggle("searching",!!words.length);
+    if(!words.length){qi.textContent="";nohit.hidden=true;return;}
+    const has=el=>{const t=norm(el.textContent);return words.every(w=>t.includes(w));};
+    let hits=0;
+    secs.forEach(sec=>{
+      const h2=sec.querySelector("h2");
+      if(h2&&has(h2)){hits++;h2.classList.add("hit");return;}
+      let any=false, groups=[], g={h3:null,items:[]};
+      [...sec.children].forEach(c=>{if(c.tagName==="H2")return;if(c.tagName==="H3"){groups.push(g);g={h3:c,items:[]};}else g.items.push(c);});
+      groups.push(g);
+      groups.forEach(gr=>{
+        const h3hit=gr.h3&&has(gr.h3);
+        if(h3hit){any=true;hits++;gr.h3.classList.add("hit");return;}
+        let gAny=false;
+        gr.items.forEach(c=>{
+          if(c.matches(CONT)){
+            const units=[...c.querySelectorAll(UNIT)].filter(u=>u.parentElement.closest(CONT)===c||u.closest(CONT)===c);
+            let n=0; units.forEach(u=>{if(has(u)){n++;u.classList.add("hit");}else u.setAttribute("data-sx","");});
+            if(n){hits+=n;gAny=true;}else c.setAttribute("data-sx","");
+          }else if(c.matches(".svgwrap,.legend")){c.setAttribute("data-sx","");}
+          else if(has(c)){hits++;gAny=true;c.classList.add("hit");}
+          else c.setAttribute("data-sx","");
+        });
+        if(gAny)any=true; else if(gr.h3)gr.h3.setAttribute("data-sx","");
+      });
+      if(!any)sec.setAttribute("data-sx","");
+    });
+    qi.textContent=hits?(hits===1?"1 Treffer":hits+" Treffer"):"";
+    nohit.hidden=hits>0;
+  }
+  let t; q.addEventListener("input",()=>{clearTimeout(t);t=setTimeout(run,120);});
+  q.addEventListener("keydown",e=>{if(e.key==="Escape"){q.value="";run();}if(e.key==="Enter")q.blur();});
+  qx.addEventListener("click",()=>{q.value="";run();q.focus();});
+  qt.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;q.value=b.textContent;run();});
+  /* Drucken immer vollständig */
+  let saved="";
+  window.addEventListener("beforeprint",()=>{saved=q.value;if(saved){q.value="";run();}});
+  window.addEventListener("afterprint",()=>{if(saved){q.value=saved;run();}});
+})();
+</script>
 </body>
 </html>
