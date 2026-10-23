@@ -16,7 +16,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
-| 1.25.0.156 | – | 23.10.2026 | Neue Funktion |
+| 1.25.0.157 | – | 23.10.2026 | Neue Funktion |
 | 1.24.1.155 | – (nur Test) | 23.10.2026 | Kleine Verbesserung |
 | 1.24.0.154 | – | 20.10.2026 | Neue Funktion |
 | 1.23.2.153 | – (nur Test) | 20.10.2026 | Optisch |
@@ -59,7 +59,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 ## Version 1.25.0
 
-### Neu in Version 1.25.0 (Stand 1.25.0.156, 23.10.2026) – Neue Funktion
+### Neu in Version 1.25.0 (Stand 1.25.0.157, 23.10.2026) – Neue Funktion
 
 - **Spiel absagen (Admin):** im Spiel-Fenster neuer Kasten „🚫 Absage“ mit Knopf „Spiel absagen“ und optionalem Häkchen „📲 Push an alle senden“ (Text: „Spiel gegen … am … ist abgesagt.“, über den News-Push wie bei Spieländerungen). „Absage zurücknehmen“ macht es rückgängig. Gespeichert als Feld `cancelled` in `scheduleOverrides` (keine Regeländerung); gab es nur die Absage, wird das Dokument beim Zurücknehmen gelöscht, eine echte Terminänderung bleibt erhalten. Funktionen `admSetCancelled`, `admOvChanged`
 - **Nur Anzeige – Ergebnisse laufen weiter:** abgesagte Spiele bleiben im Spielplan; Ergebnisse vom EHV werden unverändert übernommen und angezeigt (dann Ergebnis + „Abgesagt“)
@@ -607,9 +607,9 @@ Wenn eine neue App-Version veröffentlicht wurde, lädt der Service Worker sie i
 - **Aktualisieren** aktiviert die neue Version und lädt die App neu
 - **×** blendet den Banner bis zum nächsten App-Start aus
 
-Technisch: `index.html` erkennt eine wartende Version über den Service-Worker-Status, `sw.js` aktiviert sie erst nach der Nachricht `SKIP_WAITING`. Bei jeder App-Änderung muss der Cache-Name in `sw.js` erhöht werden (aktuell `grizzlys-u15-v156`).
+Technisch: `index.html` erkennt eine wartende Version über den Service-Worker-Status, `sw.js` aktiviert sie erst nach der Nachricht `SKIP_WAITING`. Bei jeder App-Änderung muss der Cache-Name in `sw.js` erhöht werden (aktuell `grizzlys-u15-v157`).
 
-Die angezeigte Version hat die Form `1.25.0.156`: vorn die App-Version (Regeln siehe „Versionsnummern“ oben), die letzte Zahl ist die Cache-Nummer. Test- und Live-Stand mit derselben letzten Zahl sind inhaltlich gleich. Die Testversion (`grizzlys-u15-test`) zeigt die Nummer zusätzlich im orangen Balken und sperrt Speichern, Senden und Push-Anmeldung.
+Die angezeigte Version hat die Form `1.25.0.157`: vorn die App-Version (Regeln siehe „Versionsnummern“ oben), die letzte Zahl ist die Cache-Nummer. Test- und Live-Stand mit derselben letzten Zahl sind inhaltlich gleich. Die Testversion (`grizzlys-u15-test`) zeigt die Nummer zusätzlich im orangen Balken und sperrt Speichern, Senden und Push-Anmeldung.
 
 ## Firebase
 
