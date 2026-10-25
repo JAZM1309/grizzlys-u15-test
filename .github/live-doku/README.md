@@ -16,6 +16,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.26.1.159 | – (nur Test) | 25.10.2026 | Kleine Verbesserung |
 | 1.26.0.158 | – (nur Test) | 25.10.2026 | Neue Funktion |
 | 1.25.1.157 | – | 23.10.2026 | Kleine Änderung |
 | 1.25.0.156 | – | 23.10.2026 | Neue Funktion |
@@ -58,6 +59,14 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 | 1.10.1.86 | 1.9.1.86 | 10.10.2026 | Fehlerbehebung und Verbesserung |
 | 1.10.0.83 | 1.9.1.83 | 10.10.2026 | Neue Funktion |
 | 1.9.1.66 | 1.9.1.66 | 08.10.2026 | Neue Funktion |
+
+## Version 1.26.1
+
+### Neu in Version 1.26.1 (Stand 1.26.1.159, 25.10.2026) – Kleine Verbesserung
+
+- **Spielbericht lebendiger:** mehr Formulierungen und Eishockey-Sprache im Einstieg, im Spielverlauf und bei den Strafminuten; neuer Abschluss-Satz („💬 Fazit“) passend zu Ergebnis und Spielverlauf
+- **Neue Spielmomente** (aus den EHV-Spieldetails, je ein Chip zum An- und Abwählen): 💪 Aufholjagd nach mindestens zwei Toren Rückstand, 🔄 Führungswechsel (ab zwei), 😮 Ausgleich in den letzten drei Minuten, 🎩 Hattrick (per Rückennummer), 🌪 drei eigene Tore innerhalb von drei Minuten, 🥅 Schlusspunkt ins leere Tor
+- **Korrekturen im Spielverlauf:** Drittel, nach denen es unentschieden steht, werden richtig beschrieben (vorher „baute die Führung aus“); „Dazu blieb sie …“ steht nicht mehr ohne Bezug am Absatzanfang; Doppelschlag und Torflut werden nicht doppelt erwähnt
 
 ## Version 1.26.0
 
