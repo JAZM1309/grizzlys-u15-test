@@ -16,6 +16,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.26.3.161 | – (nur Test) | 26.10.2026 | Optisch |
 | 1.26.2.160 | – (nur Test) | 25.10.2026 | Optisch und kleine Verbesserung |
 | 1.26.1.159 | – (nur Test) | 25.10.2026 | Kleine Verbesserung |
 | 1.26.0.158 | – (nur Test) | 25.10.2026 | Neue Funktion |
@@ -60,6 +61,12 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 | 1.10.1.86 | 1.9.1.86 | 10.10.2026 | Fehlerbehebung und Verbesserung |
 | 1.10.0.83 | 1.9.1.83 | 10.10.2026 | Neue Funktion |
 | 1.9.1.66 | 1.9.1.66 | 08.10.2026 | Neue Funktion |
+
+## Version 1.26.3
+
+### Neu in Version 1.26.3 (Stand 1.26.3.161, 26.10.2026) – Optisch
+
+- **Social-Media-Bilder fürs Halloween-Spiel (31.10.):** Ankündigung und Ergebnisbild bekommen dezent das Halloween-Eisbild (`halloween/karte3.webp`) im Hintergrund und große Spinnennetze aus dem Halloween-Design der App (oben rechts, das U15-Schild hängt im Netz, und gespiegelt unten rechts). Gilt nur für Spiele am 31.10. (`isHwGame`), unabhängig davon, ob der Halloween-Modus am Gerät an ist; alle anderen Bilder bleiben unverändert
 
 ## Version 1.26.2
 
