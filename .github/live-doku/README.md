@@ -16,6 +16,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.29.1.169 | – (nur Test) | 11.11.2026 | Optisch und kleine Verbesserung |
 | 1.29.0.168 | – (nur Test) | 11.11.2026 | Neues Design |
 | 1.28.1.167 | – (nur Test) | 11.11.2026 | Kleine Änderung |
 | 1.28.0.166 | – (nur Test) | 11.11.2026 | Neue Funktionen |
@@ -68,6 +69,14 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 | 1.10.1.86 | 1.9.1.86 | 10.10.2026 | Fehlerbehebung und Verbesserung |
 | 1.10.0.83 | 1.9.1.83 | 10.10.2026 | Neue Funktion |
 | 1.9.1.66 | 1.9.1.66 | 08.10.2026 | Neue Funktion |
+
+## Version 1.29.1
+
+- Überschriften wieder in der normalen App-Schrift (Pinselschrift aus 1.29.0 war zu groß), Kopf von „Letzte Ergebnisse“ wieder grau.
+- Mannschafts-Kacheln ohne „S · U · N“-Bilanz – die Zahlen stehen in der Saisonbilanz-Kachel darunter. Formkurve und Tabellenplatz bleiben.
+- Spielplan-Kopf kompakt: Tabellen-Links als kleine Knöpfe neben der Überschrift; Liste/Kalender als Symbol-Umschalter, Filter und „Heute“ in einer Zeile, darunter die Monatsleiste. Spart gut die Hälfte der Höhe.
+- Neuigkeiten mit Reitern (Hinweise, Berichte, Änderungen, App). Neue Einträge zeigen eine rote Zahl am Reiter; geöffnet wird der erste Reiter mit Neuem.
+- Für 1.28 weiterhin nötig: Firestore-Regeln deployen, falls noch nicht geschehen (FUNCTIONS-ANLEITUNG.txt).
 
 ## Version 1.29.0
 
