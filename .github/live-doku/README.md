@@ -16,6 +16,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.29.4.172 | – (nur Test) | 11.11.2026 | Optisch |
 | 1.29.3.171 | – (nur Test) | 11.11.2026 | Fehlerbehebung |
 | 1.29.2.170 | – (nur Test) | 11.11.2026 | Optisch |
 | 1.29.1.169 | – (nur Test) | 11.11.2026 | Optisch und kleine Verbesserung |
@@ -71,6 +72,10 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 | 1.10.1.86 | 1.9.1.86 | 10.10.2026 | Fehlerbehebung und Verbesserung |
 | 1.10.0.83 | 1.9.1.83 | 10.10.2026 | Neue Funktion |
 | 1.9.1.66 | 1.9.1.66 | 08.10.2026 | Neue Funktion |
+
+## Version 1.29.4
+
+- Eis-Hintergrund intensiver: Kufenspuren etwa dreimal so deutlich, mehr Spuren mit Doppelkante und kleinen Eissplittern, etwas kräftigerer Eis-Blauton. Im dunklen Design ebenfalls deutlicher.
 
 ## Version 1.29.3
 
