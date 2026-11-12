@@ -16,6 +16,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.36.2.188 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
 | 1.36.1.187 | – (nur Test) | 12.11.2026 | Optisch und Fehlerbehebung |
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
@@ -87,6 +88,12 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 | 1.10.1.86 | 1.9.1.86 | 10.10.2026 | Fehlerbehebung und Verbesserung |
 | 1.10.0.83 | 1.9.1.83 | 10.10.2026 | Neue Funktion |
 | 1.9.1.66 | 1.9.1.66 | 08.10.2026 | Neue Funktion |
+
+## Version 1.36.2
+
+### Neu in Version 1.36.2 (Stand 1.36.2.188, 12.11.2026, nur in der Test-App) – Kleine Ergänzung
+
+- Info › Grizzlys Teamseiten: Link zur Teamseite der U13 (`slug=grizzlys-u13`).
 
 ## Version 1.36.1
 
@@ -904,7 +911,7 @@ Die App zeigt Tabellenplatz, Spiele, Punkte, Tordifferenz, die Form der letzten 
 - Die App speichert den Tabellenstand 15 Minuten auf dem Gerät und holt ihn nach jedem App-Update sofort neu.
 - Fällt der Abruf aus, bleiben Chips, Form und Drittel weg; der Spielplan funktioniert unverändert.
 - Liga-Kennungen: U15 A `21652` (Landesliga NRW), U15 B `21656` (Bezirksliga NRW), U13 `21668` (U13 Landesliga NRW, ab 1.36.0). Sie stehen in `functions/standings.js` und müssen zur neuen Saison angepasst werden.
-- Der Zugriffsschlüssel in `standings.js` und `game-report.js` ist der öffentliche Schlüssel der EHV-Seite. Eine ausdrückliche Erlaubnis von EHV / hockeydata zur Nutzung in der App liegt nicht vor – Anfrage beim EHV empfohlen.
+- Der Zugriffsschlüssel in `standings.js` und `game-report.js` ist der öffentliche Schlüssel der EHV-Seite. Eine ausdrückliche Erlaubnis von EHV / hockeydata zur Nutzung in der App liegt nicht vor. Eine Anfrage beim EHV wurde zu Beginn der EHV-Abfragen gestellt, eine Antwort steht bis heute (12.11.2026) aus.
 - Überzahltore zählt `gameReport` aus den Toren selbst (`gameStrength` PP/SH), weil die Teamstatistik des EHV dafür teils 0 liefert. Schüsse aufs Tor werden in der U15 nicht erfasst und deshalb nicht verwendet.
 - Deploy und Schalter: siehe `FUNCTIONS-ANLEITUNG.txt`.
 
