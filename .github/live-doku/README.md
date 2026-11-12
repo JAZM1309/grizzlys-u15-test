@@ -16,6 +16,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.32.1.177 | – (nur Test) | 12.11.2026 | Kleine Änderung |
 | 1.32.0.176 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.31.0.175 | – (nur Test) | 11.11.2026 | Neue Funktion |
 | 1.30.1.174 | – (nur Test) | 11.11.2026 | Fehlerbehebung |
@@ -76,6 +77,11 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 | 1.10.1.86 | 1.9.1.86 | 10.10.2026 | Fehlerbehebung und Verbesserung |
 | 1.10.0.83 | 1.9.1.83 | 10.10.2026 | Neue Funktion |
 | 1.9.1.66 | 1.9.1.66 | 08.10.2026 | Neue Funktion |
+
+## Version 1.32.1
+
+- App-Neuigkeiten aufgeräumt: nur noch Änderungen, die für Nutzer wichtig sind. Entfernt: Start-Animation, Admin-Bereich, Lesbarkeits- und Optik-Feinschliff (Kufenspuren, Farbstreifen), Route bei Heimspielen, Halloween-Schalter, Minispiel. Die Einträge 1.29.0/1.29.1 sind zu einem zusammengefasst.
+- Grundsatz ab jetzt: In die App-Neuigkeiten kommen nur neue Funktionen und spürbare Änderungen für Fans – keine Admin-, Technik- oder Feinschliff-Punkte (die stehen nur hier im README).
 
 ## Version 1.32.0
 
