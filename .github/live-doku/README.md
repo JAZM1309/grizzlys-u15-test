@@ -16,6 +16,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.33.1.180 | – (nur Test) | 12.11.2026 | Optisch |
 | 1.33.0.179 | – (nur Test) | 12.11.2026 | Neues Design (Kopfbereich) |
 | 1.32.2.178 | – (nur Test) | 12.11.2026 | Doku |
 | 1.32.1.177 | – (nur Test) | 12.11.2026 | Kleine Änderung |
@@ -79,6 +80,10 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 | 1.10.1.86 | 1.9.1.86 | 10.10.2026 | Fehlerbehebung und Verbesserung |
 | 1.10.0.83 | 1.9.1.83 | 10.10.2026 | Neue Funktion |
 | 1.9.1.66 | 1.9.1.66 | 08.10.2026 | Neue Funktion |
+
+## Version 1.33.1
+
+- Übergang Kopfbereich → Seite ohne Kante: Die Menüleiste (Start, Spielplan …) hat erst einen Hintergrund, wenn sie beim Scrollen oben andockt; vorher ist sie durchsichtig. Im dunklen Design läuft zusätzlich der Eisnebel unten weich aus (vorher harte Kante).
 
 ## Version 1.33.0
 
