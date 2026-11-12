@@ -16,6 +16,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.36.6.192 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
 | 1.36.5.191 | – (nur Test) | 12.11.2026 | Optisch und kleine Ergänzung |
 | 1.36.4.190 | – (nur Test) | 12.11.2026 | Optisch |
 | 1.36.3.189 | – (nur Test) | 12.11.2026 | Optisch |
@@ -91,6 +92,12 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 | 1.10.1.86 | 1.9.1.86 | 10.10.2026 | Fehlerbehebung und Verbesserung |
 | 1.10.0.83 | 1.9.1.83 | 10.10.2026 | Neue Funktion |
 | 1.9.1.66 | 1.9.1.66 | 08.10.2026 | Neue Funktion |
+
+## Version 1.36.6
+
+### Neu in Version 1.36.6 (Stand 1.36.6.192, 12.11.2026, nur in der Test-App) – Kleine Ergänzung
+
+- Spieldetails und aufgeklappte Spielkarten: Kachel „Torschützen“ mit den Rückennummern der Grizzlys (z. B. „Nr. 13 ×2“) und der Zahl der Überzahltore. Erscheint bei gespielten Spielen, wenn der EHV-Endstand zum Ergebnis passt; während eines Live-Spiels bleibt die Torfolge des Live-Tickers.
 
 ## Version 1.36.5
 
