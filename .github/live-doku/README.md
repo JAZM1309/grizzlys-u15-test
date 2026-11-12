@@ -16,6 +16,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.36.1.187 | – (nur Test) | 12.11.2026 | Optisch und Fehlerbehebung |
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
@@ -86,6 +87,13 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 | 1.10.1.86 | 1.9.1.86 | 10.10.2026 | Fehlerbehebung und Verbesserung |
 | 1.10.0.83 | 1.9.1.83 | 10.10.2026 | Neue Funktion |
 | 1.9.1.66 | 1.9.1.66 | 08.10.2026 | Neue Funktion |
+
+## Version 1.36.1
+
+### Neu in Version 1.36.1 (Stand 1.36.1.187, 12.11.2026, nur in der Test-App) – Optisch
+
+- Titel „Young Grizzlys“ im Kopfbereich etwas kleiner (27 → 20 px, auf schmalen Handys 25 → 19 px; Halloween/Weihnachten entsprechend).
+- Fehlerbehebung: Bei drei Mannschaften stand das dritte letzte Spiel zusätzlich als eigene Karte unter „Letzte Ergebnisse“ (doppelt). Diese Karte wird jetzt wie die anderen ausgeblendet.
 
 ## Version 1.36.0
 
