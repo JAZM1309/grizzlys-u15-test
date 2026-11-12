@@ -16,6 +16,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.36.4.190 | – (nur Test) | 12.11.2026 | Optisch |
 | 1.36.3.189 | – (nur Test) | 12.11.2026 | Optisch |
 | 1.36.2.188 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
 | 1.36.1.187 | – (nur Test) | 12.11.2026 | Optisch und Fehlerbehebung |
@@ -89,6 +90,12 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 | 1.10.1.86 | 1.9.1.86 | 10.10.2026 | Fehlerbehebung und Verbesserung |
 | 1.10.0.83 | 1.9.1.83 | 10.10.2026 | Neue Funktion |
 | 1.9.1.66 | 1.9.1.66 | 08.10.2026 | Neue Funktion |
+
+## Version 1.36.4
+
+### Neu in Version 1.36.4 (Stand 1.36.4.190, 12.11.2026, nur in der Test-App) – Optisch
+
+- Spruch „Jung · Wild · Grizzlys“ mittig ausgerichtet, blauer Pinselstrich darunter kürzer (118 → 84 px).
 
 ## Version 1.36.3
 
