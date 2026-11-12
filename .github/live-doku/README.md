@@ -16,6 +16,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.32.2.178 | – (nur Test) | 12.11.2026 | Doku |
 | 1.32.1.177 | – (nur Test) | 12.11.2026 | Kleine Änderung |
 | 1.32.0.176 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.31.0.175 | – (nur Test) | 11.11.2026 | Neue Funktion |
@@ -77,6 +78,11 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 | 1.10.1.86 | 1.9.1.86 | 10.10.2026 | Fehlerbehebung und Verbesserung |
 | 1.10.0.83 | 1.9.1.83 | 10.10.2026 | Neue Funktion |
 | 1.9.1.66 | 1.9.1.66 | 08.10.2026 | Neue Funktion |
+
+## Version 1.32.2
+
+- PDF „Seitenübersicht der App“ (Grizzlys-U15-App-Seitenuebersicht.pdf) auf den aktuellen Stand gebracht (vorher Stand 1.9.1.140): Live-Ticker, neue Startseite, Saisonbilanz mit Rückennummern und Tabellenverlauf, Fan-Tipp, Neuigkeiten mit Reitern, kompakter Spielplan, neue Einstellungen (Konfetti, Start-Animation, große Schrift, Live-Push), Admin mit Reiter Social/System, Penaltyschießen statt Unentschieden; entfernt: Mini-Spiel, Halloween-Gruselmoment.
+- App selbst unverändert (nur Versionsnummer).
 
 ## Version 1.32.1
 
