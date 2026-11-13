@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Test-Paket aus dem Zweig "eingang" (vom Admin-Bereich abgelegt) ins Test-Repo übernehmen.
 # Gleiche Prüfungen wie ./test-hochladen.sh im Grizzlys-Werkzeug.
+# 1.39.1: Ordner functions/ aus dem Paket wird mit übernommen.
 WZ="$(cd "$(dirname "$0")" && pwd)"; source "$WZ/gemeinsam.sh"
 cd "$GITHUB_WORKSPACE"; git_name
 
@@ -21,7 +22,8 @@ if [ -f "$Q/index.html" ]; then
   V=$(version_von "$Q"); C=$(cache_von "$Q")
   [ "${V##*.}" = "$C" ] || fehler "Version ($V) und Cache-Nummer ($C) passen nicht zusammen. Nichts hochgeladen."
 fi
-for weg in functions firebase.json firestore.rules .github .git .nojekyll; do rm -rf "${Q:?}/$weg"; done
+# 1.39.1: functions/ bleibt im Paket und wird mit ins Test-Repo übernommen – „Live gehen“ nimmt sie von dort mit und deployt sie.
+for weg in firebase.json firestore.rules .github .git .nojekyll; do rm -rf "${Q:?}/$weg"; done
 
 # Doku nur für Live (Ordner "nur-live" im Paket: README.md, README.txt, FUNCTIONS-ANLEITUNG.txt, PDFs)
 # wird im Test-Repo unter .github/live-doku abgelegt und beim nächsten „Live gehen“ mitgenommen.
