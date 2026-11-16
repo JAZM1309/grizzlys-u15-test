@@ -1344,6 +1344,8 @@ function icsFor(g,alarm=false){
 function downloadIcs(g,alarm){const blob=new Blob([icsFor(g,alarm)],{type:"text/calendar"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=(alarm?"Erinnerung-":"U15-")+g.date+"-"+g.team+".ics";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 function calendar(g){downloadIcs(g,false)} function reminder(g){downloadIcs(g,true);setTimeout(()=>alert("Kalenderdatei vorbereitet – die Erinnerung ist 24 Stunden vorher hinterlegt."),250)}
 async function shareGame(g){const r=resInfo(g), per=r?standPeriodsData(g):null;
+  /* 1.40.2: Ergebnis und Spieltag als Bild teilen (Bild-Fenster mit Teilen/Speichern); abgesagte Spiele bleiben Text */
+  if(!g.cancelled&&typeof instaOpen==="function"){try{await instaOpen(g,r?"result":"announce",true);return}catch(e){console.warn(e)}}
   const text=(g.cancelled?"❌ ABGESAGT\n":"")+(r?"🏒 "+teamName(g.team)+" – Endstand\n"+g.home+" "+r.hs+":"+r.as+" "+g.away+(per?"\nDrittel: "+per.p.join(" · ")+(per.so?" · n.P.":per.ot?" · n.V.":""):"")+"\n"+fmtDate(g)+" · "+g.stadium
     :"🏒 "+teamName(g.team)+"\n"+fmtDate(g)+" · "+g.time+" Uhr\n"+g.home+" gegen "+g.away+"\n📍 "+g.stadium+" – "+address(g));if(navigator.share){try{await navigator.share({title:"ESV Grizzlys "+teamName(g.team),text})}catch(e){}}else alert(text)}
 
