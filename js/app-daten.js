@@ -2,7 +2,7 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-import { getFirestore, collection, getDocs, onSnapshot, query, where, orderBy, limit, increment, doc, getDoc, setDoc as _setDoc, addDoc as _addDoc, updateDoc as _updateDoc, deleteDoc as _deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+import { getFirestore, collection, getDocs, onSnapshot, query, where, orderBy, limit, doc, getDoc, setDoc as _setDoc, addDoc as _addDoc, updateDoc as _updateDoc, deleteDoc as _deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 import { getMessaging, getToken as _getToken, deleteToken as _deleteToken, onMessage, isSupported } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-messaging.js";
 import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-functions.js";
 
@@ -453,7 +453,7 @@ async function submitBugReport(){
       area,
       description,
       contact,
-      appVersion:"1.40.0.201",
+      appVersion:"1.40.0.202",
       platform:detectPlatform(),
       userAgent:navigator.userAgent||"",
       pushRegistered:getPushRegistrationStatus(),
@@ -1722,7 +1722,7 @@ async function appErrSend(e){
     const day=new Date().toISOString().slice(0,10), id=day+"_"+appErrHash(msg+"|"+src);
     if(appErrSent.has(id))return; appErrSent.add(id);
     const ua=navigator.userAgent||"", plat=/Android/i.test(ua)?"android":/iPhone|iPad|iPod/i.test(ua)?"ios":"desktop", v=String((document.querySelector(".inVer")||{}).textContent||"").slice(0,20);
-    await setDoc(doc(db,"appErrors",id),{day,msg,src,v,n:increment(1),last:serverTimestamp(),plat},{merge:true});
+    await setDoc(doc(db,"appErrors",id),{day,msg,src,v,n:1,last:serverTimestamp(),plat},{merge:true});
   }catch(err){}
 }
 window.__appErrHook=appErrSend; (window.__appErrQ||[]).splice(0).forEach(appErrSend);
