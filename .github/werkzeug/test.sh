@@ -22,8 +22,9 @@ if [ -f "$Q/index.html" ]; then
   V=$(version_von "$Q"); C=$(cache_von "$Q")
   [ "${V##*.}" = "$C" ] || fehler "Version ($V) und Cache-Nummer ($C) passen nicht zusammen. Nichts hochgeladen."
 fi
+# 1.40.0: auch firestore.rules bleibt im Paket (wird mit „Live gehen“ übernommen und deployt).
 # 1.39.1: functions/ bleibt im Paket und wird mit ins Test-Repo übernommen – „Live gehen“ nimmt sie von dort mit und deployt sie.
-for weg in firebase.json firestore.rules .github .git .nojekyll; do rm -rf "${Q:?}/$weg"; done
+for weg in firebase.json .github .git .nojekyll; do rm -rf "${Q:?}/$weg"; done
 
 # Doku nur für Live (Ordner "nur-live" im Paket: README.md, README.txt, FUNCTIONS-ANLEITUNG.txt, PDFs)
 # wird im Test-Repo unter .github/live-doku abgelegt und beim nächsten „Live gehen“ mitgenommen.
