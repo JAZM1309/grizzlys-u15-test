@@ -911,7 +911,7 @@ window.applyResults=function(){
       const ll=RINK_GEO[r.st]; pts.push(ll);
       const km=distanceForStadium(r.st);
       const teamsHtml=list.map((x,i)=>`<div class="omTeam">${logoHtml(x.name,"opponentLogo")}<div><b>${esc(x.name)}</b>${x.teams.map(t=>`<span class="opponentTeamBadge ${t}">${teamName(t)}</span>`).join("")}</div><button type="button" data-omi="${i}">Spiele</button></div>`).join("");
-      const html=`<div class="omPop"><h4>${isHomeRink?"🏠 Unsere Halle · ":""}${esc(r.st==="Grefeath"?"Grefrath":r.st)}</h4><div class="omAddr">${esc(address(r.g))}${km?" · "+km+" km":""}</div>${teamsHtml}${list.some(x=>x.elsewhere)?`<div class="omHomeNote">Heimspiel wird nicht hier ausgetragen – beide Spiele finden in Bergkamen statt.</div>`:""}${isHomeRink||!r.travel?"":`<button type="button" class="omRoute">📍 Route</button>`}</div>`;
+      const html=`<div class="omPop"><h4>${isHomeRink?SI("home")+" Unsere Halle · ":""}${esc(r.st==="Grefeath"?"Grefrath":r.st)}</h4><div class="omAddr">${esc(address(r.g))}${km?" · "+km+" km":""}</div>${teamsHtml}${list.some(x=>x.elsewhere)?`<div class="omHomeNote">Heimspiel wird nicht hier ausgetragen – beide Spiele finden in Bergkamen statt.</div>`:""}${isHomeRink||!r.travel?"":`<button type="button" class="omRoute">${SI("pin")} Route</button>`}</div>`;
       const mk=L.marker(ll,{icon,zIndexOffset:isHomeRink?1000:0,title:isHomeRink?"Bergkamen":list.map(x=>x.name).join(", ")}).addTo(OM.layer);
       mk.bindPopup(html,{maxWidth:280,autoPanPadding:[20,20]}); marks.push(mk);
       mk.on("popupopen",e=>{const el=e.popup.getElement();if(!el)return;
@@ -1273,6 +1273,9 @@ function g3Bind(card,g,fixed=false){
   card.onclick=e=>{if(e.target.closest("button,a"))return;tog()};
   card.onkeydown=e=>{if(e.target!==card)return;if(e.key==="Enter"||e.key===" "){e.preventDefault();tog()}};
 }
+const SI_P={"list": "<path d=\"M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01\"/>", "map": "<path d=\"M9 4L3.5 6v14L9 18l6 2 5.5-2V4L15 6z\"/><path d=\"M9 4v14M15 6v14\"/>", "sun": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4\"/>", "moon": "<path d=\"M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z\"/>", "phone": "<rect x=\"7\" y=\"3\" width=\"10\" height=\"18\" rx=\"2.5\"/><path d=\"M11 18h2\"/>", "party": "<path d=\"M4 20l5-13 8 8z\"/><path d=\"M14 4v2M19 4l-1.2 1.2M20 9h-2M16 10.5l.01 0\"/>", "target": "<circle cx=\"12\" cy=\"12\" r=\"8.5\"/><circle cx=\"12\" cy=\"12\" r=\"4.5\"/><path d=\"M12 12h.01\"/>", "puck": "<ellipse cx=\"12\" cy=\"9\" rx=\"7\" ry=\"3\"/><path d=\"M5 9v5c0 1.7 3.1 3 7 3s7-1.3 7-3V9\"/>", "ghost": "<path d=\"M5 20V11a7 7 0 0 1 14 0v9l-2.5-2-2 2-2.5-2-2.5 2-2-2z\"/><path d=\"M9.5 11h.01M14.5 11h.01\"/>", "tree": "<path d=\"M12 3l4.5 5.5h-2.5L18 13.5h-3L19.5 19h-15L9 13.5H6L10 8.5H7.5z\"/><path d=\"M12 19v2.5\"/>", "clock": "<circle cx=\"12\" cy=\"13\" r=\"7.5\"/><path d=\"M12 9v4l2.5 1.5M5 4.5L3 6.5M19 4.5l2 2\"/>", "siren": "<path d=\"M7 18v-5a5 5 0 0 1 10 0v5\"/><path d=\"M5 18h14v3H5zM12 3v2M4.5 7l1.4 1.4M19.5 7l-1.4 1.4\"/>", "chart": "<path d=\"M4 20V10M10 20V4M16 20v-7M21 20H3\"/>", "lock": "<rect x=\"5\" y=\"10.5\" width=\"14\" height=\"10\" rx=\"2.5\"/><path d=\"M8 10.5V8a4 4 0 0 1 8 0v2.5\"/>", "pin": "<path d=\"M12 21s-6.5-5.7-6.5-11a6.5 6.5 0 0 1 13 0c0 5.3-6.5 11-6.5 11z\"/><circle cx=\"12\" cy=\"10\" r=\"2.3\"/>", "home": "<path d=\"M4 11l8-7 8 7v9H4z\"/><path d=\"M10 20v-5h4v5\"/>", "stopwatch": "<circle cx=\"12\" cy=\"13.5\" r=\"7\"/><path d=\"M12 10v4M9.5 3h5M18.5 6.5L17 8\"/>", "ice": "<path d=\"M12 3l7.5 4v10L12 21l-7.5-4V7z\"/><path d=\"M4.5 7L12 11l7.5-4M12 11v10\"/>", "stop": "<circle cx=\"12\" cy=\"12\" r=\"8.5\"/><path d=\"M6 6l12 12\"/>", "warn": "<path d=\"M12 4L21 19H3z\"/><path d=\"M12 10v4M12 16.8h.01\"/>", "pad": "<path d=\"M8 3h8l1 10-2 8H9l-2-8z\"/><path d=\"M8.5 9h7M8.8 14h6.4\"/>", "goal": "<path d=\"M3 19V7h18v12\"/><path d=\"M3 11h18M3 15h18M8 7v12M13 7v12M18 7v12\"/>", "kid": "<circle cx=\"12\" cy=\"8\" r=\"3.5\"/><path d=\"M5.5 20a6.5 6.5 0 0 1 13 0\"/>", "book": "<path d=\"M12 6c-2-1.5-5-2-8-2v14c3 0 6 .5 8 2 2-1.5 5-2 8-2V4c-3 0-6 .5-8 2z\"/><path d=\"M12 6v14\"/>", "books": "<path d=\"M5 4h4v16H5zM10 4h4v16h-4z\"/><path d=\"M15.5 6l3.8-1 3 14-3.8 1z\"/>", "hand": "<path d=\"M7 12V6.5a1.5 1.5 0 0 1 3 0V11M10 11V4.5a1.5 1.5 0 0 1 3 0V11M13 11V5.5a1.5 1.5 0 0 1 3 0V13M16 9.5a1.5 1.5 0 0 1 3 0V14c0 4-3 7-7 7-3 0-5-1.5-6.5-4L3.5 13a1.5 1.5 0 0 1 2.6-1.4L7 13\"/>"};
+function SI(k){return '<svg class="sIc" viewBox="0 0 24 24" aria-hidden="true">'+(SI_P[k]||SI_P.book)+'</svg>'}
+window.SI=SI;
 const EMPTY_ICONS={
   puck:'<ellipse cx="12" cy="9" rx="7" ry="3"/><path d="M5 9v5c0 1.7 3.1 3 7 3s7-1.3 7-3V9"/>',
   doc:'<rect x="5" y="3.5" width="14" height="17" rx="3"/><path d="M9 9h6M9 13h6M9 16.5h3"/>',
@@ -1740,11 +1743,11 @@ function renderRules(){
   ruleCat="Alle";
   const tiles=document.getElementById("rulesTiles");
   if(tiles){
-    const RL_IC={"Spielablauf":"⏱️","Abseits & Icing":"🧊","Strafen":"⛔","Fouls":"⚠️","Torhüter":"🧤","Tore & Statistik":"🥅","Nachwuchs":"🧒","Begriffe":"📖","Handzeichen":"✋"};
+    const RL_IC={"Spielablauf":SI("stopwatch"),"Abseits & Icing":SI("ice"),"Strafen":SI("stop"),"Fouls":SI("warn"),"Torhüter":SI("pad"),"Tore & Statistik":SI("goal"),"Nachwuchs":SI("kid"),"Begriffe":SI("book"),"Handzeichen":SI("hand")};
     tiles.hidden=words.length>0; list.hidden=words.length===0;
     if(!words.length){
-      tiles.innerHTML=RULE_CATS.filter(c=>c!=="Alle").map(c=>{const n=RULES.filter(r=>r.c===c).length;return '<button type="button" class="rlTile" data-topic="'+rlEsc(c)+'"><span class="ti" aria-hidden="true">'+(RL_IC[c]||"📘")+'</span><b>'+rlEsc(c)+'</b><small>'+n+(n===1?" Regel":" Regeln")+'</small></button>'}).join("")
-        +'<button type="button" class="rlTile all" data-topic="Alle"><span class="ti" aria-hidden="true">📚</span><span><b>Alle Regeln</b><br><small>'+RULES.length+' Regeln von A bis Z</small></span></button>';
+      tiles.innerHTML=RULE_CATS.filter(c=>c!=="Alle").map(c=>{const n=RULES.filter(r=>r.c===c).length;return '<button type="button" class="rlTile" data-topic="'+rlEsc(c)+'"><span class="ti" aria-hidden="true">'+(RL_IC[c]||SI("book"))+'</span><b>'+rlEsc(c)+'</b><small>'+n+(n===1?" Regel":" Regeln")+'</small></button>'}).join("")
+        +'<button type="button" class="rlTile all" data-topic="Alle"><span class="ti" aria-hidden="true">'+SI("books")+'</span><span><b>Alle Regeln</b><br><small>'+RULES.length+' Regeln von A bis Z</small></span></button>';
       if(cnt) cnt.textContent=RULES.length+" Regeln";
       return;
     }
