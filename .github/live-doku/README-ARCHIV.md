@@ -8,6 +8,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.40.6.209 | – (nur Test) | 17.11.2026 | Fix: Start-Animation-Fehler |
 | 1.40.5.208 | – (nur Test) | 17.11.2026 | Linien-Icons in Einstellungen, Gegner, Regeln |
 | 1.40.4.207 | – (nur Test) | 17.11.2026 | News: Linien-Icons statt Emojis |
 | 1.40.3.206 | – (nur Test) | 17.11.2026 | Fix: verlegtes Spiel gilt nicht mehr als abgesagt |

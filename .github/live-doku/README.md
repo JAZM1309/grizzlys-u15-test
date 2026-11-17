@@ -48,6 +48,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.40.6.209 | – (nur Test) | 17.11.2026 | Fix: Start-Animation-Fehler |
 | 1.40.5.208 | – (nur Test) | 17.11.2026 | Linien-Icons in Einstellungen, Gegner, Regeln |
 | 1.40.4.207 | – (nur Test) | 17.11.2026 | News: Linien-Icons statt Emojis |
 | 1.40.3.206 | – (nur Test) | 17.11.2026 | Fix: verlegtes Spiel gilt nicht mehr als abgesagt |
@@ -71,6 +72,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.40.6
+
+- **Fix:** Die Start-Animation (Eisbruch) bricht nicht mehr mit einem Fehler ab, wenn ihre Daten fehlen (laut Fehlerübersicht aufgetreten).
 
 ## Version 1.40.5
 
