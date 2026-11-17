@@ -2286,12 +2286,12 @@ function newsChanges(){
     if(o.news===false)return; /* im Admin bewusst „nicht in den News“ */
     if(dt(g).getTime()<t)return;
     const b=g._base, diff=[], same=o.news===true?(x,y)=>x===y:chgSame;
-    if(o.cancelled===true)diff.push("❌ Spiel abgesagt");
+    if(g.cancelled)diff.push("Spiel abgesagt");
     if(b.date!==g.date||b.time!==g.time)diff.push("vorher "+new Date(b.date+"T"+b.time).toLocaleDateString("de-DE",{weekday:"short",day:"2-digit",month:"2-digit"})+" · "+b.time+" Uhr");
     if(!same(b.stadium,g.stadium))diff.push("Ort vorher "+b.stadium);
     if(!same(b.home,g.home)||!same(b.away,g.away))diff.push("Paarung geändert");
     if(!diff.length)return;
-    out.push({id:"c:"+g._baseId+":"+g.date+g.time+g.stadium+(o.cancelled===true?":x":""),g,diff});
+    out.push({id:"c:"+g._baseId+":"+g.date+g.time+g.stadium+(g.cancelled?":x":""),g,diff});
   });
   return out.sort((a,b)=>dt(a.g)-dt(b.g));
 }
@@ -2312,7 +2312,14 @@ function repPublished(){
   const t=newsToday().getTime()-14*86400000;
   return games.map(g=>({g,r:window.gameReports[rkey(g)]})).filter(x=>x.r&&x.r.published&&x.r.text&&dt(x.g).getTime()>=t).sort((a,b)=>dt(b.g)-dt(a.g));
 }
-function repHtml(r){return `<div class="mdReport"><div class="mdReportHead">📝 Spielbericht</div><b>${esc(r.title||"")}</b><p>${esc(r.text)}</p></div>`}
+const NEWS_IC={
+  note:'<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 9h8M8 13h8M8 16.5h4"/>',
+  report:'<path d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z"/><path d="M14 3.5V8h4M9 12h6M9 16h6"/>',
+  change:'<rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/>',
+  app:'<path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M18 15l.8 2.2L21 18l-2.2.8L18 21l-.8-2.2L15 18l2.2-.8z"/>',
+  cancel:'<circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/>'};
+function newsIc(k){return '<svg class="nIc" viewBox="0 0 24 24" aria-hidden="true">'+NEWS_IC[k]+'</svg>'}
+function repHtml(r){return `<div class="mdReport"><div class="mdReportHead">${newsIc("report")} Spielbericht</div><b>${esc(r.title||"")}</b><p>${esc(r.text)}</p></div>`}
 window.repHtml=repHtml;
 window.repFor=g=>{const r=(window.gameReports||{})[rkey(g)];return r&&r.published&&r.text?r:null};
 function newsReportHtml(x,unread){
@@ -2331,7 +2338,7 @@ function newsNoteHtml(n,unread){
 }
 function newsChangeHtml(c,unread){
   const g=c.g, day=dt(g).toLocaleDateString("de-DE",{weekday:"short",day:"2-digit",month:"2-digit"});
-  return `<button class="newsItem newsChange${unread?" unread":""}" data-team="${esc(g.team)}" data-cid="${esc(c.id)}" type="button"><div class="newsItemHead"><span class="teamBadge">${esc(teamName(g.team))}</span><span class="newsDate">${g.cancelled?"Absage":"Spieländerung"}</span></div><b>${esc(shortTeam(g.home))} – ${esc(shortTeam(g.away))}</b><p>${g.cancelled?`<span class="newsNew">❌ Abgesagt: ${esc(day)} · ${esc(g.time)} Uhr · ${esc(g.stadium)}</span>${c.diff.filter(x=>x!=="❌ Spiel abgesagt").length?"<br>"+c.diff.filter(x=>x!=="❌ Spiel abgesagt").map(esc).join(" · "):""}`:`<span class="newsNew">Neu: ${esc(day)} · ${esc(g.time)} Uhr · ${esc(g.stadium)}</span><br>${c.diff.map(esc).join(" · ")}`}</p></button>`;
+  return `<button class="newsItem newsChange${unread?" unread":""}" data-team="${esc(g.team)}" data-cid="${esc(c.id)}" type="button"><div class="newsItemHead"><span class="teamBadge">${esc(teamName(g.team))}</span><span class="newsDate">${g.cancelled?"Absage":"Spieländerung"}</span></div><b>${esc(shortTeam(g.home))} – ${esc(shortTeam(g.away))}</b><p>${g.cancelled?`<span class="newsNew">${newsIc("cancel")} Abgesagt: ${esc(day)} · ${esc(g.time)} Uhr · ${esc(g.stadium)}</span>${c.diff.filter(x=>x!=="Spiel abgesagt").length?"<br>"+c.diff.filter(x=>x!=="Spiel abgesagt").map(esc).join(" · "):""}`:`<span class="newsNew">Neu: ${esc(day)} · ${esc(g.time)} Uhr · ${esc(g.stadium)}</span><br>${c.diff.map(esc).join(" · ")}`}</p></button>`;
 }
 function renderNews(){
   const items=newsUnread(), n=items.length, badge=document.getElementById("newsBadge");
@@ -2355,7 +2362,7 @@ function renderNews(){
       }
       const txt=top.kind==="note"?top.n.title:top.kind==="report"?(top.r.title||"Spielbericht"):top.g.cancelled?"Abgesagt "+teamName(top.g.team)+": "+shortTeam(top.g.home)+" – "+shortTeam(top.g.away)+" am "+dt(top.g).toLocaleDateString("de-DE",{weekday:"short",day:"2-digit",month:"2-digit"})+" "+top.g.time+" Uhr"
       :"Spieländerung "+teamName(top.g.team)+": "+shortTeam(top.g.home)+" – "+shortTeam(top.g.away)+", jetzt "+dt(top.g).toLocaleDateString("de-DE",{weekday:"short",day:"2-digit",month:"2-digit"})+" "+top.g.time+" Uhr";
-      ban.innerHTML=`<button class="newsBannerMain" type="button"><span class="newsBannerIc">${top.kind==="note"?"📰":top.kind==="report"?"📝":"📅"}</span><span class="newsBannerTx"><small>${top.kind==="note"?"Hinweis":top.kind==="report"?"Spielbericht":top.g&&top.g.cancelled?"Absage":"Spieländerung"}</small>${esc(txt)}</span></button><button class="newsBannerX" type="button" aria-label="Hinweis ausblenden">×</button>`;
+      ban.innerHTML=`<button class="newsBannerMain" type="button"><span class="newsBannerIc">${newsIc(top.kind==="note"?"note":top.kind==="report"?"report":top.g&&top.g.cancelled?"cancel":"change")}</span><span class="newsBannerTx"><small>${top.kind==="note"?"Hinweis":top.kind==="report"?"Spielbericht":top.g&&top.g.cancelled?"Absage":"Spieländerung"}</small>${esc(txt)}</span></button><button class="newsBannerX" type="button" aria-label="Hinweis ausblenden">×</button>`;
       ban.querySelector(".newsBannerMain").onclick=()=>{if(top.kind==="report"){newsMarkSeen([top.id]);renderNews();openMatchDetails(top.g,true)}else openNews()};
       ban.querySelector(".newsBannerX").onclick=()=>{newsMarkSeen([top.id]);renderNews()};
     }
@@ -2369,10 +2376,10 @@ function newsFill(){
   const s=new Set(newsSeenMem), isNew=id=>newsSnap?newsSnap.has(id):!s.has(id);
   const notes=newsActiveNotes(), ch=newsChanges(), rp=repPublished(), app=APP_NEWS.slice(0,5);
   const T=[
-    {k:"notes",ic:"📰",l:"Hinweise",n:notes.length,u:notes.filter(x=>isNew("n:"+x.id)).length},
-    {k:"reports",ic:"📝",l:"Berichte",n:rp.length,u:rp.filter(x=>isNew(repNid(x))).length},
-    {k:"changes",ic:"📅",l:"Änderungen",n:ch.length,u:ch.filter(c=>isNew(c.id)).length},
-    {k:"app",ic:"✨",l:"App",n:app.length,u:app.filter(x=>isNew("v:"+(x.id||x.v))).length}];
+    {k:"notes",ic:newsIc("note"),l:"Hinweise",n:notes.length,u:notes.filter(x=>isNew("n:"+x.id)).length},
+    {k:"reports",ic:newsIc("report"),l:"Berichte",n:rp.length,u:rp.filter(x=>isNew(repNid(x))).length},
+    {k:"changes",ic:newsIc("change"),l:"Änderungen",n:ch.length,u:ch.filter(c=>isNew(c.id)).length},
+    {k:"app",ic:newsIc("app"),l:"App",n:app.length,u:app.filter(x=>isNew("v:"+(x.id||x.v))).length}];
   if(!newsTab||!T.some(t=>t.k===newsTab))newsTab=(T.find(t=>t.u&&t.k!=="app")||T.find(t=>t.n&&t.k!=="app")||T.find(t=>t.u)||T[0]).k;
   const pane=newsTab==="notes"?(notes.length?notes.map(x=>newsNoteHtml(x,isNew("n:"+x.id))).join(""):'<div class="small newsEmpty">Aktuell keine Hinweise.</div>')
     :newsTab==="reports"?(rp.length?rp.map(x=>newsReportHtml(x,isNew(repNid(x)))).join(""):emptyBox("doc","Keine Spielberichte","In den letzten 14 Tagen gab es keine Berichte."))

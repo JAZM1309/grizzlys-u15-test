@@ -48,6 +48,8 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.40.4.207 | – (nur Test) | 17.11.2026 | News: Linien-Icons statt Emojis |
+| 1.40.3.206 | – (nur Test) | 17.11.2026 | Fix: verlegtes Spiel gilt nicht mehr als abgesagt |
 | 1.40.2.205 | – (nur Test) | 16.11.2026 | „Teilen“ als Bild |
 | 1.40.1.203 | – (nur Test) | 16.11.2026 | Optik (Icons, Leerzustände, Übergänge, Dunkelmodus) |
 | 1.40.0.202 | – (nur Test) | 16.11.2026 | Neue Funktion (Fehlerübersicht, Regelcheck, Optik) |
@@ -68,6 +70,14 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.40.4
+
+- **News:** Linien-Icons statt Emojis (Reiter, Banner, Spielbericht, Absage).
+
+## Version 1.40.3
+
+- **Fix:** Eine Absage gilt nur für den Tag, an dem sie gesetzt wurde. Wird das Spiel verlegt (z. B. vom EHV), ist es am neuen Termin nicht mehr abgesagt.
 
 ## Version 1.40.2
 
