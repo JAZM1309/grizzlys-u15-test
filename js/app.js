@@ -2734,7 +2734,7 @@ xmRefresh();
 {const prev=window.applyResults;window.applyResults=function(){prev&&prev.apply(this,arguments);try{renderNews()}catch(e){console.warn(e)}};}
 renderNews();
 
-/* ===== 1.41.0: Spruch des Tages auf der Startseite =====
+/* ===== 1.41.0: Spruch des Tages auf der Startseite (1.41.2: dunkle Karte ganz oben, Titel in Pinselschrift) =====
    Jeden Tag ein anderer Spruch, für alle Geräte derselbe (hängt am Datum). Anlass:
    „spieltag“ = heute spielt eine meiner Mannschaften und das Ergebnis fehlt noch,
    „sieg“ / „niederlage“ = letztes Spiel heute oder gestern, sonst „allgemein“.
@@ -2766,7 +2766,7 @@ renderNews();
     const c=cur(), q=c.on?pick(c.list):null;
     if(!q){box.hidden=true;return}
     box.hidden=false; box.dataset.k=q.sk;
-    box.innerHTML=`<div class="spruchHead"><svg class="spruchQ" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 7H6.5A2.5 2.5 0 0 0 4 9.5V13h4.5v4H8M20 7h-3.5A2.5 2.5 0 0 0 14 9.5V13h4.5v4H18"/></svg><span>${esc(LABEL[q.sk]||LABEL.allgemein)}</span></div><blockquote>${esc(q.t)}</blockquote>${q.a?`<figcaption>– ${esc(q.a)}</figcaption>`:""}`;
+    box.innerHTML=`<img class="spruchBear" src="logo.png" alt="" aria-hidden="true"><span class="spruchLab">${esc(LABEL[q.sk]||LABEL.allgemein)}</span><blockquote>„${esc(q.t)}“</blockquote>${q.a?`<figcaption>– ${esc(q.a)}</figcaption>`:""}`;
   }
   window.setSprueche=function(o){data={ts:Date.now(),on:!o||o.on!==false,list:o&&Array.isArray(o.list)?clean(o.list):null};try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){}render()};
   window.spruchInfo={KINDS,clean,cur,situation,pick};
