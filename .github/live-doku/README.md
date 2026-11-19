@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.42.2.217 | – (nur Test) | 19.11.2026 | Spielbericht: Meilensteine |
 | 1.42.1.216 | – (nur Test) | 19.11.2026 | Neue Funktionen (Meilensteine, QR-Code, App-Verknüpfungen zur Saisonbilanz) |
 | 1.41.4.214 | – (nur Test) | 18.11.2026 | Mehr Sprüche mit Namen |
 | 1.41.3.213 | – (nur Test) | 18.11.2026 | Optik: Spruch des Tages ohne Hintergrund, mittig |
@@ -80,6 +81,11 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.42.2
+
+- **Meilensteine im Spielbericht:** Der automatische Bericht (App und Cloud Function `autoResults`, gemeinsame Vorlage `spielbericht.js`) erwähnt jetzt das 25./50./75./100. … Saisontor – mit Rückennummer des Torschützen, wenn die EHV-Spieldetails vorliegen („Ein Meilenstein: Die Nr. 17 erzielte das 100. Saisontor der U15 A.“) –, den ersten Saisonsieg, den 5./10./15. … Saisonsieg und den höchsten Saisonsieg (ab 5 Toren Unterschied). Neuer Chip „🏆 …“ unter „Im Bericht verwenden“ (standardmäßig an), auch in der Kurzfassung und im KI-Auftrag. „x. Sieg in Folge“ und „Zu null“ hatten schon eigene Bausteine.
+- `functions/spielbericht.js` (Rückfall-Kopie der Function) ist identisch mit `spielbericht.js`; die Function lädt die Vorlage sonst von der Live-Seite – wirksam also nach „Live gehen“.
 
 ## Version 1.42.0
 
