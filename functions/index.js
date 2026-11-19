@@ -341,3 +341,8 @@ exports.onFanTipWritten = require("./fan-tips").onFanTipWritten;
 // 1.43.0: Push „Spielbericht ist online“ und Wetter am Spieltag
 exports.onReportPublished = require("./report-push").onReportPublished;
 exports.weatherForecast = require("./weather").weatherForecast;
+
+// 1.44.0: Ein-Tipp-Feedback (👍/👎) und Wunschliste – anonyme Zähler
+const feedbackVotes = require("./feedback-votes");
+exports.onReactionWritten = feedbackVotes.onReactionWritten;
+exports.onWishVoteWritten = feedbackVotes.onWishVoteWritten;

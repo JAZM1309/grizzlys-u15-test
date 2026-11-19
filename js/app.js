@@ -1368,6 +1368,7 @@ function openMatchDetails(g,toReport=false){
   const res=resInfo(g), past=!!res||dt(g).getTime()+2*3600000<Date.now();
   const rep=(window.gameReports||{})[rkey(g)];
   content.innerHTML=`<article class="card gz2 gz3 mdCard ${"team"+g.team}" data-team="${g.team}">${gameCardHtml(g,past,res,true)}</article>`+msBox(g)+wxBox(g)+(rep&&rep.published&&rep.text?repHtml(rep):"");
+  {const mr=content.querySelector(".mdReport");if(mr)mr.insertAdjacentHTML("beforeend",rxBar("rep_"+rkey(g),"War der Bericht gut?"))} /* 1.44.0 */
   hwDecorate(content.querySelector(".mdCard"),g);
   g3Bind(content.querySelector(".mdCard"),g,true);
   modal.hidden=false;
@@ -2216,6 +2217,7 @@ renderInstaDownloads(); setInterval(()=>{try{renderInstaDownloads()}catch(e){}},
 /* ===== v66: News-Bereich – Hinweise, Spieländerungen, Neues in der App ===== */
 /* Nur Neuerungen, die für Nutzer sichtbar oder spürbar sind. Neueste Version oben. */
 const APP_NEWS=[
+  {v:"1.44.0.219",d:"November 2026",items:["Wunschliste: Stimm ab, welche Funktion als Nächstes kommen soll – bis zu 3 Stimmen, anonym (Startseite unten und News).","Mit einem Tipp sagen, ob dir ein Spielbericht oder eine Neuerung gefällt (👍/👎).","Feedback ist jetzt schneller erreichbar: auf der Startseite, in der Info und in den News."]},
   {v:"1.43.0.218",d:"November 2026",items:["Meine Rückennummer: In den Einstellungen die Nummer deines Kindes eintragen – sie wird bei Torschützen, Spielberichten und in der Saisonbilanz hervorgehoben. Auf Wunsch Push bei Tor oder Vorlage dieser Nummer.","Neuer Push „Spielbericht ist online“ – ein Tipp öffnet den Bericht.","Wochenende als Bild: Unter Downloads alle Spiele des Wochenendes als Bild für die WhatsApp-Gruppe.","Wetter am Spielort: Temperatur und Glättegefahr beim nächsten Spiel und in der Erinnerung am Vortag.","Saisonbilanz: Strafminuten, Überzahl- und Unterzahlquote."]},
   {v:"1.42.1.216",d:"November 2026",items:["Meilensteine: erster Saisonsieg, Siegesserien, 50. Saisontor & Co. stehen bei den Ergebnissen, im Spiel und in der Saisonbilanz.","App weiterempfehlen: In der Info zeigt „QR-Code zeigen“ einen Code zum Scannen – so ist die App in Sekunden auf dem Handy.","Schneller zur Statistik: Lange auf das App-Symbol drücken bietet die Saisonbilanz von U13, U15 A und U15 B an (Android)."]},
   {v:"1.41.0.210",d:"November 2026",items:["Neu auf der Startseite: der Spruch des Tages – jeden Tag ein anderer Eishockey-Spruch. Am Spieltag und nach einem Sieg oder einer Niederlage passt er zum Spiel."]},
@@ -2397,7 +2399,7 @@ function newsFill(){
   const pane=newsTab==="notes"?(notes.length?notes.map(x=>newsNoteHtml(x,isNew("n:"+x.id))).join(""):'<div class="small newsEmpty">Aktuell keine Hinweise.</div>')
     :newsTab==="reports"?(rp.length?rp.map(x=>newsReportHtml(x,isNew(repNid(x)))).join(""):emptyBox("doc","Keine Spielberichte","In den letzten 14 Tagen gab es keine Berichte."))
     :newsTab==="changes"?(ch.length?ch.map(c=>newsChangeHtml(c,isNew(c.id))).join(""):emptyBox("cal","Keine Terminänderungen","Alle Spiele finden wie geplant statt."))
-    :app.map(x=>`<div class="newsItem newsApp${isNew("v:"+(x.id||x.v))?" unread":""}"><div class="newsItemHead"><b>Version ${esc(x.v)}</b><span class="newsDate">${esc(x.d)}</span></div><ul>${x.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul></div>`).join("");
+    :wishTeaser()+app.map((x,ai)=>`<div class="newsItem newsApp${isNew("v:"+(x.id||x.v))?" unread":""}"><div class="newsItemHead"><b>Version ${esc(x.v)}</b><span class="newsDate">${esc(x.d)}</span></div><ul>${x.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul>${ai<3?rxBar("neu_"+x.v,"Gefällt dir das?"):""}</div>`).join("")+fbLinkHtml("news");
   body.innerHTML=`<div class="newsTabs" role="tablist" aria-label="Bereiche">${T.map(t=>`<button type="button" role="tab" class="newsTab${t.k===newsTab?" on":""}" aria-selected="${t.k===newsTab}" data-nt="${t.k}"><span class="ntIc" aria-hidden="true">${t.ic}</span><span class="ntL">${t.l}</span>${t.u?`<i class="ntNew" aria-label="${t.u} neu">${t.u}</i>`:t.n&&t.k!=="app"?`<small class="ntN">${t.n}</small>`:""}</button>`).join("")}</div><div class="newsPane" role="tabpanel">${pane}</div>`;
   body.querySelectorAll(".newsTab").forEach(b=>b.onclick=()=>{newsTab=b.dataset.nt;newsFill()});
   body.querySelectorAll(".newsItem.newsChange[data-cid]").forEach(b=>{const c=ch.find(x=>x.id===b.dataset.cid);b.onclick=()=>{closeNews();openMatchDetails(c.g)}});
@@ -2980,3 +2982,92 @@ async function instaWeekend(W0){
   instaFoot(c,W,APP_CFG.appName+" · Saison "+APP_CFG.season);
   return cv;
 }
+
+/* ===== 1.44.0: Feedback antreiben – Ein-Tipp-Feedback, Wunschliste, Feedback-Einstiege ===== */
+window.WUENSCHE_STANDARD=[
+  {id:"fahrgemeinschaften",t:"Fahrgemeinschaften",d:"Bei Auswärtsspielen freie Plätze anbieten oder einen Platz suchen."},
+  {id:"trainingszeiten",t:"Trainingszeiten",d:"Eiszeiten je Mannschaft – mit Push, wenn ein Training ausfällt."},
+  {id:"einsteiger",t:"Neu bei den Grizzlys",d:"Infos für neue Eltern: Ablauf, Ausrüstung, Ansprechpartner, Begriffe."},
+  {id:"umfragen",t:"Umfragen",d:"Kurze Abstimmungen in den News, z. B. zum Termin der Weihnachtsfeier."},
+  {id:"regelquiz",t:"Regel-Quiz",d:"Fünf zufällige Fragen zu Regeln und Handzeichen – das ganze Jahr."},
+  {id:"losfahren",t:"Losfahren um …",d:"Bei Auswärtsspielen: wann man spätestens losfahren sollte."}
+];
+const wishSlug=t=>String(t).toLowerCase().replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,40)||"wunsch";
+function wishClean(L){return (Array.isArray(L)?L:[]).map(w=>({id:/^[a-z0-9-]{2,40}$/.test(w&&w.id)?w.id:wishSlug(w&&w.t),t:String(w&&w.t||"").trim().slice(0,60),d:String(w&&w.d||"").trim().slice(0,180),done:!!(w&&w.done)})).filter(w=>w.t)}
+window.wishInfo={clean:wishClean,slug:wishSlug};
+function wishMine(){try{const v=JSON.parse(localStorage.getItem("grizzlysWishVotes")||"[]");return Array.isArray(v)?v.slice(0,3):[]}catch(e){return []}}
+var wishData=null, wishOrder=null; /* var: newsFill kann vor dieser Zeile laufen */
+async function wishRefresh(){try{if(window.wishLoad){const d=await window.wishLoad();wishData={on:d.on,list:wishClean(d.list||window.WUENSCHE_STANDARD),counts:d.counts||{},voters:d.voters||0}}}catch(e){}
+  if(!wishData)wishData={on:true,list:wishClean(window.WUENSCHE_STANDARD),counts:{},voters:0};return wishData}
+function wishTeaser(){if(wishData&&!wishData.on)return "";return `<button type="button" class="wishTeaser" data-wish-open><span class="wishTIc">💡</span><span><b>Was soll als Nächstes kommen?</b><small>Stimm in der Wunschliste ab – bis zu 3 Stimmen</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6l-6 6"/></svg></button>`}
+function fbLinkHtml(where){return `<div class="fbLink" data-where="${where}"><span>Idee, Fehler oder Lob?</span><button type="button" data-fb-open>Sag's uns</button>${wishData&&!wishData.on?"":`<button type="button" data-wish-open>Wunschliste</button>`}</div>`}
+async function openWishes(){
+  let m=document.getElementById("wishModal");
+  if(!m){m=document.createElement("div");m.id="wishModal";m.className="matchModal wishModal";m.hidden=true;
+    m.innerHTML='<div class="matchModalBox" role="dialog" aria-modal="true" aria-labelledby="wishTitle"><div class="matchModalHead"><div id="wishTitle" class="matchModalTitle">Wunschliste</div><button id="wishClose" class="matchModalClose" type="button" aria-label="Schließen">×</button></div><div id="wishBody"></div></div>';
+    document.body.appendChild(m);const close=()=>{m.hidden=true;m.setAttribute("aria-hidden","true");document.body.style.overflow=""};
+    m.querySelector("#wishClose").onclick=close;m.addEventListener("click",e=>{if(e.target===m)close()});document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!m.hidden)close()});}
+  m.hidden=false;m.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";
+  const body=m.querySelector("#wishBody"); if(!wishData)body.innerHTML='<div class="small">Lädt …</div>';
+  wishOrder=null; wishFill(); await wishRefresh(); wishOrder=null; wishFill();
+  try{trackAnalyticsEvent("wishlist_opened")}catch(e){}
+}
+function wishFill(){
+  const body=document.getElementById("wishBody"); if(!body||!wishData)return;
+  const mine=wishMine(), open=wishData.list.filter(w=>!w.done), done=wishData.list.filter(w=>w.done);
+  const cnt=w=>(wishData.counts[w.id]||0), max=Math.max(1,...open.map(cnt)), left=3-mine.filter(id=>open.some(w=>w.id===id)).length;
+  /* Reihenfolge nur beim Öffnen nach Stimmen sortieren – beim Abstimmen springt nichts */
+  if(!wishOrder)wishOrder=open.slice().sort((a,b)=>cnt(b)-cnt(a)).map(w=>w.id);
+  open.sort((a,b)=>{const ia=wishOrder.indexOf(a.id),ib=wishOrder.indexOf(b.id);return (ia<0?99:ia)-(ib<0?99:ib)});
+  body.innerHTML=`<div class="wishIntro">Welche Funktion wünschst du dir als Nächstes? Du hast <b>${left} von 3</b> Stimmen frei – antippen zum Abstimmen oder Zurücknehmen. Anonym.</div>
+    <div class="wishList">${open.map(w=>{const on=mine.includes(w.id);return `<button type="button" class="wishItem${on?" on":""}" data-wid="${esc(w.id)}"${!on&&left<=0?" disabled":""} aria-pressed="${on}"><span class="wishTx"><b>${esc(w.t)}</b><small>${esc(w.d)}</small><span class="wishBar"><i style="width:${(cnt(w)/max*100).toFixed(0)}%"></i></span></span><span class="wishVote"><span class="wishThumb">${on?"✓":"👍"}</span><small>${cnt(w)}</small></span></button>`}).join("")||'<div class="small">Gerade keine offenen Wünsche.</div>'}</div>
+    ${done.length?`<div class="wishDoneH">Umgesetzt dank euch</div><div class="wishDone">${done.map(w=>`<div><b>✓ ${esc(w.t)}</b><small>${esc(w.d)}</small></div>`).join("")}</div>`:""}
+    <div class="wishOwn"><span>Deine Idee fehlt?</span><button type="button" class="action" data-fb-open="idee">💡 Eigene Idee schicken</button></div>
+    ${wishData.voters?`<div class="small wishVoters">${wishData.voters} ${wishData.voters===1?"Person hat":"Personen haben"} schon abgestimmt.</div>`:""}`;
+  body.querySelectorAll(".wishItem").forEach(b=>b.onclick=async()=>{const id=b.dataset.wid;let L=wishMine();
+    if(L.includes(id))L=L.filter(x=>x!==id);else{if(L.filter(x=>open.some(w=>w.id===x)).length>=3)return;L.push(id)}
+    L=L.filter(x=>wishData.list.some(w=>w.id===x)).slice(0,3);
+    const was=wishMine();wishData.counts[id]=Math.max(0,(wishData.counts[id]||0)+(L.includes(id)?1:-1));
+    if(!was.length&&L.length)wishData.voters++; else if(was.length&&!L.length)wishData.voters=Math.max(0,wishData.voters-1);
+    try{localStorage.setItem("grizzlysWishVotes",JSON.stringify(L))}catch(e){}
+    wishFill(); window.wishVote&&window.wishVote(L); try{trackAnalyticsEvent("wish_vote",{wunsch:id})}catch(e){}});
+}
+window.openWishes=openWishes;
+/* 👍/👎 mit einem Tipp – eigene Wahl merkt sich das Gerät */
+function rxMine(){try{return JSON.parse(localStorage.getItem("grizzlysReactions")||"{}")||{}}catch(e){return {}}}
+function rxBar(target,q){const v=rxMine()[target]||0;return `<div class="rxBar${v?" done":""}" data-rx="${esc(target)}"><span class="rxQ">${v?"Danke für dein Feedback!":esc(q)}</span><button type="button" class="rxB${v===1?" on":""}" data-v="1" aria-label="Gefällt mir" aria-pressed="${v===1}">👍</button><button type="button" class="rxB${v===-1?" on":""}" data-v="-1" aria-label="Gefällt mir nicht" aria-pressed="${v===-1}">👎</button>${v===-1?`<button type="button" class="rxMore" data-fb-open="rx">Was können wir besser machen?</button>`:""}</div>`}
+function fbOpen(type,area,text){
+  document.getElementById("openBugReport")?.click();
+  setTimeout(()=>{try{fbSetType(type||"Wunsch / Anregung");const a=document.getElementById("bugReportArea");if(a&&area)a.value=area;const t=document.getElementById("bugReportDescription");if(t&&text&&(!t.value.trim()||/^[^\n]{0,90}:\s*$/.test(t.value))){t.value=text;fbCount()}t&&t.focus()}catch(e){}},80);
+}
+window.fbOpen=fbOpen;
+document.addEventListener("click",e=>{
+  const rb=e.target.closest&&e.target.closest(".rxBar .rxB");
+  if(rb){e.stopPropagation();const bar=rb.closest(".rxBar"),t=bar.dataset.rx,v=Number(rb.dataset.v),M=rxMine();
+    M[t]=v;try{localStorage.setItem("grizzlysReactions",JSON.stringify(M))}catch(err){}
+    const q=t.startsWith("rep_")?"War der Bericht gut?":"Gefällt dir das?";bar.outerHTML=rxBar(t,q);
+    window.fbReact&&window.fbReact(t,v);try{trackAnalyticsEvent("reaction",{ziel:t.slice(0,3),wert:v})}catch(err){}return}
+  const fo=e.target.closest&&e.target.closest("[data-fb-open]");
+  if(fo){e.stopPropagation();const k=fo.dataset.fbOpen, bar=fo.closest(".rxBar");
+    if(k==="rx"&&bar){const t=bar.dataset.rx;let txt="";
+      if(t.startsWith("rep_")){const g=ALL_GAMES.find(x=>"rep_"+rkey(x)===t);txt="Zum Spielbericht"+(g?" vom "+dt(g).toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit"})+" ("+shortTeam(g.home)+" – "+shortTeam(g.away)+")":"")+": "}
+      else txt="Zu „Neu in der App“ (Version "+t.slice(4)+"): ";
+      ["matchModal","newsModal"].forEach(id=>{const m=document.getElementById(id);if(m&&!m.hidden){if(id==="matchModal")closeMatchDetails();else closeNews()}});
+      fbOpen("Wunsch / Anregung",t.startsWith("rep_")?"Spielbericht":"Neue Funktion",txt)}
+    else{const wm=document.getElementById("wishModal");if(wm&&!wm.hidden){wm.hidden=true;document.body.style.overflow=""}
+      const nm=document.getElementById("newsModal");if(nm&&!nm.hidden)closeNews();
+      fbOpen(k==="idee"?"Wunsch / Anregung":"Fehler",k==="idee"?"Neue Funktion":"",k==="idee"?"Meine Idee: ":"")}
+    return}
+  const wo=e.target.closest&&e.target.closest("[data-wish-open]");
+  if(wo){e.stopPropagation();const nm=document.getElementById("newsModal");if(nm&&!nm.hidden)closeNews();openWishes()}
+},true);
+/* Einstiege: Startseite (unten) und Info */
+(function(){
+  const home=document.getElementById("homeView");
+  if(home&&!document.getElementById("fbHome")){const c=document.createElement("section");c.id="fbHome";c.className="card fbHome";
+    c.innerHTML=`<div class="fbHomeTx"><b>Deine Stimme zählt</b><small>Was soll als Nächstes in die App? Oder ist dir etwas aufgefallen?</small></div><div class="fbHomeBtns"><button type="button" class="action" data-wish-open>💡 Wunschliste</button><button type="button" class="action" data-fb-open>✉️ Feedback</button></div>`;
+    home.appendChild(c)}
+  const info=document.querySelector("#infoView .inShareRow");
+  if(info&&!document.getElementById("fbInfo")){const d=document.createElement("div");d.id="fbInfo";d.innerHTML=fbLinkHtml("info");info.after(d)}
+  setTimeout(()=>{wishRefresh().then(d=>{if(!d.on){document.querySelectorAll("[data-wish-open]").forEach(b=>{if(!b.closest(".fbHome"))b.remove()});const hb=document.querySelector(".fbHome [data-wish-open]");if(hb)hb.remove()}})},(window.__introMs||0)+2500);
+})();

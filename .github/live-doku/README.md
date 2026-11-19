@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.44.0.219 | – (nur Test) | 19.11.2026 | Neue Funktionen (Wunschliste, Ein-Tipp-Feedback, Feedback-Einstiege) |
 | 1.43.0.218 | – (nur Test) | 19.11.2026 | Neue Funktionen (Rückennummer, Bericht-Push, Wochenende, Wetter, Special Teams) |
 | 1.42.2.217 | – (nur Test) | 19.11.2026 | Spielbericht: Meilensteine |
 | 1.42.1.216 | – (nur Test) | 19.11.2026 | Neue Funktionen (Meilensteine, QR-Code, App-Verknüpfungen zur Saisonbilanz) |
@@ -82,6 +83,16 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.44.0
+
+### Neu in Version 1.44.0 (Stand 1.44.0.219, 19.11.2026, nur in der Test-App)
+
+- **Wunschliste:** Nutzer stimmen ab, welche Funktion als Nächstes kommt – bis zu 3 Stimmen je Gerät, anonym, jederzeit änderbar. Zu finden auf der Startseite (Karte „Deine Stimme zählt“ ganz unten), in News › App (oben) und in der Info. Umgesetzte Wünsche stehen unter „Umgesetzt dank euch“. Standardliste in `js/app.js` (`WUENSCHE_STANDARD`: Fahrgemeinschaften, Trainingszeiten, Neu bei den Grizzlys, Umfragen, Regel-Quiz, Losfahren um …). **Admin › Rückmeldungen › 💡 Wunschliste:** Wünsche hinzufügen, bearbeiten, löschen, als „umgesetzt“ markieren, Stimmen ansehen, Liste ein-/ausblenden (Firestore `appConfig/wuensche`). Stimmen: `wishVotes/{Geräte-ID}`, gezählt von der neuen Function `onWishVoteWritten` nach `wishStats/all`.
+- **Ein-Tipp-Feedback:** Unter jedem Spielbericht „War der Bericht gut? 👍 👎“, unter den drei neuesten Einträgen in „Neu in der App“ „Gefällt dir das? 👍 👎“. Bei 👎 bietet die App „Was können wir besser machen?“ an – das öffnet das Feedback-Formular mit passender Art, Bereich (neu: „Spielbericht“) und Bezug im Text. Stimmen: `reactions/{Ziel}__{Geräte-ID}`, gezählt von der neuen Function `onReactionWritten` nach `reactionStats/{Ziel}`. **Admin › Rückmeldungen › 👍 Reaktionen:** Übersicht je Bericht bzw. Version.
+- **Feedback-Einstiege:** Startseite (unten), Info (unter „App teilen“) und News › App (unten) – „Idee, Fehler oder Lob? Sag's uns“.
+- **Fehler behoben:** Fan-Tipps der U13 wurden von `onFanTipWritten` nicht gezählt (nur A/B erlaubt) – jetzt auch U13 (`functions/fan-tips.js`).
+- **Functions/Regeln:** neu `functions/feedback-votes.js` (`onReactionWritten`, `onWishVoteWritten`), geändert `fan-tips.js`, `index.js`; `firestore.rules` um `reactions`, `reactionStats`, `wishVotes`, `wishStats` und `appConfig/wuensche` ergänzt. Alles geht mit „Live gehen“ mit; die Zähler laufen erst nach dem Deploy.
 
 ## Version 1.43.0
 
