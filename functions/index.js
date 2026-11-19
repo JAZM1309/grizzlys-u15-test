@@ -337,3 +337,7 @@ exports.liveTicker = require("./live").liveTicker;
 
 // 1.28.0: Fan-Tipp – zählt die Tipps eines Spiels nach fanTipStats/{Spiel-ID}
 exports.onFanTipWritten = require("./fan-tips").onFanTipWritten;
+
+// 1.43.0: Push „Spielbericht ist online“ und Wetter am Spieltag
+exports.onReportPublished = require("./report-push").onReportPublished;
+exports.weatherForecast = require("./weather").weatherForecast;

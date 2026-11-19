@@ -33,6 +33,8 @@ messaging.onBackgroundMessage(payload => {
     icon = RESULT_ICON_URL;
   } else if (type === "gameReminder") {
     icon = REMINDER_ICON_URL;
+  } else if (type === "report") {
+    icon = RESULT_ICON_URL;
   }
 
   const options = {
@@ -49,17 +51,19 @@ messaging.onBackgroundMessage(payload => {
 
 self.addEventListener("notificationclick", event => {
   event.notification.close();
+  // 1.43.0: Meldungen mit Ziel (z. B. Spielbericht) öffnen die passende Stelle der App
+  const go = (event.notification.data && event.notification.data.go) || "";
   event.waitUntil(
     clients.matchAll({type: "window", includeUncontrolled: true}).then(list => {
       for (const client of list) {
-        if ("focus" in client) return client.focus();
+        if ("focus" in client) { if (go) client.postMessage({ type: "GO", go }); return client.focus(); }
       }
-      if (clients.openWindow) return clients.openWindow("./");
+      if (clients.openWindow) return clients.openWindow(go ? "./?go=" + encodeURIComponent(go) : "./");
     })
   );
 });
 
-const CACHE = "grizzlys-u15-test-v217";
+const CACHE = "grizzlys-u15-test-v218";
 // Update-Hinweis („Neue Version verfügbar“) für diese Version zeigen? false = Nutzer bekommen sie still beim nächsten Öffnen.
 // In Live wird der Wert beim „Live gehen“ aus dem Häkchen im Admin-Bereich gesetzt.
 const UPDATE_HINWEIS = true;
@@ -68,9 +72,9 @@ const CORE = [
   "./",
   "./index.html",
   "./spielplan.js?h=5afc53c9",
-  "./js/app.js?h=ad8ce9bd",
-  "./js/app-daten.js?h=28bac28f",
-  "./app.css?h=fb37dae7",
+  "./js/app.js?h=73b65077",
+  "./js/app-daten.js?h=b5424619",
+  "./app.css?h=183f7102",
   "./spielbericht.js?h=7d4b1618",
   "./sprueche.js?h=37f027d6",
   "./manifest.webmanifest",

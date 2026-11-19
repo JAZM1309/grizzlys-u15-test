@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.43.0.218 | – (nur Test) | 19.11.2026 | Neue Funktionen (Rückennummer, Bericht-Push, Wochenende, Wetter, Special Teams) |
 | 1.42.2.217 | – (nur Test) | 19.11.2026 | Spielbericht: Meilensteine |
 | 1.42.1.216 | – (nur Test) | 19.11.2026 | Neue Funktionen (Meilensteine, QR-Code, App-Verknüpfungen zur Saisonbilanz) |
 | 1.41.4.214 | – (nur Test) | 18.11.2026 | Mehr Sprüche mit Namen |
@@ -81,6 +82,17 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.43.0
+
+### Neu in Version 1.43.0 (Stand 1.43.0.218, 19.11.2026, nur in der Test-App)
+
+- **Meine Rückennummer:** Einstellungen › Karte „Meine Rückennummer“ (unter „Meine Mannschaften“) – je gewählter Mannschaft bis zu 3 Nummern (`localStorage grizzlysMyNr`, z. B. `{"A":["17"]}`). „Nr. 17“ wird überall in Grizzlys-Texten gelb markiert (Torschützen, Live-Tore, Spielbericht, Spieldetails), in „Tore nach Rückennummer“ die ganze Zeile – nur bei der passenden Mannschaft, nie bei Gegnertoren. Push-Auswahl „Tore meiner Nummer“ (Live, `prefs.liveMyNr`, nur auf Wunsch): `functions/live.js` schickt bei Tor oder Vorlage dieser Nummer „🎉 Tor durch die Nr. 17!“ bzw. „🎯 Vorlage von der Nr. 17!“ statt der allgemeinen Live-Tor-Meldung (`prefs.myNr` wird mit der Push-Auswahl gespeichert – nur Nummern, keine Namen).
+- **Push „Spielbericht ist online“:** neuer Schalter in der Push-Auswahl (`prefs.reports`, nur auf Wunsch). Neue Function `onReportPublished` (`functions/report-push.js`): meldet jeden Bericht einmal, sobald er veröffentlicht ist (Admin oder automatisch nach der Frist), Sperre `reportPushes/{Spiel-ID}`, keine Meldung für Spiele älter als 7 Tage. Ein Tipp auf die Meldung öffnet den Bericht (`./?go=report-<Spiel-ID>`; bei offener App per Nachricht vom Service Worker).
+- **Wochenende als Bild:** Downloads › „Wochenende · x Spiele“ (ab Montag für das kommende Wochenende Fr–So, alle eigenen Mannschaften, bis zu 6 Spiele mit Logos, Uhrzeit, Heim/Auswärts, schon gespielte mit Ergebnis); im Admin-Bereich › Social Media als Kachel „Wochenende“ (alle Mannschaften).
+- **Wetter am Spielort:** neue Function `weatherForecast` (`functions/weather.js`, alle 3 Stunden): holt für Spiele der nächsten 3 Tage die Vorhersage bei Open-Meteo (kostenlos, ohne Schlüssel) und speichert sie in `weather/{Spiel-ID}` (für alle lesbar, `firestore.rules` ergänzt). Ort = Koordinaten aus `RINK_GEO` in `js/app.js` (steht dafür jetzt oben in der Datei; neue Halle dort eintragen). Glättegefahr: ≤ 1 °C rund um die Anfahrt (4 Std. vor bis 3 Std. nach Bully) mit Niederschlag/Regenwahrscheinlichkeit ab 40 % oder Schnee bzw. gefrierender Regen; Frost ohne Niederschlag = „Frost“. Anzeige: Zeile auf den Karten „Nächstes Spiel“ und Kasten in den Spieldetails; die 24h-Erinnerung (`push.js`) hängt die Zusammenfassung an. Die Geräte fragen keinen Wetterdienst selbst (Datenschutz-Seite ergänzt).
+- **Saisonbilanz – Strafen & Special Teams:** Strafminuten (gesamt, je Spiel, Gegner), Überzahlquote (Tore/Überzahlspiele) und Unterzahlquote (überstanden/Unterzahlspiele) aus den EHV-Spielberichten. Dafür liefert die Function `standings` jetzt `scorers.special` mit (`functions/standings.js`).
+- **Functions:** neu `onReportPublished`, `weatherForecast`; geändert `live.js`, `push.js`, `standings.js`, `index.js`. Gehen mit „Live gehen“ automatisch mit. Der Push „Spielbericht“, die Wetteranzeige und die Special-Teams-Zahlen funktionieren erst nach dem Deploy.
 
 ## Version 1.42.2
 

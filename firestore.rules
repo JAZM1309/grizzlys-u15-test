@@ -52,6 +52,12 @@ service cloud.firestore {
       allow create, update, delete: if isAdmin();
     }
 
+    // Wetter am Spielort (1.43.0): schreibt nur die Cloud Function weatherForecast
+    match /weather/{gameId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
     // Spruch des Tages (1.41.0): eine Liste für die Startseite, für alle lesbar, nur der Admin schreibt
     match /appConfig/{docId} {
       allow read: if true;

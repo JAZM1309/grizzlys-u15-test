@@ -200,7 +200,7 @@ function detectPlatformFromStoredUserAgent(ua){
   return "Sonstiges";
 }
 
-function pushPrefs(){let r=true,m=true,ta=true,tb=true,lg=false,lp=false;try{const p=JSON.parse(localStorage.getItem("grizzlysPushPrefs")||"{}");if(p.results===false)r=false;if(p.reminders===false)m=false;if(p.teamA===false)ta=false;if(p.teamB===false)tb=false;if(p.liveGoals===true)lg=true;if(p.livePeriods===true)lp=true;}catch(e){}const o={results:r,reminders:m,teamA:ta,teamB:tb,liveGoals:lg,livePeriods:lp};/* 1.35.0: weitere Mannschaften (z. B. teamU13) */try{const p=JSON.parse(localStorage.getItem("grizzlysPushPrefs")||"{}");(window.TEAM_KEYS||[]).forEach(k=>{if(k!=="A"&&k!=="B")o["team"+k]=p["team"+k]===true});}catch(e){}return o;}
+function pushPrefs(){let r=true,m=true,ta=true,tb=true,lg=false,lp=false;try{const p=JSON.parse(localStorage.getItem("grizzlysPushPrefs")||"{}");if(p.results===false)r=false;if(p.reminders===false)m=false;if(p.teamA===false)ta=false;if(p.teamB===false)tb=false;if(p.liveGoals===true)lg=true;if(p.livePeriods===true)lp=true;}catch(e){}const o={results:r,reminders:m,teamA:ta,teamB:tb,liveGoals:lg,livePeriods:lp};/* 1.43.0: Spielbericht-Push, „Tore meiner Nummer“ und die Rückennummern je Mannschaft */try{const p=JSON.parse(localStorage.getItem("grizzlysPushPrefs")||"{}");o.reports=p.reports===true;o.liveMyNr=p.liveMyNr===true;o.myNr=window.myNrAll?window.myNrAll():{};}catch(e){}/* 1.35.0: weitere Mannschaften (z. B. teamU13) */try{const p=JSON.parse(localStorage.getItem("grizzlysPushPrefs")||"{}");(window.TEAM_KEYS||[]).forEach(k=>{if(k!=="A"&&k!=="B")o["team"+k]=p["team"+k]===true});}catch(e){}return o;}
 window.savePushPrefs=async function(){try{const token=localStorage.getItem("grizzlysPushToken");if(!token)return;await setDoc(doc(db,"pushTokens",token),{token,updatedAt:serverTimestamp(),prefs:pushPrefs()},{merge:true});}catch(e){console.warn("Push-Auswahl konnte nicht gespeichert werden",e);}};
 async function registerAdminPushToken(requestPermission=false){
   try{
@@ -453,7 +453,7 @@ async function submitBugReport(){
       area,
       description,
       contact,
-      appVersion:"1.42.2.217",
+      appVersion:"1.43.0.218",
       platform:detectPlatform(),
       userAgent:navigator.userAgent||"",
       pushRegistered:getPushRegistrationStatus(),
@@ -1072,6 +1072,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   loadScheduleOverrides();
   loadNews();
   loadSprueche();
+  loadWeather();
   loadReports();
   isSupported().then(ok=>{
   if(ok && FIREBASE_VAPID_KEY){
@@ -1091,9 +1092,10 @@ document.addEventListener("DOMContentLoaded",()=>{
       const d=payload.data||{}, typ=d.type||"";
       const title=n.title||d.title||"🏒 ESV Grizzlys U15", body=n.body||d.body||"";
       if(typ==="result"){try{loadResults()}catch(e){}}
+      if(typ==="report"){try{loadReports()}catch(e){}} /* 1.43.0 */
       if(!title&&!body) return;
       const SITE="https://jazm1309.github.io/grizzlys-u15/";
-      const icon=typ==="result"||/^live/.test(typ)?SITE+"grizzlys-result-icon.png":typ==="gameReminder"?SITE+"grizzlys-24h-icon-192.png":SITE+"icon-192.png";
+      const icon=typ==="result"||typ==="report"||/^live/.test(typ)?SITE+"grizzlys-result-icon.png":typ==="gameReminder"?SITE+"grizzlys-24h-icon-192.png":SITE+"icon-192.png";
       (async()=>{
         try{
           if(Notification.permission!=="granted") throw new Error("keine Erlaubnis");
@@ -1817,3 +1819,17 @@ function adminSpruchEditor(){
   };
 }
 window.adminSpruchEditor=adminSpruchEditor;
+
+/* ===== 1.43.0: Wetter am Spielort – Firestore weather/{Spiel-ID}, geschrieben von der Cloud Function weatherForecast =====
+   Höchstens stündlich neu laden (sonst aus dem Gerätespeicher). Die Geräte fragen keinen Wetterdienst selbst. */
+async function loadWeather(force){
+  try{
+    let c=null; try{c=JSON.parse(localStorage.getItem("grizzlysWeather")||"null")}catch(e){}
+    if(c&&c.data){window.weatherData=c.data;window.renderWeather?.()}
+    if(!force&&c&&c.ts&&Date.now()-c.ts<3600000)return;
+    const snap=await getDocs(collection(db,"weather")), data={};
+    snap.forEach(d=>{const x=d.data()||{};data[d.id]={t:x.t,tMin:x.tMin,pp:x.pp,txt:String(x.txt||""),warn:String(x.warn||""),ice:!!x.ice,frost:!!x.frost,code:x.code,at:x.at&&x.at.toMillis?x.at.toMillis():0}});
+    window.weatherData=data; try{localStorage.setItem("grizzlysWeather",JSON.stringify({ts:Date.now(),data}))}catch(e){}
+    window.renderWeather?.();
+  }catch(err){console.warn("Wetter konnte nicht geladen werden",err)}
+}
