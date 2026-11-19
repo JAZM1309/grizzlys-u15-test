@@ -59,7 +59,7 @@ self.addEventListener("notificationclick", event => {
   );
 });
 
-const CACHE = "grizzlys-u15-test-v214";
+const CACHE = "grizzlys-u15-test-v216";
 // Update-Hinweis („Neue Version verfügbar“) für diese Version zeigen? false = Nutzer bekommen sie still beim nächsten Öffnen.
 // In Live wird der Wert beim „Live gehen“ aus dem Häkchen im Admin-Bereich gesetzt.
 const UPDATE_HINWEIS = true;
@@ -68,9 +68,9 @@ const CORE = [
   "./",
   "./index.html",
   "./spielplan.js?h=5afc53c9",
-  "./js/app.js?h=a265920c",
-  "./js/app-daten.js?h=5ca20171",
-  "./app.css?h=c378cf5e",
+  "./js/app.js?h=ad8ce9bd",
+  "./js/app-daten.js?h=c4e9260c",
+  "./app.css?h=fb37dae7",
   "./spielbericht.js?h=f8daaaba",
   "./sprueche.js?h=37f027d6",
   "./manifest.webmanifest",
@@ -130,10 +130,12 @@ self.addEventListener("fetch", event => {
       .then(response => {
         if (response.ok) {
           const copy = response.clone();
-          caches.open(CACHE).then(cache => cache.put(event.request, copy));
+          // 1.42.0: Seitenaufrufe mit ?go=… (App-Verknüpfungen) unter der Adresse ohne ?… speichern
+          const key = req.mode === "navigate" && url.search ? url.origin + url.pathname : event.request;
+          caches.open(CACHE).then(cache => cache.put(key, copy));
         }
         return response;
       })
-      .catch(() => caches.match(event.request))
+      .catch(() => caches.match(event.request, req.mode === "navigate" ? { ignoreSearch: true } : undefined))
   );
 });

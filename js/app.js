@@ -727,7 +727,7 @@ function bilanzHtml(team){
       ${S.worst?`<li><span>Höchste Niederlage</span><b>${S.worst.r.gs}:${S.worst.r.os} · ${vs(S.worst)}</b></li>`:""}
       ${S.shut?`<li><span>Zu null gespielt</span><b>${S.shut}×</b></li>`:""}
       <li><span>Gegentore je Spiel</span><b>${avg(t.ga)}</b></li>
-    </ul></div>${scorerHtml(team)}${reps}
+    </ul></div>${msList(team)}${scorerHtml(team)}${reps}
     ${S.row&&S.row.r?`<button type="button" class="action sbTabImg" data-tabimg="${team}">📸 Tabelle als Bild teilen</button>`:""}
     <div class="sbNote">Berechnet aus den eingetragenen Ergebnissen${S.perN?", Drittel aus den EHV-Daten":""}. Spieler werden nicht genannt.</div>`;
 }
@@ -1201,7 +1201,7 @@ function lrRender(list){
       <div class="lrDate">${esc(wd)}<b>${String(d.getDate()).padStart(2,"0")}.</b>${esc(mon)}</div>
       <div class="lrTeams"><span class="lrBadge">${esc(teamName(g.team))}</span>
         <div class="lrTeam">${logo(g.home)}<span>${esc(shortTeam(g.home))}</span></div>
-        <div class="lrTeam">${logo(g.away)}<span>${esc(shortTeam(g.away))}</span></div>${r&&!g.cancelled?lrScorers(g,r):""}</div>
+        <div class="lrTeam">${logo(g.away)}<span>${esc(shortTeam(g.away))}</span></div>${r&&!g.cancelled?lrScorers(g,r)+msChips(g):""}</div>
       <div class="lrScore">${r?`<b>${r.hs}:${r.as}</b><span class="lrPill ${g.cancelled?"cx":r.o}">${g.cancelled?"Abgesagt":outLabel(r)}</span>`:liveFor(g)?(x=>`<b>${esc(String(x.hs))}:${esc(String(x.as))}</b><span class="lrPill live">${x.status==="final"?"vorläufig":"● Live"}</span>`)(liveFor(g)):`${window.resultsLoading&&!g.cancelled?'<span class="lrPill sk"></span>':`<span class="lrPill ${g.cancelled?"cx":"none"}">${g.cancelled?"Abgesagt":"Ergebnis folgt"}</span>`}`}</div>
       ${rp?`<button class="lrRep" type="button" data-rep="${i}"><span>📝</span><span><small>Spielbericht</small>${esc(rp.title||"Jetzt lesen")}</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6l-6 6"/></svg></button>`:""}
     </div>`;}).join("");
@@ -1364,7 +1364,7 @@ function openMatchDetails(g,toReport=false){
   const sideL=homeLogo, sideR=awayLogo;
   const res=resInfo(g), past=!!res||dt(g).getTime()+2*3600000<Date.now();
   const rep=(window.gameReports||{})[rkey(g)];
-  content.innerHTML=`<article class="card gz2 gz3 mdCard ${"team"+g.team}" data-team="${g.team}">${gameCardHtml(g,past,res,true)}</article>`+(rep&&rep.published&&rep.text?repHtml(rep):"");
+  content.innerHTML=`<article class="card gz2 gz3 mdCard ${"team"+g.team}" data-team="${g.team}">${gameCardHtml(g,past,res,true)}</article>`+msBox(g)+(rep&&rep.published&&rep.text?repHtml(rep):"");
   hwDecorate(content.querySelector(".mdCard"),g);
   g3Bind(content.querySelector(".mdCard"),g,true);
   modal.hidden=false;
@@ -2210,6 +2210,7 @@ renderInstaDownloads(); setInterval(()=>{try{renderInstaDownloads()}catch(e){}},
 /* ===== v66: News-Bereich – Hinweise, Spieländerungen, Neues in der App ===== */
 /* Nur Neuerungen, die für Nutzer sichtbar oder spürbar sind. Neueste Version oben. */
 const APP_NEWS=[
+  {v:"1.42.1.216",d:"November 2026",items:["Meilensteine: erster Saisonsieg, Siegesserien, 50. Saisontor & Co. stehen bei den Ergebnissen, im Spiel und in der Saisonbilanz.","App weiterempfehlen: In der Info zeigt „QR-Code zeigen“ einen Code zum Scannen – so ist die App in Sekunden auf dem Handy.","Schneller zur Statistik: Lange auf das App-Symbol drücken bietet die Saisonbilanz von U13, U15 A und U15 B an (Android)."]},
   {v:"1.41.0.210",d:"November 2026",items:["Neu auf der Startseite: der Spruch des Tages – jeden Tag ein anderer Eishockey-Spruch. Am Spieltag und nach einem Sieg oder einer Niederlage passt er zum Spiel."]},
   {v:"1.39.0.199",d:"November 2026",items:["Push-Meldungen folgen jetzt „Meine Mannschaften“: Du bekommst nur Push für die Mannschaften, die du ausgewählt hast.","Die App lädt schneller und aktualisiert sich gezielter."]},
   {v:"1.38.0.198",d:"November 2026",items:["Neu: die U13 – mit Spielplan, Ergebnissen, Tabelle, Live-Ticker und Push. Die App heißt jetzt „Young Grizzlys“.","Unter Einstellungen › Meine Mannschaften wählst du, ob du U15 A, U15 B und/oder U13 sehen möchtest. Push für die U13 gibt es nur, wenn du sie auswählst."]},
@@ -2773,4 +2774,81 @@ renderNews();
   window.renderSpruch=render;
   document.addEventListener("visibilitychange",()=>{if(!document.hidden)render()});
   render();
+})();
+
+/* ===== 1.42.0: Meilensteine – aus den eingetragenen Ergebnissen je Mannschaft (keine Namen) =====
+   Erster Saisonsieg, 5./10./15. … Saisonsieg, 3/5/7/10/15 Siege in Folge, 25./50./75./100. … Saisontor,
+   zu null gewonnen, höchster Saisonsieg (ab 5 Toren Unterschied, wenn höher als der bisherige). */
+const MS_IC='<svg class="msIc" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>';
+let msCache={key:"",map:{}};
+function milestones(team){
+  const all=games.filter(g=>g.team===team&&!g.cancelled).sort((a,b)=>dt(a)-dt(b)), out=[];
+  const GOALS=[25,50,75,100,125,150,175,200,250,300], WINS=[5,10,15,20,25,30], ROW=[3,5,7,10,15];
+  let gf=0,w=0,row=0,best=0;
+  all.forEach(g=>{const r=resInfo(g); if(!r)return; const L=[], before=gf; gf+=r.gs;
+    if(r.o==="w"){w++;row++;
+      if(w===1)L.push({k:"first",t:"Erster Saisonsieg"});
+      if(WINS.includes(w))L.push({k:"wins",t:w+". Saisonsieg"});
+      if(ROW.includes(row))L.push({k:"row",t:row+". Sieg in Folge"});
+      const d=r.gs-r.os; if(d>=5&&d>best){L.push({k:"big",t:"Höchster Saisonsieg"});} if(d>best)best=d;
+      if(r.os===0)L.push({k:"shut",t:"Zu null gewonnen"});
+    }else row=0;
+    GOALS.forEach(n=>{if(before<n&&gf>=n)L.push({k:"goals",t:n+". Saisontor"})});
+    if(L.length)out.push({g,r,L});
+  });
+  return out;
+}
+function msFor(g){
+  const key=games.length+"|"+games.filter(x=>resInfo(x)).length+"|"+Object.keys(window.gameResults||{}).length;
+  if(msCache.key!==key){msCache={key,map:{}};[...new Set(games.map(x=>x.team))].forEach(t=>milestones(t).forEach(m=>{msCache.map[rkey(m.g)]=m.L}))}
+  return msCache.map[rkey(g)]||[];
+}
+function msChips(g){const L=msFor(g);return L.length?`<div class="msRow">${MS_IC}<span>${L.map(x=>esc(x.t)).join(" · ")}</span></div>`:""}
+function msBox(g){const L=msFor(g);if(!L.length)return "";
+  return `<div class="msBox"><div class="msBoxHead">${MS_IC}<b>${L.length>1?"Meilensteine":"Meilenstein"}</b></div>${L.map(x=>`<div class="msItem ms_${x.k}">${esc(x.t)}</div>`).join("")}</div>`}
+function msList(team){const M=milestones(team); if(!M.length)return "";
+  return `<div class="sbSec"><h4>Meilensteine <small>(${M.reduce((a,m)=>a+m.L.length,0)})</small></h4><ul class="msList">${M.slice().reverse().map(m=>`<li><span class="msDate">${esc(dt(m.g).toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit"}))}</span><span class="msTx">${m.L.map(x=>`<b>${esc(x.t)}</b>`).join(" · ")}<small>${m.r.gs}:${m.r.os} ${isHome(m.g)?"gegen":"bei"} ${esc(shortTeam(opponent(m.g)))}</small></span></li>`).join("")}</ul></div>`}
+
+/* ===== 1.42.0: App weiterempfehlen – QR-Code der Live-App (in der Info) ===== */
+const APP_LIVE_URL="https://jazm1309.github.io/grizzlys-u15/";
+const QR_PATH="M4 4h7v1h-7zM15 4h4v1h-4zM21 4h1v1h-1zM26 4h3v1h-3zM30 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM15 5h3v1h-3zM19 5h1v1h-1zM21 5h1v1h-1zM23 5h2v1h-2zM26 5h1v1h-1zM30 5h1v1h-1zM36 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM12 6h1v1h-1zM19 6h2v1h-2zM25 6h1v1h-1zM27 6h1v1h-1zM30 6h1v1h-1zM32 6h3v1h-3zM36 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM18 7h1v1h-1zM20 7h5v1h-5zM26 7h3v1h-3zM30 7h1v1h-1zM32 7h3v1h-3zM36 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM12 8h3v1h-3zM16 8h1v1h-1zM18 8h1v1h-1zM22 8h3v1h-3zM26 8h2v1h-2zM30 8h1v1h-1zM32 8h3v1h-3zM36 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM12 9h2v1h-2zM15 9h1v1h-1zM17 9h1v1h-1zM19 9h1v1h-1zM23 9h1v1h-1zM25 9h1v1h-1zM30 9h1v1h-1zM36 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM28 10h1v1h-1zM30 10h7v1h-7zM16 11h1v1h-1zM19 11h4v1h-4zM25 11h1v1h-1zM27 11h2v1h-2zM5 12h1v1h-1zM8 12h1v1h-1zM10 12h1v1h-1zM12 12h2v1h-2zM15 12h3v1h-3zM21 12h1v1h-1zM23 12h3v1h-3zM27 12h1v1h-1zM29 12h1v1h-1zM31 12h2v1h-2zM34 12h1v1h-1zM6 13h2v1h-2zM9 13h1v1h-1zM12 13h1v1h-1zM17 13h3v1h-3zM22 13h1v1h-1zM26 13h4v1h-4zM33 13h3v1h-3zM5 14h1v1h-1zM7 14h1v1h-1zM9 14h2v1h-2zM12 14h1v1h-1zM14 14h4v1h-4zM19 14h1v1h-1zM21 14h1v1h-1zM25 14h4v1h-4zM30 14h1v1h-1zM33 14h1v1h-1zM35 14h1v1h-1zM5 15h1v1h-1zM8 15h1v1h-1zM13 15h1v1h-1zM18 15h1v1h-1zM21 15h2v1h-2zM24 15h2v1h-2zM27 15h2v1h-2zM30 15h1v1h-1zM35 15h1v1h-1zM5 16h1v1h-1zM8 16h1v1h-1zM10 16h6v1h-6zM19 16h1v1h-1zM22 16h4v1h-4zM27 16h2v1h-2zM30 16h4v1h-4zM35 16h1v1h-1zM6 17h2v1h-2zM11 17h1v1h-1zM13 17h1v1h-1zM17 17h5v1h-5zM23 17h1v1h-1zM26 17h3v1h-3zM31 17h1v1h-1zM33 17h1v1h-1zM5 18h3v1h-3zM9 18h2v1h-2zM12 18h3v1h-3zM17 18h3v1h-3zM21 18h1v1h-1zM23 18h1v1h-1zM25 18h6v1h-6zM32 18h1v1h-1zM34 18h2v1h-2zM7 19h3v1h-3zM11 19h1v1h-1zM14 19h1v1h-1zM21 19h6v1h-6zM29 19h3v1h-3zM33 19h1v1h-1zM6 20h1v1h-1zM9 20h2v1h-2zM13 20h1v1h-1zM15 20h7v1h-7zM25 20h1v1h-1zM28 20h1v1h-1zM30 20h1v1h-1zM32 20h1v1h-1zM35 20h1v1h-1zM5 21h1v1h-1zM7 21h1v1h-1zM9 21h1v1h-1zM12 21h4v1h-4zM18 21h1v1h-1zM20 21h3v1h-3zM26 21h2v1h-2zM29 21h1v1h-1zM33 21h3v1h-3zM4 22h1v1h-1zM6 22h1v1h-1zM9 22h2v1h-2zM12 22h1v1h-1zM14 22h2v1h-2zM17 22h3v1h-3zM22 22h1v1h-1zM24 22h2v1h-2zM27 22h1v1h-1zM30 22h2v1h-2zM33 22h1v1h-1zM35 22h1v1h-1zM6 23h1v1h-1zM8 23h2v1h-2zM12 23h1v1h-1zM18 23h4v1h-4zM25 23h1v1h-1zM30 23h2v1h-2zM36 23h1v1h-1zM4 24h2v1h-2zM10 24h1v1h-1zM16 24h2v1h-2zM20 24h3v1h-3zM25 24h1v1h-1zM27 24h1v1h-1zM30 24h1v1h-1zM32 24h2v1h-2zM4 25h1v1h-1zM6 25h2v1h-2zM9 25h1v1h-1zM13 25h2v1h-2zM16 25h2v1h-2zM19 25h1v1h-1zM23 25h3v1h-3zM27 25h1v1h-1zM29 25h1v1h-1zM31 25h1v1h-1zM33 25h1v1h-1zM35 25h1v1h-1zM9 26h2v1h-2zM13 26h1v1h-1zM17 26h1v1h-1zM22 26h1v1h-1zM24 26h5v1h-5zM30 26h2v1h-2zM34 26h2v1h-2zM7 27h1v1h-1zM9 27h1v1h-1zM11 27h1v1h-1zM14 27h3v1h-3zM18 27h2v1h-2zM21 27h2v1h-2zM25 27h1v1h-1zM27 27h1v1h-1zM30 27h3v1h-3zM4 28h5v1h-5zM10 28h3v1h-3zM16 28h1v1h-1zM18 28h1v1h-1zM21 28h1v1h-1zM23 28h3v1h-3zM27 28h6v1h-6zM35 28h1v1h-1zM12 29h2v1h-2zM15 29h1v1h-1zM18 29h3v1h-3zM25 29h1v1h-1zM27 29h2v1h-2zM32 29h1v1h-1zM34 29h2v1h-2zM4 30h7v1h-7zM15 30h2v1h-2zM18 30h2v1h-2zM24 30h1v1h-1zM28 30h1v1h-1zM30 30h1v1h-1zM32 30h2v1h-2zM4 31h1v1h-1zM10 31h1v1h-1zM13 31h1v1h-1zM15 31h2v1h-2zM19 31h1v1h-1zM23 31h3v1h-3zM28 31h1v1h-1zM32 31h1v1h-1zM36 31h1v1h-1zM4 32h1v1h-1zM6 32h3v1h-3zM10 32h1v1h-1zM12 32h1v1h-1zM15 32h7v1h-7zM23 32h2v1h-2zM28 32h6v1h-6zM35 32h2v1h-2zM4 33h1v1h-1zM6 33h3v1h-3zM10 33h1v1h-1zM13 33h1v1h-1zM15 33h4v1h-4zM22 33h2v1h-2zM25 33h1v1h-1zM27 33h2v1h-2zM30 33h6v1h-6zM4 34h1v1h-1zM6 34h3v1h-3zM10 34h1v1h-1zM13 34h1v1h-1zM15 34h5v1h-5zM22 34h2v1h-2zM27 34h1v1h-1zM30 34h3v1h-3zM34 34h1v1h-1zM4 35h1v1h-1zM10 35h1v1h-1zM12 35h1v1h-1zM15 35h1v1h-1zM18 35h9v1h-9zM28 35h3v1h-3zM4 36h7v1h-7zM13 36h5v1h-5zM24 36h7v1h-7zM33 36h1v1h-1zM36 36h1v1h-1z", QR_N=41;
+function openQr(){
+  let m=document.getElementById("qrModal");
+  if(!m){m=document.createElement("div");m.id="qrModal";m.className="matchModal qrModal";m.hidden=true;
+    m.innerHTML=`<div class="matchModalBox" role="dialog" aria-modal="true" aria-labelledby="qrTitle"><div class="matchModalHead"><div id="qrTitle" class="matchModalTitle">App weiterempfehlen</div><button id="qrClose" class="matchModalClose" type="button" aria-label="Schließen">×</button></div>
+      <div class="qrBody"><div class="qrCard"><div class="qrBrand"><img src="logo.png" alt="" width="40" height="40"><div><b>${esc(APP_CFG.appName)}</b><small>Spielplan U13 &amp; U15 · ${esc(APP_CFG.club)}</small></div></div>
+      <svg class="qrCode" viewBox="0 0 ${QR_N} ${QR_N}" role="img" aria-label="QR-Code zur App"><rect width="${QR_N}" height="${QR_N}" fill="#fff"/><path d="${QR_PATH}" fill="#071b33"/></svg>
+      <div class="qrUrl">${esc(APP_LIVE_URL.replace("https://",""))}</div></div>
+      <ol class="qrSteps"><li>Mit der <b>Handykamera</b> auf den Code halten und den Link öffnen.</li><li>Im Browser <b>„Zum Startbildschirm hinzufügen“</b> bzw. <b>„App installieren“</b> wählen.</li><li>Fertig – Spielplan, Ergebnisse und Push immer dabei.</li></ol>
+      <button type="button" class="action qrShare" id="qrShare">Link teilen</button></div></div>`;
+    document.body.appendChild(m);
+    const close=()=>{m.hidden=true;m.setAttribute("aria-hidden","true");document.body.style.overflow=""};
+    m.querySelector("#qrClose").onclick=close; m.addEventListener("click",e=>{if(e.target===m)close()});
+    document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!m.hidden)close()});
+    m.querySelector("#qrShare").onclick=async()=>{const d={title:APP_CFG.appName,text:APP_CFG.appName+" – Spielplan U13 und U15 des "+APP_CFG.club,url:APP_LIVE_URL};
+      try{if(navigator.share)await navigator.share(d);else if(navigator.clipboard){await navigator.clipboard.writeText(APP_LIVE_URL);alert("App-Link wurde kopiert.")}else window.prompt("App-Link kopieren:",APP_LIVE_URL)}catch(e){if(e&&e.name!=="AbortError")alert("Teilen war nicht möglich.")}};
+  }
+  m.hidden=false;m.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";
+  try{trackAnalyticsEvent("app_qr")}catch(e){}
+}
+window.openQr=openQr;
+document.getElementById("qrApp")?.addEventListener("click",openQr);
+
+/* ===== 1.42.0: App-Verknüpfungen (langes Drücken auf das App-Symbol, siehe manifest.webmanifest „shortcuts“)
+   ./?go=bilanz-U13 | bilanz-A | bilanz-B öffnet die Saisonbilanz der Mannschaft und räumt die Adresse wieder auf.
+   Ist die Mannschaft unter „Meine Mannschaften“ nicht ausgewählt, kommt ein Hinweis und die Einstellungen öffnen sich. */
+(function(){
+  let go=""; try{go=new URLSearchParams(location.search).get("go")||""}catch(e){}
+  if(!go)return;
+  try{history.replaceState(null,"",location.pathname+location.hash)}catch(e){}
+  const run=()=>{try{
+    const m=/^bilanz-(.+)$/.exec(go), team=m&&m[1];
+    if(team&&APP_CFG.teams&&APP_CFG.teams[team]){
+      showView("home");
+      if(window.myTeam(team))openBilanz(team);
+      else{alert(teamName(team)+" ist unter „Meine Mannschaften“ nicht ausgewählt. Wähle sie in den Einstellungen aus, dann klappt die Verknüpfung.");showView("settings")}
+    }else if(["schedule","opponents","rules","home"].includes(go))showView(go);
+    trackAnalyticsEvent("shortcut_opened",{ziel:go});
+  }catch(e){console.warn(e)}};
+  setTimeout(run,(window.__introMs||0)+300);
 })();

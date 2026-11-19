@@ -35,6 +35,7 @@ Bewusst auf die Saison 2027/28 verschoben (dann kommt die U17 dazu):
 - **Lade-Platzhalter:** graue Platzhalter statt leerer Flächen, solange Tabelle/Ergebnisse laden
 - **Logo-Ersatz:** einheitliches Kürzel-Wappen, wenn ein Gegner-Logo fehlt
 - **Admin-Code nur bei Bedarf laden:** ca. 80 KB von `js/app-daten.js` gehören nur zum Admin-Bereich; Trennung erst mit ausreichender Testzeit (Admin-Bereich ist ohne Anmeldung nicht automatisch prüfbar)
+- **Helfer-Dienste am Heimspieltag:** Liste der Dienste je Heimspiel (Kampfgericht, Anzeigetafel, Kiosk, Kasse), Eltern tragen sich mit Kürzel ein, offene Dienste sichtbar, Erinnerung per Push am Vortag (wird in dieser Saison noch anders geregelt)
 - Saisonwechsel wie immer: Liga-Kennungen (`functions/standings.js`, `functions/teams.js`), `spielplan.js`, Ferien (`nrwFerien`)
 
 ## Versionsnummern
@@ -49,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.42.1.216 | – (nur Test) | 19.11.2026 | Neue Funktionen (Meilensteine, QR-Code, App-Verknüpfungen zur Saisonbilanz) |
 | 1.41.4.214 | – (nur Test) | 18.11.2026 | Mehr Sprüche mit Namen |
 | 1.41.3.213 | – (nur Test) | 18.11.2026 | Optik: Spruch des Tages ohne Hintergrund, mittig |
 | 1.41.2.212 | – (nur Test) | 18.11.2026 | Optik: Spruch des Tages als dunkle Karte oben |
@@ -78,6 +80,15 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.42.0
+
+### Neu in Version 1.42.0 (Stand 1.42.1.216, 19.11.2026, nur in der Test-App)
+
+- **Meilensteine:** aus den eingetragenen Ergebnissen je Mannschaft – erster Saisonsieg, 5./10./15. … Saisonsieg, 3/5/7/10/15 Siege in Folge, 25./50./75./100. … Saisontor, zu null gewonnen, höchster Saisonsieg (ab 5 Toren Unterschied und höher als der bisherige). Anzeige in „Letzte Ergebnisse“ (goldene Zeile), in den Spieldetails (Kasten „Meilenstein“) und in der Saisonbilanz (Liste „Meilensteine“). Keine Namen, keine neuen Daten oder Abfragen.
+- **App weiterempfehlen:** Info › neben „App teilen“ der Knopf „QR-Code zeigen“ – großer QR-Code der **Live-App** (`https://jazm1309.github.io/grizzlys-u15/`, fest eingebaut, auch in der Test-App) mit kurzer Anleitung und „Link teilen“. Der Code ist im Programm gespeichert und funktioniert offline.
+- **App-Verknüpfungen (Android):** langes Drücken auf das App-Symbol zeigt „U13“, „U15 A“ und „U15 B“ und öffnet direkt die Saisonbilanz der Mannschaft (`shortcuts` in `manifest.webmanifest`, Symbole `img/shortcut-u13.png`, `-u15a.png`, `-u15b.png` in den Mannschaftsfarben). Die App öffnet dazu `./?go=bilanz-U13|bilanz-A|bilanz-B` und räumt die Adresse danach wieder auf; ist die Mannschaft unter „Meine Mannschaften“ nicht gewählt, kommt ein Hinweis und die Einstellungen öffnen sich. Kommt zur neuen Saison die U17 dazu, die Verknüpfungen im Manifest (Test und Live) anpassen; der Service Worker speichert solche Aufrufe unter der normalen Adresse (offline nutzbar). iPhone kennt keine App-Verknüpfungen. Android übernimmt neue Verknüpfungen erst, wenn Chrome die installierte App aktualisiert (kann einen Tag dauern).
+- **Wichtig für Live:** `manifest.webmanifest` gehört zu den Dateien, die „Live gehen“ **nicht** überträgt (Test hat einen eigenen Namen). Für die Verknüpfungen in der Live-App die mitgelieferte Live-Fassung einmal von Hand ins Live-Repo hochladen (ersetzt die alte Datei).
 
 ## Version 1.41.4
 
