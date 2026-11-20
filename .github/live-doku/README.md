@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.44.5.224 | – (nur Test) | 20.11.2026 | Fenster: × bleibt stehen, Zurück-Taste schließt |
 | 1.44.4.223 | – (nur Test) | 19.11.2026 | Admin: Geräteliste mit Entfernen |
 | 1.44.3.222 | – (nur Test) | 19.11.2026 | Admin: EHV „ohne Termin“ und abgesagte Spiele |
 | 1.44.2.221 | – (nur Test) | 19.11.2026 | Neu: Status „Verlegt – Termin offen“ |
@@ -87,6 +88,12 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.44.5
+
+- **× bleibt beim Scrollen sichtbar:** In allen Fenstern (Spieldetails, Saisonbilanz, Gegner, News, Regeln, Formulare, QR-Code, Wunschliste …) bleibt die Kopfzeile mit Titel und × oben stehen. Im Admin-Bereich steht die Kopfzeile mit × fest, die Reiter darunter; im Spiel-Blatt des Admin-Bereichs bleibt die Spielzeile mit × stehen.
+- **Zurück-Taste des Handys schließt das oberste Fenster** statt die App zu verlassen: Beim Öffnen eines Fensters legt die App einen Eintrag im Browser-Verlauf an (`history.pushState`), die Zurück-Taste schließt dann das Fenster; wird per × geschlossen, wird der Eintrag wieder entfernt. Gilt auch für verschachtelte Fenster (Admin › Spiel: erst das Spiel, dann der Admin-Bereich). Ohne offenes Fenster verhält sich die Zurück-Taste wie bisher.
+- **Fix:** Saisonbilanz ohne Ergebnisse zeigte „Sobald ${esc(teamName(team))} gespielt hat …“ statt des Mannschaftsnamens.
 
 ## Version 1.44.4
 

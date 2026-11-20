@@ -709,7 +709,7 @@ function scorerHtml(team){
 }
 function bilanzHtml(team){
   const S=seasonStats(team), t=S.tot, word=OUTW;
-  if(!t.gp)return `<div class="sbEmpty">${emptyBox("puck","Noch keine Ergebnisse","Sobald ${esc(teamName(team))} gespielt hat, erscheint hier die Bilanz.")}</div>`;
+  if(!t.gp)return `<div class="sbEmpty">${emptyBox("puck","Noch keine Ergebnisse","Sobald die "+teamName(team)+" gespielt hat, erscheint hier die Bilanz.")}</div>`;
   const tile=(v,l,c="")=>`<div class="sbTile ${c}"><b>${v}</b><span>${l}</span></div>`;
   const avg=v=>(v/t.gp).toLocaleString("de-DE",{maximumFractionDigits:1});
   const row=S.row&&S.row.r?`<div class="sbRank"><b>Platz ${esc(String(S.row.r))}</b><span>${S.row.p!==undefined?esc(String(S.row.p))+" Punkte · ":""}${esc(APP_CFG.teams[team]?APP_CFG.teams[team].league:"")}</span></div>`:"";
@@ -3080,3 +3080,45 @@ document.addEventListener("click",e=>{
   if(info&&!document.getElementById("fbInfo")){const d=document.createElement("div");d.id="fbInfo";d.innerHTML=fbLinkHtml("info");info.after(d)}
   setTimeout(()=>{wishRefresh().then(d=>{if(!d.on){document.querySelectorAll("[data-wish-open]").forEach(b=>{if(!b.closest(".fbHome"))b.remove()});const hb=document.querySelector(".fbHome [data-wish-open]");if(hb)hb.remove()}})},(window.__introMs||0)+2500);
 })();
+
+/* ===== 1.44.5: Zurück-Taste des Handys schließt Fenster (statt die App) =====
+   Öffnet sich ein Fenster (Spieldetails, Saisonbilanz, News, Admin, Formulare …), legt die App einen Eintrag im
+   Browser-Verlauf an. Die Zurück-Taste schließt dann das oberste Fenster. Wird ein Fenster per × geschlossen,
+   wird der Eintrag wieder entfernt – so bleibt der Verlauf sauber. */
+(function(){
+  const SEL=".matchModal,.adminModal,.bugReportModal,.thanksModal,.admSheetWrap";
+  const CLOSE=".admX,.matchModalClose,.adminModalClose,#thanksClose,[aria-label*='chließen']";
+  const stack=[]; let ignore=0, pending=0, timer=0;
+  const isOpen=el=>el.isConnected&&!el.hidden&&getComputedStyle(el).display!=="none";
+  function onOpen(el){
+    if(stack.includes(el))return; stack.push(el);
+    if(pending>0){pending--;try{history.replaceState({gzm:stack.length},"")}catch(e){}}
+    else{try{history.pushState({gzm:stack.length},"")}catch(e){}}
+  }
+  function onClose(el){
+    const i=stack.indexOf(el); if(i<0)return; stack.splice(i,1);
+    if(el._gzPop){el._gzPop=false;return} /* durch die Zurück-Taste geschlossen – Eintrag ist schon weg */
+    pending++; clearTimeout(timer);
+    timer=setTimeout(()=>{if(pending>0){const n=pending;pending=0;ignore++;try{history.go(-n)}catch(e){ignore--}}},60);
+  }
+  function closeEl(el){
+    el._gzPop=true;
+    const box=el.querySelector('[role="dialog"]')||el, btn=[...box.querySelectorAll(CLOSE)].find(b=>b.closest(SEL)===el);
+    if(btn)btn.click();
+    if(isOpen(el)){el.hidden=true;el.setAttribute("aria-hidden","true");if(!stack.some(isOpen))document.body.style.overflow=""}
+    if(stack.includes(el))onClose(el);
+  }
+  window.addEventListener("popstate",()=>{
+    if(ignore>0){ignore--;return}
+    const top=[...stack].reverse().find(isOpen);
+    if(top)closeEl(top);
+  });
+  new MutationObserver(ms=>{ms.forEach(m=>{
+    if(m.type==="attributes"){const el=m.target;if(el.matches&&el.matches(SEL)){if(isOpen(el))onOpen(el);else onClose(el)}}
+    else m.removedNodes.forEach(n=>{if(n.nodeType===1&&stack.includes(n))onClose(n)});
+  })}).observe(document.body,{subtree:true,attributes:true,attributeFilter:["hidden"],childList:true});
+  document.querySelectorAll(SEL).forEach(el=>{if(isOpen(el))onOpen(el)});
+})();
+/* 1.44.5: Admin-Reiter direkt unter der stehenden Admin-Kopfzeile */
+(function(){const h=document.querySelector(".adminBox>.adminModalHead");if(!h||!window.ResizeObserver)return;
+  new ResizeObserver(()=>{document.documentElement.style.setProperty("--admHeadH",h.offsetHeight+"px")}).observe(h)})();
