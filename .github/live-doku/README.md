@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.46.0.227 | – (nur Test) | 20.11.2026 | Admin-Bereich nach Aufgaben geordnet |
 | 1.45.0.226 | – (nur Test) | 20.11.2026 | Neue Funktion: Kapitän (C) und Assistenten (A) – ohne Eintrag in „Neu in der App“ |
 | 1.44.5.224 | – (nur Test) | 20.11.2026 | Fenster: × bleibt stehen, Zurück-Taste schließt |
 | 1.44.4.223 | – (nur Test) | 19.11.2026 | Admin: Geräteliste mit Entfernen |
@@ -89,6 +90,15 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.46.0
+
+- **Admin-Bereich nach Aufgaben statt nach Technik:** vier Reiter – **Spieltag** (EHV-Abweichungen, Spielliste mit Ergebnissen, Terminen, Absagen und Spielberichten), **Inhalte** (News, Spruch des Tages, Kapitäne, Wunschliste, Social Media), **Rückmeldungen** (Feedback, Reaktionen, App-Fehler) und **Technik** (Veröffentlichen, Push-Status, App-Statistik, Tipp-Fenster, Saisonsachen). Der bisherige Reiter „Social“ ist jetzt der aufklappbare Bereich „Social Media“ unter Inhalte. Die internen Reiter-Namen (`games`, `news`, `bugs`, `stats`) bleiben gleich.
+- **Zahlen an den Reitern:** Spieltag zählt Spiele mit fehlendem Ergebnis, EHV-Abweichung oder einem Spielbericht der letzten 10 Tage, der noch nicht veröffentlicht ist; Rückmeldungen zählt offene Rückmeldungen (wie bisher); Technik zeigt „!“, wenn dieses Gerät keinen Admin-Push bekommt.
+- **Spielliste startet mit „Zu tun“:** Abschnitte „Ergebnis fehlt“, „EHV-Abweichung“, „Bericht wartet auf Freigabe“ und „Heute“; ist nichts offen, steht „Nichts zu tun“ und die nächsten drei Spiele. Weitere Filter: Kommende · Gespielt · Alle.
+- **Saisonsachen nur zur passenden Zeit:** Adventskalender 20.11.–15.1. (wie bisher), Saisonende-Sicherung nur März bis August. Gruppe „Saison“ verschwindet, wenn beides nicht dran ist.
+- **Einheitlicher Aufbau:** alle Bereiche zugeklappt mit Kurzinfo rechts; welche Bereiche offen waren, merkt sich das Gerät (`localStorage` `grizzlysAdmFolds`) und öffnet sie beim nächsten Mal wieder (inkl. Nachladen von Veröffentlichen, App-Fehler, Adventskalender, Social Media). Gemischte Emojis in den Überschriften sind durch einheitliche Linien-Symbole ersetzt (auch im Spiel-Blatt: Ergebnis, Termin & Ort, Spielbericht, Absage, Hinweis).
+- **Fix:** „App-Fehler“ lud beim Aufklappen nicht neu, sondern beim Zuklappen.
 
 ## Version 1.45.0
 

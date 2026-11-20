@@ -2422,3 +2422,12 @@ html.dark .capB{background:#e7eef8;color:#071b33}html.dark .capB.a{background:#a
 .capRow label{display:inline-flex;align-items:center;gap:5px}.capRow .capB{margin:0;min-width:22px;height:22px;font-size:13px}
 .capRow input{width:58px;font:inherit;font-weight:850;font-size:16px;text-align:center;padding:6px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text)}
 html.dark .capRow input{background:#0d1a2c;border-color:#263a55;color:#e7eef8}
+/* 1.46.0: Admin nach Aufgaben – 4 Reiter, Zähler, Linien-Symbole */
+.admTabs{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.admTabs button{font-size:11px!important;letter-spacing:-.01em}
+.admTabs .adminBugBadge.warn{background:#e8a317;color:#1b1300}
+.admFi{width:17px;height:17px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;vertical-align:-3px;margin-right:7px;color:var(--accent,#0b5cad)}
+.admFoldHead .t{display:inline-flex;align-items:center}
+.admFoldBox h5{display:flex;align-items:center;flex-wrap:wrap;gap:0}
+.admFold[hidden]{display:none!important}
+html.dark .admFi{color:#8fc1ff}

@@ -2182,7 +2182,7 @@ function renderAdmSocial(){
   box.querySelector(".socMore")?.addEventListener("click",()=>{admSoc.n=999;renderAdmSocial()});
 }
 window.renderAdmSocial=renderAdmSocial;
-{const prev=window.applyResults;window.applyResults=function(){prev&&prev.apply(this,arguments);try{const p=document.querySelector('[data-adm-pane="social"]');if(p&&!p.hidden)renderAdmSocial()}catch(e){console.warn(e)}};}
+{const prev=window.applyResults;window.applyResults=function(){prev&&prev.apply(this,arguments);try{const p=document.getElementById("admSocBody");if(p&&!p.hidden)renderAdmSocial()}catch(e){console.warn(e)}};}
 
 /* Instagram-Bilder für alle: Spieltag ab 5 Tage vorher bis Spielende, Ergebnis bis 5 Tage nach dem Spiel */
 const INSTA_DAYS=5;
