@@ -461,7 +461,7 @@ async function submitBugReport(){
       area,
       description,
       contact,
-      appVersion:"1.44.5.224",
+      appVersion:"1.45.0.225",
       platform:detectPlatform(),
       userAgent:navigator.userAgent||"",
       pushRegistered:getPushRegistrationStatus(),
@@ -1003,7 +1003,7 @@ async function admBackup(){
 document.getElementById("admBackupBtn")?.addEventListener("click",admBackup);
 function setAdminUi(user){
   const login=document.getElementById("adminLogin"), panel=document.getElementById("adminPanel"), status=document.getElementById("adminStatus");
-  if(user && user.uid===ADMIN_UID){ login.hidden=true; panel.hidden=false; status.textContent="Admin angemeldet"; document.getElementById("adminLogout").hidden=false; loadBugReports(); setupAnalyticsDashboard(); adminNewsEditor(); setupAdminPushStatus(); admStart(); loadSprueche(true).then(()=>adminSpruchEditor()); try{adminWishEditor();adminReactions()}catch(e){console.warn(e)} }
+  if(user && user.uid===ADMIN_UID){ login.hidden=true; panel.hidden=false; status.textContent="Admin angemeldet"; document.getElementById("adminLogout").hidden=false; loadBugReports(); setupAnalyticsDashboard(); adminNewsEditor(); setupAdminPushStatus(); admStart(); loadSprueche(true).then(()=>adminSpruchEditor()); try{adminWishEditor();adminReactions();loadCaptains(true).then(()=>adminCaptainEditor())}catch(e){console.warn(e)} }
   else { login.hidden=false; panel.hidden=true; document.getElementById("adminLogout").hidden=true; status.textContent=user?"Angemeldet, aber keine Admin-Berechtigung":"Nicht angemeldet"; }
 }
 
@@ -1081,6 +1081,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   loadScheduleOverrides();
   loadNews();
   loadSprueche();
+  loadCaptains();
   loadWeather();
   loadReports();
   isSupported().then(ok=>{
@@ -1926,3 +1927,36 @@ function admDevBind(box){
   box.querySelector("[data-devold]")?.addEventListener("click",async ev=>{const b=ev.currentTarget,ids=[...box.querySelectorAll(".admDev.old [data-devdel]")].map(x=>x.dataset.devdel);
     if(!ids.length||!confirm(ids.length+" alte Push-Anmeldung(en) entfernen?"))return;b.disabled=true;const n=await del(ids);if(n>=0)alert(n+" entfernt.");refreshAdminPushStatus()});
 }
+
+/* ===== 1.45.0: Kapitän (C) und Assistenten (A) je Mannschaft – nur Rückennummern, Firestore appConfig/kapitaene =====
+   Format: { on:true, list:[{team:"A", c:"17", a:["9","23"]}, …] } – Nutzer lesen höchstens alle 6 Stunden neu. */
+async function loadCaptains(force){
+  try{
+    let c=null; try{c=JSON.parse(localStorage.getItem("grizzlysCaptains")||"null")}catch(e){}
+    if(c&&c.data){window.setCaptains?.(c.data,false)}
+    if(!force&&c&&c.ts&&Date.now()-c.ts<6*3600000)return;
+    const s=await getDoc(doc(db,"appConfig","kapitaene")); const x=s.exists()?(s.data()||{}):{};
+    const data={on:x.on!==false,list:Array.isArray(x.list)?x.list:[]};
+    try{localStorage.setItem("grizzlysCaptains",JSON.stringify({ts:Date.now(),data}))}catch(e){}
+    window.setCaptains?.(data,true);
+  }catch(err){console.warn("Kapitäne konnten nicht geladen werden",err)}
+}
+function adminCaptainEditor(){
+  const box=document.getElementById("adminCaptains"); if(!box||!window.capInfo)return;
+  const cur=window.capInfo.get(), e=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const sum=document.getElementById("admCapSum"); if(sum)sum.textContent=window.TEAM_KEYS.filter(t=>cur.map[t]&&(cur.map[t].c||cur.map[t].a.length)).length+" von "+window.TEAM_KEYS.length+" Mannschaften";
+  box.innerHTML=`<div class="small" style="margin:0 2px 10px">Nur Rückennummern, keine Namen. „C“ und „A“ erscheinen auf den Mannschafts-Kacheln, in der Saisonbilanz und neben den Rückennummern der Torschützen.</div>
+    ${window.TEAM_KEYS.map(t=>{const m=cur.map[t]||{c:"",a:[]};return `<div class="adminGame newsAdminItem capRow" data-team="${e(t)}"><b class="capTeam">${e(teamName(t))}</b><label><span class="capB c">C</span><input inputmode="numeric" maxlength="2" data-k="c" value="${e(m.c)}" placeholder="Nr."></label><label><span class="capB a">A</span><input inputmode="numeric" maxlength="2" data-k="a0" value="${e(m.a[0]||"")}" placeholder="Nr."></label><label><span class="capB a">A</span><input inputmode="numeric" maxlength="2" data-k="a1" value="${e(m.a[1]||"")}" placeholder="Nr."></label></div>`}).join("")}
+    <div class="adminGame newsAdminItem"><div class="adminGameHead"><div><b>In der App anzeigen</b><div class="small">${cur.on?"Sichtbar für alle":"Ausgeblendet"}</div></div><label class="admSw"><input type="checkbox" id="capOn"${cur.on?" checked":""}><span></span></label></div></div>
+    <div class="admSprBar"><button type="button" class="action admSprSave" id="capSave">Speichern</button></div>`;
+  box.querySelector("#capSave").onclick=async ev=>{const b=ev.currentTarget;b.disabled=true;
+    const nr=v=>{v=String(v||"").replace(/\D/g,"");return v?String(Number(v)):""};
+    const list=[...box.querySelectorAll(".capRow")].map(r=>{const g=k=>nr(r.querySelector(`[data-k="${k}"]`).value);return {team:r.dataset.team,c:g("c"),a:[g("a0"),g("a1")].filter(Boolean)}}).filter(x=>x.c||x.a.length);
+    const dup=list.find(x=>[x.c,...x.a].filter(Boolean).length!==new Set([x.c,...x.a].filter(Boolean)).size); if(dup){alert(teamName(dup.team)+": eine Nummer ist doppelt vergeben.");b.disabled=false;return}
+    const data={on:box.querySelector("#capOn").checked,list};
+    try{await setDoc(doc(db,"appConfig","kapitaene"),{...data,updatedAt:serverTimestamp()});alert("Kapitäne gespeichert.")}
+    catch(err){if(!String(err.message||err).startsWith("Testversion")){alert("Speichern nicht möglich: "+(err.message||err));b.disabled=false;return}alert("Testversion: nur auf diesem Gerät übernommen.")}
+    try{localStorage.setItem("grizzlysCaptains",JSON.stringify({ts:Date.now(),data}))}catch(e){}
+    window.setCaptains?.(data,true); adminCaptainEditor();};
+}
+window.adminCaptainEditor=adminCaptainEditor;

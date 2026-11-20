@@ -8,6 +8,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.45.0.225 | – (nur Test) | 20.11.2026 | Neue Funktion: Kapitän (C) und Assistenten (A) |
 | 1.44.5.224 | – (nur Test) | 20.11.2026 | Fenster: × bleibt stehen, Zurück-Taste schließt |
 | 1.44.4.223 | – (nur Test) | 19.11.2026 | Admin: Geräteliste mit Entfernen |
 | 1.44.3.222 | – (nur Test) | 19.11.2026 | Admin: EHV „ohne Termin“ und abgesagte Spiele |

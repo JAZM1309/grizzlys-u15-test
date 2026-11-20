@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.45.0.225 | – (nur Test) | 20.11.2026 | Neue Funktion: Kapitän (C) und Assistenten (A) |
 | 1.44.5.224 | – (nur Test) | 20.11.2026 | Fenster: × bleibt stehen, Zurück-Taste schließt |
 | 1.44.4.223 | – (nur Test) | 19.11.2026 | Admin: Geräteliste mit Entfernen |
 | 1.44.3.222 | – (nur Test) | 19.11.2026 | Admin: EHV „ohne Termin“ und abgesagte Spiele |
@@ -88,6 +89,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.45.0
+
+- **Kapitän (C) und Assistenten (A):** Admin › Spiele › „©️ Kapitäne“ – je Mannschaft eine Rückennummer für C und bis zu zwei für A (nur Nummern, keine Namen), Schalter „In der App anzeigen“. Gespeichert in Firestore `appConfig/kapitaene` (`{ on, list: [{ team, c, a: [] }] }`, `firestore.rules` erweitert); Nutzer lesen höchstens alle 6 Stunden neu. Anzeige: Zeile „C 17 · A 9 · A 23“ auf den Mannschafts-Kacheln der Startseite, Kasten oben in der Saisonbilanz, kleines „C“/„A“ in „Tore nach Rückennummer“ und neben „Nr. 17“ bei Torschützen und Live-Toren (nicht im Fließtext des Spielberichts, nie bei Gegnertoren).
 
 ## Version 1.44.5
 
