@@ -50,7 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
-| 1.45.0.225 | – (nur Test) | 20.11.2026 | Neue Funktion: Kapitän (C) und Assistenten (A) |
+| 1.45.0.226 | – (nur Test) | 20.11.2026 | Neue Funktion: Kapitän (C) und Assistenten (A) – ohne Eintrag in „Neu in der App“ |
 | 1.44.5.224 | – (nur Test) | 20.11.2026 | Fenster: × bleibt stehen, Zurück-Taste schließt |
 | 1.44.4.223 | – (nur Test) | 19.11.2026 | Admin: Geräteliste mit Entfernen |
 | 1.44.3.222 | – (nur Test) | 19.11.2026 | Admin: EHV „ohne Termin“ und abgesagte Spiele |

@@ -2225,7 +2225,6 @@ renderInstaDownloads(); setInterval(()=>{try{renderInstaDownloads()}catch(e){}},
 /* ===== v66: News-Bereich – Hinweise, Spieländerungen, Neues in der App ===== */
 /* Nur Neuerungen, die für Nutzer sichtbar oder spürbar sind. Neueste Version oben. */
 const APP_NEWS=[
-  {v:"1.45.0.225",d:"November 2026",items:["Kapitän und Assistenten: „C“ und „A“ stehen jetzt bei den Mannschaften, in der Saisonbilanz und neben den Rückennummern der Torschützen."]},
   {v:"1.44.2.221",d:"November 2026",items:["Verlegte Spiele ohne neuen Termin werden jetzt als „Verlegt · Termin offen“ angezeigt – statt als abgesagt."]},
   {v:"1.44.0.219",d:"November 2026",items:["Wunschliste: Stimm ab, welche Funktion als Nächstes kommen soll – bis zu 3 Stimmen, anonym (Startseite unten und News).","Mit einem Tipp sagen, ob dir ein Spielbericht oder eine Neuerung gefällt (👍/👎).","Feedback ist jetzt schneller erreichbar: auf der Startseite, in der Info und in den News."]},
   {v:"1.43.0.218",d:"November 2026",items:["Meine Rückennummer: In den Einstellungen die Nummer deines Kindes eintragen – sie wird bei Torschützen, Spielberichten und in der Saisonbilanz hervorgehoben. Auf Wunsch Push bei Tor oder Vorlage dieser Nummer.","Neuer Push „Spielbericht ist online“ – ein Tipp öffnet den Bericht.","Wochenende als Bild: Unter Downloads alle Spiele des Wochenendes als Bild für die WhatsApp-Gruppe.","Wetter am Spielort: Temperatur und Glättegefahr beim nächsten Spiel und in der Erinnerung am Vortag.","Saisonbilanz: Strafminuten, Überzahl- und Unterzahlquote."]},
