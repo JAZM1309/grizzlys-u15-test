@@ -3319,7 +3319,14 @@ function wpBrand(c,W,y,u,col,L){instaFont(c,0,100*u,true);c.textAlign="center";c
 
 /* 1) Vereinsdesigns */
 async function wpDesign(c,W,H,o){
-  const u=W/1080,[logo,rink]=await Promise.all([instaImg(grizzlysLogo),o.style==="eis"?instaImg(instaRinkSrc()):null]);const st=o.style||"eis",L=o.tone==="light",ink=L?"#0b2a52":"#fff";
+  const L=o.tone==="light",u=W/1080,[logo,rink]=await Promise.all([instaImg(grizzlysLogo),o.style==="eis"?instaImg(L?"img/header-hell.webp":instaRinkSrc()):null]);const st=o.style||"eis",ink=L?"#0b2a52":"#fff";
+  if(st==="eis"&&L&&rink){/* 1.50.1: helles Hallenbild wie im Kopfbereich der hellen App */
+    /* Bild so breit, dass die Scheinwerfer links und rechts sichtbar bleiben; oben dunkel, unten Eis weiterführen */
+    const w=W*1.4,h=w*rink.naturalHeight/rink.naturalWidth,iy=H*.31-h*.17;
+    let g=c.createLinearGradient(0,0,0,iy+2);g.addColorStop(0,"#010409");g.addColorStop(1,"#000000");c.fillStyle=g;c.fillRect(0,0,W,iy+2);
+    c.fillStyle="#fefefe";c.fillRect(0,iy+h-2,W,H-iy-h+2);c.drawImage(rink,(W-w)/2,iy,w,h);
+    g=c.createLinearGradient(0,iy+h*.8,0,H);g.addColorStop(0,"rgba(254,254,254,0)");g.addColorStop(.35,"#f7fafd");g.addColorStop(1,"#dde9f5");c.fillStyle=g;c.fillRect(0,iy+h*.8,W,H);
+    const lh=wpLogo(c,logo,W/2,H*.53,W*.62,"rgba(10,30,60,.45)")||W*.6;wpBrand(c,W,H*.53+lh/2+150*u,u,null,true);return}
   if(st==="eis"){wpPhoto(c,W,H,rink,.7,L);const lh=wpLogo(c,logo,W/2,H*.53,W*.62,L?"rgba(11,42,82,.25)":null)||W*.6;wpBrand(c,W,H*.53+lh/2+150*u,u,null,L);return}
   if(st==="nacht"){let g=c.createRadialGradient(W/2,H*.5,0,W/2,H*.5,H*.7);g.addColorStop(0,L?"#ffffff":"#123f75");g.addColorStop(.45,L?"#e3eef9":"#0a2547");g.addColorStop(1,L?"#bcd5ee":"#030b17");c.fillStyle=g;c.fillRect(0,0,W,H);
     c.save();c.globalAlpha=L?.05:.06;c.strokeStyle=L?"#0b2a52":"#fff";c.lineWidth=2*u;for(let x=-H;x<W;x+=46*u){c.beginPath();c.moveTo(x,H);c.lineTo(x+H,0);c.stroke()}c.restore();

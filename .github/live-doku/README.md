@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.50.1.234 | – (nur Test) | 21.11.2026 | Hintergrund „Eishalle“ hell mit Hallenbild |
 | 1.50.0.233 | – (nur Test) | 21.11.2026 | Hintergrundbilder auch hell |
 | 1.49.0.232 | – (nur Test) | 21.11.2026 | Downloads in Reitern |
 | 1.48.1.231 | – (nur Test) | 21.11.2026 | Trikot-Hintergrund wie das Original |
@@ -96,6 +97,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.50.1
+
+- **Hintergrund „Eishalle“ in Hell mit Hallenbild:** nutzt jetzt `img/header-hell.webp` wie der Kopfbereich der hellen App (Scheinwerfer und weißes Eis). Das Bild ist so breit gesetzt, dass die Scheinwerfer links und rechts sichtbar bleiben; oben bleibt es dunkel (Platz für die Uhr), nach unten wird das Eis hell weitergeführt. Schrift dunkelblau.
 
 ## Version 1.50.0
 
