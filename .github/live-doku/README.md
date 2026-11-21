@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.49.0.232 | – (nur Test) | 21.11.2026 | Downloads in Reitern |
 | 1.48.1.231 | – (nur Test) | 21.11.2026 | Trikot-Hintergrund wie das Original |
 | 1.48.0.230 | – (nur Test) | 21.11.2026 | Neue Funktion: Hintergrundbilder fürs Handy |
 | 1.47.0.229 | – (nur Test) | 20.11.2026 | Neue Funktion: Saisonbilanz mit Reitern und neuen Statistiken |
@@ -94,6 +95,14 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.49.0
+
+- **Downloads in drei Reitern:** **Spielplan** (Kalender herunterladen, Spielplan als PDF, Kampfgericht-Anleitung) · **Social Media** (Spieltags-, Ergebnis-, Verlegungs-, Wochenend-, Tabellen- und Jahresbilder) · **Hintergründe** (Handy-Hintergrundbilder).
+- Zahl am Reiter „Social Media“ = aktuelle Spieltags-, Ergebnis- und Verlegungsbilder (`window.dlInstaFresh`, gesetzt in `renderInstaDownloads`).
+- Der zuletzt gewählte Reiter wird pro Gerät gemerkt (`localStorage` `grizzlysDlTab`); ohne gemerkten Reiter startet „Social Media“, wenn dort aktuelle Bilder liegen, sonst „Spielplan“.
+- Die Vorschaubilder der Hintergründe werden erst beim ersten Öffnen ihres Reiters erzeugt (spart Rechenzeit).
+- Analytics: `downloads_tab` (Reiter). Eintrag in „Neu in der App“.
 
 ## Version 1.48.1
 

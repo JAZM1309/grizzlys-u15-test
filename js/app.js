@@ -2201,6 +2201,7 @@ function renderInstaDownloads(){
     if(instaMoved(g)&&now<t&&!r)items.push({g,type:"moved",t});
     if(r&&now<=t+INSTA_DAYS*day)items.push({g,type:"result",t,r});
   });
+  window.dlInstaFresh=items.filter(x=>x.type==="result"||x.type==="announce"||x.type==="moved").length; try{window.dlTabBadge&&window.dlTabBadge()}catch(e){}
   const ord={result:0,moved:1,announce:2,weekend:2.5,year:3,table:4}; items.sort((a,b)=>a.type===b.type?a.t-b.t:ord[a.type]-ord[b.type]);
   /* 1.30.0: Tabelle immer, Jahresrückblick vom 20.12. bis 31.1. */
   {const d=new Date(now),yy=yearReviewYear(d);if(((d.getMonth()===11&&d.getDate()>=20)||d.getMonth()===0)&&yearStats(yy).T.gp)items.push({g:{year:yy},type:"year",t:0});
@@ -2231,6 +2232,7 @@ renderInstaDownloads(); setInterval(()=>{try{renderInstaDownloads()}catch(e){}},
 /* ===== v66: News-Bereich – Hinweise, Spieländerungen, Neues in der App ===== */
 /* Nur Neuerungen, die für Nutzer sichtbar oder spürbar sind. Neueste Version oben. */
 const APP_NEWS=[
+  {v:"1.49.0.232",d:"November 2026",items:["Downloads aufgeräumt: drei Reiter – Spielplan, Social Media und Hintergründe. Eine Zahl zeigt, wenn neue Spieltags- oder Ergebnisbilder da sind."]},
   {v:"1.48.0.230",d:"November 2026",items:["Hintergrundbilder fürs Handy unter Downloads: Vereinsdesign in vier Stilen, Trikot mit deiner Rückennummer, Nächstes Spiel und Spiele des Monats für den Sperrbildschirm – jetzt auch Advent & Weihnachten. Passend zu deinem Bildschirm, oben bleibt Platz für die Uhr."]},
   {v:"1.47.0.229",d:"November 2026",items:["Saisonbilanz neu sortiert: Überblick, Verlauf, Liga und Nummern als Reiter – mit Grafiken.","Neu im Verlauf: Zeit in Führung, Comebacks, knappe Spiele, Tore nach Spielminute und Überzahl/Unterzahl (die fehlten bisher).","Neu bei Liga und Nummern: Angriff und Abwehr im Ligavergleich, Bilanz gegen obere und untere Tabellenhälfte, Restprogramm, Hattricks, Siegtore und Scorer-Serien – weiter nur mit Rückennummern."]},
   {v:"1.44.2.221",d:"November 2026",items:["Verlegte Spiele ohne neuen Termin werden jetzt als „Verlegt · Termin offen“ angezeigt – statt als abgesagt."]},
@@ -3481,5 +3483,14 @@ async function wpOpen(k){
   try{trackAnalyticsEvent("wallpaper_opened",{motif:k})}catch(e){}
   draw();
 }
-{let done=false;const run=()=>{const v=document.getElementById("downloadsView");if(v&&!v.hidden&&!done){done=true;renderWallpapers()}};
- const v=document.getElementById("downloadsView");if(v)new MutationObserver(run).observe(v,{attributes:true,attributeFilter:["hidden"]});run();}
+/* 1.49.0: Downloads in Reitern – Spielplan · Social Media · Hintergründe; Hintergrund-Vorschauen erst beim Öffnen des Reiters */
+{let done=false;const run=()=>{const v=document.getElementById("downloadsView"),p=document.querySelector('[data-dlpane="wp"]');if(v&&!v.hidden&&p&&!p.hidden&&!done){done=true;renderWallpapers()}};
+ const DL_KEY="grizzlysDlTab";
+ function dlSet(t,save){document.querySelectorAll("[data-dltab]").forEach(b=>{const on=b.dataset.dltab===t;b.classList.toggle("on",on);b.setAttribute("aria-selected",on?"true":"false")});
+   document.querySelectorAll("[data-dlpane]").forEach(p=>p.hidden=p.dataset.dlpane!==t);if(save)try{localStorage.setItem(DL_KEY,t)}catch(e){}run()}
+ window.dlTabBadge=function(){const el=document.getElementById("dlTabCnt");if(!el)return;const n=window.dlInstaFresh||0;el.hidden=!n;el.textContent=String(n)};
+ let saved="";try{saved=localStorage.getItem(DL_KEY)||""}catch(e){}
+ const start=["plan","social","wp"].includes(saved)?saved:((window.dlInstaFresh||0)>0?"social":"plan");
+ document.querySelectorAll("[data-dltab]").forEach(b=>b.onclick=()=>{dlSet(b.dataset.dltab,true);try{trackAnalyticsEvent("downloads_tab",{tab:b.dataset.dltab})}catch(e){}});
+ dlSet(start,false);window.dlTabBadge();
+ const v=document.getElementById("downloadsView");if(v)new MutationObserver(run).observe(v,{attributes:true,attributeFilter:["hidden"]});}
