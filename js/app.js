@@ -3194,11 +3194,13 @@ function sbComeback(S){
     C[k(d1,1)][0]++;C[k(d1,1)][1]+=won;C[k(d2,2)][0]++;C[k(d2,2)][1]+=won});
   if(!n)return "";
   const ring=(c,cls)=>{const p=c[0]?c[1]/c[0]:0,R=19,U=2*Math.PI*R;return `<svg viewBox="0 0 48 48" class="cbRing ${cls}" aria-hidden="true"><circle cx="24" cy="24" r="${R}" class="bg"/><circle cx="24" cy="24" r="${R}" class="fg" stroke-dasharray="${(p*U).toFixed(1)} ${U.toFixed(1)}" transform="rotate(-90 24 24)"/><text x="24" y="28">${c[0]?Math.round(p*100)+"%":"–"}</text></svg>`};
-  const card=(lbl,c,cls,txt)=>`<div class="cbT">${ring(c,cls)}<div><small>${lbl}</small><b>${c[0]?c[1]+" von "+c[0]:"noch nie"}</b><span>${txt}</span></div></div>`;
-  const one=(c,w)=>c[0]?`${c[1]} von ${c[0]} ${w}`:"–";
-  return sbSec("Comebacks und Führungen","nach 2 Dritteln · "+n+" Spiele mit Dritteln",`<div class="cbGrid">
-    ${card("Vorn",C.w2,"w","Führung gehalten")}${card("Gleichstand",C.t2,"d","danach gewonnen")}${card("Hinten",C.l2,"l",C.l2[1]?"noch gedreht":"noch kein Comeback")}</div>
-    <div class="cbSub">Nach dem 1. Drittel: vorn ${one(C.w1,"gewonnen")} · hinten ${one(C.l1,"gedreht")}</div>`)}
+  /* 1.50.3: klarer formuliert – Einteilung nach dem Stand nach 2 Dritteln; „kam noch nicht vor“ statt „noch nie“ */
+  const sp=n=>n+" "+(n===1?"Spiel":"Spiele");
+  const card=(lbl,c,cls,verb)=>`<div class="cbT">${ring(c,cls)}<div><small>${lbl}</small><b>${c[0]?sp(c[0]):"–"}</b><span>${c[0]?"→ "+c[1]+" "+verb:"kam noch nicht vor"}</span></div></div>`;
+  const one=(c,verb)=>c[0]?`${sp(c[0])} → ${c[1]} ${verb}`:"kam noch nicht vor";
+  return sbSec("Stand nach 2 Dritteln",n+" Spiele mit Dritteln",`<div class="cbGrid">
+    ${card("Vorn",C.w2,"w","gewonnen")}${card("Gleich",C.t2,"d","gewonnen")}${card("Hinten",C.l2,"l","gedreht")}</div>
+    <div class="cbSub">Nach dem 1. Drittel – vorn: ${one(C.w1,"gewonnen")} · hinten: ${one(C.l1,"gedreht")}</div>`)}
 function sbClose(S){
   const close=x=>Math.abs(x.r.gs-x.r.os)<=1||x.r.x==="so"||x.r.x==="ot"||x.r.o==="d";
   const L=S.P.filter(close),O=S.P.filter(x=>!close(x)); if(!L.length&&!O.length)return "";

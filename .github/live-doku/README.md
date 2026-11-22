@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.50.3.236 | – (nur Test) | 22.11.2026 | Saisonbilanz: „Stand nach 2 Dritteln“ verständlicher |
 | 1.50.2.235 | – (nur Test) | 22.11.2026 | Trikot-Hintergrund ohne Mannschaftsauswahl |
 | 1.50.1.234 | – (nur Test) | 21.11.2026 | Hintergrund „Eishalle“ hell mit Hallenbild |
 | 1.50.0.233 | – (nur Test) | 21.11.2026 | Hintergrundbilder auch hell |
@@ -98,6 +99,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.50.3
+
+- **Saisonbilanz → Verlauf: Kasten „Comebacks und Führungen“ heißt jetzt „Stand nach 2 Dritteln“** und ist klarer beschriftet: je Fall (Vorn · Gleich · Hinten) die Zahl der Spiele und „→ x gewonnen“ bzw. „→ x gedreht“; kam ein Fall noch nicht vor, steht „kam noch nicht vor“ (vorher missverständlich „noch nie … danach gewonnen“). Zeile zum 1. Drittel im selben Stil.
 
 ## Version 1.50.2
 
