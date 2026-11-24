@@ -2232,6 +2232,7 @@ renderInstaDownloads(); setInterval(()=>{try{renderInstaDownloads()}catch(e){}},
 /* ===== v66: News-Bereich – Hinweise, Spieländerungen, Neues in der App ===== */
 /* Nur Neuerungen, die für Nutzer sichtbar oder spürbar sind. Neueste Version oben. */
 const APP_NEWS=[
+  {v:"1.51.0.237",d:"November 2026",items:["Neuer Knopf „App installieren“ auf der Startseite und in den Einstellungen – klappt jetzt auch im Samsung-Browser, mit Anleitung für iPhone und Firefox."]},
   {v:"1.50.0.233",d:"November 2026",items:["Alle Hintergrundbilder gibt es jetzt auch hell – einfach in der Vorschau „Hell“ wählen."]},
   {v:"1.49.0.232",d:"November 2026",items:["Downloads aufgeräumt: drei Reiter – Spielplan, Social Media und Hintergründe. Eine Zahl zeigt, wenn neue Spieltags- oder Ergebnisbilder da sind."]},
   {v:"1.48.0.230",d:"November 2026",items:["Hintergrundbilder fürs Handy unter Downloads: Vereinsdesign in vier Stilen, Trikot mit deiner Rückennummer, Nächstes Spiel und Spiele des Monats für den Sperrbildschirm – jetzt auch Advent & Weihnachten. Passend zu deinem Bildschirm, oben bleibt Platz für die Uhr."]},
@@ -3511,3 +3512,48 @@ async function wpOpen(k){
  document.querySelectorAll("[data-dltab]").forEach(b=>b.onclick=()=>{dlSet(b.dataset.dltab,true);try{trackAnalyticsEvent("downloads_tab",{tab:b.dataset.dltab})}catch(e){}});
  dlSet(start,false);window.dlTabBadge();
  const v=document.getElementById("downloadsView");if(v)new MutationObserver(run).observe(v,{attributes:true,attributeFilter:["hidden"]});}
+
+/* ===== 1.51.0: eigener Knopf „App installieren“ – nutzt den Installationsdialog des Browsers (Chrome, Samsung Internet, Edge);
+   wo es den nicht gibt (iPhone, Firefox …), kurze Anleitung für genau diesen Browser. ===== */
+(function(){
+  const UA=navigator.userAgent, ios=/iPad|iPhone|iPod/.test(UA)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1),
+    samsung=/SamsungBrowser/i.test(UA), firefox=/Firefox|FxiOS/i.test(UA), edge=/EdgA?\//.test(UA), android=/Android/i.test(UA),
+    iosSafari=ios&&!/CriOS|FxiOS|EdgiOS|OPiOS|GSA\//.test(UA), mobile=ios||android;
+  const DISM="grizzlysInstHide";
+  const standalone=()=>window.matchMedia("(display-mode: standalone)").matches||window.matchMedia("(display-mode: fullscreen)").matches||navigator.standalone===true;
+  function steps(){
+    if(ios&&!iosSafari)return ["Auf dem iPhone geht das nur in <b>Safari</b>.","Diese Seite in Safari öffnen (Link kopieren und einfügen).","Dann unten auf <b>Teilen</b> <span class='instK'>⬆︎</span> tippen.","<b>„Zum Home-Bildschirm“</b> wählen und „Hinzufügen“."];
+    if(ios)return ["Unten in der Leiste auf <b>Teilen</b> <span class='instK'>⬆︎</span> tippen.","Etwas nach unten wischen und <b>„Zum Home-Bildschirm“</b> wählen.","Oben rechts auf <b>„Hinzufügen“</b> tippen."];
+    if(samsung)return ["Unten rechts auf das <b>Menü</b> <span class='instK'>☰</span> tippen.","<b>„Seite hinzufügen zu“</b> wählen.","<b>„Startbildschirm“</b> antippen und bestätigen.","Tipp: Im Geheimmodus geht das nicht."];
+    if(firefox)return ["Oben rechts auf das <b>Menü</b> <span class='instK'>⋮</span> tippen.","<b>„Installieren“</b> bzw. „Zum Startbildschirm hinzufügen“ wählen.","Bestätigen."];
+    if(android)return ["Oben rechts auf das <b>Menü</b> <span class='instK'>⋮</span> tippen.","<b>„App installieren“</b> bzw. „Zum Startbildschirm hinzufügen“ wählen.","Bestätigen."];
+    return ["In der Adressleiste rechts auf das <b>Installieren-Symbol</b> klicken – oder im Browser-Menü <b>„App installieren“</b> wählen.","Auf dem Handy geht es am einfachsten: Seite öffnen und hier auf „App installieren“ tippen."];
+  }
+  function guide(){
+    let m=document.getElementById("instModal");
+    if(!m){m=document.createElement("div");m.id="instModal";m.className="matchModal";m.hidden=true;
+      m.innerHTML='<div class="matchModalBox" role="dialog" aria-modal="true" aria-labelledby="instTitle"><div class="matchModalHead"><div id="instTitle" class="matchModalTitle">App installieren</div><button class="matchModalClose" type="button" aria-label="Schließen">✕</button></div><div class="instGuide"><img src="icon-192.png" alt="" width="64" height="64"><ol id="instSteps"></ol><div class="small">Danach findest du „Grizzlys“ auf dem Startbildschirm.</div></div></div>';
+      document.body.appendChild(m);const close=()=>{m.hidden=true;m.setAttribute("aria-hidden","true");document.body.style.overflow=""};
+      m.querySelector(".matchModalClose").onclick=close;m.addEventListener("click",e=>{if(e.target===m)close()})}
+    m.querySelector("#instSteps").innerHTML=steps().map(t=>"<li>"+t+"</li>").join("");
+    m.hidden=false;m.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";
+  }
+  async function install(){
+    const p=window.__bip;
+    try{trackAnalyticsEvent("install_click",{native:p?1:0,browser:samsung?"samsung":firefox?"firefox":ios?"ios":edge?"edge":"chrome"})}catch(e){}
+    if(!p){guide();return}
+    try{p.prompt();const r=await p.userChoice;window.__bip=null;try{trackAnalyticsEvent("install_result",{outcome:r&&r.outcome||""})}catch(e){}}catch(e){guide()}
+    refresh();
+  }
+  function refresh(){
+    const inst=standalone(), home=document.getElementById("instHome"), card=document.getElementById("instCard"), btn=document.getElementById("instCardBtn"), txt=document.getElementById("instCardTxt");
+    let hid=0;try{hid=Number(localStorage.getItem(DISM))||0}catch(e){}
+    if(home)home.hidden=inst||Date.now()<hid||!(window.__bip||mobile);
+    if(card){if(inst){if(btn)btn.hidden=true;if(txt)txt.textContent="Die App ist auf diesem Gerät installiert ✓"}else{if(btn)btn.hidden=false}}
+  }
+  document.querySelectorAll("[data-inst]").forEach(b=>b.addEventListener("click",install));
+  document.getElementById("instHomeX")?.addEventListener("click",()=>{try{localStorage.setItem(DISM,String(Date.now()+30*864e5))}catch(e){}refresh()});
+  window.addEventListener("grizzlysInstallReady",refresh);
+  window.addEventListener("appinstalled",()=>{window.__bip=null;try{trackAnalyticsEvent("app_installed",{})}catch(e){}refresh()});
+  refresh();
+})();
