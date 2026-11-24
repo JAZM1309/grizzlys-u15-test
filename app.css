@@ -2560,3 +2560,5 @@ html.dark .stSheet{background:#121f33}
 #settingsView .stBody .infoTitle+.small[style*="margin:6px 0 10px"]{display:block}
 .stDone{flex:none;margin-top:10px;border:0;border-radius:13px;padding:13px;background:#0b2a52;color:#fff;font:inherit;font-weight:900;font-size:15px;cursor:pointer}
 html.dark .stDone{background:#1f6fb8}
+.ftStep .ftIn{width:46px;min-width:0;font:inherit;font-size:26px;font-weight:950;font-variant-numeric:tabular-nums;text-align:center;color:inherit;background:transparent;border:1px solid transparent;border-radius:10px;padding:2px 0;-moz-appearance:textfield}
+.ftStep .ftIn:focus{outline:none;border-color:var(--a,#168cff);background:rgba(22,140,255,.08)}

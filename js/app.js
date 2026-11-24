@@ -1069,9 +1069,10 @@ function ftInner(g){
   if(!open)return head+(mine?`<div class="ftMine">Dein Tipp ${esc(mine)}</div>`:"")+bars;
   if(mine&&!window.__ftEdit?.[key])return head+`<div class="ftMine">Dein Tipp <b>${esc(mine)}</b><button type="button" class="ftLink" data-ft-edit>ändern</button></div>`+bars;
   const v=(mine||"0:0").split(":").map(Number);
-  const side=(n,i)=>`<div class="ftSide"><span class="ftTeam">${esc(shortTeam(n))}</span><div class="ftStep"><button type="button" data-ft-step="${i}" data-d="-1" aria-label="weniger Tore für ${esc(shortTeam(n))}">−</button><b data-ft-v="${i}">${v[i]}</b><button type="button" data-ft-step="${i}" data-d="1" aria-label="mehr Tore für ${esc(shortTeam(n))}">+</button></div></div>`;
+  const side=(n,i)=>`<div class="ftSide"><span class="ftTeam">${esc(shortTeam(n))}</span><div class="ftStep"><button type="button" data-ft-step="${i}" data-d="-1" aria-label="weniger Tore für ${esc(shortTeam(n))}">−</button><input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="2" class="ftIn" data-ft-v="${i}" value="${v[i]}" aria-label="Tore für ${esc(shortTeam(n))}"><button type="button" data-ft-step="${i}" data-d="1" aria-label="mehr Tore für ${esc(shortTeam(n))}">+</button></div></div>`;
   return head+`<div class="ftPick">${side(g.home,0)}<span class="ftColon">:</span>${side(g.away,1)}</div><button type="button" class="ftSend" data-ft-send>Tipp abgeben</button>`+(S&&S.n?bars:"");
 }
+const FT_MAX=40; /* 1.52.1: Tipps bis 40 Tore (vorher 20) */
 function ftRefresh(key){
   const g=games.find(x=>ftKey(x)===key); if(!g)return;
   document.querySelectorAll(`.ftTile[data-ft="${CSS.escape(key)}"]`).forEach(t=>{t.innerHTML=ftInner(g);ftBind(t,g)});
@@ -1079,10 +1080,15 @@ function ftRefresh(key){
 function ftBind(t,g){
   const key=ftKey(g);
   t.onclick=e=>e.stopPropagation();
-  t.querySelectorAll("[data-ft-step]").forEach(b=>b.onclick=()=>{const i=b.dataset.ftStep,el=t.querySelector(`[data-ft-v="${i}"]`);el.textContent=Math.max(0,Math.min(20,Number(el.textContent)+Number(b.dataset.d)))});
+  t.querySelectorAll("[data-ft-step]").forEach(b=>b.onclick=()=>{const i=b.dataset.ftStep,el=t.querySelector(`[data-ft-v="${i}"]`);el.value=Math.max(0,Math.min(FT_MAX,(Number(el.value)||0)+Number(b.dataset.d)))});
+  /* 1.52.1: Tore auch direkt eintippen (0–40) */
+  t.querySelectorAll("input[data-ft-v]").forEach(i=>{let sel=false;i.onfocus=()=>{i.select();sel=true};i.onpointerup=e=>{if(sel){e.preventDefault();sel=false}};
+    i.oninput=()=>{i.value=i.value.replace(/\D/g,"").slice(0,2)};
+    i.onblur=()=>{i.value=String(Math.max(0,Math.min(FT_MAX,Number(i.value)||0)))};
+    i.onkeydown=e=>{if(e.key==="Enter"){e.preventDefault();i.blur()}}});
   t.querySelector("[data-ft-edit]")?.addEventListener("click",()=>{window.__ftEdit=window.__ftEdit||{};window.__ftEdit[key]=true;ftRefresh(key)});
   t.querySelector("[data-ft-send]")?.addEventListener("click",async e=>{
-    const b=e.currentTarget, hs=Number(t.querySelector('[data-ft-v="0"]').textContent), as=Number(t.querySelector('[data-ft-v="1"]').textContent);
+    const b=e.currentTarget, hs=Math.max(0,Math.min(FT_MAX,Number(t.querySelector('[data-ft-v="0"]').value)||0)), as=Math.max(0,Math.min(FT_MAX,Number(t.querySelector('[data-ft-v="1"]').value)||0));
     if(!ftOpen(g)){ftRefresh(key);return}
     if(hs===as){let w=t.querySelector(".ftWarn");if(!w){w=document.createElement("div");w.className="ftWarn";b.before(w)}
       w.textContent="Ein Unentschieden gibt es nicht – bitte einen Sieger tippen. Bei einem Penaltyschießen zählt der Endstand mit einem Tor Vorsprung (z. B. 3:2).";return}
@@ -2232,6 +2238,7 @@ renderInstaDownloads(); setInterval(()=>{try{renderInstaDownloads()}catch(e){}},
 /* ===== v66: News-Bereich – Hinweise, Spieländerungen, Neues in der App ===== */
 /* Nur Neuerungen, die für Nutzer sichtbar oder spürbar sind. Neueste Version oben. */
 const APP_NEWS=[
+  {v:"1.52.1.240",d:"November 2026",items:["Fan-Tipp: Tore lassen sich jetzt auch direkt eintippen – bis 40 statt 20."]},
   {v:"1.52.0.239",d:"November 2026",items:["Einstellungen neu sortiert: alles auf einen Blick mit dem aktuellen Wert – antippen öffnet die Einstellung."]},
   {v:"1.51.0.237",d:"November 2026",items:["Neuer Knopf „App installieren“ auf der Startseite und in den Einstellungen – klappt jetzt auch im Samsung-Browser, mit Anleitung für iPhone und Firefox."]},
   {v:"1.50.0.233",d:"November 2026",items:["Alle Hintergrundbilder gibt es jetzt auch hell – einfach in der Vorschau „Hell“ wählen."]},
