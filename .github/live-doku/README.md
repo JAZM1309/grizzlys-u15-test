@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.52.0.239 | – (nur Test) | 24.11.2026 | Einstellungen als gegliederte Liste |
 | 1.51.1.238 | – (nur Test) | 24.11.2026 | Fix: Karte „App installieren“ bei installierter App |
 | 1.51.0.237 | – (nur Test) | 24.11.2026 | Knopf „App installieren“ |
 | 1.50.3.236 | – (nur Test) | 22.11.2026 | Saisonbilanz: „Stand nach 2 Dritteln“ verständlicher |
@@ -101,6 +102,14 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.52.0
+
+- **Einstellungen als gegliederte Liste** (wie Handy-Einstellungen): Gruppen **Für mich** (Meine Mannschaften, Meine Rückennummer, Push-Nachrichten) · **Aussehen** (Darstellung, Saison-Designs) · **App** (App installieren, Datenschutz) · **Mitmachen** (Feedback & Wunschliste); Admin-Link bleibt klein ganz unten. Jede Zeile zeigt rechts den aktuellen Wert (z. B. „U15 A, U13“, „17“, „Aus“ rot, „installiert ✓“ grün, „Automatisch“). Saison-Designs erscheint nur, wenn ein Saison-Design verfügbar ist.
+- Antippen öffnet die **bisherige Karte** als Fenster von unten (`#stSheetWrap`, liegt in `#settingsView`, damit alle `#settingsView …`-Stile weiter greifen). Die Karten werden nur verschoben (`#stStore` ↔ `#stBody`), alle Schalter, Knöpfe und Listener bleiben unverändert. Kopfzeile der Karte wird im Fenster ausgeblendet, der Titel steht im Fenster. Schließen: ✕, „Fertig“, Tippen daneben, nach unten wischen oder Zurück-Taste (`.stSheetWrap` im Zurück-Taste-Code ergänzt).
+- Ist Push aus (aber möglich), steht oben ein Hinweis „Push ist aus · Einschalten“, der direkt das Push-Fenster öffnet.
+- Werte werden beim Schließen eines Fensters, bei Push-Änderungen, Installation und beim Öffnen der Einstellungen neu berechnet. Das bisherige Ein-/Ausklappen der Karten (`settingsFold`) bleibt im Code, wirkt aber nur noch im Hintergrund.
+- Analytics: `settings_open` (Eintrag). Eintrag in „Neu in der App“.
 
 ## Version 1.51.1
 
