@@ -311,7 +311,7 @@ function setScheduleMode(mode){
 }
 function todayKey(){const n=new Date(),p=x=>String(x).padStart(2,"0");return n.getFullYear()+"-"+p(n.getMonth()+1)+"-"+p(n.getDate())}
 function nextGame(){const now=Date.now();return games.filter(gameMatchesFilters).sort((a,b)=>dt(a)-dt(b)).find(g=>dt(g).getTime()+2*3600000>=now)||null}
-function stickyOffset(){const el=document.getElementById("scheduleSticky"),tb=document.querySelector(".tabs");const rs=getComputedStyle(document.documentElement);const bar=46;const tabsH=(tb?tb.offsetHeight:parseFloat(rs.getPropertyValue("--tabsH"))||52);return bar+tabsH+(el?el.offsetHeight:0)+12}
+function stickyOffset(){const el=document.getElementById("scheduleSticky"),tb=document.querySelector(".tabs");const rs=getComputedStyle(document.documentElement);const bar=46;const tabsH=document.documentElement.classList.contains("d27")?0:(tb?tb.offsetHeight:parseFloat(rs.getPropertyValue("--tabsH"))||52); /* 1.54.1: im neuen Design liegt die Navigation unten */return bar+tabsH+(el?el.offsetHeight:0)+12}
 function scrollToToday(smooth=true){
   const sec=document.getElementById("scheduleView"); if(!sec||sec.hidden)return;
   let target=null;

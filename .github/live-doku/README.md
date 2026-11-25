@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.54.1.246 | – (nur Test) | 25.11.2026 | Fix Vorschau-Design: Filterzeile beim Scrollen |
 | 1.54.0.245 | – (nur Test) | 25.11.2026 | Neues Trikot-Design als Vorschau (Stufe 1) |
 | 1.53.1.244 | – (nur Test) | 25.11.2026 | Hintergrund-Auswahl schöner |
 | 1.53.0.243 | – (nur Test) | 25.11.2026 | Hintergrund: Logo in Dunkelblau |
@@ -108,6 +109,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.54.1
+
+- **Fix im Vorschau-Design:** Die mitlaufende Filterzeile im Spielplan (und weitere `.stickyFilters`) hing beim Scrollen mitten im Bild, weil ihr Abstand oben noch die Höhe der Reiterleiste enthielt – die liegt im neuen Design unten. Mit `html.d27` jetzt direkt unter der Kopfleiste; „Heute“-Sprung (`stickyOffset`) entsprechend angepasst.
 
 ## Version 1.54.0
 

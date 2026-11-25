@@ -2616,3 +2616,4 @@ html.d27 .filter.active,html.d27 .action:not(.secondary){background:#111418!impo
 html.d27.dark .filter.active,html.d27.dark .action:not(.secondary){background:#4a93dd!important;border-color:#4a93dd!important}
 html.d27 .d27Box{background:linear-gradient(135deg,rgba(74,147,221,.14),rgba(17,20,24,.04))}
 html.d27 .infoTop{top:calc(14px + var(--ribH,0px));bottom:auto!important}html.d27 .heroTop{padding-right:132px}html.d27 .heroChips{padding-right:0}
+html.d27 .scheduleSticky,html.d27 .stickyFilters{top:var(--barH,0px)!important}
