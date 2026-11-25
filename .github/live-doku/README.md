@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.60.0.257 | – (nur Test) | 25.11.2026 | Design-Entwurf „Klar“ zum Umschalten |
 | 1.59.1.256 | – (nur Test) | 25.11.2026 | Trikot-Design: keine runden Chips mehr, Spielplan-Kopf |
 | 1.59.0.255 | – (nur Test) | 25.11.2026 | Trikot-Design Stufe 5: Downloads, Einstellungen, Info |
 | 1.58.1.254 | – (nur Test) | 25.11.2026 | Trikot-Design: Filter laufen beim Scrollen mit |
@@ -119,6 +120,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.60.0
+
+- **Design-Entwurf „Klar“ (Vorschau) zum Umschalten.** Admin › Technik › Neue Saison: statt Schalter jetzt Auswahl „Aus / Trikot / Klar“ (`grizzlysD27` = `off`/`on`/`e`; „Klar“ setzt `html.d27.d28`). „Klar“ baut auf dem Trikot-Design auf: dunkelblauer Kopf mit gerader Kante (ohne Streifen), weißer Hintergrund, Kacheln über die volle Breite ohne abgeschrägte Ecken und ohne Balken, Kachel in Pastell je Mannschaft (U15 A hellblau, U15 B hellorange, U13 hellgelb; dunkel: gedeckte Töne), Datum oben in einer Zeile statt Spalte links, „Nächstes Spiel“ als ruhige Überschrift. Analytics `design27_toggle` mit `variant`.
 
 ## Version 1.59.1
 

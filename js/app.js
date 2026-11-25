@@ -3680,12 +3680,15 @@ async function wpOpen(k){
 
 
 /* ===== 1.54.0: neues Trikot-Design – Vorschau-Schalter (Admin › Technik). Stufe 1: Farben, Kopfbereich mit Streifen, Navigation unten. ===== */
-(function(){const t=document.getElementById("d27Toggle");if(!t)return;
-  try{t.checked=localStorage.getItem("grizzlysD27")==="on"}catch(e){}
-  t.addEventListener("change",()=>{try{localStorage.setItem("grizzlysD27",t.checked?"on":"off")}catch(e){}
-    const H=document.documentElement;H.classList.toggle("d27",t.checked);
-    if(t.checked)H.classList.remove("xm","hw");else{try{if(window.xmActive&&window.xmActive())H.classList.add("xm");if(window.hwActive&&window.hwActive())H.classList.add("hw")}catch(e){}}
-    try{trackAnalyticsEvent("design27_toggle",{on:t.checked?1:0})}catch(e){}});
+(function(){const seg=document.getElementById("d27Seg");if(!seg)return;
+  const get=()=>{try{const v=localStorage.getItem("grizzlysD27");return v==="on"||v==="e"?v:"off"}catch(e){return "off"}};
+  const paint=v=>seg.querySelectorAll("[data-d27]").forEach(b=>{const on=b.dataset.d27===v;b.classList.toggle("on",on);b.setAttribute("aria-checked",on)});
+  paint(get());
+  seg.querySelectorAll("[data-d27]").forEach(b=>b.addEventListener("click",()=>{const v=b.dataset.d27;try{localStorage.setItem("grizzlysD27",v)}catch(e){}
+    const H=document.documentElement,on=v!=="off";H.classList.toggle("d27",on);H.classList.toggle("d28",v==="e");
+    if(on)H.classList.remove("xm","hw");else{try{if(window.xmActive&&window.xmActive())H.classList.add("xm");if(window.hwActive&&window.hwActive())H.classList.add("hw")}catch(e){}}
+    paint(v);try{window.dispatchEvent(new Event("resize"))}catch(e){}
+    try{trackAnalyticsEvent("design27_toggle",{on:on?1:0,variant:v})}catch(e){}}));
 })();
 
 /* ===== 1.57.0: Trikot-Design – Saisonbilanz als eigener Bereich in der Navigation (statt Regeln; Regeln in der Info) ===== */
