@@ -2692,3 +2692,30 @@ html.d27 .heroTop{gap:10px}
 html.d27 .heroChips{margin-top:6px}
 html.d27 .d27sw{height:88px;bottom:-4px}
 html.d27 .infoTop{top:calc(10px + var(--ribH,0px))}
+
+/* ===== 1.56.0: Trikot-Design – Stufe 3: Spielplan-Kopf, Filter, Gegner ===== */
+html.d27{--d27act:#111418;--d27actTx:#fff}
+html.d27.dark{--d27act:#4a93dd;--d27actTx:#fff}
+html.d27 .scheduleModes{background:transparent!important;border-radius:0!important;box-shadow:none!important;padding:0!important;gap:0!important;border:1px solid var(--d27line)}
+html.d27 .scheduleModes>button,html.d27 .modeBtn{border-radius:0!important;box-shadow:none!important;background:var(--d27card)!important;color:var(--text)!important}
+html.d27 .scheduleModes>button.active,html.d27 .modeBtn.active{background:var(--d27act)!important;color:var(--d27actTx)!important}
+html.d27 .scheduleModes>button.active svg,html.d27 .modeBtn.active svg{stroke:currentColor}
+html.d27 .filterToggle{border-radius:0!important;box-shadow:none!important;border:1px solid var(--d27line)!important;background:var(--d27card)!important}
+html.d27 .todayBtn{border-radius:0!important;box-shadow:none!important;background:var(--d27act)!important;color:var(--d27actTx)!important;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%)}
+html.d27 .monthJump button{border-radius:0!important;border:1px solid var(--d27line)!important;background:var(--d27card)!important;color:var(--text)!important}
+html.d27 .monthJump button.past{opacity:.55}
+html.d27 .monthJump button.cur{background:var(--d27act)!important;border-color:var(--d27act)!important;color:var(--d27actTx)!important}
+html.d27 .tableLinks a{border-radius:0!important;box-shadow:none!important;background:var(--d27card)!important;border:1px solid var(--d27act)!important;color:var(--text)!important}
+html.d27 .pastToggle{border-radius:0!important}
+html.d27 .pastToggle b{border-radius:3px!important}
+html.d27 .scheduleSticky,html.d27 .stickyFilters{background:color-mix(in srgb,var(--d27bg) 94%,transparent)!important}
+html.d27 .searchWrap input{border-radius:0!important;box-shadow:none!important;border:1px solid var(--d27line)!important;background:var(--d27card)!important}
+html.d27 .opponentCard{--team:#7fa9d6;position:relative;border:0!important;border-radius:0!important;box-shadow:none!important;background:var(--d27card)!important;padding-left:16px!important;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))}
+html.d27 .opponentCard.opponentA{--team:var(--a)}
+html.d27 .opponentCard.opponentB{--team:var(--b)}
+html.d27 .opponentCard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:color-mix(in srgb,var(--team) 70%,transparent);pointer-events:none}
+html.d27 .opponentRoute{border-radius:0!important;background:var(--d27act)!important;color:var(--d27actTx)!important;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%)}
+html.d27 .opponentTeamBadge,html.d27 .shTables a b{border-radius:3px!important}
+html.d27 .scrBar b{border-radius:0!important;background:var(--d27act)!important;color:var(--d27actTx)!important;clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,7px 100%,0 calc(100% - 7px))}
+html.d27 .scrBar b:empty{display:none}
+html.d27 .scrBar i{border-radius:0!important}

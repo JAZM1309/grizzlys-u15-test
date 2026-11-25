@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.56.0.251 | – (nur Test) | 25.11.2026 | Trikot-Design Stufe 3: Spielplan-Kopf, Filter, Gegner |
 | 1.55.3.250 | – (nur Test) | 25.11.2026 | Trikot-Design: kleinerer Kopfbereich |
 | 1.55.2.249 | – (nur Test) | 25.11.2026 | Trikot-Design: Kacheln ohne Rahmen |
 | 1.55.1.248 | – (nur Test) | 25.11.2026 | Trikot-Design: eckige Kacheln |
@@ -113,6 +114,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.56.0
+
+- **Trikot-Design (Vorschau) – Stufe 3: Spielplan-Kopf, Filter, Gegner.** Umschalter Liste/Kalender und Liste/Karte als eckige Segmente (aktiv schwarz, dunkel: Trikotblau). Filter, Suchfeld, Tabellen-Links und Monatsleiste eckig; aktueller Monat schwarz. „Heute“- und Route-Knopf schwarz mit abgeschrägter Ecke. Monatsanzeige an der Scroll-Leiste eckig. Gegnerkarten wie die Spielkarten: abgeschrägte Ecken, dezenter Farbbalken links (U15 A blau, U15 B orange). Nur sichtbar mit eingeschalteter Vorschau.
 
 ## Version 1.55.3
 
