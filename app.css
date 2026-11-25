@@ -2719,3 +2719,16 @@ html.d27 .opponentTeamBadge,html.d27 .shTables a b{border-radius:3px!important}
 html.d27 .scrBar b{border-radius:0!important;background:var(--d27act)!important;color:var(--d27actTx)!important;clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,7px 100%,0 calc(100% - 7px))}
 html.d27 .scrBar b:empty{display:none}
 html.d27 .scrBar i{border-radius:0!important}
+
+/* ===== 1.57.0: Saisonbilanz in der Navigation (nur Trikot-Design) ===== */
+html:not(.d27) .tabStats,html:not(.d27) .inRules{display:none!important}
+html.d27 .tab[data-view="rules"]{display:none!important}
+html.d27 .statsTeams{margin:10px 0 12px;display:flex}
+html.d27 .statsTeams button{flex:1;padding:9px 6px;font-weight:800;font-size:14px;position:relative}
+html.d27 .statsTeams button.active::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--team)}
+html.d27 .statsTeams .teamA{--team:var(--a)}html.d27 .statsTeams .teamB{--team:var(--b)}html.d27 .statsTeams .teamU13{--team:var(--u13,#e0b400)}
+html.d27 #statsBody .sbTabs{position:sticky;top:var(--barH,0px)!important;z-index:5;background:color-mix(in srgb,var(--d27bg) 94%,transparent)}
+html.d27 #statsBody{padding-bottom:20px}
+html.d27 .inRules{display:flex;align-items:center;gap:12px;width:100%;text-align:left;cursor:pointer;font:inherit;color:inherit;border:0}
+html.d27 .inRules .mapTx{flex:1;display:flex;flex-direction:column}
+html.d27 .inRules .mapGo{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}

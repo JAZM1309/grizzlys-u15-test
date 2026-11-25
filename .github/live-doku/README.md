@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.57.0.252 | – (nur Test) | 25.11.2026 | Trikot-Design: Saisonbilanz in der Navigation |
 | 1.56.0.251 | – (nur Test) | 25.11.2026 | Trikot-Design Stufe 3: Spielplan-Kopf, Filter, Gegner |
 | 1.55.3.250 | – (nur Test) | 25.11.2026 | Trikot-Design: kleinerer Kopfbereich |
 | 1.55.2.249 | – (nur Test) | 25.11.2026 | Trikot-Design: Kacheln ohne Rahmen |
@@ -114,6 +115,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.57.0
+
+- **Trikot-Design (Vorschau) – Saisonbilanz als eigener Bereich.** In der unteren Navigation ersetzt „Bilanz“ den Punkt „Regeln“. Neuer Bereich `#statsView` mit Mannschaftsauswahl (gemerkt in `grizzlysStatsTeam`) und der kompletten Saisonbilanz (`bilanzHtml`, Reiter Überblick/Verlauf/Liga/Nummern, Reiterleiste klebt unter der Kopfleiste). Regeln sind in der Info als eigene Karte „Regeln & Begriffe“ erreichbar. Wischen zwischen den Bereichen folgt der neuen Reihenfolge. Die Saisonbilanz-Kachel auf der Startseite öffnet weiter das Fenster. Ohne Vorschau bleibt alles wie bisher. Analytics: `stats_opened`, `saisonbilanz_opened` mit `src:"nav"`.
 
 ## Version 1.56.0
 

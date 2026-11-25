@@ -1404,7 +1404,7 @@ function closeMatchDetails(){
   document.body.style.overflow="";
 }
 
-function showView(name){if(["home","schedule","opponents","rules","downloads"].includes(name))window.__lastMain=name;trackAnalyticsEvent(name==="home"?"home_opened":name==="schedule"?"spielplan_opened":name==="opponents"?"opponents_opened":name==="downloads"?"downloads_opened":name==="rules"?"rules_opened":name==="settings"?"settings_opened":"info_opened");["home","schedule","opponents","rules","downloads","info","settings"].forEach(v=>document.getElementById(v+"View").hidden=v!==name);if(name==="rules")try{renderRules()}catch(e){console.warn(e)}document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.view===name));if(name==="schedule"){const ng=nextGame();if(ng){calendarCursor=new Date(dt(ng).getFullYear(),dt(ng).getMonth(),1)}setScheduleMode(scheduleMode)}window.scrollTo({top:0,behavior:"smooth"})}
+function showView(name){if(["home","schedule","opponents","rules","stats","downloads"].includes(name))window.__lastMain=name;trackAnalyticsEvent(name==="home"?"home_opened":name==="schedule"?"spielplan_opened":name==="opponents"?"opponents_opened":name==="downloads"?"downloads_opened":name==="rules"?"rules_opened":name==="stats"?"stats_opened":name==="settings"?"settings_opened":"info_opened");["home","schedule","opponents","rules","stats","downloads","info","settings"].forEach(v=>{const e=document.getElementById(v+"View");if(e)e.hidden=v!==name});if(name==="stats")try{renderStats()}catch(e){console.warn(e)}if(name==="rules")try{renderRules()}catch(e){console.warn(e)}document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.view===name));if(name==="schedule"){const ng=nextGame();if(ng){calendarCursor=new Date(dt(ng).getFullYear(),dt(ng).getMonth(),1)}setScheduleMode(scheduleMode)}window.scrollTo({top:0,behavior:"smooth"})}
 document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>showView(b.dataset.view));
 {const v=document.querySelector(".inVer"),t=document.getElementById("inMadeVer");if(v&&t)t.textContent=" · Version "+v.textContent.trim();}
 /* 1.9.1.107: Gruselmoment im Halloween-Design – höchstens einmal am Tag, nie über offenen Fenstern, nicht anklickbar */
@@ -1501,7 +1501,7 @@ document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>showView(b.dataset.vi
 })();
 /* 1.9.1.100: Wischen nach links/rechts wechselt zwischen Start, Spielplan, Gegner und Downloads – die Seite folgt dem Finger */
 (function(){
-  const ORDER=["home","schedule","opponents","rules","downloads"];
+  const ORDER=["home","schedule","opponents","rules","downloads"];const syncOrder=()=>{const a=document.documentElement.classList.contains("d27")?["home","schedule","opponents","stats","downloads"]:["home","schedule","opponents","rules","downloads"];ORDER.splice(0,ORDER.length,...a)};syncOrder();
   const label=v=>(document.querySelector('.tab[data-view="'+v+'"]')||{}).textContent||v;
   const reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
   let st=null;
@@ -1509,7 +1509,7 @@ document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>showView(b.dataset.vi
   const dots=document.createElement("div");dots.className="swDots";dots.setAttribute("aria-hidden","true");dots.innerHTML=ORDER.map(()=>"<i></i>").join("");document.body.appendChild(dots);
   let dotsT=0;
   function showDots(v){[...dots.children].forEach((d,k)=>d.classList.toggle("on",ORDER[k]===v));dots.classList.add("on");clearTimeout(dotsT);dotsT=setTimeout(()=>dots.classList.remove("on"),900)}
-  const cur=()=>ORDER.concat(["settings","info"]).find(v=>!document.getElementById(v+"View").hidden);
+  const cur=()=>{syncOrder();return ORDER.concat(["settings","info","rules","stats"]).find(v=>{const e=document.getElementById(v+"View");return e&&!e.hidden})};
   const overlayOpen=()=>[...document.querySelectorAll(".matchModal,.adminModal,.bugReportModal,.thanksModal,.admSheetWrap,.gdSplash")].some(m=>!m.hidden&&m.offsetParent!==null);
   function setPos(el,x,anim,ms){el.style.transition=anim?"transform "+ms+"ms cubic-bezier(.2,.8,.2,1),opacity "+ms+"ms":"none";el.style.transform=x?"translateX("+x+"px)":"";el.style.opacity=x?String(Math.max(.35,1-Math.abs(x)/innerWidth*.7)):"";}
   function cleanup(el){el.style.transition="";el.style.transform="";el.style.opacity="";el.classList.remove("swView");document.documentElement.classList.remove("swiping");hint.style.transition="opacity .15s";hint.style.opacity="0";}
@@ -2892,7 +2892,7 @@ document.getElementById("qrApp")?.addEventListener("click",openQr);
       showView("home");
       if(window.myTeam(team))openBilanz(team);
       else{alert(teamName(team)+" ist unter „Meine Mannschaften“ nicht ausgewählt. Wähle sie in den Einstellungen aus, dann klappt die Verknüpfung.");showView("settings")}
-    }else if(["schedule","opponents","rules","home"].includes(go))showView(go);
+    }else if(["schedule","opponents","rules","stats","home"].includes(go))showView(go);
     trackAnalyticsEvent("shortcut_opened",{ziel:go});
   }catch(e){console.warn(e)}}
 })();
@@ -3173,7 +3173,7 @@ function capApply(root){
     if(!changed)return; frag.appendChild(document.createTextNode(v.slice(last))); t.replaceWith(frag)});
 }
 window.setCaptains=function(d,rerender){capData={on:!d||d.on!==false,list:d&&Array.isArray(d.list)?d.list:[]};
-  if(rerender){try{renderTeamTiles()}catch(e){}try{renderLast()}catch(e){}const bz=document.getElementById("bilanzModal");if(bz&&!bz.hidden&&bz.querySelector("#bilanzModalContent")?.dataset.team)openBilanz(bz.querySelector("#bilanzModalContent").dataset.team)}
+  if(rerender){try{const sv=document.getElementById("statsView");if(sv&&!sv.hidden)renderStats(true)}catch(e){}try{renderTeamTiles()}catch(e){}try{renderLast()}catch(e){}const bz=document.getElementById("bilanzModal");if(bz&&!bz.hidden&&bz.querySelector("#bilanzModalContent")?.dataset.team)openBilanz(bz.querySelector("#bilanzModalContent").dataset.team)}
   capApply(document.body)};
 (function(){let q=new Set(),raf=0;
   new MutationObserver(ms=>{const m=capGet();if(!m.on||!Object.keys(m.map).length)return;ms.forEach(x=>x.addedNodes.forEach(n=>{if(n.nodeType===1&&!n.classList.contains("capB"))q.add(n);else if(n.nodeType===3&&n.parentElement)q.add(n.parentElement)}));
@@ -3687,3 +3687,23 @@ async function wpOpen(k){
     if(t.checked)H.classList.remove("xm","hw");else{try{if(window.xmActive&&window.xmActive())H.classList.add("xm");if(window.hwActive&&window.hwActive())H.classList.add("hw")}catch(e){}}
     try{trackAnalyticsEvent("design27_toggle",{on:t.checked?1:0})}catch(e){}});
 })();
+
+/* ===== 1.57.0: Trikot-Design – Saisonbilanz als eigener Bereich in der Navigation (statt Regeln; Regeln in der Info) ===== */
+function renderStats(keep){
+  const bar=document.getElementById("statsTeams"), body=document.getElementById("statsBody"); if(!bar||!body)return;
+  const teams=(window.MY_TEAMS||[]).slice(); if(!teams.length)return;
+  let t=""; try{t=localStorage.getItem("grizzlysStatsTeam")||""}catch(e){}
+  if(!teams.includes(t))t=teams[0];
+  bar.hidden=teams.length<2;
+  bar.innerHTML=teams.map(x=>`<button type="button" role="tab" class="team${x}${x===t?" active":""}" aria-selected="${x===t}" data-st="${x}">${esc(teamName(x))}</button>`).join("");
+  bar.querySelectorAll("[data-st]").forEach(b=>b.onclick=()=>{try{localStorage.setItem("grizzlysStatsTeam",b.dataset.st)}catch(e){}sbTabLast="ov";renderStats()});
+  if(body.dataset.team!==t&&!keep)sbTabLast=sbTabLast||"ov";
+  body.innerHTML=bilanzHtml(t); body.dataset.team=t;
+  const S=seasonStats(t);const sub=document.getElementById("statsSub"); if(sub){sub.textContent=S.tot.gp?S.tot.gp+" Spiele gewertet":"noch keine Ergebnisse"}
+  body.querySelectorAll("[data-rep]").forEach(b=>b.onclick=()=>{const x=S.reports[Number(b.dataset.rep)];openMatchDetails(x.g,true)});
+  body.querySelector("[data-print]")?.addEventListener("click",()=>printReports(t));
+  body.querySelector("[data-tabimg]")?.addEventListener("click",()=>instaOpen({team:t},"table",true));
+  try{sbBindTabs(body)}catch(e){console.warn(e)}
+  if(!keep)try{trackAnalyticsEvent("saisonbilanz_opened",{team:teamName(t),src:"nav"})}catch(e){}
+}
+document.querySelector(".inRules")?.addEventListener("click",()=>showView("rules"));
