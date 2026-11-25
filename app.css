@@ -2617,3 +2617,49 @@ html.d27.dark .filter.active,html.d27.dark .action:not(.secondary){background:#4
 html.d27 .d27Box{background:linear-gradient(135deg,rgba(74,147,221,.14),rgba(17,20,24,.04))}
 html.d27 .infoTop{top:calc(14px + var(--ribH,0px));bottom:auto!important}html.d27 .heroTop{padding-right:132px}html.d27 .heroChips{padding-right:0}
 html.d27 .scheduleSticky,html.d27 .stickyFilters{top:var(--barH,0px)!important}
+
+/* ===== 1.55.0: Trikot-Design – Stufe 2: Karten (Startseite, Spielplan, letzte Ergebnisse, Mannschaften) ===== */
+html.d27 .card.gz3{border-radius:22px!important;border:1px solid var(--d27line)!important;border-left:5px solid var(--team)!important;background:var(--d27card)!important;box-shadow:0 8px 20px rgba(30,80,140,.10)!important;overflow:hidden}
+html.d27.dark .card.gz3{box-shadow:0 8px 20px rgba(0,0,0,.35)!important}
+html.d27 .card.gz3.nextGame{box-shadow:0 0 0 2px #111418,0 10px 24px rgba(30,80,140,.14)!important}
+html.d27.dark .card.gz3.nextGame{box-shadow:0 0 0 2px #4a93dd,0 10px 24px rgba(0,0,0,.4)!important}
+html.d27 .g3Band{background:#111418!important;color:#fff!important;letter-spacing:.1em}
+html.d27.dark .g3Band{background:#4a93dd!important;color:#fff!important}
+html.d27 .card .g3Band.w{background:#111418!important}
+html.d27 .g3Date{background:#eef5fd!important;color:var(--team)!important}
+html.d27.dark .g3Date{background:#1b2a3b!important}
+html.d27 .g3Date b,html.d27 .g3Date i{color:var(--text)!important}
+/* Nächstes Spiel: weiße Karte statt Hallenfoto */
+html.d27.d27.d27 .card.g3Hero{border:1px solid var(--d27line)!important;border-left:5px solid var(--team)!important;box-shadow:0 14px 30px rgba(20,70,130,.18)!important}
+html.d27.d27.d27 .g3Hero>.g3Top{background:var(--d27card)!important;color:var(--text)!important}
+html.d27.d27.d27 .g3Hero .g3Date{background:#eef5fd!important;color:var(--team)!important}
+html.d27.d27.d27.dark .g3Hero .g3Date{background:#1b2a3b!important}
+html.d27.d27.d27 .g3Hero .g3Date b,html.d27.d27.d27 .g3Hero .g3Date i{color:var(--text)!important}
+html.d27.d27.d27 .g3Hero .gcSide span,html.d27.d27.d27 .g3Hero .gzMid,html.d27.d27.d27 .g3Hero .g3Tog,html.d27.d27.d27 .g3Hero .gzScore{color:var(--text)!important;text-shadow:none!important}
+html.d27.d27.d27 .g3Hero .g3Cd div{background:#eef5fd!important;box-shadow:none!important;color:var(--text)}
+html.d27.d27.d27.dark .g3Hero .g3Cd div{background:#1b2a3b!important}
+html.d27.d27.d27 .g3Hero .g3Cd small,html.d27.d27.d27 .g3Hero .g3Cd span{color:var(--muted)!important}
+html.d27.d27.d27 .g3Hero .g3Head *{text-shadow:none!important}
+html.d27.d27.d27 .g3Hero .g3Head .gcLeft span,html.d27.d27.d27 .g3Hero .g3Head button{color:inherit}
+html.d27 .gzScore{color:var(--text)!important}
+/* Letzte Ergebnisse */
+html.d27 .lrCard{background:var(--d27card)!important;border:1px solid var(--d27line)!important;border-radius:22px!important;overflow:hidden;box-shadow:0 8px 20px rgba(30,80,140,.10)!important}
+html.d27 .lrHead{background:transparent!important;color:var(--muted)!important;border-bottom:1px solid var(--d27line)}
+html.d27 .lrRow::before{width:4px}
+html.d27 .lrPill.w{background:#111418!important;color:#fff!important}
+html.d27 .lrPill.l{background:#e3eefa!important;color:#20354f!important}
+html.d27.dark .lrPill.w{background:#4a93dd!important}
+html.d27.dark .lrPill.l{background:#1b2a3b!important;color:#c6dbf1!important}
+/* Mannschaften und Saisonbilanz-Karte */
+html.d27 .teamCard{background:var(--d27card)!important;border:1px solid var(--d27line)!important;border-top:4px solid var(--team)!important;box-shadow:0 6px 16px rgba(30,80,140,.08)!important}
+html.d27 .sbCard,html.d27 .fbHome{background:var(--d27card)!important;border:1px solid var(--d27line)!important;border-radius:22px!important;box-shadow:0 6px 16px rgba(30,80,140,.08)!important}
+html.d27 .sbTeam{border-radius:14px!important}
+html.d27 .sectionTitle{color:var(--muted)}
+html.d27.d27.d27 .g3Hero .g3Date span,html.d27.d27.d27 .g3Hero .g3Date small{color:var(--team)!important}
+html.d27.d27.d27 .g3Hero .g3Head .homeaway{background:#eef5fd!important;color:var(--text)!important}
+html.d27.d27.d27.dark .g3Hero .g3Head .homeaway{background:#1b2a3b!important}
+html.d27.d27.d27 .g3Hero .g3Tog{color:#2a5f99!important}
+html.d27.d27.d27.dark .g3Hero .g3Tog{color:#7fb4ea!important}
+html.d27.d27.d27 .g3Hero .gcSide img,html.d27.d27.d27 .g3Hero .gcSide .opponentLogo{filter:drop-shadow(0 3px 6px rgba(0,0,0,.18))}
+html.d27.d27.d27 .g3Hero .g3Today{border-top-color:var(--d27line)}
+html.d27.d27.d27 .g3Hero .g3TodayWhere small{color:var(--muted)}
