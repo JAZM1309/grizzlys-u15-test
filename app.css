@@ -2757,3 +2757,15 @@ html.d27 .sbTabs{border-radius:0!important;background:var(--d27card)!important;b
 html.d27 .sbTabs button{border-radius:0!important;box-shadow:none!important;color:var(--muted)!important;position:relative}
 html.d27 .sbTabs button.on{background:var(--d27act)!important;color:var(--d27actTx)!important}
 html.d27 #statsBody .sbTabs{background:var(--d27card)!important}
+
+/* ===== 1.58.1: mitlaufende Filter – Saisonbilanz (Mannschaft), Gegner (Suche), Downloads (Reiter) ===== */
+html.d27 .statsTeams,html.d27 #opponentsView .oppSearch,html.d27 .dlTabs{position:sticky!important;top:var(--barH,0px)!important;z-index:6;margin-left:-14px!important;margin-right:-14px!important;padding:6px 14px!important;background:color-mix(in srgb,var(--d27bg) 96%,transparent)!important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:top .22s ease}
+html.d27 .statsTeams{border:0!important;margin-top:4px!important;margin-bottom:8px!important}
+html.d27 .statsTeams button{height:40px;border:1px solid var(--d27line)!important}
+html.d27 .statsTeams button+button{border-left:0!important}
+html.d27 #statsTeams:not([hidden])~#statsBody .sbTabs{top:calc(var(--barH,0px) + 52px)!important}
+html.d27 #statsBody .sbTabs{transition:top .22s ease}
+html.d27 #opponentsView .oppSearch .ic,html.d27 #opponentsView .oppSearch>svg{left:28px!important}
+html.d27 .dlTabs{border-radius:0!important;gap:0!important}
+html.d27 .dlTabs button{border-radius:0!important;box-shadow:none!important;background:var(--d27card)!important;color:var(--muted)!important;border:1px solid var(--d27line)!important;margin-left:-1px}
+html.d27 .dlTabs button.on{background:var(--d27act)!important;color:var(--d27actTx)!important;border-color:var(--d27act)!important}
