@@ -2685,3 +2685,10 @@ html.d27.dark .lrCard::after,html.d27.dark .sbCard::after,html.d27.dark .fbHome:
 html.d27 .teamCard::before{border:0!important;background:color-mix(in srgb,var(--team) 70%,transparent)!important;inset:0 0 auto 0!important;height:3px!important}
 html.d27 .card.gz3,html.d27.d27.d27 .card.g3Hero,html.d27 .teamCard{box-shadow:none!important}
 html.d27 .card.gz3.nextGame::after,html.d27.d27.d27 .card.g3Hero::after{width:5px!important;background:var(--team)!important}
+/* 1.55.3: kompakter Kopfbereich im Trikot-Design */
+html.d27 .hero{padding-top:10px!important;padding-bottom:58px!important;margin-bottom:-34px}
+html.d27 .heroTop img{width:54px!important;height:54px!important}
+html.d27 .heroTop{gap:10px}
+html.d27 .heroChips{margin-top:6px}
+html.d27 .d27sw{height:88px;bottom:-4px}
+html.d27 .infoTop{top:calc(10px + var(--ribH,0px))}
