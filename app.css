@@ -2663,3 +2663,18 @@ html.d27.d27.d27.dark .g3Hero .g3Tog{color:#7fb4ea!important}
 html.d27.d27.d27 .g3Hero .gcSide img,html.d27.d27.d27 .g3Hero .gcSide .opponentLogo{filter:drop-shadow(0 3px 6px rgba(0,0,0,.18))}
 html.d27.d27.d27 .g3Hero .g3Today{border-top-color:var(--d27line)}
 html.d27.d27.d27 .g3Hero .g3TodayWhere small{color:var(--muted)}
+
+/* ===== 1.55.1: Trikot-Design – eckige Kacheln (Schnitt mit Rahmen) ===== */
+html.d27{--d27cut:16px;--d27fw:1.5px;--d27frame:#111418}
+html.d27.dark{--d27frame:#4a93dd}
+html.d27 .card.gz3,html.d27 .lrCard,html.d27 .sbCard,html.d27 .fbHome,html.d27 .teamCard{position:relative;border:0!important;border-radius:0!important;clip-path:polygon(0 0,calc(100% - var(--d27cut)) 0,100% var(--d27cut),100% 100%,var(--d27cut) 100%,0 calc(100% - var(--d27cut)))}
+html.d27 .card.gz3,html.d27.d27.d27 .card.g3Hero{box-shadow:inset 6px 0 0 var(--team)!important}
+html.d27 .lrCard,html.d27 .sbCard,html.d27 .fbHome{box-shadow:none!important}
+html.d27 .teamCard{--d27cut:12px;box-shadow:inset 0 4px 0 var(--team)!important}
+html.d27 .card.gz3::after,html.d27 .lrCard::after,html.d27 .sbCard::after,html.d27 .fbHome::after,html.d27 .teamCard::before{content:""!important;position:absolute;inset:0;z-index:6;pointer-events:none;box-sizing:border-box;border:var(--d27fw) solid var(--d27frame);border-radius:0;opacity:1;animation:none;-webkit-mask:none;mask:none;padding:0;background:linear-gradient(to top right,transparent calc(50% - var(--d27fw)),var(--d27frame) calc(50% - var(--d27fw)) 50%,transparent 50%) right top/var(--d27cut) var(--d27cut) no-repeat border-box,linear-gradient(to top right,transparent 50%,var(--d27frame) 50% calc(50% + var(--d27fw)),transparent calc(50% + var(--d27fw))) left bottom/var(--d27cut) var(--d27cut) no-repeat border-box;background-origin:border-box}
+html.d27 .card.gz3.nextGame,html.d27.d27.d27 .card.g3Hero{--d27fw:2.5px;--d27cut:20px}
+html.d27 .card.gz3.nextGame{box-shadow:inset 6px 0 0 var(--team)!important}
+html.d27 .g3Band{padding-right:calc(var(--d27cut) + 6px)!important}
+html.d27 .g3Cd div,html.d27 .sbTeam,html.d27 .g3Hero .g3Cd div{border-radius:0!important}
+html.d27 .lrPill,html.d27 .g3Head .homeaway,html.d27 .g3Head .gcLeft span{border-radius:3px!important}
+html.d27.d27.d27 .card.g3Hero,html.d27.d27.d27 .card.gz3{border:0!important;border-radius:0!important}

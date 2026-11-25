@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.55.1.248 | – (nur Test) | 25.11.2026 | Trikot-Design: eckige Kacheln |
 | 1.55.0.247 | – (nur Test) | 25.11.2026 | Trikot-Design Stufe 2: Karten |
 | 1.54.1.246 | – (nur Test) | 25.11.2026 | Fix Vorschau-Design: Filterzeile beim Scrollen |
 | 1.54.0.245 | – (nur Test) | 25.11.2026 | Neues Trikot-Design als Vorschau (Stufe 1) |
@@ -110,6 +111,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.55.1
+
+- **Trikot-Design (Vorschau) – eckige Kacheln.** Spielkarten, letzte Ergebnisse, Mannschafts- und Saisonbilanz-Karten haben keine runden Ecken mehr, sondern zwei abgeschrägte Ecken (oben rechts, unten links) wie ein Trikot-Patch, mit durchgehendem schwarzem Rahmen (dunkel: Trikotblau) inklusive Schrägen. Mannschaftsfarbe als Streifen innen links bzw. oben. „Nächstes Spiel“ mit kräftigerem Rahmen und größerer Schräge. Countdown-Kästchen eckig. Nur sichtbar mit eingeschalteter Vorschau.
 
 ## Version 1.55.0
 
