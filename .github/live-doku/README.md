@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.53.1.244 | – (nur Test) | 25.11.2026 | Hintergrund-Auswahl schöner |
 | 1.53.0.243 | – (nur Test) | 25.11.2026 | Hintergrund: Logo in Dunkelblau |
 | 1.52.3.242 | – (nur Test) | 25.11.2026 | Startbildschirm-Hintergrund kräftiger, mit Schrift |
 | 1.52.2.241 | – (nur Test) | 25.11.2026 | Vereinsdesign: Variante „Startbildschirm“ |
@@ -106,6 +107,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.53.1
+
+- **Auswahl im Hintergrundbild-Fenster neu gestaltet:** statt loser Knöpfe je Zeile eine kleine Überschrift (Hintergrund · Stil · Logo · Verwendung bzw. Trikot/Mannschaft) und ein Segment-Schalter wie bei den Reitern, mit Symbolen (Mond/Sonne, Schloss/App-Raster, kleines Logo farbig/dunkelblau). Die vier Stile erscheinen als Mini-Vorschaubilder mit den aktuellen Einstellungen. Handy-Vorschau etwas kleiner, Speichern-Knöpfe bleiben unten sichtbar.
 
 ## Version 1.53.0
 

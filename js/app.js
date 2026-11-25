@@ -3502,13 +3502,22 @@ async function wpOpen(k){
     document.body.appendChild(m);m.querySelector("#wpCloseBtn").onclick=wpClose;m.addEventListener("click",e=>{if(e.target===m)wpClose()})}
   const o=wpDefaults(k),img=m.querySelector("#wpImg"),wait=m.querySelector("#wpWait"),opts=m.querySelector("#wpOpts"),bS=m.querySelector("#wpShare"),bD=m.querySelector("#wpSave"),hint=m.querySelector("#wpHint");
   m.querySelector("#wpTitle").textContent=M.t;m.querySelector("#wpClockD").textContent=new Date().toLocaleDateString("de-DE",{weekday:"long",day:"numeric",month:"long"});
-  const chips=(key,list)=>`<div class="wpChips" data-key="${key}">${list.map(([v,l])=>`<button type="button" data-v="${esc(v)}" class="${String(o[key])===String(v)?"on":""}">${esc(l)}</button>`).join("")}</div>`;
+  /* 1.53.1: Auswahl übersichtlich – je Zeile Überschrift + Segment-Schalter mit Symbolen, Stile als Mini-Vorschau */
+  const SI={dark:'<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',light:'<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4"/>',
+    lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',home:'<rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><rect x="14" y="14" width="6" height="6" rx="1.5"/>'};
+  const sv=x=>SI[x]?`<svg class="wpSi" viewBox="0 0 24 24" aria-hidden="true">${SI[x]}</svg>`:"";
+  const seg=(key,label,list)=>`<div class="wpOpt"><span class="wpOptL">${label}</span><div class="wpChips wpSeg" data-key="${key}" role="radiogroup" aria-label="${label}">${list.map(([v,l,ic])=>`<button type="button" role="radio" data-v="${esc(v)}" class="${String(o[key])===String(v)?"on":""}" aria-checked="${String(o[key])===String(v)}">${ic||""}<span>${esc(l)}</span></button>`).join("")}</div></div>`;
+  const chips=(key,list)=>seg(key,{tone:"Hintergrund",kit:"Trikot",team:"Mannschaft"}[key]||"",list.map(([v,l])=>[v,l,key==="tone"?sv(v):""]));
+  const lg=(v)=>`<span class="wpLg ${v}"><img src="${grizzlysLogo}" alt=""></span>`;
   const T=window.MY_TEAMS||["A"];let h=chips("tone",[["dark","Dunkel"],["light","Hell"]]);
-  if(k==="design")h+=chips("style",WP_STYLES)+chips("logo",[["color","Logo farbig"],["navy","Logo dunkelblau"]])+chips("use",[["lock","Sperrbildschirm"],["home","Startbildschirm"]]);
-  if(k==="trikot")h+=`<label class="wpNr">Rückennummer <input id="wpNrIn" type="text" inputmode="numeric" maxlength="2" value="${esc(o.nr)}" placeholder="z. B. 17"></label>`+chips("kit",[["home","Blau"],["away","Weiß"]]);/* 1.50.2: alle Mannschaften haben dasselbe Trikot – keine Mannschaftsauswahl */
+  if(k==="design")h+=`<div class="wpOpt"><span class="wpOptL">Stil</span><div class="wpChips wpStyles" data-key="style" role="radiogroup" aria-label="Stil">${WP_STYLES.map(([v,l])=>`<button type="button" role="radio" data-v="${v}" class="${o.style===v?"on":""}" aria-checked="${o.style===v}"><canvas width="90" height="160" aria-hidden="true"></canvas><span>${l}</span></button>`).join("")}</div></div>`
+    +seg("logo","Logo",[["color","Farbig",lg("color")],["navy","Dunkelblau",lg("navy")]])
+    +seg("use","Verwendung",[["lock","Sperrbildschirm",sv("lock")],["home","Startbildschirm",sv("home")]]);
+  if(k==="trikot")h+=`<label class="wpNr"><span class="wpOptL">Rückennummer</span><input id="wpNrIn" type="text" inputmode="numeric" maxlength="2" value="${esc(o.nr)}" placeholder="z. B. 17"></label>`+chips("kit",[["home","Blau"],["away","Weiß"]]);/* 1.50.2: alle Mannschaften haben dasselbe Trikot – keine Mannschaftsauswahl */
   if(k==="next"&&T.length>1)h+=chips("team",T.map(t=>[t,teamName(t)]));
   if(k==="month"&&T.length>1)h+=chips("team",[["","Alle"],...T.map(t=>[t,teamName(t)])]);
   opts.innerHTML=h;opts.hidden=!h;
+  const thumbs=async()=>{if(k!=="design")return;for(const b of opts.querySelectorAll(".wpStyles button")){try{const cv=await wpRender(M,Object.assign({},o,{style:b.dataset.v}),180,320),t=b.querySelector("canvas");t.width=180;t.height=320;t.getContext("2d").drawImage(cv,0,0)}catch(e){}}};
   let url="",file=null,seq=0;
   const draw=async()=>{const my=++seq;wait.hidden=false;bS.disabled=bD.disabled=true;
     try{const [W,H]=wpSize(),cv=await wpRender(M,o,W,H);if(my!==seq)return;const blob=await new Promise(r=>cv.toBlob(r,"image/png"));if(!blob)throw new Error("kein Bild");
@@ -3516,14 +3525,14 @@ async function wpOpen(k){
       const can=!!(navigator.canShare&&navigator.canShare({files:[file]}));bS.hidden=!can;bS.disabled=false;bD.disabled=false;wait.hidden=true;
       hint.textContent=(can?"„In Fotos sichern“ wählen, dann in den Fotos: Teilen → „Als Hintergrund verwenden“. ":"Bild speichern und in den Einstellungen als Hintergrund festlegen. ")+(M.live?"Nach dem Spiel oder bei Änderungen einfach neu herunterladen.":"")}
     catch(e){console.error(e);wait.textContent="Das Bild konnte nicht erstellt werden.";}};
-  opts.querySelectorAll(".wpChips").forEach(g=>g.querySelectorAll("button").forEach(b=>b.onclick=()=>{o[g.dataset.key]=b.dataset.v;if(g.dataset.key==="tone")try{localStorage.setItem("grizzlysWpTone",b.dataset.v)}catch(e){}g.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));
+  opts.querySelectorAll(".wpChips").forEach(g=>g.querySelectorAll("button").forEach(b=>b.onclick=()=>{o[g.dataset.key]=b.dataset.v;g.querySelectorAll("button").forEach(x=>x.setAttribute("aria-checked",x===b));if(g.dataset.key!=="style")thumbs();if(g.dataset.key==="tone")try{localStorage.setItem("grizzlysWpTone",b.dataset.v)}catch(e){}g.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));
     if(k==="trikot"&&g.dataset.key==="team"){const n=(myNrAll()[o.team]||[])[0];if(n){o.nr=n;const i=opts.querySelector("#wpNrIn");if(i)i.value=n}}draw()}));
   const ni=opts.querySelector("#wpNrIn");if(ni)ni.oninput=()=>{ni.value=ni.value.replace(/\D/g,"").slice(0,2);o.nr=ni.value;clearTimeout(ni._t);ni._t=setTimeout(draw,350)};
   bS.onclick=async()=>{try{await navigator.share({files:[file],title:"Young Grizzlys"});trackAnalyticsEvent("wallpaper_saved",{motif:k,style:k==="design"?o.style:""})}catch(e){}};
   bD.onclick=()=>{const a=document.createElement("a");a.href=url;a.download=file.name;document.body.appendChild(a);a.click();a.remove();try{trackAnalyticsEvent("wallpaper_saved",{motif:k,style:k==="design"?o.style:""})}catch(e){}};
   wait.textContent="Bild wird erstellt …";m.hidden=false;m.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";
   try{trackAnalyticsEvent("wallpaper_opened",{motif:k})}catch(e){}
-  draw();
+  draw();thumbs();
 }
 /* 1.49.0: Downloads in Reitern – Spielplan · Social Media · Hintergründe; Hintergrund-Vorschauen erst beim Öffnen des Reiters */
 {let done=false;const run=()=>{const v=document.getElementById("downloadsView"),p=document.querySelector('[data-dlpane="wp"]');if(v&&!v.hidden&&p&&!p.hidden&&!done){done=true;renderWallpapers()}};
