@@ -2769,3 +2769,23 @@ html.d27 #opponentsView .oppSearch .ic,html.d27 #opponentsView .oppSearch>svg{le
 html.d27 .dlTabs{border-radius:0!important;gap:0!important}
 html.d27 .dlTabs button{border-radius:0!important;box-shadow:none!important;background:var(--d27card)!important;color:var(--muted)!important;border:1px solid var(--d27line)!important;margin-left:-1px}
 html.d27 .dlTabs button.on{background:var(--d27act)!important;color:var(--d27actTx)!important;border-color:var(--d27act)!important}
+
+/* ===== 1.59.0: Trikot-Design – Stufe 5: Downloads, Einstellungen, Info ===== */
+html.d27 .infoCard,html.d27 .stGrp{border-radius:0!important;box-shadow:none!important;border:0!important;background:var(--d27card)!important;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}
+html.d27 .downloadCard,html.d27 .mapRow,html.d27 .inTeam{border-radius:0!important;box-shadow:none!important;border:0!important;background:var(--d27tile)!important;position:relative}
+html.d27 .downloadCard::before,html.d27 .inTeam::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:color-mix(in srgb,var(--team,#1c6fd1) 70%,transparent);pointer-events:none}
+html.d27 .inTeam.teamA{--team:var(--a)}html.d27 .inTeam.teamB{--team:var(--b)}html.d27 .inTeam.teamU13{--team:var(--u13,#e0b400)}
+html.d27 .dlIcon,html.d27 .inGo{border-radius:0!important}
+html.d27 .stIc,html.d27 .inBadge,html.d27 .dlTabCnt,html.d27 .stAlert em{border-radius:3px!important;box-shadow:none!important}
+html.d27 .stAlert{border-radius:0!important;position:relative;box-shadow:none!important}
+html.d27 .stAlert::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:#ff8a00}
+html.d27 .settingsHead,html.d27 .inHero{border-radius:0!important}
+html.d27 .inShare,html.d27 .adminLink{border-radius:0!important}
+html.d27 .inShare{background:var(--d27act)!important;color:var(--d27actTx)!important;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%)}
+html.d27 .stSheet{border-radius:0!important;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,0 100%)}
+/* Hintergrundbilder */
+html.d27 .wpTile,html.d27 .wpThumb,html.d27 .wpChips button,html.d27 .wpNr input,html.d27 .wpStyles button canvas{border-radius:0!important}
+html.d27 .wpSeg{border-radius:0!important;background:var(--d27card)!important;border:1px solid var(--d27line);padding:0!important;gap:0!important}
+html.d27 .wpSeg button{border-radius:0!important;box-shadow:none!important;color:var(--muted)!important}
+html.d27 .wpSeg button.on,html.d27 .wpSeg button[aria-pressed="true"],html.d27 .wpSeg button.active{background:var(--d27act)!important;color:var(--d27actTx)!important}
+html.d27 .wpChips button.on,html.d27 .wpChips button.active{background:var(--d27act)!important;color:var(--d27actTx)!important;border-color:var(--d27act)!important}
