@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.54.0.245 | – (nur Test) | 25.11.2026 | Neues Trikot-Design als Vorschau (Stufe 1) |
 | 1.53.1.244 | – (nur Test) | 25.11.2026 | Hintergrund-Auswahl schöner |
 | 1.53.0.243 | – (nur Test) | 25.11.2026 | Hintergrund: Logo in Dunkelblau |
 | 1.52.3.242 | – (nur Test) | 25.11.2026 | Startbildschirm-Hintergrund kräftiger, mit Schrift |
@@ -107,6 +108,13 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.54.0
+
+- **Neues Trikot-Design für 2027/28 als Vorschau – Stufe 1.** Schalter in Admin › Technik › „Neue Saison“ (nur dieses Gerät, `localStorage` `grizzlysD27`, Klasse `html.d27`, wird schon im `<head>` gesetzt). Hat Vorrang vor Halloween/Weihnachten (deren Klassen werden entfernt, solange die Vorschau an ist). Alle anderen sehen unverändert das bisherige Design.
+- Stufe 1: Grundfarben (Hintergrund Eisblau #dcebfa bzw. Nachtblau #0d1520, Karten weiß bzw. #15212f, Akzent Schwarz bzw. Trikotblau), Kopfbereich hellblau mit weichem Übergang und geschwungenen Trikotstreifen (`.d27sw`, SVG im Header), Navigation als Leiste unten (die bisherigen 5 Reiter), Mini-Kopfleiste beim Scrollen blau.
+- Nächste Stufen: Startseite (Nächstes Spiel, letzte Ergebnisse), Spielplan, Saisonbilanz als eigener Navigationspunkt, Gegner, Spieldetails, Downloads, Einstellungen, Admin.
+- Analytics: `design27_toggle`.
 
 ## Version 1.53.1
 

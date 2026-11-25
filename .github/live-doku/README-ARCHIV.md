@@ -8,6 +8,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.54.0.245 | – (nur Test) | 25.11.2026 | Neues Trikot-Design als Vorschau (Stufe 1) |
 | 1.53.1.244 | – (nur Test) | 25.11.2026 | Hintergrund-Auswahl schöner |
 | 1.53.0.243 | – (nur Test) | 25.11.2026 | Hintergrund: Logo in Dunkelblau |
 | 1.52.3.242 | – (nur Test) | 25.11.2026 | Startbildschirm-Hintergrund kräftiger, mit Schrift |

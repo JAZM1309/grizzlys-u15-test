@@ -3677,3 +3677,13 @@ async function wpOpen(k){
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",()=>setTimeout(tryBuild,50));else setTimeout(tryBuild,50);
   {const v=document.getElementById("settingsView");if(v)new MutationObserver(()=>{if(!v.hidden){build();window.settingsListRefresh()}}).observe(v,{attributes:true,attributeFilter:["hidden"]});}
 })();
+
+
+/* ===== 1.54.0: neues Trikot-Design – Vorschau-Schalter (Admin › Technik). Stufe 1: Farben, Kopfbereich mit Streifen, Navigation unten. ===== */
+(function(){const t=document.getElementById("d27Toggle");if(!t)return;
+  try{t.checked=localStorage.getItem("grizzlysD27")==="on"}catch(e){}
+  t.addEventListener("change",()=>{try{localStorage.setItem("grizzlysD27",t.checked?"on":"off")}catch(e){}
+    const H=document.documentElement;H.classList.toggle("d27",t.checked);
+    if(t.checked)H.classList.remove("xm","hw");else{try{if(window.xmActive&&window.xmActive())H.classList.add("xm");if(window.hwActive&&window.hwActive())H.classList.add("hw")}catch(e){}}
+    try{trackAnalyticsEvent("design27_toggle",{on:t.checked?1:0})}catch(e){}});
+})();

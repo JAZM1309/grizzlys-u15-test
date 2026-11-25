@@ -2585,3 +2585,34 @@ html.dark .wpStyles button.on{border-color:#4fa3ff!important}
 .wpBtns{position:sticky;bottom:-16px;background:#fff;box-shadow:0 -8px 12px -6px rgba(11,42,82,.12);padding:8px 0 4px;width:100%;display:grid;grid-template-columns:1fr;gap:8px}
 .wpBtns .action{width:100%}
 html.dark .wpBtns{background:#121f33}
+
+/* ===== 1.54.0: Trikot-Design 2027 (Vorschau, html.d27) – Stufe 1 ===== */
+.d27sw{display:none}
+html.d27{--d27bg:#dcebfa;--d27card:#fff;--d27line:#c9dcf0;--navy:#111418;--border:#c9dcf0;--ice:#e8f2fc;--text:#0d1520;--muted:#557092}
+html.d27.dark{--d27bg:#0d1520;--d27card:#15212f;--d27line:#22344a;--navy:#4a93dd;--border:#22344a;--ice:#15212f;--text:#eaf3fc;--muted:#7d9bbd}
+html.d27,html.d27 body{background:var(--d27bg)!important}
+html.d27 .hero{background:linear-gradient(180deg,#4a93dd 0%,#5b9fe2 55%,var(--d27bg) 100%)!important;border-radius:0!important;box-shadow:none!important;padding-bottom:120px!important;margin-bottom:-74px}
+html.d27.dark .hero{background:linear-gradient(180deg,#235f9e 0%,#183f6b 50%,var(--d27bg) 100%)!important}
+html.d27 .heroRink,html.d27 .heroIce,html.d27 .slg,html.d27 .heroEdge,html.d27 .hwDeco{display:none!important}
+html.d27 .d27sw{display:block;position:absolute;left:0;right:0;bottom:-6px;width:100%;height:150px;pointer-events:none}
+html.d27 .hero .kicker{color:#e3f0ff}
+html.d27 .heroChips .season,html.d27 .heroChip{background:rgba(255,255,255,.2)!important;border-color:rgba(255,255,255,.3)!important;color:#fff!important}
+html.d27 .infoTop{background:rgba(255,255,255,.22)!important;border-color:rgba(255,255,255,.3)!important;color:#fff!important}
+html.d27 main{position:relative;z-index:1;padding-bottom:86px}
+html.d27 .miniBar{background:linear-gradient(145deg,#3f86d1,#4a93dd)!important;border-image:linear-gradient(90deg,#111418,#fff 50%,#111418) 1!important}
+html.d27.dark .miniBar{background:linear-gradient(145deg,#183f6b,#235f9e)!important}
+/* Navigation unten */
+html.d27 .tabs{position:fixed!important;top:auto!important;bottom:0;left:0;right:0;z-index:40;margin:0!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr));gap:0!important;padding:6px 6px calc(6px + env(safe-area-inset-bottom))!important;background:rgba(255,255,255,.96)!important;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--d27line);box-shadow:0 -6px 18px rgba(20,60,110,.08)}
+html.d27.dark .tabs{background:rgba(13,21,32,.96)!important}
+html.d27 .tab{background:transparent!important;border:0!important;box-shadow:none!important;color:var(--muted)!important;display:flex!important;flex-direction:column;align-items:center;gap:3px;padding:6px 2px!important;font-size:10.5px!important;font-weight:750}
+html.d27 .tab svg{width:22px;height:22px}
+html.d27 .tab.active{color:#111418!important;font-weight:900}
+html.d27.dark .tab.active{color:#4a93dd!important}
+html.d27 .tab.active svg{stroke-width:2.4}
+/* Karten */
+html.d27 .infoCard,html.d27 .card,html.d27 .teamCard,html.d27 .opponentCard,html.d27 .next,html.d27 .last,html.d27 .stGrp{background:var(--d27card)!important;border-color:var(--d27line)!important;box-shadow:0 6px 16px rgba(30,80,140,.08)}
+html.d27.dark .infoCard,html.d27.dark .card,html.d27.dark .teamCard,html.d27.dark .opponentCard,html.d27.dark .next,html.d27.dark .last,html.d27.dark .stGrp{box-shadow:none}
+html.d27 .filter.active,html.d27 .action:not(.secondary){background:#111418!important;border-color:#111418!important;color:#fff!important}
+html.d27.dark .filter.active,html.d27.dark .action:not(.secondary){background:#4a93dd!important;border-color:#4a93dd!important}
+html.d27 .d27Box{background:linear-gradient(135deg,rgba(74,147,221,.14),rgba(17,20,24,.04))}
+html.d27 .infoTop{top:calc(14px + var(--ribH,0px));bottom:auto!important}html.d27 .heroTop{padding-right:132px}html.d27 .heroChips{padding-right:0}
