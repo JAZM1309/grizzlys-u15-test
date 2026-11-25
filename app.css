@@ -2789,3 +2789,22 @@ html.d27 .wpSeg{border-radius:0!important;background:var(--d27card)!important;bo
 html.d27 .wpSeg button{border-radius:0!important;box-shadow:none!important;color:var(--muted)!important}
 html.d27 .wpSeg button.on,html.d27 .wpSeg button[aria-pressed="true"],html.d27 .wpSeg button.active{background:var(--d27act)!important;color:var(--d27actTx)!important}
 html.d27 .wpChips button.on,html.d27 .wpChips button.active{background:var(--d27act)!important;color:var(--d27actTx)!important;border-color:var(--d27act)!important}
+
+/* ===== 1.59.1: Trikot-Design – keine runden Ecken mehr (Chips, Knöpfe, Rahmen überall); Spielplan-Kopf auf schmalen Handys ===== */
+html.d27:not(#_d27) body *:not(:is(img,svg,svg *,canvas,video,input[type=checkbox],input[type=radio],.admSw,.admSw *,.pfSw,.pfSw *,.fd,.gzForm i,.g3Puck,.liveDot,.pfLiveDot,.pushDot,.swDots,.swDots i,.omPin,.omPin *,.oppMapLegend i,.stLeg i,.logoFb,.opponentLogo,.omLogo,.calChip i,.pfChip i,.wishThumb,.leaflet-container *,.sbFormDots i,.sbDot,.wpPhone,.wpPhone *,[class*="Dot"],[class*="dot"],[class^="xm"],[class*=" xm"],[class^="hw"],[class*=" hw"],.mnOk,.gzAct,.aIcon,.xmBig,.ftPopX,.updateBannerClose)),html.d27:not(#_d27) body *:not(:is(img,svg,svg *,canvas,video,input[type=checkbox],input[type=radio],.admSw,.admSw *,.pfSw,.pfSw *,.fd,.gzForm i,.g3Puck,.liveDot,.pfLiveDot,.pushDot,.swDots,.swDots i,.omPin,.omPin *,.oppMapLegend i,.stLeg i,.logoFb,.opponentLogo,.omLogo,.calChip i,.pfChip i,.wishThumb,.leaflet-container *,.sbFormDots i,.sbDot,.wpPhone,.wpPhone *,[class*="Dot"],[class*="dot"],[class^="xm"],[class*=" xm"],[class^="hw"],[class*=" hw"],.mnOk,.gzAct,.aIcon,.xmBig,.ftPopX,.updateBannerClose,.swHint))::before,html.d27:not(#_d27) body *:not(:is(img,svg,svg *,canvas,video,input[type=checkbox],input[type=radio],.admSw,.admSw *,.pfSw,.pfSw *,.fd,.gzForm i,.g3Puck,.liveDot,.pfLiveDot,.pushDot,.swDots,.swDots i,.omPin,.omPin *,.oppMapLegend i,.stLeg i,.logoFb,.opponentLogo,.omLogo,.calChip i,.pfChip i,.wishThumb,.leaflet-container *,.sbFormDots i,.sbDot,.wpPhone,.wpPhone *,[class*="Dot"],[class*="dot"],[class^="xm"],[class*=" xm"],[class^="hw"],[class*=" hw"],.mnOk,.gzAct,.aIcon,.xmBig,.ftPopX,.updateBannerClose,.swHint))::after{border-radius:0!important}
+html.d27 #scheduleView .shTitleBox{flex-direction:column;align-items:flex-start;gap:0;line-height:1.1}
+html.d27 #scheduleView .shTitleBox .small{font-size:12px}
+html.d27 .shTables a{padding:6px 9px!important}
+html.d27 .heroTop .kicker,html.d27 .heroTop h1{white-space:nowrap}
+html.d27 .heroTop h1{font-size:clamp(17px,5.4vw,22px)!important}
+html.d27 .heroTop .kicker{font-size:clamp(9px,2.6vw,11px)!important}
+html.d27 .heroTop>div{min-width:0}
+html.d27 .ftPick{gap:4px}
+html.d27 .ftStep{gap:3px}
+html.d27 .ftStep button{width:32px!important;height:32px!important;font-size:18px!important}
+html.d27 .ftIn{width:40px!important;font-size:24px!important}
+@media(max-width:380px){html.d27 .ftStep button{width:28px!important;height:30px!important}html.d27 .ftIn{width:34px!important}}
+html.d27 .heroTop .kicker{overflow:hidden;text-overflow:ellipsis;letter-spacing:.06em!important}
+@media(max-width:380px){html.d27 .heroTop .kicker{letter-spacing:.02em!important}}
+html.d27 .heroTop{padding-right:118px;box-sizing:border-box}
+@media(max-width:380px){html.d27 .heroTop .kicker{font-size:2.35vw!important}}

@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.59.1.256 | – (nur Test) | 25.11.2026 | Trikot-Design: keine runden Chips mehr, Spielplan-Kopf |
 | 1.59.0.255 | – (nur Test) | 25.11.2026 | Trikot-Design Stufe 5: Downloads, Einstellungen, Info |
 | 1.58.1.254 | – (nur Test) | 25.11.2026 | Trikot-Design: Filter laufen beim Scrollen mit |
 | 1.58.0.253 | – (nur Test) | 25.11.2026 | Trikot-Design Stufe 4: Spieldetails, Fenster |
@@ -118,6 +119,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.59.1
+
+- **Trikot-Design (Vorschau) – keine runden Ecken mehr.** Eine Sammelregel setzt im Trikot-Design überall die Eckenrundung auf 0 (Wetter-, Spielbericht-, Torschützen-, Tabellenplatz-, Filter- und „Verlegt“-Chips, Saison-Chip und Kopf-Knöpfe, Knöpfe bei „Deine Stimme zählt“, alle Rahmen in der Saisonbilanz, Filter auf der Gegner-Karte …). Rund bleiben bewusst: Logos und Bilder, Schalter (an/aus), Formpunkte, Live- und Hinweispunkte, Puck, Kartenmarker und die Saison-Designs (Weihnachten/Halloween). Spielplan-Kopf: Spielanzahl steht unter „Spielplan“, damit „Tabelle A/B“ auf schmalen Handys nicht mehr über dem Titel liegt. Vereinsname im Kopf bleibt einzeilig (Schrift passt sich der Breite an). Fan-Tipp: +/− und Eingabefeld etwas schmaler, damit auf 360-px-Handys nichts abgeschnitten wird. Nur mit eingeschalteter Vorschau.
 
 ## Version 1.59.0
 
