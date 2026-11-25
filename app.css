@@ -2678,3 +2678,10 @@ html.d27 .g3Band{padding-right:calc(var(--d27cut) + 6px)!important}
 html.d27 .g3Cd div,html.d27 .sbTeam,html.d27 .g3Hero .g3Cd div{border-radius:0!important}
 html.d27 .lrPill,html.d27 .g3Head .homeaway,html.d27 .g3Head .gcLeft span{border-radius:3px!important}
 html.d27.d27.d27 .card.g3Hero,html.d27.d27.d27 .card.gz3{border:0!important;border-radius:0!important}
+/* 1.55.2: ohne Rahmen, dezenter Farbbalken */
+html.d27 .card.gz3::after,html.d27 .lrCard::after,html.d27 .sbCard::after,html.d27 .fbHome::after{border:0!important;background:color-mix(in srgb,var(--team,#1c6fd1) 70%,transparent)!important;inset:0 auto 0 0!important;width:4px!important}
+html.d27 .lrCard::after,html.d27 .sbCard::after,html.d27 .fbHome::after{background:color-mix(in srgb,#1c6fd1 45%,transparent)!important}
+html.d27.dark .lrCard::after,html.d27.dark .sbCard::after,html.d27.dark .fbHome::after{background:color-mix(in srgb,#4a93dd 55%,transparent)!important}
+html.d27 .teamCard::before{border:0!important;background:color-mix(in srgb,var(--team) 70%,transparent)!important;inset:0 0 auto 0!important;height:3px!important}
+html.d27 .card.gz3,html.d27.d27.d27 .card.g3Hero,html.d27 .teamCard{box-shadow:none!important}
+html.d27 .card.gz3.nextGame::after,html.d27.d27.d27 .card.g3Hero::after{width:5px!important;background:var(--team)!important}

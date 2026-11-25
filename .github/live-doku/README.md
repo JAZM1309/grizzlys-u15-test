@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.55.2.249 | – (nur Test) | 25.11.2026 | Trikot-Design: Kacheln ohne Rahmen |
 | 1.55.1.248 | – (nur Test) | 25.11.2026 | Trikot-Design: eckige Kacheln |
 | 1.55.0.247 | – (nur Test) | 25.11.2026 | Trikot-Design Stufe 2: Karten |
 | 1.54.1.246 | – (nur Test) | 25.11.2026 | Fix Vorschau-Design: Filterzeile beim Scrollen |
@@ -111,6 +112,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.55.2
+
+- **Trikot-Design (Vorschau) – Kacheln ohne Rahmen.** Die abgeschrägten Ecken bleiben, der schwarze/blaue Rahmen entfällt. Stattdessen ein dezenter Farbbalken links in der Mannschaftsfarbe (70 % Deckkraft; „Nächstes Spiel“ kräftiger, 5 px), bei Mannschaftskarten oben. Neutrale Karten (letzte Ergebnisse, Saisonbilanz, Feedback) mit blassblauem Balken. Nur sichtbar mit eingeschalteter Vorschau.
 
 ## Version 1.55.1
 
