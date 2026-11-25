@@ -2732,3 +2732,28 @@ html.d27 #statsBody{padding-bottom:20px}
 html.d27 .inRules{display:flex;align-items:center;gap:12px;width:100%;text-align:left;cursor:pointer;font:inherit;color:inherit;border:0}
 html.d27 .inRules .mapTx{flex:1;display:flex;flex-direction:column}
 html.d27 .inRules .mapGo{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
+
+/* ===== 1.58.0: Trikot-Design – Stufe 4: Spieldetails, Fenster, Saisonbilanz-Reiter ===== */
+html.d27{--d27tile:#eef5fd}
+html.d27.dark{--d27tile:#1b2a3b}
+html.d27 .g3Tile{border-radius:0!important;background:var(--d27tile)!important;box-shadow:none!important;border:0!important}
+html.d27 .ftSend{border-radius:0!important;background:var(--d27act)!important;color:var(--d27actTx)!important;box-shadow:none!important;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,0 100%)}
+html.d27 .ftStep button{border-radius:0!important;border:1px solid var(--d27line)!important;background:var(--d27card)!important;color:var(--text)!important}
+html.d27 .ftIn{border-radius:0!important}
+html.d27 .ftIn:focus{border-color:var(--d27act)!important}
+html.d27 .g3Route,html.d27 .g3TodayRoute{border-radius:0!important;background:var(--d27act)!important;color:var(--d27actTx)!important;box-shadow:none!important;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%)}
+html.d27 .g3Btn{border-radius:0!important;background:var(--d27card)!important;border:1px solid var(--d27line)!important;box-shadow:none!important;color:var(--text)!important}
+html.d27 .mdReport{border-radius:0!important;box-shadow:none!important;background:var(--d27card)!important;position:relative;padding-left:20px!important}
+html.d27 .mdReport::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--d27act)}
+html.d27 .mdReportHead{color:var(--muted)}
+/* Fenster (Spieldetails, Saisonbilanz, Gegner …) */
+html.d27 .matchModalBox{border-radius:0!important;background:var(--d27bg)!important;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,0 100%)}
+html.d27 .matchModalHead{border-radius:0!important;background:var(--d27act)!important;color:var(--d27actTx)!important;box-shadow:none!important;padding-right:30px!important}
+html.d27 .matchModalHead *{color:inherit}
+html.d27 .matchModalClose{border-radius:0!important;background:rgba(255,255,255,.14)!important;border:0!important;color:#fff!important;box-shadow:none!important}
+html.d27 .matchModalClose svg{stroke:#fff}
+/* Reiter in der Saisonbilanz */
+html.d27 .sbTabs{border-radius:0!important;background:var(--d27card)!important;border:1px solid var(--d27line);padding:0!important;gap:0!important;box-shadow:none!important}
+html.d27 .sbTabs button{border-radius:0!important;box-shadow:none!important;color:var(--muted)!important;position:relative}
+html.d27 .sbTabs button.on{background:var(--d27act)!important;color:var(--d27actTx)!important}
+html.d27 #statsBody .sbTabs{background:var(--d27card)!important}

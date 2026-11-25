@@ -8,6 +8,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.58.0.253 | – (nur Test) | 25.11.2026 | Trikot-Design Stufe 4: Spieldetails, Fenster |
 | 1.57.0.252 | – (nur Test) | 25.11.2026 | Trikot-Design: Saisonbilanz in der Navigation |
 | 1.56.0.251 | – (nur Test) | 25.11.2026 | Trikot-Design Stufe 3: Spielplan-Kopf, Filter, Gegner |
 | 1.55.3.250 | – (nur Test) | 25.11.2026 | Trikot-Design: kleinerer Kopfbereich |

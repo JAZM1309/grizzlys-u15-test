@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.58.0.253 | – (nur Test) | 25.11.2026 | Trikot-Design Stufe 4: Spieldetails, Fenster |
 | 1.57.0.252 | – (nur Test) | 25.11.2026 | Trikot-Design: Saisonbilanz in der Navigation |
 | 1.56.0.251 | – (nur Test) | 25.11.2026 | Trikot-Design Stufe 3: Spielplan-Kopf, Filter, Gegner |
 | 1.55.3.250 | – (nur Test) | 25.11.2026 | Trikot-Design: kleinerer Kopfbereich |
@@ -115,6 +116,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.58.0
+
+- **Trikot-Design (Vorschau) – Stufe 4: Spieldetails und Fenster.** Aufgeklappte Spielkarte: Fan-Tipp, Spielort und Ergebnis-Kacheln eckig auf hellblauem Grund, „Tipp abgeben“ und „Route“ schwarz mit abgeschrägter Ecke, +/− und Kalender/Erinnerung/Teilen eckig. Spielbericht mit schwarzem Balken links. Alle Fenster (`.matchModalBox`: Spieldetails, Saisonbilanz, Gegner …) eckig mit abgeschrägter Ecke oben rechts und schwarzem Kopf (dunkel: Trikotblau). Reiter der Saisonbilanz als eckige Segmente, aktiver Reiter schwarz. Nur sichtbar mit eingeschalteter Vorschau.
 
 ## Version 1.57.0
 
