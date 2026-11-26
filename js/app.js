@@ -647,10 +647,11 @@ function renderTeamTiles(){
     const own=all[0]?(isHome(all[0])?all[0].home:all[0].away):"", sr=own&&typeof standRow==="function"?standRow(team,own):null;
     const stats=res.length?`<div class="tcStats"><div><b>${w}</b><span>Siege</span></div><div><b>${d}</b><span>Unent.</span></div><div><b>${l}</b><span>Niederl.</span></div><div><b>${gf}:${ga}</b><span>Tore</span></div></div>`:"";
     const nextRow=nx?`<div class="tcNext">${isHome(nx)?teamLogoHtml(nx.home,"tcLogo")+"":logoHtml(opponent(nx),"tcLogo")}<div class="tcNextTxt"><small>Nächstes Spiel · ${isHome(nx)?"Heim":"Auswärts"}</small><b>${esc(opponent(nx))}</b><small>${fmtDate(nx)} · ${nx.time} Uhr</small></div>${ic("chev")}</div>`:`<div class="tcNext"><div class="tcNextTxt"><b>Saison abgeschlossen</b></div></div>`;
-    sbData[team]={w,d,l,gf,ga,n:res.length};
+    sbData[team]={w,d,l,gf,ga,n:res.length,rank:sr&&sr.r?sr.r:0,pts:sr&&sr.p!==undefined?sr.p:null,form:res.slice(-5).map(x=>x.r.o),played,total:all.length};
     el.innerHTML=`<div class="tcTop"><div class="teamLetter">${(APP_CFG.teams[team]&&APP_CFG.teams[team].letter)||team}</div><div><div class="teamTitle">${teamName(team)}</div>${capLine(team)}${res.length?"":window.resultsLoading?'<div class="tcSub sk"></div>':'<div class="tcSub">Noch keine Ergebnisse</div>'}</div>${sr&&sr.r?`<span class="tcRank">Platz ${sr.r}</span>`:""}${dots?`<div class="tcForm" title="Letzte Spiele">${dots}</div>`:""}</div>${stats}<div class="tcProg"><i style="width:${pct}%"></i></div><div class="tcProgTxt">${played} von ${all.length} Spielen gespielt</div>${nextRow}`;
   });
   try{renderSbCard()}catch(e){console.warn(e)}
+  try{renderHomeTeams27()}catch(e){console.warn(e)}
 }
 /* ===== 1.27.0: Saisonbilanz, Direktvergleich, Spielbericht-Archiv ===== */
 function sbOwn(team){const g=games.find(x=>x.team===team);return g?(isHome(g)?g.home:g.away):""}
@@ -3710,3 +3711,24 @@ function renderStats(keep){
   if(!keep)try{trackAnalyticsEvent("saisonbilanz_opened",{team:teamName(t),src:"nav"})}catch(e){}
 }
 document.querySelector(".inRules")?.addEventListener("click",()=>showView("rules"));
+
+/* ===== 1.62.0: neue Designs – Startseite: „Mannschaften“ und „Saisonbilanz“ zusammengefasst, eine Zeile je Mannschaft ===== */
+function renderHomeTeams27(){
+  const home=document.getElementById("homeView"); if(!home)return;
+  let box=document.getElementById("homeTeams27");
+  if(!box){box=document.createElement("div");box.id="homeTeams27";box.className="ht27";const sb=home.querySelector(".sbCard,.sbBtns");(sb||home.lastElementChild).insertAdjacentElement("afterend",box);
+    const tc=home.querySelector(".teamCards"),st=tc&&tc.previousElementSibling;if(st&&st.classList.contains("sectionTitle"))st.classList.add("teamsTitle");}
+  const T=window.MY_TEAMS||[]; if(!T.length){box.hidden=true;return} box.hidden=false;
+  const form=f=>f.map(o=>`<i class="fd ${o}"></i>`).join("");
+  box.innerHTML=`<div class="ht27Head"><b>Mannschaften</b><span>Antippen für die Saisonbilanz</span></div>`+T.map(t=>{
+    const x=sbData[t]||{w:0,d:0,l:0,gf:0,ga:0,n:0,form:[],played:0,total:0,rank:0}, df=x.gf-x.ga, pct=x.total?Math.round(x.played/x.total*100):0;
+    const lg=APP_CFG.teams[t]&&APP_CFG.teams[t].league||"";
+    const letter=(APP_CFG.teams[t]&&APP_CFG.teams[t].letter)||t;
+    return `<button type="button" class="ht27Row team${t}" data-ht="${t}" aria-label="Saisonbilanz ${esc(teamName(t))}">
+      <span class="ht27L">${esc(letter)}</span>
+      <span class="ht27Mid"><b>${esc(teamName(t))}${x.rank?`<em>Platz ${x.rank}</em>`:""}</b><small>${esc(lg)}${x.total?` · ${x.played}/${x.total} gespielt`:""}</small>${x.form&&x.form.length?`<span class="ht27Form">${form(x.form)}</span>`:""}</span>
+      ${x.n?`<span class="ht27R"><b><span class="w">${x.w}</span>–<span class="l">${x.l}</span></b><small>${x.gf}:${x.ga} · <span class="${df>0?"w":df<0?"l":""}">${df>0?"+":""}${df}</span></small></span>`:`<span class="ht27R"><small>noch keine<br>Ergebnisse</small></span>`}
+      <i class="ht27Bar"><i style="width:${pct}%"></i></i>
+    </button>`}).join("");
+  box.querySelectorAll("[data-ht]").forEach(b=>b.onclick=()=>{if(document.documentElement.classList.contains("d27")){try{localStorage.setItem("grizzlysStatsTeam",b.dataset.ht)}catch(e){}showView("stats");window.scrollTo(0,0)}else openBilanz(b.dataset.ht)});
+}

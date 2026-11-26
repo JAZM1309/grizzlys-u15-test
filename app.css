@@ -3005,3 +3005,57 @@ html.d27 .gdHead{top:54px!important;bottom:auto!important}
 html.d28.d29.d29.d29 .gdHead{top:56px!important}
 html.d28.d29.d29.d29 .gdHead{top:auto!important;bottom:14px!important;right:14px!important;transform:rotate(-3deg)!important}
 html.d28.d29.d29.d29 .gdHead b{font-size:24px!important;line-height:1!important}
+
+/* ===== 1.62.0: neue Designs – Startseite Mannschaften+Bilanz, kompakte Saisonbilanz, Puck ===== */
+.ht27{display:none}
+html.d27 .ht27{display:block;margin:14px 0}
+html.d27 #homeView .teamsTitle,html.d27 #homeView .teamCards,html.d27 #homeView .sbCard,html.d27 #homeView .sbBtns{display:none!important}
+.ht27Head{display:flex;justify-content:space-between;align-items:baseline;padding:0 2px 8px}
+.ht27Head b{font-size:13px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.ht27Head span{font-size:12px;color:var(--muted)}
+.ht27Row{position:relative;display:grid;grid-template-columns:38px minmax(0,1fr) auto;align-items:center;gap:12px;width:100%;text-align:left;font:inherit;color:var(--text);background:var(--d27card,#fff);border:1px solid var(--d27line,var(--border));padding:12px 14px 15px;margin:0 0 8px;cursor:pointer;overflow:hidden}
+.ht27L{width:38px;height:38px;display:grid;place-items:center;background:var(--team);color:#fff;font-weight:950;font-size:17px}
+.ht27Mid{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ht27Mid b{font-size:16px;font-weight:900;display:flex;align-items:center;gap:8px}
+.ht27Mid b em{font-style:normal;font-size:11px;font-weight:900;padding:2px 7px;background:color-mix(in srgb,var(--team) 16%,transparent);color:var(--text)}
+.ht27Mid small{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ht27Form{display:flex;gap:4px;margin-top:3px}
+.ht27Form .fd{width:9px;height:9px}
+.ht27R{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:1px}
+.ht27R b{font-size:22px;font-weight:950;font-variant-numeric:tabular-nums;line-height:1}
+.ht27R small{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ht27R .w{color:#1f9d55}.ht27R .l{color:#d6453b}
+.ht27Bar{position:absolute;left:0;right:0;bottom:0;height:3px;background:color-mix(in srgb,var(--team) 18%,transparent)}
+.ht27Bar>i{display:block;height:100%;background:var(--team)}
+html.d28 .ht27Row{background:var(--pN)!important;border:0;margin-left:-14px;margin-right:-14px;width:calc(100% + 28px);margin-bottom:3px}
+html.d28 .ht27Row.teamA{background:var(--pA)!important}html.d28 .ht27Row.teamB{background:var(--pB)!important}html.d28 .ht27Row.teamU13{background:var(--pU)!important}
+html.d28.d29 .ht27Row{background:var(--d27card)!important;border:1px solid var(--d27line);border-radius:14px!important;margin:0 0 8px;width:100%}
+html.d28.d29 .ht27L{border-radius:50%!important;font-family:var(--vCond)}
+html.d28.d29 .ht27Mid b em{border-radius:99px!important}
+html.d28.d29 .ht27Head b{font-family:var(--vCond);color:var(--vAcc);letter-spacing:.2em;display:flex;align-items:center;gap:10px;font-size:14px}
+html.d28.d29 .ht27Head b::before{content:"";width:22px;height:3px;background:var(--vAcc)}
+html.d28.d29 .ht27R b{font-family:var(--vCond)}
+/* Saisonbilanz kompakter */
+html.d27 .capBil{gap:6px;margin:0 0 10px}
+html.d27 .capBil>div{padding:3px 9px 3px 3px;gap:6px}
+html.d27 .capBil .capB{min-width:20px;height:20px;font-size:11px}
+html.d27 .capBil b{font-size:13px}
+html.d27 .capBil small{display:none}
+html.d28.d29 .capBil>div{border-radius:99px!important}
+html.d27 .sbRank{margin:0 0 8px}
+html.d27 .sbRank b{font-size:22px}
+html.d27 .sbGrid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:6px!important;margin-bottom:6px!important}
+html.d27 .sbGrid.sbGrid3{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+html.d27 .sbTile{padding:7px 4px!important}
+html.d27 .sbTile b{font-size:18px!important}
+html.d27 .sbTile span{font-size:10.5px!important;white-space:nowrap}
+html.d28.d29 .sbTile{border-radius:10px!important}
+/* Puck: gerade Kanten, dicker, dreht sich langsam */
+@property --pk{syntax:"<angle>";inherits:false;initial-value:0deg}
+html.d27 .g3Puck{position:relative;width:46px!important;height:26px!important;margin:0 auto 12px!important;border-radius:0!important;background:none!important;box-shadow:none!important;animation:none!important}
+html.d27 .g3Puck::before,html.d27 .g3Puck::after{content:"";position:absolute;left:0;right:0}
+html.d27 .g3Puck::after{top:7px;height:17px;border-radius:0 0 50% 50% / 0 0 7px 7px!important;background:repeating-linear-gradient(90deg,rgba(255,255,255,.07) 0 1.5px,transparent 1.5px 4px) 0 0/46px 100%,linear-gradient(90deg,#050607,#2a2e34 30%,#3a3f46 42%,#15171a 70%,#050607);animation:pkSide 4s linear infinite;box-shadow:0 6px 10px rgba(0,0,0,.28)}
+html.d27 .g3Puck::before{top:0;height:14px;z-index:1;border-radius:50%!important;background:conic-gradient(from var(--pk),#1a1d21,#3d434b 12%,#1a1d21 28%,#121417 55%,#2a2e34 70%,#1a1d21);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);animation:pkTop 4s linear infinite}
+@keyframes pkTop{to{--pk:360deg}}
+@keyframes pkSide{to{background-position:46px 0,0 0}}
+@media(prefers-reduced-motion:reduce){html.d27 .g3Puck::before,html.d27 .g3Puck::after{animation:none!important}}

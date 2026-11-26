@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.62.0.261 | – (nur Test) | 26.11.2026 | Neue Designs: Mannschaften+Bilanz zusammengefasst, kompakte Bilanz, Puck |
 | 1.61.2.260 | – (nur Test) | 26.11.2026 | Design „Verein“: Kopf neu angeordnet |
 | 1.61.1.259 | – (nur Test) | 26.11.2026 | Design-Vorschau: Korrekturen Gameday-Kopf, Spielplan-Kopf, Liste |
 | 1.61.0.258 | – (nur Test) | 26.11.2026 | Design-Entwurf „Verein“ |
@@ -123,6 +124,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.62.0
+
+- **Neue Designs (Vorschau) – Startseite und Saisonbilanz.** „Mannschaften“ und „Saisonbilanz“ auf der Startseite zu einem Block zusammengefasst (`renderHomeTeams27`, `#homeTeams27`): eine Zeile je Mannschaft mit Buchstabe, Name, Tabellenplatz, Liga und Spielfortschritt, Formpunkten der letzten 5 Spiele, Siege–Niederlagen groß, Tore und Differenz, Fortschrittsbalken unten; Antippen öffnet den Bereich „Bilanz“ mit dieser Mannschaft. Saisonbilanz kompakter: Kapitäns-Chips klein in einer Zeile (nur „C 43“, ohne „Kapitän“), Zahlen-Kacheln in 4er- bzw. 3er-Reihe mit kleinerer Schrift. Puck neu: gerade Seitenkante, dicker (Verhältnis näher am echten Puck), dreht sich langsam (Lichtreflex oben und geriffelte Kante laufen mit; bei „Bewegung reduzieren“ still). Ohne Vorschau unverändert.
 
 ## Version 1.61.2
 
