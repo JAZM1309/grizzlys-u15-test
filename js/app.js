@@ -1519,7 +1519,7 @@ document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>showView(b.dataset.vi
     const t=e.touches[0], el=e.target;
     if(t.clientX<24||t.clientX>innerWidth-24)return;          // Rand frei für die Zurück-Geste von Android
     const c=cur(); if(!c||overlayOpen())return;
-    if(!el.closest||!el.closest("#homeView,#scheduleView,#opponentsView,#rulesView,#downloadsView,#settingsView,#infoView"))return;
+    if(!el.closest||!el.closest("main,#homeView,#scheduleView,#opponentsView,#rulesView,#statsView,#downloadsView,#settingsView,#infoView"))return;
     if(el.closest("input,select,textarea,canvas,[data-noswipe]"))return;
     for(let n=el;n&&n!==document.body;n=n.parentElement){if(n.scrollWidth>n.clientWidth+4&&/(auto|scroll)/.test(getComputedStyle(n).overflowX))return;}
     st={x:t.clientX,y:t.clientY,t:Date.now(),lock:null,dx:0,c,view:document.getElementById(c+"View"),lx:t.clientX,lt:Date.now(),v:0};

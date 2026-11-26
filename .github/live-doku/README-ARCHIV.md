@@ -8,6 +8,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.64.4.272 | – (nur Test) | 26.11.2026 | Neue Designs: Wischen im Bereich „Bilanz“ |
 | 1.64.3.271 | – (nur Test) | 26.11.2026 | Neue Designs: Gegnerliste kompakter |
 | 1.64.2.270 | – (nur Test) | 26.11.2026 | Neue Designs: Puck mit runder Kante |
 | 1.64.1.269 | – (nur Test) | 26.11.2026 | Design „Verein“: Highlight am Spieltag korrigiert |
