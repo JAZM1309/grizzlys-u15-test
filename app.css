@@ -3197,3 +3197,38 @@ html.d28.d29.d29.d29 .opponentRoute{padding:5px 10px!important;font-size:12px!im
 html.d28.d29.d29.d29 .opponentRoute svg{width:14px;height:14px}
 html.d28.d29.d29.d29 #opponentsList{gap:6px!important}
 html.d28.d29.d29.d29 main #opponentsList .opponentCard{margin:0!important}
+
+/* ===== 1.65.0: neue Designs – Seitentitel auf Downloads, Einstellungen, Info; „Verein“ auch für News und Admin ===== */
+.vPage{display:none!important}
+html.d27 .vPage{display:flex!important}
+html.d27 #settingsView>.settingsHead{display:none!important}
+html.d27 .vPage .shTitleBox{flex-direction:column;align-items:flex-start;gap:0}
+html.d28.d29.d29.d29 .vPage::before{content:attr(data-ghost);position:absolute;left:-4px;top:-6px;font-family:var(--vCond);font-weight:800;font-size:64px;line-height:1;pointer-events:none;letter-spacing:.02em;z-index:0;color:var(--d27bg);text-shadow:1px 0px 0 color-mix(in srgb,var(--vAcc) 24%,var(--d27bg)),-1px 0px 0 color-mix(in srgb,var(--vAcc) 24%,var(--d27bg)),0px 1px 0 color-mix(in srgb,var(--vAcc) 24%,var(--d27bg)),0px -1px 0 color-mix(in srgb,var(--vAcc) 24%,var(--d27bg)),1px 1px 0 color-mix(in srgb,var(--vAcc) 24%,var(--d27bg)),-1px -1px 0 color-mix(in srgb,var(--vAcc) 24%,var(--d27bg)),1px -1px 0 color-mix(in srgb,var(--vAcc) 24%,var(--d27bg)),-1px 1px 0 color-mix(in srgb,var(--vAcc) 24%,var(--d27bg))}
+html.d28.d29.d29.d29 .vPage{margin-bottom:12px}
+/* News-Fenster */
+html.d28.d29.d29.d29 #newsModal .matchModalTitle,html.d28.d29.d29.d29 .adminModalTitle{font-family:var(--vCond)!important;font-weight:800!important;text-transform:uppercase;letter-spacing:.03em;font-size:22px!important}
+html.d28.d29.d29.d29 #newsModal .matchModalBox{background:var(--d27bg)!important}
+html.d28.d29.d29.d29 #newsModal [class*="news"][class*="Item"],html.d28.d29.d29.d29 #newsModal .newsCard,html.d28.d29.d29.d29 #newsModal article{border-radius:14px!important;border:1px solid var(--d27line)!important;box-shadow:none!important;background:var(--d27card)!important}
+html.d28.d29.d29.d29 #newsModal h3,html.d28.d29.d29.d29 #newsModal h4,html.d28.d29.d29.d29 #newsModal .newsHead,html.d28.d29.d29.d29 #newsModal .newsDate{font-family:var(--vCond)!important;letter-spacing:.12em!important;text-transform:uppercase;color:var(--vAcc)!important}
+html.d28.d29.d29.d29 #newsModal button:not(.matchModalClose){border-radius:99px!important}
+/* Admin */
+html.d28.d29.d29.d29 .adminModal .adminModalBox,html.d28.d29.d29.d29 .adminModal>div:first-child{border-radius:18px 18px 0 0!important;background:var(--d27bg)!important}
+html.d28.d29.d29.d29 .adminModalHead{background:var(--vHead)!important;color:#fff!important;border-radius:0!important}
+html.d28.d29.d29.d29 .adminModalHead *{color:#fff!important}
+html.d28.d29.d29.d29 .adminModalClose{border-radius:10px!important;background:rgba(255,255,255,.12)!important;border:0!important}
+html.d28.d29.d29.d29 .admTabs{border-radius:99px!important;overflow:hidden;border:1px solid var(--d27line);background:var(--d27card)!important;padding:0!important;gap:0!important}
+html.d28.d29.d29.d29 .admTabs button{border-radius:0!important;box-shadow:none!important;font-family:var(--vCond);font-weight:700!important;letter-spacing:.05em;text-transform:uppercase}
+html.d28.d29.d29.d29 .admTabs button.on,html.d28.d29.d29.d29 .admTabs button[aria-selected="true"],html.d28.d29.d29.d29 .admTabs button.active{background:var(--vAcc)!important;color:#fff!important}
+html.d28.d29.d29.d29 .admGrpT{font-size:13px!important;display:flex;align-items:center;gap:10px;margin:16px 0 8px!important}
+html.d28.d29.d29.d29 .admGrpT::before{content:"";width:22px;height:3px;background:var(--vAcc);flex:none}
+html.d28.d29.d29.d29 .admBox,html.d28.d29.d29.d29 .adminBox,html.d28.d29.d29.d29 .admTodo,html.d28.d29.d29.d29 .admSheet{border-radius:14px!important;border:1px solid var(--d27line)!important;box-shadow:none!important;background:var(--d27card)!important}
+html.d28.d29.d29.d29 .admSheet{border-radius:18px 18px 0 0!important}
+html.d28.d29.d29.d29 .admFoldHead{border-radius:12px!important}
+html.d28.d29.d29.d29 .adminModal button:not(.adminModalClose):not(.admTabs button):not(.admFoldHead),html.d28.d29.d29.d29 .admSheet button{border-radius:99px!important}
+html.d28.d29.d29.d29 .adminModal input,html.d28.d29.d29.d29 .adminModal select,html.d28.d29.d29.d29 .adminModal textarea,html.d28.d29.d29.d29 .admSheet input,html.d28.d29.d29.d29 .admSheet select,html.d28.d29.d29.d29 .admSheet textarea{border-radius:10px!important}
+html.d28.d29.d29.d29 .admIc{border-radius:10px!important}
+html.d28.d29.d29.d29 .infoCard .dlTitle,html.d28.d29.d29.d29 .dlTitle{font-size:20px!important;line-height:1.1!important}
+html.d28.d29.d29.d29 main .inRules{width:100%!important;display:flex!important}
+html.d28.d29.d29.d29 .dlTabs{border-radius:0!important;overflow:visible!important}
+html.d28.d29.d29.d29 .dlTabs button:first-child{border-radius:99px 0 0 99px!important}
+html.d28.d29.d29.d29 .dlTabs button:last-child{border-radius:0 99px 99px 0!important}

@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.65.0.273 | – (nur Test) | 26.11.2026 | Neue Designs: Seitentitel überall, „Verein“ auch für News und Admin |
 | 1.64.4.272 | – (nur Test) | 26.11.2026 | Neue Designs: Wischen im Bereich „Bilanz“ |
 | 1.64.3.271 | – (nur Test) | 26.11.2026 | Neue Designs: Gegnerliste kompakter |
 | 1.64.2.270 | – (nur Test) | 26.11.2026 | Neue Designs: Puck mit runder Kante |
@@ -135,6 +136,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.65.0
+
+- **Neue Designs (Vorschau) – Seitentitel überall.** Downloads, Einstellungen und Info haben jetzt wie Spielplan, Gegner und Bilanz einen Seitentitel (`.vPage`, nur in den neuen Designs sichtbar; der blaue Einstellungen-Kopf entfällt dort). In „Verein“ mit Wasserzeichen MEDIA, SETUP, INFO. „Verein“ jetzt auch im News-Fenster (Titel schmal in Großbuchstaben, runde Karten, blaue Datumszeilen) und im Admin-Bereich (Anthrazit-Kopf, Reiter als Pill-Leiste mit blauem aktivem Reiter, Gruppentitel mit blauem Strich, runde Boxen, Pill-Knöpfe, runde Eingabefelder).
 
 ## Version 1.64.4
 
