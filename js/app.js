@@ -1167,7 +1167,7 @@ function g3HomeCard(id,g,label,defOpen){
     const dup=el.querySelector(".g3Btn.rep");if(dup)dup.remove();}
   /* 1.29.0: großes „Nächstes Spiel“ (Puck, Countdown) und kompakte zweite Karte */
   if(id==="g3HomeNext"&&!past&&!g.cancelled){el.classList.add("g3Hero");
-    const vs=el.querySelector(".gcMatch .vs");if(vs)vs.outerHTML='<span class="g3Puck" role="img" aria-label="gegen"><span class="pk3" aria-hidden="true"><i class="pkF"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="pkB"></i></span></span>';
+    const vs=el.querySelector(".gcMatch .vs");if(vs)vs.outerHTML='<span class="g3Puck" role="img" aria-label="gegen"><span class="pk3" aria-hidden="true"><i class="pkF"></i><i class="pkB"></i><i class="pkE"></i><i class="pkE"></i><i class="pkE"></i><i class="pkE"></i><i class="pkE"></i><i class="pkE"></i><i class="pkE"></i><i class="pkE"></i><i class="pkE"></i><i class="pkE"></i><i class="pkE"></i><i class="pkE"></i><i class="pkE"></i><i class="pkE"></i><i class="pkE"></i><i class="pkE"></i><i class="pkE"></i><i class="pkE"></i></span></span>';
     const m=el.querySelector(".g3Main");if(m&&dt(g)>Date.now())m.insertAdjacentHTML("beforeend",`<div class="g3Cd" data-cdt="${dt(g).getTime()}" aria-label="Countdown bis zum Bully">${dzCdHtml(dt(g).getTime())}</div>`);}
   else if(id==="g3HomeNext2"&&!past)el.classList.add("g3Compact");
   if(id.startsWith("g3HomeNext")&&!past&&!g.cancelled){const wx=wxLine(g);const m=el.querySelector(".g3Main");if(wx&&m)m.insertAdjacentHTML("beforeend",wx)} /* 1.43.0: Wetter am Spielort */

@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.64.2.270 | – (nur Test) | 26.11.2026 | Neue Designs: Puck mit runder Kante |
 | 1.64.1.269 | – (nur Test) | 26.11.2026 | Design „Verein“: Highlight am Spieltag korrigiert |
 | 1.64.0.268 | – (nur Test) | 26.11.2026 | Design „Verein“: Nächstes Spiel als Highlight mit Eisfläche |
 | 1.63.5.267 | – (nur Test) | 26.11.2026 | Neue Designs: Puck dreht flüssiger |
@@ -132,6 +133,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.64.2
+
+- **Neue Designs (Vorschau) – Puck mit runder Kante.** In der Schrägansicht wirkte der Puck „abgeschnitten“, weil die Kante nur aus einer Fläche in der Mitte bestand. Jetzt bilden 18 schmale Flächen rundum eine echte zylindrische Kante (`.pkE`, abwechselnd hell/dunkel für die Riffelung), dazu Vorder- und Rückseite mit Logo.
 
 ## Version 1.64.1
 

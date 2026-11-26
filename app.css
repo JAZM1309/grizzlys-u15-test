@@ -3154,3 +3154,30 @@ html.d28.d29.d29.d29 #homeView .card.g3Hero .gzMid,html.d28.d29.d29.d29 #homeVie
 html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Puck{width:40px!important;height:40px!important}
 html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Puck .pk3{left:3px!important;top:3px!important}
 html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Band{border:0!important;box-shadow:none!important}
+
+/* 1.64.2: Puck mit echter runder Kante (18 Flächen rundum) – kein „abgeschnittener“ Rand mehr in Schrägansicht */
+html.d27 .pk3>i{display:none!important}
+html.d27 .pk3>.pkF,html.d27 .pk3>.pkB{display:block!important;inset:0;width:auto;left:0;right:0}
+html.d27 .pk3>.pkE{display:block!important;position:absolute;left:calc(50% - 3.27px);top:calc(50% - 6px);width:6.53px;height:12px;inset:auto;border-radius:0!important;transform-origin:50% 50%}
+html.d27 .pk3>.pkE{left:calc(50% - 3.27px)!important;top:calc(50% - 6px)!important;right:auto!important;bottom:auto!important}
+html.d27 .pk3>.pkE:nth-child(3){transform:rotateZ(0.0deg) translateY(-16.6px) rotateX(90deg)!important;background:#1b1e22!important}
+html.d27 .pk3>.pkE:nth-child(4){transform:rotateZ(20.0deg) translateY(-16.6px) rotateX(90deg)!important;background:#2c3036!important}
+html.d27 .pk3>.pkE:nth-child(5){transform:rotateZ(40.0deg) translateY(-16.6px) rotateX(90deg)!important;background:#1b1e22!important}
+html.d27 .pk3>.pkE:nth-child(6){transform:rotateZ(60.0deg) translateY(-16.6px) rotateX(90deg)!important;background:#2c3036!important}
+html.d27 .pk3>.pkE:nth-child(7){transform:rotateZ(80.0deg) translateY(-16.6px) rotateX(90deg)!important;background:#1b1e22!important}
+html.d27 .pk3>.pkE:nth-child(8){transform:rotateZ(100.0deg) translateY(-16.6px) rotateX(90deg)!important;background:#2c3036!important}
+html.d27 .pk3>.pkE:nth-child(9){transform:rotateZ(120.0deg) translateY(-16.6px) rotateX(90deg)!important;background:#1b1e22!important}
+html.d27 .pk3>.pkE:nth-child(10){transform:rotateZ(140.0deg) translateY(-16.6px) rotateX(90deg)!important;background:#2c3036!important}
+html.d27 .pk3>.pkE:nth-child(11){transform:rotateZ(160.0deg) translateY(-16.6px) rotateX(90deg)!important;background:#1b1e22!important}
+html.d27 .pk3>.pkE:nth-child(12){transform:rotateZ(180.0deg) translateY(-16.6px) rotateX(90deg)!important;background:#2c3036!important}
+html.d27 .pk3>.pkE:nth-child(13){transform:rotateZ(200.0deg) translateY(-16.6px) rotateX(90deg)!important;background:#1b1e22!important}
+html.d27 .pk3>.pkE:nth-child(14){transform:rotateZ(220.0deg) translateY(-16.6px) rotateX(90deg)!important;background:#2c3036!important}
+html.d27 .pk3>.pkE:nth-child(15){transform:rotateZ(240.0deg) translateY(-16.6px) rotateX(90deg)!important;background:#1b1e22!important}
+html.d27 .pk3>.pkE:nth-child(16){transform:rotateZ(260.0deg) translateY(-16.6px) rotateX(90deg)!important;background:#2c3036!important}
+html.d27 .pk3>.pkE:nth-child(17){transform:rotateZ(280.0deg) translateY(-16.6px) rotateX(90deg)!important;background:#1b1e22!important}
+html.d27 .pk3>.pkE:nth-child(18){transform:rotateZ(300.0deg) translateY(-16.6px) rotateX(90deg)!important;background:#2c3036!important}
+html.d27 .pk3>.pkE:nth-child(19){transform:rotateZ(320.0deg) translateY(-16.6px) rotateX(90deg)!important;background:#1b1e22!important}
+html.d27 .pk3>.pkE:nth-child(20){transform:rotateZ(340.0deg) translateY(-16.6px) rotateX(90deg)!important;background:#2c3036!important}
+html.d27 .pk3>i.pkB,html.d27 .pk3>i.pkF{left:0!important;right:0!important;top:0!important;bottom:0!important;width:auto!important;height:auto!important;border-radius:50%!important;background:url("logo.png") center/64% no-repeat,radial-gradient(circle at 40% 35%,#3a3f46,#16181c 70%)!important}
+html.d27 .pk3>i.pkF{transform:translateZ(6px)!important}
+html.d27 .pk3>i.pkB{transform:rotateY(180deg) translateZ(6px)!important}

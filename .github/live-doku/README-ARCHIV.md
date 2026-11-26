@@ -8,6 +8,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.64.2.270 | – (nur Test) | 26.11.2026 | Neue Designs: Puck mit runder Kante |
 | 1.64.1.269 | – (nur Test) | 26.11.2026 | Design „Verein“: Highlight am Spieltag korrigiert |
 | 1.64.0.268 | – (nur Test) | 26.11.2026 | Design „Verein“: Nächstes Spiel als Highlight mit Eisfläche |
 | 1.63.5.267 | – (nur Test) | 26.11.2026 | Neue Designs: Puck dreht flüssiger |
