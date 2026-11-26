@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.64.1.269 | – (nur Test) | 26.11.2026 | Design „Verein“: Highlight am Spieltag korrigiert |
 | 1.64.0.268 | – (nur Test) | 26.11.2026 | Design „Verein“: Nächstes Spiel als Highlight mit Eisfläche |
 | 1.63.5.267 | – (nur Test) | 26.11.2026 | Neue Designs: Puck dreht flüssiger |
 | 1.63.4.266 | – (nur Test) | 26.11.2026 | Neue Designs: Puck steht auf der Kante und dreht sich |
@@ -131,6 +132,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.64.1
+
+- **Design „Verein“ (Vorschau) – Highlight am Spieltag.** Wetter und Spielort („Heimspiel/Auswärtsspiel“ + Halle, ggf. Route) stehen jetzt unter Datum und Chips statt über der Eisfläche; Wetter dunkel hinterlegt, Spielort hell lesbar. Puck bekommt mehr Platz und wird beim Drehen nicht mehr abgeschnitten.
 
 ## Version 1.64.0
 

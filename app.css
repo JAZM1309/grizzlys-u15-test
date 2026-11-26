@@ -3137,3 +3137,20 @@ html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Cd div{background:#3a3a3a!importa
 html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Cd small{color:#bbb!important}
 html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Det{color:var(--text)}
 html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Head .homeaway{background:transparent!important;color:#bbb!important}
+
+/* 1.64.1: Highlight „Nächstes Spiel“ (Verein) am Spieltag – Reihenfolge, Wetter dunkel, Spielort lesbar, Puck nicht abgeschnitten */
+html.d28.d29.d29.d29 #homeView .card.gz3 .wxLine{order:4;margin:8px 14px 0!important}
+html.d28.d29.d29.d29 #homeView .card.gz3 .g3Today{order:5;margin:8px 14px 0!important;padding:8px 0 0!important}
+html.d28.d29.d29.d29 #homeView .card.gz3 .g3Cd{order:6}
+html.d28.d29.d29.d29 #homeView .card.gz3 .g3Det{order:7}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .wxLine{background:#3a3a3a!important;color:#fff!important;box-shadow:none!important;border-radius:10px!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .wxLine small{color:#bbb!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .wxLine svg{stroke:#8fc8ff!important;color:#8fc8ff!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Today{border-top:1px solid #3e3e3e!important;display:flex;align-items:center;justify-content:space-between;gap:10px}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .g3TodayWhere{color:#fff!important;font-weight:800;display:flex;flex-direction:column}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .g3TodayWhere small{color:#bbb!important;font-weight:600}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .g3TodayRoute{color:#fff!important;border-color:#fff!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .gzMid,html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Puck,html.d28.d29.d29.d29 #homeView .card.g3Hero .gcMatch .gcSide{overflow:visible!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Puck{width:40px!important;height:40px!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Puck .pk3{left:3px!important;top:3px!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Band{border:0!important;box-shadow:none!important}
