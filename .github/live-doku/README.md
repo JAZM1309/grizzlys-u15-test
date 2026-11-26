@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.70.2.281 | – (nur Test) | 26.11.2026 | Live-Gang: Lesbarkeitsprüfung startet wieder |
 | 1.70.1.280 | – (nur Test) | 26.11.2026 | Vereinsdesign: Admin-Fenster nicht mehr unter der Kopfleiste |
 | 1.70.0.279 | – (nur Test) | 26.11.2026 | Helferdienste (Vorschau) |
 | 1.69.0.278 | – (nur Test) | 26.11.2026 | Vereinsdesign: Restpunkte, Aufräumen; Feedback-Name freiwillig |
@@ -143,6 +144,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.70.2
+
+- **Live-Gang wieder möglich.** Die Lesbarkeitsprüfung bildet die Firebase-Module nach; ihr Anmelde-Modul kennt `signInAnonymously` nicht, deshalb startete die App dort nicht („Kontrast 0.00 – Skriptfehler“) und der Live-Gang wurde gesperrt. `signInAnonymously` wird jetzt erst beim ersten Eintragen in eine Helferliste nachgeladen (`import()`), der statische Import entfällt. In der echten App ändert sich nichts.
 
 ## Version 1.70.1
 
