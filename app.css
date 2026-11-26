@@ -2791,7 +2791,7 @@ html.d27 .wpSeg button.on,html.d27 .wpSeg button[aria-pressed="true"],html.d27 .
 html.d27 .wpChips button.on,html.d27 .wpChips button.active{background:var(--d27act)!important;color:var(--d27actTx)!important;border-color:var(--d27act)!important}
 
 /* ===== 1.59.1: Trikot-Design – keine runden Ecken mehr (Chips, Knöpfe, Rahmen überall); Spielplan-Kopf auf schmalen Handys ===== */
-html.d27:not(#_d27) body *:not(:is(img,svg,svg *,canvas,video,input[type=checkbox],input[type=radio],.admSw,.admSw *,.pfSw,.pfSw *,.fd,.gzForm i,.g3Puck,.liveDot,.pfLiveDot,.pushDot,.swDots,.swDots i,.omPin,.omPin *,.oppMapLegend i,.stLeg i,.logoFb,.opponentLogo,.omLogo,.calChip i,.pfChip i,.wishThumb,.leaflet-container *,.sbFormDots i,.sbDot,.wpPhone,.wpPhone *,[class*="Dot"],[class*="dot"],[class^="xm"],[class*=" xm"],[class^="hw"],[class*=" hw"],.mnOk,.gzAct,.aIcon,.xmBig,.ftPopX,.updateBannerClose)),html.d27:not(#_d27) body *:not(:is(img,svg,svg *,canvas,video,input[type=checkbox],input[type=radio],.admSw,.admSw *,.pfSw,.pfSw *,.fd,.gzForm i,.g3Puck,.liveDot,.pfLiveDot,.pushDot,.swDots,.swDots i,.omPin,.omPin *,.oppMapLegend i,.stLeg i,.logoFb,.opponentLogo,.omLogo,.calChip i,.pfChip i,.wishThumb,.leaflet-container *,.sbFormDots i,.sbDot,.wpPhone,.wpPhone *,[class*="Dot"],[class*="dot"],[class^="xm"],[class*=" xm"],[class^="hw"],[class*=" hw"],.mnOk,.gzAct,.aIcon,.xmBig,.ftPopX,.updateBannerClose,.swHint))::before,html.d27:not(#_d27) body *:not(:is(img,svg,svg *,canvas,video,input[type=checkbox],input[type=radio],.admSw,.admSw *,.pfSw,.pfSw *,.fd,.gzForm i,.g3Puck,.liveDot,.pfLiveDot,.pushDot,.swDots,.swDots i,.omPin,.omPin *,.oppMapLegend i,.stLeg i,.logoFb,.opponentLogo,.omLogo,.calChip i,.pfChip i,.wishThumb,.leaflet-container *,.sbFormDots i,.sbDot,.wpPhone,.wpPhone *,[class*="Dot"],[class*="dot"],[class^="xm"],[class*=" xm"],[class^="hw"],[class*=" hw"],.mnOk,.gzAct,.aIcon,.xmBig,.ftPopX,.updateBannerClose,.swHint))::after{border-radius:0!important}
+html.d27:not(.d29):not(#_d27) body *:not(:is(img,svg,svg *,canvas,video,input[type=checkbox],input[type=radio],.admSw,.admSw *,.pfSw,.pfSw *,.fd,.gzForm i,.g3Puck,.liveDot,.pfLiveDot,.pushDot,.swDots,.swDots i,.omPin,.omPin *,.oppMapLegend i,.stLeg i,.logoFb,.opponentLogo,.omLogo,.calChip i,.pfChip i,.wishThumb,.leaflet-container *,.sbFormDots i,.sbDot,.wpPhone,.wpPhone *,[class*="Dot"],[class*="dot"],[class^="xm"],[class*=" xm"],[class^="hw"],[class*=" hw"],.mnOk,.gzAct,.aIcon,.xmBig,.ftPopX,.updateBannerClose)),html.d27:not(.d29):not(#_d27) body *:not(:is(img,svg,svg *,canvas,video,input[type=checkbox],input[type=radio],.admSw,.admSw *,.pfSw,.pfSw *,.fd,.gzForm i,.g3Puck,.liveDot,.pfLiveDot,.pushDot,.swDots,.swDots i,.omPin,.omPin *,.oppMapLegend i,.stLeg i,.logoFb,.opponentLogo,.omLogo,.calChip i,.pfChip i,.wishThumb,.leaflet-container *,.sbFormDots i,.sbDot,.wpPhone,.wpPhone *,[class*="Dot"],[class*="dot"],[class^="xm"],[class*=" xm"],[class^="hw"],[class*=" hw"],.mnOk,.gzAct,.aIcon,.xmBig,.ftPopX,.updateBannerClose,.swHint))::before,html.d27:not(.d29):not(#_d27) body *:not(:is(img,svg,svg *,canvas,video,input[type=checkbox],input[type=radio],.admSw,.admSw *,.pfSw,.pfSw *,.fd,.gzForm i,.g3Puck,.liveDot,.pfLiveDot,.pushDot,.swDots,.swDots i,.omPin,.omPin *,.oppMapLegend i,.stLeg i,.logoFb,.opponentLogo,.omLogo,.calChip i,.pfChip i,.wishThumb,.leaflet-container *,.sbFormDots i,.sbDot,.wpPhone,.wpPhone *,[class*="Dot"],[class*="dot"],[class^="xm"],[class*=" xm"],[class^="hw"],[class*=" hw"],.mnOk,.gzAct,.aIcon,.xmBig,.ftPopX,.updateBannerClose,.swHint))::after{border-radius:0!important}
 html.d27 #scheduleView .shTitleBox{flex-direction:column;align-items:flex-start;gap:0;line-height:1.1}
 html.d27 #scheduleView .shTitleBox .small{font-size:12px}
 html.d27 .shTables a{padding:6px 9px!important}
@@ -2810,7 +2810,7 @@ html.d27 .heroTop{padding-right:118px;box-sizing:border-box}
 @media(max-width:380px){html.d27 .heroTop .kicker{font-size:2.35vw!important}}
 
 /* ===== 1.60.0: Design-Entwurf „Klar“ (html.d27.d28) – dunkelblauer Kopf mit gerader Kante, weißer Grund, Kacheln über volle Breite in Pastell je Mannschaft, Datum oben ===== */
-.d27Seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:10px;border:1px solid var(--border)}
+.d27Seg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:10px;border:1px solid var(--border)}
 .d27Seg button{border:0;background:transparent;font:inherit;font-size:13px;font-weight:800;padding:9px 4px;color:var(--muted);cursor:pointer}
 .d27Seg button+button{border-left:1px solid var(--border)}
 .d27Seg button.on{background:#111418;color:#fff}
@@ -2867,3 +2867,115 @@ html.d28 .infoCard,html.d28 .stGrp{border:0!important;box-shadow:none!important}
 html.d28.d28.d28.d28 .card.gz3,html.d28.d28.d28.d28 .card.gz3 .g3Top{background-image:none!important}
 html.d28.d28.d28.d28 .card.gz3 .g3Top{background-color:transparent!important}
 html.d28.d28.d28.d28 .card .g3Date,html.d28.d28.d28.d28 .card .g3Main{background:transparent!important}
+
+/* ===== 1.61.0: Design-Entwurf „Verein“ (html.d27.d28.d29) – angelehnt an grizzlys-bergkamen.de: Anthrazit-Kopf, Logo ragt über, schmale Großbuchstaben, Logo-Blau als Akzent, runde Karten mit grauer Logofläche, Pill-Knöpfe; Spielplan als Liste (Teams untereinander mit Logos) ===== */
+html.d29{--d27bg:#fff;--d27card:#fff;--d27line:#e6e6e6;--border:#e6e6e6;--d27tile:#f3f3f3;--ice:#f3f3f3;--d27act:#0a7fe0;--d27actTx:#fff;--navy:#2b2b2b;--text:#2b2b2b;--muted:#6f6f6f;--pA:#fff;--pB:#fff;--pU:#fff;--pN:#fff;--onP:#f3f3f3;--vAcc:#0a7fe0;--vGray:#f0f0f0;--vHead:#333;--vCond:'Barlow Condensed','Roboto Condensed','sans-serif-condensed','Arial Narrow','Avenir Next Condensed',sans-serif}
+html.d29.dark{--d27bg:#141414;--d27card:#1d1d1d;--d27line:#2c2c2c;--border:#2c2c2c;--d27tile:#252525;--ice:#252525;--d27act:#2b93f0;--navy:#eee;--text:#eeeeee;--muted:#a0a0a0;--pA:#1d1d1d;--pB:#1d1d1d;--pU:#1d1d1d;--pN:#1d1d1d;--onP:#252525;--vAcc:#2b93f0;--vGray:#262626;--vHead:#222}
+.d27Seg button{padding:9px 2px}
+/* Kopf: Anthrazit, Logo ragt nach unten über */
+html.d28.d29.d29.d29 .hero{background:var(--vHead)!important;overflow:visible!important;padding:8px 14px 10px!important;margin-bottom:22px!important;z-index:30;box-shadow:0 10px 24px rgba(0,0,0,.18)!important}
+html.d28.d29.d29.d29 .heroTop img{width:62px!important;height:62px!important;margin-bottom:-30px;position:relative;z-index:2;filter:drop-shadow(0 4px 8px rgba(0,0,0,.35))!important}
+html.d28.d29.d29.d29 .hero .kicker{color:#9fcfff!important;font-family:var(--vCond);letter-spacing:.14em!important}
+html.d28.d29.d29.d29 .heroTop h1{font-family:var(--vCond);font-weight:800!important;letter-spacing:.04em}
+html.d28.d29.d29.d29 .heroChips{padding-left:76px}
+html.d28.d29.d29.d29 .heroChips .season,html.d28.d29.d29.d29 .heroChip{background:transparent!important;border:1px solid #666!important;border-radius:99px!important;color:#ddd!important}
+html.d28.d29.d29.d29 .infoTop,html.d28.d29.d29.d29 .infoTop *{border-radius:10px!important}
+html.d28.d29.d29.d29 .infoTop{background:transparent!important;border:1.5px solid #666!important}
+html.d28.d29.d29.d29 .miniBar{background:var(--vHead)!important}
+/* Überschriften: schmal, Großbuchstaben, Wasserzeichen */
+html.d28.d29.d29.d29 .scheduleTitle,html.d28.d29.d29.d29 .sectionTitle,html.d28.d29.d29.d29 .dlTitle{font-family:var(--vCond)!important;font-weight:800!important;text-transform:uppercase;letter-spacing:.01em;font-size:30px!important;line-height:1!important;color:var(--text)!important;position:relative}
+html.d28.d29.d29.d29 .scheduleHead{position:relative;padding-top:14px}
+html.d28.d29.d29.d29 #scheduleView .scheduleHead::before,html.d28.d29.d29.d29 #opponentsView .scheduleHead::before,html.d28.d29.d29.d29 #statsView .scheduleHead::before{position:absolute;left:-4px;top:-6px;font-family:var(--vCond);font-weight:800;font-size:64px;line-height:1;color:transparent;-webkit-text-stroke:1px color-mix(in srgb,var(--vAcc) 22%,transparent);pointer-events:none;letter-spacing:.02em;z-index:0}
+html.d28.d29.d29.d29 #scheduleView .scheduleHead::before{content:"PLAN"}
+html.d28.d29.d29.d29 #opponentsView .scheduleHead::before{content:"TEAMS"}
+html.d28.d29.d29.d29 #statsView .scheduleHead::before{content:"STATS"}
+html.d28.d29.d29.d29 .scheduleHead>*{position:relative;z-index:1}
+html.d28.d29.d29.d29 .month,html.d28.d29.d29.d29 .g3Band,html.d28.d29.d29.d29 .lrHead,html.d28.d29.d29.d29 .sbHead,html.d28.d29.d29.d29 .admGrpT,html.d28.d29.d29.d29 .stGrpT,html.d28.d29.d29.d29 .stGrp>h3{font-family:var(--vCond)!important;font-weight:700!important;letter-spacing:.2em!important;color:var(--vAcc)!important;text-transform:uppercase}
+html.d28.d29.d29.d29 .month{display:flex;align-items:center;gap:10px;font-size:14px!important}
+html.d28.d29.d29.d29 .month::before{content:"";width:22px;height:3px;background:var(--vAcc);flex:none}
+html.d28.d29.d29.d29 .month::after{display:none!important}
+/* Karten: rund, weiß, mit Rand, mit Abstand zum Rand */
+html.d28.d29.d29.d29 main .card.gz3,html.d28.d29.d29.d29 main .lrCard,html.d28.d29.d29.d29 main .sbCard,html.d28.d29.d29.d29 main .fbHome,html.d28.d29.d29.d29 main .opponentCard,html.d28.d29.d29.d29 main .infoCard,html.d28.d29.d29.d29 main .stGrp{margin-left:0!important;margin-right:0!important;width:auto!important}
+html.d28.d29.d29.d29 .card.gz3,html.d28.d29.d29.d29 .card.g3Hero,html.d28.d29.d29.d29 .lrCard,html.d28.d29.d29.d29 .sbCard,html.d28.d29.d29.d29 .fbHome,html.d28.d29.d29.d29 .opponentCard,html.d28.d29.d29.d29 .infoCard,html.d28.d29.d29.d29 .stGrp,html.d28.d29.d29.d29 .teamCard,html.d28.d29.d29.d29 .inTeam,html.d28.d29.d29.d29 .downloadCard,html.d28.d29.d29.d29 .mapRow{background:var(--d27card)!important;border:1px solid var(--d27line)!important;border-radius:14px!important;overflow:hidden;box-shadow:none!important}
+html.d28.d29.d29.d29 main .card.gz3+.card.gz3,html.d28.d29.d29.d29 main .opponentCard+.opponentCard{margin-top:10px!important}
+html.d28.d29.d29.d29 main .card.gz3,html.d28.d29.d29.d29 main .opponentCard{margin-bottom:10px!important}
+html.d28.d29.d29.d29 .downloadCard,html.d28.d29.d29.d29 .mapRow,html.d28.d29.d29.d29 .g3Tile,html.d28.d29.d29.d29 .mdReport{background:var(--d27tile)!important;border:0!important;border-radius:12px!important}
+/* Startseite (Variante A): graue Logofläche oben, darunter Datum in Blau */
+html.d28.d29.d29.d29 #homeView .card.gz3 .g3Top{display:flex!important;flex-direction:column!important}
+html.d28.d29.d29.d29 #homeView .card.gz3 .g3Main{display:contents!important}
+html.d28.d29.d29.d29 #homeView .card.gz3 .gcMatch{order:1;background:var(--vGray);padding:16px 10px 14px!important;margin:0!important}
+html.d28.d29.d29.d29 #homeView .card.gz3 .g3Date{order:2;padding:12px 14px 0!important}
+html.d28.d29.d29.d29 #homeView .card.gz3 .g3Head{order:3;padding:6px 14px 0!important}
+html.d28.d29.d29.d29 #homeView .card.gz3 .g3Cd{order:4;padding:8px 14px 12px!important;margin:0!important}
+html.d28.d29.d29.d29 #homeView .card.gz3 .g3Det{order:5}
+html.d28.d29.d29.d29 .card .g3Date>*{font-family:var(--vCond)!important;font-weight:700!important;letter-spacing:.12em!important;text-transform:uppercase!important;color:var(--vAcc)!important;font-size:16px!important}
+html.d28.d29.d29.d29 .card .g3Date>i{color:var(--vAcc)!important}
+html.d28.d29.d29.d29 .card .g3Band{background:transparent!important;font-size:12px!important;padding:10px 14px 0!important;display:flex;align-items:center;gap:8px}
+html.d28.d29.d29.d29 .card .g3Band::before{content:"";width:18px;height:3px;background:var(--vAcc);flex:none}
+html.d28.d29.d29.d29 .card .g3Band span{margin-left:auto;letter-spacing:.04em;color:var(--muted)!important;text-transform:none}
+html.d28.d29.d29.d29 .gcSide span{font-family:var(--vCond)!important;font-weight:700!important;font-size:17px!important;color:var(--text)!important}
+html.d28.d29.d29.d29 .g3Cd div{background:var(--vGray)!important;border-radius:10px!important}
+html.d28.d29.d29.d29 .g3Cd b{font-family:var(--vCond)}
+/* Chips und Knöpfe */
+html.d28.d29.d29.d29 .teamBadge,html.d28.d29.d29.d29 .homeaway,html.d28.d29.d29.d29 .opponentTeamBadge,html.d28.d29.d29.d29 .lrPill,html.d28.d29.d29.d29 .lastPill,html.d28.d29.d29.d29 .gzChip,html.d28.d29.d29.d29 .shTables a b{border-radius:99px!important}
+html.d28.d29.d29.d29 .teamBadge{font-family:var(--vCond);letter-spacing:.08em}
+html.d28.d29.d29.d29 .teamA .teamBadge{background:var(--vAcc)!important}
+html.d28.d29.d29.d29 .g3Head .homeaway{background:transparent!important;color:var(--muted)!important;padding-left:0!important}
+html.d28.d29.d29.d29 .todayBtn,html.d28.d29.d29.d29 .g3Route,html.d28.d29.d29.d29 .g3TodayRoute,html.d28.d29.d29.d29 .opponentRoute,html.d28.d29.d29.d29 .inShare,html.d28.d29.d29.d29 .g3Btn,html.d28.d29.d29.d29 .tableLinks a,html.d28.d29.d29.d29 .filterToggle,html.d28.d29.d29.d29 .monthJump button,html.d28.d29.d29.d29 .ftStep button{border-radius:99px!important;clip-path:none!important}
+html.d28.d29.d29.d29 .todayBtn,html.d28.d29.d29.d29 .g3Route,html.d28.d29.d29.d29 .g3TodayRoute,html.d28.d29.d29.d29 .opponentRoute,html.d28.d29.d29.d29 .tableLinks a{background:transparent!important;color:var(--text)!important;border:2px solid var(--text)!important;font-family:var(--vCond);font-weight:700!important;letter-spacing:.06em;text-transform:uppercase}
+html.d28.d29.d29.d29 .todayBtn svg,html.d28.d29.d29.d29 .g3Route svg,html.d28.d29.d29.d29 .opponentRoute svg{stroke:currentColor}
+html.d28.d29.d29.d29 .ftSend,html.d28.d29.d29.d29 .inShare{border-radius:99px!important;clip-path:none!important;background:var(--vAcc)!important;color:#fff!important;font-family:var(--vCond);letter-spacing:.06em;text-transform:uppercase}
+html.d28.d29.d29.d29 .ftIn{border-radius:10px!important}
+html.d28.d29.d29.d29 .monthJump button.cur{background:var(--vAcc)!important;border-color:var(--vAcc)!important}
+html.d28.d29.d29.d29 .scheduleModes,html.d28.d29.d29.d29 .sbTabs,html.d28.d29.d29.d29 .dlTabs,html.d28.d29.d29.d29 .statsTeams,html.d28.d29.d29.d29 .wpSeg{border-radius:99px!important;overflow:hidden}
+html.d28.d29.d29.d29 .statsTeams{border:0!important;background:transparent!important}
+html.d28.d29.d29.d29 .statsTeams button{border-radius:0!important}
+html.d28.d29.d29.d29 .statsTeams button:first-child{border-radius:99px 0 0 99px!important}html.d28.d29.d29.d29 .statsTeams button:last-child{border-radius:0 99px 99px 0!important}
+html.d28.d29.d29.d29 .scheduleModes>button,html.d28.d29.d29.d29 .modeBtn,html.d28.d29.d29.d29 .sbTabs button,html.d28.d29.d29.d29 .dlTabs button{border-radius:0!important}
+html.d28.d29.d29.d29 .searchWrap input{border-radius:99px!important}
+html.d28.d29.d29.d29 .matchModalBox{border-radius:18px 18px 0 0!important}
+html.d28.d29.d29.d29 .matchModalHead{background:var(--vHead)!important}
+html.d28.d29.d29.d29 .matchModalClose{border-radius:10px!important}
+html.d28.d29.d29.d29 .stSheet{border-radius:18px 18px 0 0!important}
+html.d28.d29.d29.d29 .pastToggle{border-radius:12px!important}
+html.d28.d29.d29.d29 .scrBar b{border-radius:99px!important;background:var(--vHead)!important}
+html.d28.d29.d29.d29 .tab.active,html.d28.d29.d29.d29 .tab[aria-current="page"]{color:var(--vAcc)!important}
+html.d28.d29.d29.d29 .stIc,html.d28.d29.d29.d29 .dlIcon{border-radius:10px!important}
+html.d28.d29.d29.d29 .stAlert{border-radius:12px!important;overflow:hidden}
+html.d28.d29.d29.d29 .opponentCard{padding-left:12px!important}
+/* Spielplan: Liste, Teams untereinander mit kleinen Logos */
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .g3Top{display:grid!important;grid-template-columns:minmax(0,1fr) auto;column-gap:10px;padding:10px 14px 10px!important;align-items:center}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .g3Main{display:contents!important}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .g3Date{grid-column:1;grid-row:1;padding:0!important}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .g3Date>*{font-size:14px!important}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .g3Head{grid-column:2;grid-row:1;padding:0!important;margin:0!important}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .g3Head .homeaway,html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .g3Tog{display:none!important}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .gcMatch{grid-column:1/3;grid-row:2;display:grid!important;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;row-gap:4px;column-gap:10px;margin:6px 0 0!important;padding:0!important;text-align:left!important;align-items:center}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .gcSide{display:flex!important;flex-direction:row!important;align-items:center;gap:8px;text-align:left!important;min-width:0;grid-column:1}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .gcSide:first-child{grid-row:1}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .gcSide:last-child{grid-row:2}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .gcSide .logos{display:flex;gap:2px;margin:0!important;flex:none;min-width:22px;height:22px;justify-content:center}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .gcSide .logos img,html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .gcSide .logos .logoFb{width:22px!important;height:22px!important;margin:0!important;filter:none!important}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .gcSide span{font-family:inherit!important;font-size:15px!important;font-weight:700!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0!important}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .gzMid{grid-column:2;grid-row:1/3;display:flex;flex-direction:column;align-items:flex-end;gap:2px;margin:0!important;padding:0!important}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .gzMid .g3Puck,html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .gzMid .vs{display:none!important}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .gzScore{font-family:var(--vCond);font-size:22px!important;font-weight:800}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .g3Cd{display:none!important}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open){margin-bottom:6px!important}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open)+.card.gz3{margin-top:6px!important}
+html.d28.d29.d29.d29 .heroTop{padding-right:118px!important}
+html.d28.d29.d29.d29 .heroTop h1{font-size:clamp(18px,5.6vw,23px)!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+html.d28.d29.d29.d29 .heroTop .kicker{font-size:10px!important;letter-spacing:.08em!important}
+html.d28.d29.d29.d29 .heroTop img{margin-bottom:0!important;transform:translateY(16px)}
+html.d28.d29.d29.d29 .scheduleTitle{font-size:26px!important}
+html.d28.d29.d29.d29 .nextBadge{background:var(--vAcc)!important;color:#fff!important;border-radius:99px!important;font-family:var(--vCond);letter-spacing:.06em}
+html.d28.d29.d29.d29 .settingsHead,html.d28.d29.d29.d29 .inHero{background:var(--vHead)!important;border-radius:14px!important;overflow:hidden}
+html.d28.d29.d29.d29 .inRules{width:100%!important;box-sizing:border-box}
+html.d28.d29.d29.d29 .card.gz3:not(.open) .g3Det{padding:0!important}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .gcSide .logos>*,html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .gcSide .logos img{width:22px!important;height:22px!important;max-width:22px!important;margin:0!important;object-fit:contain}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .gcSide .logos{width:auto!important;max-height:22px;overflow:visible}
+html.d28.d29.d29.d29 #gamesList#gamesList .card.gz3:not(.open) .gcSide .logos img,html.d28.d29.d29.d29 #gamesList#gamesList .card.gz3:not(.open) .gcSide .logos>*{width:22px!important;height:22px!important;min-width:0!important;max-width:22px!important;transform:none!important}
+html.d28.d29.d29.d29 .heroTop h1{font-size:clamp(16px,4.9vw,21px)!important}
+html.d28.d29.d29.d29 #gamesList#gamesList .card.gz3:not(.open) .gcSide>img,html.d28.d29.d29.d29 #gamesList#gamesList .card.gz3:not(.open) .gcSide>.logoFb{width:22px!important;height:22px!important;min-width:0!important;max-width:22px!important;margin:0 0 0 0!important;flex:none;filter:none!important;object-fit:contain}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .gcSide{display:grid!important;grid-template-columns:46px minmax(0,1fr);column-gap:6px}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .gcSide .logos{justify-content:flex-start!important}

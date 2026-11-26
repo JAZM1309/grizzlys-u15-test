@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.61.0.258 | – (nur Test) | 26.11.2026 | Design-Entwurf „Verein“ |
 | 1.60.0.257 | – (nur Test) | 25.11.2026 | Design-Entwurf „Klar“ zum Umschalten |
 | 1.59.1.256 | – (nur Test) | 25.11.2026 | Trikot-Design: keine runden Chips mehr, Spielplan-Kopf |
 | 1.59.0.255 | – (nur Test) | 25.11.2026 | Trikot-Design Stufe 5: Downloads, Einstellungen, Info |
@@ -120,6 +121,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.61.0
+
+- **Design-Entwurf „Verein“ (Vorschau).** Vierte Auswahl in Admin › Technik › Neue Saison (`grizzlysD27`=`v`, setzt `html.d27.d28.d29`). Angelehnt an grizzlys-bergkamen.de, ohne zu kopieren: Anthrazit-Kopf, Logo ragt unten über, schmale Großbuchstaben (Systemschrift Roboto Condensed bzw. Arial Narrow), Abschnittstitel mit blauem Strich und gesperrter Schrift, Seitentitel mit umrandetem Wasserzeichen (PLAN, TEAMS, STATS), Logo-Blau `#0A7FE0` als Akzent. Karten rund (14 px) mit dünnem Rand; auf der Startseite oben graue Logofläche, darunter Datum in Blau. Knöpfe als Pill mit Umriss, „Tipp abgeben“ gefüllt blau. Spielplan als Liste: Datum und Mannschafts-Chip oben, darunter Heim- und Gastteam untereinander mit kleinen Logos, Ergebnis rechts; angetippt klappt die Karte wie gewohnt auf. Die Sammelregel „keine runden Ecken“ gilt nicht für „Verein“.
 
 ## Version 1.60.0
 
