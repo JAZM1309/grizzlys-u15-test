@@ -3241,3 +3241,22 @@ html.d28.d29.d29.d29 .d27Seg{border-radius:99px!important;overflow:hidden}
 html.d28.d29.d29.d29 .d27Seg button{border-radius:0!important}
 html.d28.d29.d29.d29 .d27Seg button.on{background:var(--vAcc)!important;color:#fff!important}
 html.d28.d29.d29.d29 .adminModal .d27Seg button.d27x,html.d28.d29.d29.d29 .adminModal .d27Seg button:not(#_x):not(#_y){border-radius:0!important}
+
+/* ===== 1.66.0: Festlegung auf „Verein“ (Trikot/Klar entfernt) · Einstellungen im Vereinsdesign: weniger Farbe, Überschriften wie überall ===== */
+.d27Seg{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+html.d28.d29.d29.d29 .stGT{font-family:var(--vCond)!important;font-weight:700!important;font-size:14px!important;letter-spacing:.2em!important;color:var(--vAcc)!important;display:flex;align-items:center;gap:10px;margin:20px 2px 8px!important}
+html.d28.d29.d29.d29 .stGT::before{content:"";width:22px;height:3px;background:var(--vAcc);flex:none}
+html.d28.d29.d29.d29 .stGrp{border-radius:14px!important}
+html.d28.d29.d29.d29 .stRow .stIc{background:transparent!important;border:1.5px solid var(--d27line);border-radius:50%!important;box-shadow:none!important}
+html.d28.d29.d29.d29 .stRow .stIc svg{stroke:var(--text)!important;color:var(--text)!important;fill:none}
+html.d28.d29.d29.d29 .stT{font-weight:700!important}
+html.d28.d29.d29.d29 .stV.ok{color:var(--vAcc)!important}
+html.d28.d29.d29.d29 .stV.off{color:var(--text)!important}
+html.d28.d29.d29.d29 .stAlert{background:var(--d27tile)!important;border:0!important;border-radius:14px!important}
+html.d28.d29.d29.d29 .stAlert i{background:transparent!important;border:1.5px solid var(--d27line);border-radius:50%!important;filter:grayscale(1)}
+html.d28.d29.d29.d29 .stAlert b{color:var(--text)!important}
+html.d28.d29.d29.d29 .stAlert small{color:var(--muted)!important}
+html.d28.d29.d29.d29 .stAlert em{background:var(--vAcc)!important;color:#fff!important;border-radius:99px!important;font-family:var(--vCond);letter-spacing:.06em;text-transform:uppercase}
+html.d28.d29.d29.d29 .stSheet .stHead,html.d28.d29.d29.d29 .stSheet h3{font-family:var(--vCond)!important;text-transform:uppercase;letter-spacing:.03em}
+html.d28.d29.d29.d29 .stSheet .infoCard,html.d28.d29.d29.d29 .stSheet .stGrp{border-radius:14px!important}
+html.d28.d29.d29.d29 .stAlert::before{content:none!important;display:none!important}

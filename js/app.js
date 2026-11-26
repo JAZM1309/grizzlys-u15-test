@@ -3699,11 +3699,11 @@ async function wpOpen(k){
 
 /* ===== 1.54.0: neues Trikot-Design – Vorschau-Schalter (Admin › Technik). Stufe 1: Farben, Kopfbereich mit Streifen, Navigation unten. ===== */
 (function(){const seg=document.getElementById("d27Seg");if(!seg)return;
-  const get=()=>{try{const v=localStorage.getItem("grizzlysD27");return v==="on"||v==="e"||v==="v"?v:"off"}catch(e){return "off"}};
+  const get=()=>{try{const v=localStorage.getItem("grizzlysD27");return v==="on"||v==="e"||v==="v"?"v":"off"}catch(e){return "off"}};
   const paint=v=>seg.querySelectorAll("[data-d27]").forEach(b=>{const on=b.dataset.d27===v;b.classList.toggle("on",on);b.setAttribute("aria-checked",on)});
   paint(get());
   seg.querySelectorAll("[data-d27]").forEach(b=>b.addEventListener("click",()=>{const v=b.dataset.d27;try{localStorage.setItem("grizzlysD27",v)}catch(e){}
-    const H=document.documentElement,on=v!=="off";H.classList.toggle("d27",on);H.classList.toggle("d28",v==="e"||v==="v");H.classList.toggle("d29",v==="v");
+    const H=document.documentElement,on=v!=="off";H.classList.toggle("d27",on);H.classList.toggle("d28",on);H.classList.toggle("d29",on);
     if(on)H.classList.remove("xm","hw");else{try{if(window.xmActive&&window.xmActive())H.classList.add("xm");if(window.hwActive&&window.hwActive())H.classList.add("hw")}catch(e){}}
     paint(v);try{window.dispatchEvent(new Event("resize"))}catch(e){}
     try{trackAnalyticsEvent("design27_toggle",{on:on?1:0,variant:v})}catch(e){}}));

@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.66.0.275 | – (nur Test) | 26.11.2026 | Festlegung auf Vereinsdesign, Einstellungen angepasst |
 | 1.65.1.274 | – (nur Test) | 26.11.2026 | Design „Verein“: Admin „Zu tun“ lesbar |
 | 1.65.0.273 | – (nur Test) | 26.11.2026 | Neue Designs: Seitentitel überall, „Verein“ auch für News und Admin |
 | 1.64.4.272 | – (nur Test) | 26.11.2026 | Neue Designs: Wischen im Bereich „Bilanz“ |
@@ -137,6 +138,11 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.66.0
+
+- **Festlegung auf das Vereinsdesign (Vorschau).** Auswahl in Admin › Technik › Neue Saison nur noch „Aus / Verein“; Trikot und Klar sind entfernt. Gespeicherte Werte `on`/`e` werden als „Verein“ behandelt. Technisch baut „Verein“ weiter auf den Stilebenen `d27`/`d28` auf (immer zusammen mit `d29` gesetzt) – das Zusammenführen der CSS-Blöcke ist für den Umbau in der Sommerpause vorgemerkt.
+- **Einstellungen im Vereinsdesign.** Gruppentitel wie überall mit blauem Strich und gesperrter Schrift; Symbole einfarbig im Kreis statt bunter Kacheln; „Aktiv“ in Blau, „Aus“ neutral; Hinweis „Push ist aus“ grau mit blauem „Einschalten“-Knopf statt Orange.
 
 ## Version 1.65.1
 
