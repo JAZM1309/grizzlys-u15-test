@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.65.1.274 | – (nur Test) | 26.11.2026 | Design „Verein“: Admin „Zu tun“ lesbar |
 | 1.65.0.273 | – (nur Test) | 26.11.2026 | Neue Designs: Seitentitel überall, „Verein“ auch für News und Admin |
 | 1.64.4.272 | – (nur Test) | 26.11.2026 | Neue Designs: Wischen im Bereich „Bilanz“ |
 | 1.64.3.271 | – (nur Test) | 26.11.2026 | Neue Designs: Gegnerliste kompakter |
@@ -136,6 +137,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.65.1
+
+- **Design „Verein“ (Vorschau) – Admin.** Box „Zu tun“ war weiß auf weiß: jetzt anthrazit mit heller Schrift und blauer Überschrift. Design-Auswahl Aus/Trikot/Klar/Verein als runde Leiste, aktive Auswahl blau.
 
 ## Version 1.65.0
 

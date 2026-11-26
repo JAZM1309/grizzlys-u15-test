@@ -3232,3 +3232,12 @@ html.d28.d29.d29.d29 main .inRules{width:100%!important;display:flex!important}
 html.d28.d29.d29.d29 .dlTabs{border-radius:0!important;overflow:visible!important}
 html.d28.d29.d29.d29 .dlTabs button:first-child{border-radius:99px 0 0 99px!important}
 html.d28.d29.d29.d29 .dlTabs button:last-child{border-radius:0 99px 99px 0!important}
+
+/* 1.65.1: Admin „Zu tun“ in „Verein“ dunkel (war weiß auf weiß), Design-Auswahl als Pill-Leiste */
+html.d28.d29.d29.d29 .admTodo{background:#2b2b2b!important;border-color:#2b2b2b!important;color:#fff!important}
+html.d29.dark .admTodo{background:#232323!important;border-color:#2e2e2e!important}
+html.d28.d29.d29.d29 .admTodo h4{color:#5cb4ff!important;font-family:var(--vCond);letter-spacing:.18em!important}
+html.d28.d29.d29.d29 .d27Seg{border-radius:99px!important;overflow:hidden}
+html.d28.d29.d29.d29 .d27Seg button{border-radius:0!important}
+html.d28.d29.d29.d29 .d27Seg button.on{background:var(--vAcc)!important;color:#fff!important}
+html.d28.d29.d29.d29 .adminModal .d27Seg button.d27x,html.d28.d29.d29.d29 .adminModal .d27Seg button:not(#_x):not(#_y){border-radius:0!important}
