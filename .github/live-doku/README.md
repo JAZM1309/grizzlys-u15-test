@@ -50,6 +50,8 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.63.1.263 | – (nur Test) | 26.11.2026 | Vorschaubilder ohne News-Eintrag |
+| 1.63.0.262 | – (nur Test) | 26.11.2026 | Social-Media-Downloads mit Vorschaubildern |
 | 1.62.0.261 | – (nur Test) | 26.11.2026 | Neue Designs: Mannschaften+Bilanz zusammengefasst, kompakte Bilanz, Puck |
 | 1.61.2.260 | – (nur Test) | 26.11.2026 | Design „Verein“: Kopf neu angeordnet |
 | 1.61.1.259 | – (nur Test) | 26.11.2026 | Design-Vorschau: Korrekturen Gameday-Kopf, Spielplan-Kopf, Liste |
@@ -124,6 +126,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.63.0
+
+- **Downloads › Social Media mit Vorschaubildern (für alle).** Statt der Symbole (Kalender, Pokal, Tabelle) zeigt jeder Eintrag ein kleines Vorschaubild des fertigen Bildes (48×60). Erzeugt mit denselben Zeichenfunktionen wie das große Bild (`instaDraw`, `instaTable`, `instaYear`, `instaWeekend`), aber erst, wenn der Eintrag sichtbar wird (IntersectionObserver), nacheinander und als kleines JPEG im Speicher zwischengespeichert (`instaThumbCache`, Schlüssel je Bildart, Spiel und Ergebnis bzw. Tabellenstand). Bis dahin bleibt das Symbol stehen und pulsiert leicht. Kein Eintrag in „Neu in der App“ (ab 1.63.1 wieder entfernt).
 
 ## Version 1.62.0
 

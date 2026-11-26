@@ -3059,3 +3059,13 @@ html.d27 .g3Puck::before{top:0;height:14px;z-index:1;border-radius:50%!important
 @keyframes pkTop{to{--pk:360deg}}
 @keyframes pkSide{to{background-position:46px 0,0 0}}
 @media(prefers-reduced-motion:reduce){html.d27 .g3Puck::before,html.d27 .g3Puck::after{animation:none!important}}
+
+/* ===== 1.63.0: Vorschaubilder in Downloads › Social Media ===== */
+.dlInstaItem .dlIcon.dlThumb{width:48px!important;height:60px!important;padding:0!important;overflow:hidden;background:#04101f!important;flex:none;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.dlInstaItem .dlIcon.dlThumb img{width:100%;height:100%;object-fit:cover;display:block}
+.dlInstaItem.dlThumbLoading .dlIcon{animation:dlThumbPulse 1.2s ease-in-out infinite}
+@keyframes dlThumbPulse{50%{opacity:.45}}
+@media(prefers-reduced-motion:reduce){.dlInstaItem.dlThumbLoading .dlIcon{animation:none}}
+html.d27:not(.d29) .dlInstaItem .dlIcon.dlThumb{border-radius:0!important}
+html.d29 .dlInstaItem .dlIcon.dlThumb{border-radius:8px!important}
+.dlInstaItem .dlIcon.dlThumb{border-radius:8px}

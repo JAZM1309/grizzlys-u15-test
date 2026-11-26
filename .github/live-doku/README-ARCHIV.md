@@ -8,6 +8,8 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.63.1.263 | – (nur Test) | 26.11.2026 | Vorschaubilder ohne News-Eintrag |
+| 1.63.0.262 | – (nur Test) | 26.11.2026 | Social-Media-Downloads mit Vorschaubildern |
 | 1.62.0.261 | – (nur Test) | 26.11.2026 | Neue Designs: Mannschaften+Bilanz zusammengefasst, kompakte Bilanz, Puck |
 | 1.61.2.260 | – (nur Test) | 26.11.2026 | Design „Verein“: Kopf neu angeordnet |
 | 1.61.1.259 | – (nur Test) | 26.11.2026 | Design-Vorschau: Korrekturen Gameday-Kopf, Spielplan-Kopf, Liste |

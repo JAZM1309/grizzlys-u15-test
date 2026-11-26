@@ -2232,8 +2232,25 @@ function renderInstaDownloads(){
     const title=x.type==="result"?"Ergebnis "+x.r.hs+":"+x.r.as:x.type==="moved"?"Spielverlegung":"Spieltag";
     return `<button class="downloadCard dlInstaItem ${cls}" data-i="${i}" type="button"><span class="dlIcon">${x.type==="result"?icR:icA}</span><b>${title} · ${esc(teamName(g.team))}</b><small>${esc(shortTeam(g.home))} – ${esc(shortTeam(g.away))} · ${esc(dt(g).toLocaleDateString("de-DE",{weekday:"short",day:"2-digit",month:"2-digit"}))}</small><svg class="ic dlGo" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6l-6 6"/></svg></button>`}).join("");
   box.querySelectorAll(".dlInstaItem").forEach(b=>{const x=items[Number(b.dataset.i)];b.onclick=()=>instaOpen(x.g,x.type,true)});
+  try{instaThumbs(box,items)}catch(e){console.warn(e)}
 }
 {const prev=window.applyResults;window.applyResults=function(){prev&&prev.apply(this,arguments);try{renderInstaDownloads()}catch(e){console.warn(e)}};}
+/* 1.63.0: Vorschaubilder statt Symbolen – werden erst erzeugt, wenn der Eintrag sichtbar ist, nacheinander und klein zwischengespeichert */
+const instaThumbCache=new Map();let instaThumbQ=Promise.resolve(),instaThumbObs=null;
+function instaThumbKey(x){const g=x.g;if(x.type==="table"){const s=standings[g.team];return "t:"+g.team+":"+(s&&s.updated||"")+":"+(s&&s.rows?s.rows.length:0)}if(x.type==="year")return "y:"+g.year;if(x.type==="weekend")return "w:"+g.list.map(z=>z.date+z.time+z.team).join(",");const r=resInfo(g);return x.type+":"+g.date+g.time+g.team+":"+(r?r.hs+"-"+r.as:"")}
+function instaThumbMake(x){const k=instaThumbKey(x);if(instaThumbCache.has(k))return Promise.resolve(instaThumbCache.get(k));
+  const p=instaThumbQ.then(async()=>{const g=x.g;const cv=x.type==="table"?await instaTable(g.team):x.type==="year"?await instaYear(g.year):x.type==="weekend"?await instaWeekend(g):await instaDraw(g,x.type);
+    const t=document.createElement("canvas");t.width=144;t.height=180;t.getContext("2d").drawImage(cv,0,0,144,180);const u=t.toDataURL("image/jpeg",.82);instaThumbCache.set(k,u);return u}).catch(e=>{console.warn(e);return null});
+  instaThumbQ=p.then(()=>new Promise(r=>setTimeout(r,60)));return p}
+function instaThumbs(box,items){
+  const put=(b,u)=>{const ic=b.querySelector(".dlIcon");if(!ic||!u)return;ic.classList.add("dlThumb");ic.innerHTML=`<img src="${u}" alt="" width="48" height="60">`};
+  const els=[...box.querySelectorAll(".dlInstaItem")];
+  els.forEach(b=>{const x=items[Number(b.dataset.i)];const k=instaThumbKey(x);if(instaThumbCache.has(k))put(b,instaThumbCache.get(k))});
+  if(!("IntersectionObserver" in window)){return}
+  if(instaThumbObs)instaThumbObs.disconnect();
+  instaThumbObs=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;instaThumbObs.unobserve(e.target);const b=e.target,x=items[Number(b.dataset.i)];if(!x||b.querySelector(".dlThumb"))return;b.classList.add("dlThumbLoading");instaThumbMake(x).then(u=>{b.classList.remove("dlThumbLoading");if(b.isConnected)put(b,u)})}),{rootMargin:"120px"});
+  els.forEach(b=>{if(!b.querySelector(".dlThumb"))instaThumbObs.observe(b)});
+}
 renderInstaDownloads(); setInterval(()=>{try{renderInstaDownloads()}catch(e){}},10*60000);
 
 /* ===== v66: News-Bereich – Hinweise, Spieländerungen, Neues in der App ===== */
