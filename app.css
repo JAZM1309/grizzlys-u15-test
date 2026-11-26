@@ -3363,3 +3363,6 @@ html.dv.dv.dv.dv #homeView .card.g3Hero .hpGo{color:#8fc8ff}
 html.dv.dv.dv.dv #gamesList .card.gz3:not(.open) .g3Head .gcLeft>.hpBadge{display:inline-flex!important}
 /* 1.70.1: main bildet keinen eigenen Stapel mehr – sonst lagen Admin- und andere Fenster unter der Kopfleiste (Schließen-Kreuz verdeckt) */
 html.dv main{z-index:auto!important}
+/* 1.70.3: Helferliste und Vorlage liegen über dem Admin-Bereich */
+#hpModal,#hpTplModal{z-index:1200!important}
+#hpAdmBody .hwSwitchRow{margin-bottom:4px}

@@ -3848,7 +3848,7 @@ function hpRoute(){const h=location.hash;if(!h.startsWith("#helfer/"))return;con
 window.addEventListener("hashchange",hpRoute);
 document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-hp]");if(!b)return;e.stopPropagation();e.preventDefault();hpOpen(b.dataset.hp)},true);
 /* Admin: Vorschau-Schalter, Vorlage bearbeiten, Listen je Spiel ein/aus */
-function hpAdminBox(){const box=document.getElementById("hpAdmBox");if(!box)return;
+function hpAdminBox(){const box=document.getElementById("hpAdmBox");if(!box)return;const sum=document.getElementById("hpAdmSum");if(sum)sum.textContent=hpFlag()?"an":"aus";
   const sw=document.getElementById("hpToggle");if(sw){sw.checked=hpFlag();sw.onchange=()=>{try{localStorage.setItem("grizzlysHelfer",sw.checked?"on":"off")}catch(e){}try{renderNext();renderList()}catch(e){}if(sw.checked)hpRefresh();hpAdminBox()}}
   const list=document.getElementById("hpAdmGames");if(!list)return;
   const now=Date.now(),up=games.filter(g=>isHome(g)&&!g.cancelled&&dt(g)>now-3*36e5).sort((a,b)=>dt(a)-dt(b)).slice(0,8),off=((HP_CFG.games||{}).off)||{};
