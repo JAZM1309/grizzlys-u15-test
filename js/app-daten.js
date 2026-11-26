@@ -1,7 +1,7 @@
 /* Young Grizzlys – Firebase/Daten (Modul, ab 1.39.0 eigene Datei) */
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 import { getFirestore, collection, getDocs, onSnapshot, query, where, orderBy, limit, doc, getDoc, setDoc as _setDoc, addDoc as _addDoc, updateDoc as _updateDoc, deleteDoc as _deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 import { getMessaging, getToken as _getToken, deleteToken as _deleteToken, onMessage, isSupported } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-messaging.js";
 import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-functions.js";
@@ -461,7 +461,7 @@ async function submitBugReport(){
       area,
       description,
       contact,
-      appVersion:"1.69.0.278",
+      appVersion:"1.70.0.279",
       platform:detectPlatform(),
       userAgent:navigator.userAgent||"",
       pushRegistered:getPushRegistrationStatus(),
@@ -1004,7 +1004,7 @@ document.getElementById("admBackupBtn")?.addEventListener("click",admBackup);
 function setAdminUi(user){
   const login=document.getElementById("adminLogin"), panel=document.getElementById("adminPanel"), status=document.getElementById("adminStatus");
   if(user && user.uid===ADMIN_UID){ login.hidden=true; panel.hidden=false; status.textContent="Admin angemeldet"; document.getElementById("adminLogout").hidden=false; loadBugReports(); setupAnalyticsDashboard(); adminNewsEditor(); setupAdminPushStatus(); admStart(); loadSprueche(true).then(()=>adminSpruchEditor()); try{adminWishEditor();adminReactions();loadCaptains(true).then(()=>adminCaptainEditor())}catch(e){console.warn(e)} }
-  else { login.hidden=false; panel.hidden=true; document.getElementById("adminLogout").hidden=true; status.textContent=user?"Angemeldet, aber keine Admin-Berechtigung":"Nicht angemeldet"; }
+  else { login.hidden=false; panel.hidden=true; document.getElementById("adminLogout").hidden=true; status.textContent=user&&!user.isAnonymous?"Angemeldet, aber keine Admin-Berechtigung":"Nicht angemeldet"; }
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
@@ -1996,3 +1996,16 @@ function adminCaptainEditor(){
     window.setCaptains?.(data,true); adminCaptainEditor();};
 }
 window.adminCaptainEditor=adminCaptainEditor;
+
+/* ===== 1.70.0: Helferdienste – Listen je Heimspiel (Test-App: Sammlung helpersTest, Live: helpers) ===== */
+const HP_COL=typeof _testBlock!=="undefined"?"helpersTest":"helpers";
+const _hpAdd=typeof _testBlock!=="undefined"?_addDoc:addDoc, _hpDel=typeof _testBlock!=="undefined"?_deleteDoc:deleteDoc, _hpSet=typeof _testBlock!=="undefined"?_setDoc:setDoc;
+window.hpIsAdmin=()=>auth.currentUser?.uid===ADMIN_UID;
+window.hpUid=()=>auth.currentUser?auth.currentUser.uid:null;
+window.hpEnsureAuth=async function(){if(auth.currentUser)return auth.currentUser.uid;const c=await signInAnonymously(auth);return c.user.uid};
+window.hpCfgLoad=async function(){const out={};for(const id of ["template","games"]){try{const s=await getDoc(doc(db,"helperCfg",id));out[id]=s.exists()?s.data():null}catch(e){out[id]=null}}return out};
+window.hpCfgSave=async function(id,data){return _hpSet(doc(db,"helperCfg",id),data)};
+window.hpWatch=function(gid,cb){return onSnapshot(query(collection(db,HP_COL),where("gid","==",gid)),s=>cb(s.docs.map(x=>({id:x.id,...x.data()}))),e=>{console.warn("Helferliste",e);cb(null,e)})};
+window.hpRange=async function(from,to){const s=await getDocs(query(collection(db,HP_COL),where("gd",">=",from),where("gd","<=",to)));return s.docs.map(x=>({id:x.id,...x.data()}))};
+window.hpAdd=async function(g,gid,item,name){const uid=await window.hpEnsureAuth();return _hpAdd(collection(db,HP_COL),{gid,gd:g.date,team:g.team,item,name,uid,createdAt:serverTimestamp()})};
+window.hpDel=async function(id){return _hpDel(doc(db,HP_COL,id))};
