@@ -8,6 +8,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.63.3.265 | – (nur Test) | 26.11.2026 | Neue Designs: Puck dreht sich um seine Achse |
 | 1.63.2.264 | – (nur Test) | 26.11.2026 | Design „Verein“: Wasserzeichen-Schrift sauber |
 | 1.63.1.263 | – (nur Test) | 26.11.2026 | Vorschaubilder ohne News-Eintrag |
 | 1.63.0.262 | – (nur Test) | 26.11.2026 | Social-Media-Downloads mit Vorschaubildern |

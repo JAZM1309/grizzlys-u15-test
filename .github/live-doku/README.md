@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.63.3.265 | – (nur Test) | 26.11.2026 | Neue Designs: Puck dreht sich um seine Achse |
 | 1.63.2.264 | – (nur Test) | 26.11.2026 | Design „Verein“: Wasserzeichen-Schrift sauber |
 | 1.63.1.263 | – (nur Test) | 26.11.2026 | Vorschaubilder ohne News-Eintrag |
 | 1.63.0.262 | – (nur Test) | 26.11.2026 | Social-Media-Downloads mit Vorschaubildern |
@@ -127,6 +128,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.63.3
+
+- **Neue Designs (Vorschau) – Puck dreht sich um seine Achse.** Oberseite jetzt als echte 3D-Scheibe mit aufgedrucktem Vereinslogo (`rotateX(72deg)` + `rotateZ` animiert, 6 s je Umdrehung); die geriffelte Kante läuft passend mit. Bei „Bewegung reduzieren“ still.
 
 ## Version 1.63.2
 
