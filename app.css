@@ -3181,3 +3181,19 @@ html.d27 .pk3>.pkE:nth-child(20){transform:rotateZ(340.0deg) translateY(-16.6px)
 html.d27 .pk3>i.pkB,html.d27 .pk3>i.pkF{left:0!important;right:0!important;top:0!important;bottom:0!important;width:auto!important;height:auto!important;border-radius:50%!important;background:url("logo.png") center/64% no-repeat,radial-gradient(circle at 40% 35%,#3a3f46,#16181c 70%)!important}
 html.d27 .pk3>i.pkF{transform:translateZ(6px)!important}
 html.d27 .pk3>i.pkB{transform:rotateY(180deg) translateZ(6px)!important}
+
+/* 1.64.3: Gegnerliste kompakter, Route-Knopf überdeckt keine Schrift mehr */
+html.d27 .opponentCard{grid-template-columns:auto minmax(0,1fr) auto!important;gap:10px!important}
+html.d27 .opponentCardInfo{min-width:0;overflow:hidden}
+html.d27 .opponentCardMeta{flex-wrap:wrap;white-space:normal!important;row-gap:2px}
+html.d27 .opponentRoute{position:relative;z-index:1;flex:none}
+html.d28.d29.d29.d29 main .opponentCard{padding:8px 10px 8px 10px!important}
+html.d28.d29.d29.d29 main .opponentCard+.opponentCard{margin-top:6px!important}
+html.d28.d29.d29.d29 main .opponentCard{margin-bottom:6px!important}
+html.d28.d29.d29.d29 .opponentCard .opponentLogo{width:34px!important;height:34px!important}
+html.d28.d29.d29.d29 .opponentCardName{font-size:15px!important;line-height:1.15!important}
+html.d28.d29.d29.d29 .opponentCardMeta{margin-top:2px!important}
+html.d28.d29.d29.d29 .opponentRoute{padding:5px 10px!important;font-size:12px!important;border-width:1.5px!important;gap:4px}
+html.d28.d29.d29.d29 .opponentRoute svg{width:14px;height:14px}
+html.d28.d29.d29.d29 #opponentsList{gap:6px!important}
+html.d28.d29.d29.d29 main #opponentsList .opponentCard{margin:0!important}

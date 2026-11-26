@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.64.3.271 | – (nur Test) | 26.11.2026 | Neue Designs: Gegnerliste kompakter |
 | 1.64.2.270 | – (nur Test) | 26.11.2026 | Neue Designs: Puck mit runder Kante |
 | 1.64.1.269 | – (nur Test) | 26.11.2026 | Design „Verein“: Highlight am Spieltag korrigiert |
 | 1.64.0.268 | – (nur Test) | 26.11.2026 | Design „Verein“: Nächstes Spiel als Highlight mit Eisfläche |
@@ -133,6 +134,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.64.3
+
+- **Neue Designs (Vorschau) – Gegnerliste.** In „Verein“ kleinere Abstände zwischen und in den Gegnerkarten, kleinere Logos und ein schmalerer Route-Knopf. In allen neuen Designs darf die Zeile „2 Spiele · U15 B · 170 km“ umbrechen, statt unter den Route-Knopf zu laufen.
 
 ## Version 1.64.2
 
