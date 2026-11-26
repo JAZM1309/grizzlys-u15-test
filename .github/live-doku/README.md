@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.70.1.280 | – (nur Test) | 26.11.2026 | Vereinsdesign: Admin-Fenster nicht mehr unter der Kopfleiste |
 | 1.70.0.279 | – (nur Test) | 26.11.2026 | Helferdienste (Vorschau) |
 | 1.69.0.278 | – (nur Test) | 26.11.2026 | Vereinsdesign: Restpunkte, Aufräumen; Feedback-Name freiwillig |
 | 1.68.0.277 | – (nur Test) | 26.11.2026 | Neues App-Icon (Puck) in der Test-App |
@@ -142,6 +143,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.70.1
+
+- **Vereinsdesign (Vorschau) – Fenster über der Kopfleiste.** `main` hatte im neuen Design `z-index:1` und bildete dadurch einen eigenen Stapel: Admin-Bereich und andere Fenster (z-index 1100) lagen unter der eingeblendeten Kopfleiste, das Schließen-Kreuz war verdeckt. Jetzt `z-index:auto`.
 
 ## Version 1.70.0
 
