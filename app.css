@@ -2979,3 +2979,18 @@ html.d28.d29.d29.d29 .heroTop h1{font-size:clamp(16px,4.9vw,21px)!important}
 html.d28.d29.d29.d29 #gamesList#gamesList .card.gz3:not(.open) .gcSide>img,html.d28.d29.d29.d29 #gamesList#gamesList .card.gz3:not(.open) .gcSide>.logoFb{width:22px!important;height:22px!important;min-width:0!important;max-width:22px!important;margin:0 0 0 0!important;flex:none;filter:none!important;object-fit:contain}
 html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .gcSide{display:grid!important;grid-template-columns:46px minmax(0,1fr);column-gap:6px}
 html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .gcSide .logos{justify-content:flex-start!important}
+
+/* 1.61.1: Korrekturen nach Handy-Test */
+html.d27 .gdHead{top:auto!important;bottom:8px;right:14px!important;transform:rotate(-4deg)!important}
+html.d27 .gdHead b{font-size:26px!important;white-space:nowrap}
+html.d27 .gdHead b br{display:none}
+html.d27 #scheduleView .scheduleHead{flex-wrap:wrap!important;row-gap:8px}
+html.d27 #scheduleView .shTitleBox{flex:0 0 auto}
+html.d27 #scheduleView .shTables{flex-wrap:wrap;justify-content:flex-end;margin-left:auto!important}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .g3Date{white-space:nowrap}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .g3Head .gcLeft>*:not(.teamBadge){display:none!important}
+html.d28.d29.d29.d29 #gamesList .card.gz3:not(.open) .g3Head .gcLeft{flex-wrap:nowrap}
+html.d28.d29.d29.d29 .heroTop{padding-right:108px!important}
+html.d28.d29.d29.d29 .heroTop h1{letter-spacing:.005em!important;font-size:clamp(16px,4.8vw,21px)!important}
+html.d28.d29.d29.d29 .heroTop h1{font-size:clamp(15px,4.3vw,21px)!important}
+html.d28.d29.d29.d29 .heroTop{gap:8px!important}

@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.61.1.259 | – (nur Test) | 26.11.2026 | Design-Vorschau: Korrekturen Gameday-Kopf, Spielplan-Kopf, Liste |
 | 1.61.0.258 | – (nur Test) | 26.11.2026 | Design-Entwurf „Verein“ |
 | 1.60.0.257 | – (nur Test) | 25.11.2026 | Design-Entwurf „Klar“ zum Umschalten |
 | 1.59.1.256 | – (nur Test) | 25.11.2026 | Trikot-Design: keine runden Chips mehr, Spielplan-Kopf |
@@ -121,6 +122,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.61.1
+
+- **Design-Vorschau – Korrekturen nach Handy-Test.** Leuchtschrift „GAMEDAY“ im Kopf sitzt in allen neuen Designs unten rechts statt über den Knöpfen oben. Spielplan-Kopf: Tabellen-Knöpfe rutschen in eine eigene Zeile, wenn sie nicht neben den Titel passen (z. B. mit U13 drei Knöpfe). „Verein“-Liste: Datum bleibt einzeilig, oben nur der Mannschafts-Chip (Verlegt/Heim/Auswärts stehen rechts bzw. in den Details). Titel im Kopf etwas schmaler.
 
 ## Version 1.61.0
 
