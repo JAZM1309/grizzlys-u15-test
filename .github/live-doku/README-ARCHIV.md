@@ -8,6 +8,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.67.0.276 | – (nur Test) | 26.11.2026 | Vereinsdesign: Social-Media-Bilder und Hintergrundbilder |
 | 1.66.0.275 | – (nur Test) | 26.11.2026 | Festlegung auf Vereinsdesign, Einstellungen angepasst |
 | 1.65.1.274 | – (nur Test) | 26.11.2026 | Design „Verein“: Admin „Zu tun“ lesbar |
 | 1.65.0.273 | – (nur Test) | 26.11.2026 | Neue Designs: Seitentitel überall, „Verein“ auch für News und Admin |

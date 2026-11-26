@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.67.0.276 | – (nur Test) | 26.11.2026 | Vereinsdesign: Social-Media-Bilder und Hintergrundbilder |
 | 1.66.0.275 | – (nur Test) | 26.11.2026 | Festlegung auf Vereinsdesign, Einstellungen angepasst |
 | 1.65.1.274 | – (nur Test) | 26.11.2026 | Design „Verein“: Admin „Zu tun“ lesbar |
 | 1.65.0.273 | – (nur Test) | 26.11.2026 | Neue Designs: Seitentitel überall, „Verein“ auch für News und Admin |
@@ -138,6 +139,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.67.0
+
+- **Vereinsdesign (Vorschau) – erzeugte Bilder.** Social-Media-Bilder (Spieltag, Ergebnis, Verlegung, Wochenende, Tabelle, Jahresrückblick) und Hintergrundbilder nutzen eine gemeinsame Farbpalette `IC_`: im Vereinsdesign Anthrazit und Grau statt Navy, Logo-Blau statt Orange als Akzent, Hallenfoto in Graustufen, Überschriften in schmalen Großbuchstaben statt Pinselschrift. Mannschaftsfarben (U15 A blau, U15 B orange, U13 gelb) bleiben. Ohne Vorschau sehen alle Bilder exakt aus wie bisher. Vorschaubilder in den Downloads werden je Design getrennt zwischengespeichert.
 
 ## Version 1.66.0
 
