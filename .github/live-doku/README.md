@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.61.2.260 | – (nur Test) | 26.11.2026 | Design „Verein“: Kopf neu angeordnet |
 | 1.61.1.259 | – (nur Test) | 26.11.2026 | Design-Vorschau: Korrekturen Gameday-Kopf, Spielplan-Kopf, Liste |
 | 1.61.0.258 | – (nur Test) | 26.11.2026 | Design-Entwurf „Verein“ |
 | 1.60.0.257 | – (nur Test) | 25.11.2026 | Design-Entwurf „Klar“ zum Umschalten |
@@ -122,6 +123,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.61.2
+
+- **Design „Verein“ (Vorschau) – Kopf neu angeordnet.** „YOUNG GRIZZLYS“ zweizeilig neben dem Logo, Saison- bzw. Bully-Chip direkt unter dem Logo (Logo ragt nicht mehr über). „GAMEDAY“-Leuchtschrift rechts auf Höhe des Chips, nicht mehr tiefer als der übrige Kopf.
 
 ## Version 1.61.1
 

@@ -2994,3 +2994,14 @@ html.d28.d29.d29.d29 .heroTop{padding-right:108px!important}
 html.d28.d29.d29.d29 .heroTop h1{letter-spacing:.005em!important;font-size:clamp(16px,4.8vw,21px)!important}
 html.d28.d29.d29.d29 .heroTop h1{font-size:clamp(15px,4.3vw,21px)!important}
 html.d28.d29.d29.d29 .heroTop{gap:8px!important}
+
+/* 1.61.2: Kopf „Verein“ – Titel zweizeilig, Chip unter dem Logo, Gameday auf Höhe des Titels */
+html.d28.d29.d29.d29 .heroTop{padding-right:108px!important;align-items:center}
+html.d28.d29.d29.d29 .heroTop h1{white-space:normal!important;width:min-content;font-size:24px!important;line-height:.95!important;overflow:visible!important;text-overflow:clip!important;letter-spacing:.02em!important}
+html.d28.d29.d29.d29 .heroTop img{transform:none!important;width:58px!important;height:58px!important}
+html.d28.d29.d29.d29 .heroChips{padding-left:0!important;margin-top:8px!important}
+html.d28.d29.d29.d29 .hero{margin-bottom:0!important}
+html.d27 .gdHead{top:54px!important;bottom:auto!important}
+html.d28.d29.d29.d29 .gdHead{top:56px!important}
+html.d28.d29.d29.d29 .gdHead{top:auto!important;bottom:14px!important;right:14px!important;transform:rotate(-3deg)!important}
+html.d28.d29.d29.d29 .gdHead b{font-size:24px!important;line-height:1!important}

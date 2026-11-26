@@ -8,6 +8,7 @@ Die Stände von 1.9.1.66 bis 1.9.1.140 hießen ursprünglich alle „1.9.1“ un
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.61.2.260 | – (nur Test) | 26.11.2026 | Design „Verein“: Kopf neu angeordnet |
 | 1.61.1.259 | – (nur Test) | 26.11.2026 | Design-Vorschau: Korrekturen Gameday-Kopf, Spielplan-Kopf, Liste |
 | 1.61.0.258 | – (nur Test) | 26.11.2026 | Design-Entwurf „Verein“ |
 | 1.60.0.257 | – (nur Test) | 25.11.2026 | Design-Entwurf „Klar“ zum Umschalten |
