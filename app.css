@@ -3069,3 +3069,6 @@ html.d27 .g3Puck::before{top:0;height:14px;z-index:1;border-radius:50%!important
 html.d27:not(.d29) .dlInstaItem .dlIcon.dlThumb{border-radius:0!important}
 html.d29 .dlInstaItem .dlIcon.dlThumb{border-radius:8px!important}
 .dlInstaItem .dlIcon.dlThumb{border-radius:8px}
+
+/* 1.63.2: Wasserzeichen-Schrift sauber – Umriss per Schatten statt text-stroke (keine inneren Linien an M, A, S …) */
+html.d28.d29.d29.d29 #scheduleView .scheduleHead::before,html.d28.d29.d29.d29 #opponentsView .scheduleHead::before,html.d28.d29.d29.d29 #statsView .scheduleHead::before{-webkit-text-stroke:0!important;color:var(--d27bg)!important;text-shadow:1px 0px 0 color-mix(in srgb,var(--vAcc) 24%,var(--d27bg)),-1px 0px 0 color-mix(in srgb,var(--vAcc) 24%,var(--d27bg)),0px 1px 0 color-mix(in srgb,var(--vAcc) 24%,var(--d27bg)),0px -1px 0 color-mix(in srgb,var(--vAcc) 24%,var(--d27bg)),1px 1px 0 color-mix(in srgb,var(--vAcc) 24%,var(--d27bg)),-1px -1px 0 color-mix(in srgb,var(--vAcc) 24%,var(--d27bg)),1px -1px 0 color-mix(in srgb,var(--vAcc) 24%,var(--d27bg)),-1px 1px 0 color-mix(in srgb,var(--vAcc) 24%,var(--d27bg))}

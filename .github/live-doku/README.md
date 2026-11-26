@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.63.2.264 | – (nur Test) | 26.11.2026 | Design „Verein“: Wasserzeichen-Schrift sauber |
 | 1.63.1.263 | – (nur Test) | 26.11.2026 | Vorschaubilder ohne News-Eintrag |
 | 1.63.0.262 | – (nur Test) | 26.11.2026 | Social-Media-Downloads mit Vorschaubildern |
 | 1.62.0.261 | – (nur Test) | 26.11.2026 | Neue Designs: Mannschaften+Bilanz zusammengefasst, kompakte Bilanz, Puck |
@@ -126,6 +127,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.63.2
+
+- **Design „Verein“ (Vorschau) – Wasserzeichen sauber.** Die umrandete Hintergrundschrift (PLAN, TEAMS, STATS) zeigte bei manchen Buchstaben innere Linien, weil `-webkit-text-stroke` auch überlappende Glyphenteile nachzeichnet. Jetzt Umriss über acht 1-px-Schatten in deckender Mischfarbe, Füllung in Hintergrundfarbe – saubere Konturen auf allen drei Seiten, hell und dunkel.
 
 ## Version 1.63.0
 
