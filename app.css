@@ -3103,3 +3103,37 @@ html.d27 .pk3>i:nth-child(10){transform:translateZ(4.8px)}
 html.d27 .pk3>i:nth-child(11){transform:translateZ(6.0px) rotateY(180deg)}
 @keyframes pkTurn{to{transform:rotateY(360deg)}}
 @media(prefers-reduced-motion:reduce){html.d27 .pk3{animation:none!important;transform:rotateY(-25deg)}}
+
+/* 1.63.5: Puck dreht flüssiger – nur Vorder-/Rückseite (Rückseiten ausgeblendet) und eine Kantenfläche, damit beim Hochkant-Moment nichts springt */
+html.d27 .pk3{will-change:transform;animation:pkTurn2 5s linear infinite!important}
+@keyframes pkTurn2{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
+html.d27 .pk3>i{display:none}
+html.d27 .pk3>.pkF,html.d27 .pk3>.pkB{display:block;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+html.d27 .pk3>.pkF{transform:translateZ(6px)!important}
+html.d27 .pk3>.pkB{transform:rotateY(180deg) translateZ(6px)!important}
+html.d27 .pk3>i:nth-child(2){display:block;left:11px;right:auto;width:12px;border-radius:3px!important;transform:rotateY(90deg)!important;background:repeating-linear-gradient(0deg,#15171a 0 1.5px,#2b2f35 1.5px 3px)!important}
+html.d27 .pk3>i:nth-child(3){display:block;left:11px;right:auto;width:12px;border-radius:3px!important;transform:rotateY(90deg) rotateX(0deg) translateZ(.01px)!important;background:linear-gradient(90deg,rgba(255,255,255,.08),transparent 40%,rgba(0,0,0,.25))!important}
+@media(prefers-reduced-motion:reduce){html.d27 .pk3{animation:none!important;transform:rotateY(-25deg)}}
+
+/* ===== 1.64.0: Design „Verein“ – „Nächstes Spiel“ als dunkles Highlight mit heller Eisfläche quer durch (Mittellinie, blaue Linien, Bullykreis), Puck genau auf dem Mittelpunkt ===== */
+html.d28.d29.d29.d29 #homeView .card.g3Hero{background:#2b2b2b!important;border-color:#2b2b2b!important;color:#fff}
+html.d29.dark #homeView .card.g3Hero{background:#232323!important;border-color:#2e2e2e!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Band{color:#5cb4ff!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Band::before{background:#5cb4ff!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Band span{color:#aaa!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .gcMatch{position:relative;display:grid!important;grid-template-columns:minmax(0,1fr) 92px minmax(0,1fr)!important;align-items:center;margin:10px 0 0!important;padding:16px 8px!important;min-height:110px;box-sizing:border-box;background:linear-gradient(90deg,transparent calc(50% - 1.5px),rgba(214,69,69,.24) calc(50% - 1.5px) calc(50% + 1.5px),transparent calc(50% + 1.5px)),linear-gradient(90deg,transparent calc(19% - 2.5px),rgba(31,111,209,.17) calc(19% - 2.5px) calc(19% + 2.5px),transparent calc(19% + 2.5px),transparent calc(81% - 2.5px),rgba(31,111,209,.17) calc(81% - 2.5px) calc(81% + 2.5px),transparent calc(81% + 2.5px)),radial-gradient(circle at 50% 50%,transparent 43px,rgba(31,111,209,.24) 43px 44.5px,transparent 45px),linear-gradient(180deg,#e7f0f8,#f8fbfe)!important}
+html.d29.dark #homeView .card.g3Hero .gcMatch{background:linear-gradient(90deg,transparent calc(50% - 1.5px),rgba(214,69,69,.24) calc(50% - 1.5px) calc(50% + 1.5px),transparent calc(50% + 1.5px)),linear-gradient(90deg,transparent calc(19% - 2.5px),rgba(31,111,209,.17) calc(19% - 2.5px) calc(19% + 2.5px),transparent calc(19% + 2.5px),transparent calc(81% - 2.5px),rgba(31,111,209,.17) calc(81% - 2.5px) calc(81% + 2.5px),transparent calc(81% + 2.5px)),radial-gradient(circle at 50% 50%,transparent 43px,rgba(31,111,209,.24) 43px 44.5px,transparent 45px),linear-gradient(180deg,#c9d6e2,#dde7f0)!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .gcMatch>.gcSide:first-child{grid-column:1}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .gcMatch>.gcSide:last-child{grid-column:3}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .gcSide span{color:#2b2b2b!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .gzMid{position:absolute!important;left:50%;top:50%;transform:translate(-50%,-50%);margin:0!important;padding:0!important;width:auto!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Puck{width:34px!important;height:34px!important;margin:0!important;perspective:240px}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Puck .pk3{left:0!important;top:0!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Puck::after{bottom:-9px!important;left:3px!important;right:3px!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .card .g3Date>*,html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Date>*,html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Date>i{color:#5cb4ff!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Head .homeaway{color:#bbb!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Tog{color:#8fc8ff!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Cd div{background:#3a3a3a!important;color:#fff!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Cd small{color:#bbb!important}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Det{color:var(--text)}
+html.d28.d29.d29.d29 #homeView .card.g3Hero .g3Head .homeaway{background:transparent!important;color:#bbb!important}

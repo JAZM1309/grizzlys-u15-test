@@ -50,6 +50,8 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.64.0.268 | – (nur Test) | 26.11.2026 | Design „Verein“: Nächstes Spiel als Highlight mit Eisfläche |
+| 1.63.5.267 | – (nur Test) | 26.11.2026 | Neue Designs: Puck dreht flüssiger |
 | 1.63.4.266 | – (nur Test) | 26.11.2026 | Neue Designs: Puck steht auf der Kante und dreht sich |
 | 1.63.3.265 | – (nur Test) | 26.11.2026 | Neue Designs: Puck dreht sich um seine Achse |
 | 1.63.2.264 | – (nur Test) | 26.11.2026 | Design „Verein“: Wasserzeichen-Schrift sauber |
@@ -129,6 +131,14 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.64.0
+
+- **Design „Verein“ (Vorschau) – „Nächstes Spiel“ als Highlight.** Die oberste Karte auf der Startseite ist dunkel (anthrazit), quer durch läuft eine helle Eisfläche mit dezenten Markierungen (rote Mittellinie, zwei blaue Linien, Bullykreis – reine CSS-Verläufe). Logos und Teamnamen stehen auf dem Eis, der Puck dreht sich genau auf dem Mittelpunkt (Mittelspalte fest, Puck absolut zentriert). Datum, Countdown und Kopfzeile hell auf dunkel; im Dunkelmodus ist das Eis etwas gedämpft. Gilt nur für „Verein“.
+
+## Version 1.63.5
+
+- **Neue Designs (Vorschau) – Puck dreht flüssiger.** Das Zucken kam vom Neusortieren der 11 Schichten, wenn der Puck genau hochkant steht. Jetzt nur noch Vorder- und Rückseite (jeweils mit ausgeblendeter Rückfläche) plus eine geriffelte Kantenfläche; Animation mit festem Start- und Endwinkel und `will-change`.
 
 ## Version 1.63.4
 
