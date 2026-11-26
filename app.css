@@ -3080,3 +3080,26 @@ html.d27 .g3Puck::after{animation:pkSide2 6s linear infinite!important}
 @keyframes pkSpin{to{transform:rotateX(72deg) rotateZ(360deg)}}
 @keyframes pkSide2{from{background-position:0 0,0 0}to{background-position:-72px 0,0 0}}
 @media(prefers-reduced-motion:reduce){html.d27 .g3Puck::before,html.d27 .g3Puck::after{animation:none!important}}
+
+/* 1.63.4: Puck steht auf der Kante und dreht sich (3D, rotateY); Logo auf beiden Seiten, Kante aus Schichten */
+.pk3{display:none}
+html.d27 .g3Puck{width:46px!important;height:44px!important;perspective:260px;margin:0 auto 8px!important}
+html.d27 .g3Puck::before{content:none!important;display:none!important}
+html.d27 .g3Puck::after{content:""!important;top:auto!important;bottom:0!important;left:7px!important;right:7px!important;height:6px!important;border-radius:50%!important;background:radial-gradient(closest-side,rgba(0,0,0,.35),transparent)!important;box-shadow:none!important;animation:none!important}
+html.d27 .pk3{display:block;position:absolute;left:6px;top:0;width:34px;height:34px;transform-style:preserve-3d;animation:pkTurn 5s linear infinite}
+html.d27 .pk3>i{position:absolute;inset:0;border-radius:50%!important;background:radial-gradient(circle,#24282d 0 62%,#14161a 63% 100%);backface-visibility:visible}
+html.d27 .pk3>i:nth-child(odd){background:radial-gradient(circle,#1d2024 0 62%,#2a2e34 63% 100%)}
+html.d27 .pk3>.pkF,html.d27 .pk3>.pkB{background:url("logo.png") center/64% no-repeat,radial-gradient(circle at 40% 35%,#3a3f46,#16181c 70%)!important;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.08)}
+html.d27 .pk3>i:nth-child(1){transform:translateZ(-6.0px)}
+html.d27 .pk3>i:nth-child(2){transform:translateZ(-4.8px)}
+html.d27 .pk3>i:nth-child(3){transform:translateZ(-3.6px)}
+html.d27 .pk3>i:nth-child(4){transform:translateZ(-2.4px)}
+html.d27 .pk3>i:nth-child(5){transform:translateZ(-1.2px)}
+html.d27 .pk3>i:nth-child(6){transform:translateZ(0.0px)}
+html.d27 .pk3>i:nth-child(7){transform:translateZ(1.2px)}
+html.d27 .pk3>i:nth-child(8){transform:translateZ(2.4px)}
+html.d27 .pk3>i:nth-child(9){transform:translateZ(3.6px)}
+html.d27 .pk3>i:nth-child(10){transform:translateZ(4.8px)}
+html.d27 .pk3>i:nth-child(11){transform:translateZ(6.0px) rotateY(180deg)}
+@keyframes pkTurn{to{transform:rotateY(360deg)}}
+@media(prefers-reduced-motion:reduce){html.d27 .pk3{animation:none!important;transform:rotateY(-25deg)}}

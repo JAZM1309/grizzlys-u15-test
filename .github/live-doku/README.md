@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.63.4.266 | – (nur Test) | 26.11.2026 | Neue Designs: Puck steht auf der Kante und dreht sich |
 | 1.63.3.265 | – (nur Test) | 26.11.2026 | Neue Designs: Puck dreht sich um seine Achse |
 | 1.63.2.264 | – (nur Test) | 26.11.2026 | Design „Verein“: Wasserzeichen-Schrift sauber |
 | 1.63.1.263 | – (nur Test) | 26.11.2026 | Vorschaubilder ohne News-Eintrag |
@@ -128,6 +129,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.63.4
+
+- **Neue Designs (Vorschau) – Puck steht auf der Kante.** Der Puck (`.g3Puck`) enthält jetzt einen 3D-Körper `.pk3` aus 11 Schichten (Vorder- und Rückseite mit Vereinslogo, dazwischen die Kante) und dreht sich hochkant um die senkrechte Achse (`rotateY`, 5 s je Umdrehung), mit Schatten am Boden. Bei „Bewegung reduzieren“ steht er leicht schräg still. Im bisherigen Design unverändert (`.pk3` ausgeblendet).
 
 ## Version 1.63.3
 
