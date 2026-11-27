@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.73.0.298 | – (nur Test) | 27.11.2026 | Navigation: „Mehr“ unten statt Knöpfe oben |
 | 1.72.3.297 | – (nur Test) | 27.11.2026 | Saisonwechsel-Werkzeug, App Check vorbereitet |
 | 1.72.2.296 | – (nur Test) | 27.11.2026 | Dunkelmodus-Durchgang, Seitenwechsel, Ladeplatzhalter |
 | 1.72.1.295 | – (nur Test) | 27.11.2026 | Hintergrundbilder: Strichschrift hinter den Titeln |
@@ -160,6 +161,11 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.73.0
+
+- **Navigation im Verein-Design.** Die Knöpfe oben (Neuigkeiten, Einstellungen, Info) entfallen; in der unteren Leiste ersetzt „Mehr“ den Tab Downloads. „Mehr“ öffnet ein kleines Menü mit Downloads, Neuigkeiten (Anzahl ungelesen), Einstellungen und Info; ungelesene Neuigkeiten zeigen einen roten Punkt auf „Mehr“. „Mehr“ ist aktiv markiert, solange Downloads, Einstellungen oder Info offen sind.
+- Wischen erreicht jetzt alle Seiten: Start › Spielplan › Gegner › Bilanz › Downloads › Einstellungen › Info (Neuigkeiten bleiben ein Fenster). Wisch-Punkte passen sich der Anzahl an, Hinweistexte nennen die Seiten beim Namen.
 
 ## Version 1.72.3
 
