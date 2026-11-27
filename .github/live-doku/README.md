@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.72.1.295 | – (nur Test) | 27.11.2026 | Hintergrundbilder: Strichschrift hinter den Titeln |
 | 1.72.0.294 | – (nur Test) | 27.11.2026 | Kalender-Abo (Vorbereitung 2027/28) |
 | 1.71.7.293 | – (nur Test) | 27.11.2026 | Bilder: Strichschrift ohne Linien in den Buchstaben |
 | 1.71.6.292 | – (nur Test) | 27.11.2026 | Bilder: Strichschrift kräftiger |
@@ -157,6 +158,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.72.1
+
+- Hintergrundbilder im Vereinsdesign: Strichschrift hinter den Titeln auch bei Vereinsdesign (alle vier Stile), Trikot, Nächstes Spiel (Wochentag) und Advent. `icGhost` passt mittige Strichschrift automatisch an die Bildbreite an (optional `maxW`).
 
 ## Version 1.72.0
 
