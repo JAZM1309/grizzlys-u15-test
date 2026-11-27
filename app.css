@@ -3438,3 +3438,10 @@ html.dv .moreSheet svg{width:22px;height:22px;fill:none;stroke:currentColor;stro
 html.dv .moreSheet em{margin-left:auto;font-style:normal;font-size:12px;font-weight:800;color:#fff;background:#d6453b;border-radius:99px;padding:1px 8px}
 html.dv .moreSheet em[hidden]{display:none}
 html.dark.dv .moreSheet{box-shadow:0 12px 30px rgba(0,0,0,.6)}
+/* 1.73.1: Kopf im Verein-Design – „Young Grizzlys“ einzeilig, dahinter „GRIZZLYS“ in Strichschrift (Knöpfe oben sind weg) */
+html.dv.dv.dv.dv .hero{position:relative}
+html.dv.dv.dv.dv .heroTop{padding-right:0!important;position:relative;z-index:1}
+html.dv.dv.dv.dv .heroTop h1{white-space:nowrap!important;width:auto!important;font-size:clamp(24px,7.6vw,32px)!important;line-height:1!important;letter-spacing:.03em!important;overflow:visible!important}
+html.dv.dv.dv.dv .hero::after{content:"GRIZZLYS";position:absolute;left:74px;right:0;top:4px;z-index:0;overflow:hidden;white-space:nowrap;pointer-events:none;font-family:var(--vCond);font-weight:800;font-size:clamp(64px,21vw,96px);line-height:1;letter-spacing:.02em;color:var(--vHead);
+  text-shadow:1px 0 0 rgba(92,180,255,.42),-1px 0 0 rgba(92,180,255,.42),0 1px 0 rgba(92,180,255,.42),0 -1px 0 rgba(92,180,255,.42),1px 1px 0 rgba(92,180,255,.42),-1px -1px 0 rgba(92,180,255,.42),1px -1px 0 rgba(92,180,255,.42),-1px 1px 0 rgba(92,180,255,.42)}
+html.dv.dv.dv.dv .heroChips{position:relative;z-index:1}
