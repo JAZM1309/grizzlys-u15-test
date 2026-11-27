@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.73.2.300 | – (nur Test) | 27.11.2026 | Kopf etwas kleiner |
 | 1.73.1.299 | – (nur Test) | 27.11.2026 | Kopf: Young Grizzlys einzeilig mit Strichschrift |
 | 1.73.0.298 | – (nur Test) | 27.11.2026 | Navigation: „Mehr“ unten statt Knöpfe oben |
 | 1.72.3.297 | – (nur Test) | 27.11.2026 | Saisonwechsel-Werkzeug, App Check vorbereitet |
@@ -162,6 +163,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.73.2
+
+- Kopf im Verein-Design etwas kleiner: Strichschrift „GRIZZLYS“ rund ein Drittel kleiner, Titel „Young Grizzlys“ etwas kleiner.
 
 ## Version 1.73.1
 
