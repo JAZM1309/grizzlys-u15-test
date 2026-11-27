@@ -1442,7 +1442,11 @@ function closeMatchDetails(){
   document.body.style.overflow="";
 }
 
-function showView(name){if(["home","schedule","opponents","rules","stats","downloads"].includes(name))window.__lastMain=name;trackAnalyticsEvent(name==="home"?"home_opened":name==="schedule"?"spielplan_opened":name==="opponents"?"opponents_opened":name==="downloads"?"downloads_opened":name==="rules"?"rules_opened":name==="stats"?"stats_opened":name==="settings"?"settings_opened":"info_opened");["home","schedule","opponents","rules","stats","downloads","info","settings"].forEach(v=>{const e=document.getElementById(v+"View");if(e)e.hidden=v!==name});if(name==="stats")try{renderStats()}catch(e){console.warn(e)}if(name==="rules")try{renderRules()}catch(e){console.warn(e)}document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.view===name));if(name==="schedule"){const ng=nextGame();if(ng){calendarCursor=new Date(dt(ng).getFullYear(),dt(ng).getMonth(),1)}setScheduleMode(scheduleMode)}window.scrollTo({top:0,behavior:"smooth"})}
+/* 1.72.2: Verein-Design – beim Antippen der Tabs gleitet die neue Seite aus der passenden Richtung herein (Wischen hat eigene Bewegung) */
+function vSlide(name,prev){const el=document.getElementById(name+"View");if(!el)return;el.classList.remove("vInR","vInL");
+  if(!prev||prev===name||window.__swNav||!document.documentElement.classList.contains("dv")||(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches))return;
+  const O=["home","schedule","opponents","stats","rules","downloads","settings","info"];void el.offsetWidth;el.classList.add(O.indexOf(name)>O.indexOf(prev)?"vInR":"vInL")}
+function showView(name){if(["home","schedule","opponents","rules","stats","downloads"].includes(name))window.__lastMain=name;trackAnalyticsEvent(name==="home"?"home_opened":name==="schedule"?"spielplan_opened":name==="opponents"?"opponents_opened":name==="downloads"?"downloads_opened":name==="rules"?"rules_opened":name==="stats"?"stats_opened":name==="settings"?"settings_opened":"info_opened");const _pv=["home","schedule","opponents","rules","stats","downloads","info","settings"].find(v=>{const e=document.getElementById(v+"View");return e&&!e.hidden});["home","schedule","opponents","rules","stats","downloads","info","settings"].forEach(v=>{const e=document.getElementById(v+"View");if(e)e.hidden=v!==name});vSlide(name,_pv);if(name==="stats")try{renderStats()}catch(e){console.warn(e)}if(name==="rules")try{renderRules()}catch(e){console.warn(e)}document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.view===name));if(name==="schedule"){const ng=nextGame();if(ng){calendarCursor=new Date(dt(ng).getFullYear(),dt(ng).getMonth(),1)}setScheduleMode(scheduleMode)}window.scrollTo({top:0,behavior:"smooth"})}
 document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>showView(b.dataset.view));
 {const v=document.querySelector(".inVer"),t=document.getElementById("inMadeVer");if(v&&t)t.textContent=" · Version "+v.textContent.trim();}
 /* 1.9.1.107: Gruselmoment im Halloween-Design – höchstens einmal am Tag, nie über offenen Fenstern, nicht anklickbar */
@@ -1587,7 +1591,7 @@ document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>showView(b.dataset.vi
     setPos(s0.view,dir*w,!reduce,reduce?0:170);
     setTimeout(()=>{
       cleanup(s0.view);
-      showView(s0.n); showDots(s0.n);
+      window.__swNav=1;showView(s0.n);window.__swNav=0; showDots(s0.n);
       const v=document.getElementById(s0.n+"View");
       if(reduce)return;
       v.classList.add("swView");document.documentElement.classList.add("swiping");
@@ -2847,6 +2851,7 @@ window.xmOpenCalendar=xmOpenCalendar;
 {const prev=window.applyResults;window.applyResults=function(){prev&&prev.apply(this,arguments);try{xmRefresh()}catch(e){console.warn(e)}};}
 xmRefresh();
 {const prev=window.applyResults;window.applyResults=function(){prev&&prev.apply(this,arguments);try{renderNews()}catch(e){console.warn(e)}};}
+{const prev=window.applyResults;window.applyResults=function(){prev&&prev.apply(this,arguments);try{const v=document.getElementById("statsView");if(v&&!v.hidden)renderStats(true)}catch(e){console.warn(e)}};}
 renderNews();
 
 /* ===== 1.41.0: Spruch des Tages auf der Startseite (1.41.3: ganz oben, ohne Hintergrund, mittig, Titel in Pinselschrift) =====
@@ -3779,6 +3784,8 @@ function renderStats(keep){
   bar.innerHTML=teams.map(x=>`<button type="button" role="tab" class="team${x}${x===t?" active":""}" aria-selected="${x===t}" data-st="${x}">${esc(teamName(x))}</button>`).join("");
   bar.querySelectorAll("[data-st]").forEach(b=>b.onclick=()=>{try{localStorage.setItem("grizzlysStatsTeam",b.dataset.st)}catch(e){}sbTabLast="ov";renderStats()});
   if(body.dataset.team!==t&&!keep)sbTabLast=sbTabLast||"ov";
+  /* 1.72.2: solange die Ergebnisse laden, graue Platzhalter statt Nullen */
+  if(window.resultsLoading){body.dataset.team="";body.innerHTML=`<div class="stSk">${'<i class="sk"></i>'.repeat(6)}<b class="sk"></b><b class="sk"></b></div>`;const sub=document.getElementById("statsSub");if(sub)sub.textContent="Ergebnisse werden geladen …";return}
   body.innerHTML=bilanzHtml(t); body.dataset.team=t;
   const S=seasonStats(t);const sub=document.getElementById("statsSub"); if(sub){sub.textContent=S.tot.gp?S.tot.gp+" Spiele gewertet":"noch keine Ergebnisse"}
   body.querySelectorAll("[data-rep]").forEach(b=>b.onclick=()=>{const x=S.reports[Number(b.dataset.rep)];openMatchDetails(x.g,true)});
@@ -3804,7 +3811,7 @@ function renderHomeTeams27(){
     return `<button type="button" class="ht27Row team${t}" data-ht="${t}" aria-label="Saisonbilanz ${esc(teamName(t))}">
       <span class="ht27L">${esc(letter)}</span>
       <span class="ht27Mid"><b>${esc(teamName(t))}${x.rank?`<em>Platz ${x.rank}</em>`:""}</b><small>${esc(lg)}${x.total?` · ${x.played}/${x.total} gespielt`:""}</small>${x.form&&x.form.length?`<span class="ht27Form">${form(x.form)}</span>`:""}</span>
-      ${x.n?`<span class="ht27R"><b><span class="w">${x.w}</span>–<span class="l">${x.l}</span></b><small>${x.gf}:${x.ga} · <span class="${df>0?"w":df<0?"l":""}">${df>0?"+":""}${df}</span></small></span>`:`<span class="ht27R"><small>noch keine<br>Ergebnisse</small></span>`}
+      ${x.n?`<span class="ht27R"><b><span class="w">${x.w}</span>–<span class="l">${x.l}</span></b><small>${x.gf}:${x.ga} · <span class="${df>0?"w":df<0?"l":""}">${df>0?"+":""}${df}</span></small></span>`:window.resultsLoading?`<span class="ht27R ht27Sk"><b class="sk"></b><small class="sk"></small></span>`:`<span class="ht27R"><small>noch keine<br>Ergebnisse</small></span>`}
       <i class="ht27Bar"><i style="width:${pct}%"></i></i>
     </button>`}).join("");
   box.querySelectorAll("[data-ht]").forEach(b=>b.onclick=()=>{if(document.documentElement.classList.contains("dv")){try{localStorage.setItem("grizzlysStatsTeam",b.dataset.ht)}catch(e){}showView("stats");window.scrollTo(0,0)}else openBilanz(b.dataset.ht)});
