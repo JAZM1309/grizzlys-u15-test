@@ -2042,7 +2042,7 @@ async function instaDraw(g,type){
   c.textBaseline="alphabetic";c.textAlign="left";c.fillStyle="#fff";instaFont(c,900,27);instaSpace(c,5);c.fillText("ESV GRIZZLYS BERGKAMEN",62,93);
   instaSpace(c,3);const tag=teamName(g.team),tw=c.measureText(tag).width+44;instaRR(c,W-62-tw,56,tw,48,10);c.fillStyle=IC_.acc;c.fill();c.fillStyle=IC_.accTx;c.textAlign="center";c.fillText(tag,W-62-tw/2+1.5,90);instaSpace(c,0);
   let head=g.cancelled?["Spiel ",g.postponed?"verlegt":"abgesagt"]:moved?["Spiel ","verlegt"]:res?(res.o==="w"?(home?["Heim","sieg!"]:["Auswärts","sieg!"]):["End","stand"]):["Spiel","tag"];if(IC_.v)head=head.map(s=>s.toUpperCase());
-  let hs=112;c.textAlign="left";do{instaFont(c,0,hs,true);hs-=6}while(c.measureText(head[0]+head[1]).width>W-124&&hs>60);hs+=6;instaFont(c,0,hs,true);
+  let hs=112;c.textAlign="left";do{instaFont(c,0,hs,true);hs-=6}while(c.measureText(head[0]+head[1]).width>W-124&&hs>60);icGhost(c,head[0]+head[1],48,196,Math.round(hs*1.75));hs+=6;instaFont(c,0,hs,true);
   c.save();c.shadowColor="rgba(0,0,0,.65)";c.shadowBlur=26;c.shadowOffsetY=6;c.fillStyle="#fff";c.fillText(head[0],62,222);c.fillStyle=IC_.acc;c.fillText(head[1],62+c.measureText(head[0]).width,222);c.restore();
   // Paarung: Heim oben links, Gast unten rechts
   instaCircle(c,lh,g.home,219,433,165);instaName(c,g.team,g.home,412,433,W-412-50,false,!res);
@@ -2088,10 +2088,13 @@ function instaBg(c,W,H,rink){
   c.beginPath();c.moveTo(0,0);c.lineTo(W,0);c.lineTo(W,160);c.lineTo(0,330);c.closePath();gr=c.createLinearGradient(0,0,W*.4,330);gr.addColorStop(0,"rgba(22,140,255,.40)");gr.addColorStop(1,"rgba(22,140,255,.08)");c.fillStyle=gr;c.fill();
   c.save();c.shadowColor=IC_.accA(.75);c.shadowBlur=30;c.strokeStyle=IC_.acc;c.lineWidth=8;c.beginPath();c.moveTo(-20,334);c.lineTo(W+20,156);c.stroke();c.restore();
 }
+/* 1.71.5: Strichschrift (Umriss) groß hinter der Überschrift – wie die Seitenköpfe im Vereinsdesign */
+function icGhost(c,txt,x,y,size,align,light){if(!IC_.v||!txt)return;c.save();c.font="800 "+size+"px "+INSTA_COND;c.textAlign=align||"left";c.textBaseline="alphabetic";
+  c.shadowColor="transparent";c.lineJoin="round";c.lineWidth=Math.max(2,size/60);c.strokeStyle=light?"rgba(10,127,224,.5)":"rgba(92,180,255,.55)";c.strokeText(String(txt).toUpperCase(),x,y);c.restore()}
 function instaHead(c,W,tag,h1,h2){if(IC_.v){h1=h1.toUpperCase();h2=h2.toUpperCase()}
   c.textBaseline="alphabetic";c.textAlign="left";c.fillStyle="#fff";instaFont(c,900,27);instaSpace(c,5);c.fillText("ESV GRIZZLYS BERGKAMEN",62,93);
   instaSpace(c,3);const tw=c.measureText(tag).width+44;instaRR(c,W-62-tw,56,tw,48,10);c.fillStyle=IC_.acc;c.fill();c.fillStyle=IC_.accTx;c.textAlign="center";c.fillText(tag,W-62-tw/2+1.5,90);instaSpace(c,0);
-  let hs=112;c.textAlign="left";do{instaFont(c,0,hs,true);hs-=6}while(c.measureText(h1+h2).width>W-124&&hs>60);hs+=6;instaFont(c,0,hs,true);
+  let hs=112;c.textAlign="left";do{instaFont(c,0,hs,true);hs-=6}while(c.measureText(h1+h2).width>W-124&&hs>60);icGhost(c,h1+h2,48,196,Math.round(hs*1.75));hs+=6;instaFont(c,0,hs,true);
   c.save();c.shadowColor="rgba(0,0,0,.65)";c.shadowBlur=26;c.shadowOffsetY=6;c.fillStyle="#fff";c.fillText(h1,62,222);c.fillStyle=IC_.acc;c.fillText(h2,62+c.measureText(h1).width,222);c.restore();
 }
 function instaFoot(c,W,left){instaFont(c,700,22);instaSpace(c,3);c.textAlign="left";c.textBaseline="alphabetic";c.fillStyle=IC_.t3;c.fillText(left.toUpperCase(),62,1288);c.textAlign="right";c.fillStyle=IC_.t3a;c.fillText("APP: JAZM",W-62,1288);c.textAlign="left";instaSpace(c,0)}
@@ -3506,7 +3509,7 @@ async function wpMonth(c,W,H,o){
   const T1=LT?IC_.navy:"#fff",T3=LT?IC_.t4:IC_.t3;
   const y0=H*.31; instaFont(c,0,120*u,true);c.textAlign="left";c.textBaseline="alphabetic";
   const mons=[...new Set(L.map(g=>dt(g).getMonth()))],title=mons.length===1?dt(L[0]).toLocaleDateString("de-DE",{month:"long"}):"Nächste Spiele";
-  c.save();c.shadowColor=LT?"rgba(255,255,255,.8)":"rgba(0,0,0,.6)";c.shadowBlur=20*u;c.fillStyle=T1;wpFitFont(c,IC_.up(title),W-140*u);c.fillText(IC_.up(title),70*u,y0+90*u);c.restore();
+  c.save();c.shadowColor=LT?"rgba(255,255,255,.8)":"rgba(0,0,0,.6)";c.shadowBlur=20*u;icGhost(c,title,56*u,y0+60*u,210*u,"left",LT);c.fillStyle=T1;wpFitFont(c,IC_.up(title),W-140*u);c.fillText(IC_.up(title),70*u,y0+90*u);c.restore();
   instaFont(c,800,30*u);c.fillStyle=IC_.acc;c.fillText((o.team?teamName(o.team):"Young Grizzlys")+" · "+L.length+(L.length===1?" Spiel":" Spiele"),74*u,y0+145*u);
   if(!L.length){instaFont(c,700,40*u);c.fillStyle=T3;c.fillText("In den nächsten Wochen keine Spiele.",74*u,y0+260*u);return}
   const top=y0+195*u,bottom=H*.86,gap=18*u,rh=Math.min(170*u,(bottom-top-gap*(L.length-1))/L.length);

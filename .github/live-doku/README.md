@@ -50,6 +50,8 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.71.6.292 | – (nur Test) | 27.11.2026 | Bilder: Strichschrift kräftiger |
+| 1.71.5.291 | – (nur Test) | 27.11.2026 | Bilder: Strichschrift hinter dem Titel |
 | 1.71.4.290 | – (nur Test) | 27.11.2026 | Hintergrundbilder: Überschriften in Großschrift |
 | 1.71.3.289 | – (nur Test) | 27.11.2026 | Neuigkeiten: Mannschaftschips lesbar |
 | 1.71.2.288 | – (nur Test) | 27.11.2026 | Startseite: klare Abschnitte (Verein-Design) |
@@ -153,6 +155,14 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.71.6
+
+- Strichschrift hinter den Bildtiteln kräftiger (dickere Linie, höhere Deckkraft).
+
+## Version 1.71.5
+
+- Social-Media-Bilder und Hintergrundbild „Spiele des Monats“ im Vereinsdesign: große Umriss-Schrift (Strichschrift) hinter der Überschrift wie in den Seitenköpfen (`icGhost`).
 
 ## Version 1.71.4
 
