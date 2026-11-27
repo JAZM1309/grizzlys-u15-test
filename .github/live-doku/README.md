@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.73.3.301 | – (nur Test) | 27.11.2026 | Kopf: Schrift weiter vom Logo |
 | 1.73.2.300 | – (nur Test) | 27.11.2026 | Kopf etwas kleiner |
 | 1.73.1.299 | – (nur Test) | 27.11.2026 | Kopf: Young Grizzlys einzeilig mit Strichschrift |
 | 1.73.0.298 | – (nur Test) | 27.11.2026 | Navigation: „Mehr“ unten statt Knöpfe oben |
@@ -163,6 +164,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.73.3
+
+- Kopf im Verein-Design: Titel und Strichschrift ein Stück nach rechts (Abstand zum Logo 20 px, Strichschrift ab 90 px), damit die Strichschrift nicht ans Logo stößt.
 
 ## Version 1.73.2
 
