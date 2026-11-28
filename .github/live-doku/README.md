@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.74.4.311 | – (nur Test) | 27.11.2026 | Neue Sprüche für 2027/28 |
 | 1.74.3.310 | – (nur Test) | 27.11.2026 | Gameday-Intro statt zweitem Bildschirm |
 | 1.74.2.309 | – (nur Test) | 27.11.2026 | Bilanz, Downloads, Info im Vereinsdesign |
 | 1.74.1.308 | – (nur Test) | 27.11.2026 | Intro: Strichschrift schmaler |
@@ -173,6 +174,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.74.4
+
+- `sprueche.js`: 86 neue Sprüche für die Saison 2027/28 (`window.SPRUECHE_2027`: 39 allgemein, 19 Spieltag, 14 Sieg, 14 Niederlage), ab 1. August 2027 automatisch als Standardliste. Keine Zitate echter Personen (Urheber Fan-Spruch, Kabinenweisheit, Trainer-Weisheit oder leer). Gespeicherte Sprüche aus dem Admin-Bereich haben weiter Vorrang.
 
 ## Version 1.74.3
 
