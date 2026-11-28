@@ -50,6 +50,7 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.74.3.310 | – (nur Test) | 27.11.2026 | Gameday-Intro statt zweitem Bildschirm |
 | 1.74.2.309 | – (nur Test) | 27.11.2026 | Bilanz, Downloads, Info im Vereinsdesign |
 | 1.74.1.308 | – (nur Test) | 27.11.2026 | Intro: Strichschrift schmaler |
 | 1.74.0.307 | – (nur Test) | 27.11.2026 | Intro im Vereinsdesign |
@@ -172,6 +173,10 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.74.3
+
+- Verein-Design: An Spieltagen wird das Intro zum Gameday-Intro – Strichschrift „GAMEDAY“, Logo, „Gameday · heute“ (orange), Mannschaft und Uhrzeit, darunter Gegner und Spielort (bei mehreren Spielen je eine Zeile), etwas länger sichtbar (ca. 3,4 s). Der zusätzliche Gameday-Bildschirm entfällt dann (`grizzlysGameday…`-Schlüssel wird gesetzt). Das Intro wartet dafür bis zu 0,9 s auf den App-Code (`window.vIntroStart`). Ist das Intro abgeschaltet, erscheint der Gameday-Bildschirm wie bisher.
 
 ## Version 1.74.2
 
