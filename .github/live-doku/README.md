@@ -50,6 +50,8 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 
 | Neue Version | Alte Bezeichnung | Datum | Art |
 |---|---|---|---|
+| 1.74.6.313 | – (nur Test) | 27.11.2026 | Logo Dinslaken in besserer Qualität |
+| 1.74.5.312 | – (nur Test) | 27.11.2026 | Logos Dinslaken, Ratingen, Gelsenkirchen freigestellt |
 | 1.74.4.311 | – (nur Test) | 27.11.2026 | Neue Sprüche für 2027/28 |
 | 1.74.3.310 | – (nur Test) | 27.11.2026 | Gameday-Intro statt zweitem Bildschirm |
 | 1.74.2.309 | – (nur Test) | 27.11.2026 | Bilanz, Downloads, Info im Vereinsdesign |
@@ -174,6 +176,14 @@ Letzte Stände (vollständige Liste und ältere Versionen: `README-ARCHIV.md`):
 | 1.36.0.186 | – (nur Test) | 12.11.2026 | Neue Funktion (U13, Young Grizzlys) |
 | 1.35.0.185 | – (nur Test) | 12.11.2026 | Neue Funktion |
 | 1.34.1.184 | – (nur Test) | 12.11.2026 | Kleine Ergänzung |
+
+## Version 1.74.6
+
+- Logo Dinslakener Kobras: neue, größere Vorlage (178 × 178 statt 48 × 48 Pixel), freigestellt.
+
+## Version 1.74.5
+
+- Gegner-Logos Dinslakener Kobras, Ratinger Ice Aliens und EHC Gelsenkirchen (`logos/`): Hintergrund (weiß bzw. schwarz) entfernt, jetzt transparent und auf den Inhalt zugeschnitten. Alle übrigen Logos geprüft – bereits transparent.
 
 ## Version 1.74.4
 
